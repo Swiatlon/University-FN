@@ -1,0 +1,15 @@
+body {
+  position: relative;
+  contain: paint;
+}
+
+//Ovveride MUI
+.MuiButton {
+  &-root {
+    text-transform: none;
+  }
+}
+
+.MuiListItemIcon-root {
+  min-width: 45px !important;
+}
