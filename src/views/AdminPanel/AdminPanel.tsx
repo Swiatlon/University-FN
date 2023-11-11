@@ -1,15 +1,8 @@
-import { useGetSpecializationsQuery } from "@features/specializations/specializationsSlice"
+import CustomTable from '@components/table/CustomTable';
+import { Box } from '@mui/material';
 
-const AdminPanel = () => {
-  const { data, isLoading, isSuccess} = useGetSpecializationsQuery();
-  if(isSuccess){
-    console.log(data);
-  }
-  return (
-    <div>
-      <h1>Admin Panel</h1>
-    </div>
-  );
-};
+function AdminPanel() {
+  return <Box mt={10}>{/* <CustomTable /> */}</Box>;
+}
 
 export default AdminPanel;

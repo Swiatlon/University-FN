@@ -1,15 +1,84 @@
+*{
+    color: white !important;
+}
+
 body {
-  position: relative;
+  background-color: #080A1D !important;
+  overflow-x: hidden;
   contain: paint;
 }
 
-//Ovveride MUI
+#root{
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+//Override MUI
 .MuiButton {
   &-root {
     text-transform: none;
   }
 }
 
+.MuiSvgIcon{
+  &-root{
+    color:white !important;
+  }
+}
+
+.MuiDivider{
+  &-root{
+    background: rgba(53,133,249,0.50);
+  }
+}
+
+.MuiListItemText{
+  &-root p{
+    color: white !important;
+  }
+}
+
+
+.MuiTable{
+  &-root{
+    .MuiTableHead{
+      &-root{
+         background: rgb(3, 1, 24)
+      }
+    }
+    .MuiTableBody{
+      &-root {
+        .MuiTableRow-root:nth-child(even){
+          background:#070d3b;
+        }
+        .MuiTableCell-root{
+          border-bottom: 1px solid rgb(3, 30, 105);
+        }
+      }
+    }
+  }
+}
+
+.TableContainer{
+  &-root{
+    background: #041141;
+    &::-webkit-scrollbar{
+      background: #041141;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: rgb(7, 28, 112);
+    }
+    &::-webkit-scrollbar-track{
+      background: #041141;
+      
+    }
+  }
+}
+
+
+
 .MuiListItemIcon-root {
   min-width: 45px !important;
+  color: white;
 }

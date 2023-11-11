@@ -30,6 +30,9 @@
       ],
       "@features/*": [
         "features/*"
+      ],
+      "@assets/*": [
+        "assets/*"
       ]
     }
   },

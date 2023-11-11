@@ -4,11 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import store from 'app/store';
-import AdminPanel from 'views/adminPanel/adminPanel';
 import CssBaseline from '@mui/material/CssBaseline';
-import MainTemplate from './templates/MainTemplate/MainTemplate';
+import MainTemplate from './templates/mainTemplate/MainTemplate';
 import theme from './theme/theme';
-import './assets/themeStyle.scss';
+import AdminPanel from 'views/adminPanel/AdminPanel';
+import './assets/styles/themeStyle.scss';
 import './app.scss';
 
 const router = createBrowserRouter([
