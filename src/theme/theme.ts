@@ -7,6 +7,15 @@ const theme = createTheme({
       main: '#1976d2',
       contrastText: '#fff',
     },
+    text: {
+      primary: '#ffffff',
+    },
+  },
+  typography: {
+    h4: {
+      fontWeight: 'bold',
+      fontSize: '1.85rem', // Adjust the font size as needed
+    },
   },
   components: {
     MuiButton: {
