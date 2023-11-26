@@ -9,7 +9,7 @@ import Logo from '@assets/images/Logo.png';
 import UserIcon from '@assets/icons/exampleUserIcon.png';
 import { Link } from 'react-router-dom';
 
-const Drawer = styled(Box)(({ theme }) => ({
+const Drawer = styled(Box)(() => ({
   '&': {
     width: '250px',
     height: '100vh',
@@ -20,7 +20,7 @@ const Drawer = styled(Box)(({ theme }) => ({
   },
 }));
 
-const NavigationTopContent = styled(Box)(({ theme }) => ({
+const NavigationTopContent = styled(Box)(() => ({
   '&': {
     paddingTop: '30px',
     paddingBottom: '20px',
@@ -34,7 +34,7 @@ const NavigationTopContent = styled(Box)(({ theme }) => ({
 const Navigation = () => {
   const menuItems = [
     { id: 1, text: 'AdminPanel', icon: <AdminPanelSettingsIcon />, linkTo: '/AdminPanel' },
-    { id: 2, text: 'firstItem', icon: <PeopleIcon /> },
+    { id: 2, text: 'CreatePatient', icon: <PeopleIcon />, linkTo: '/CreatePatient' },
     { id: 3, text: 'firstItem', icon: <PeopleIcon /> },
     { id: 4, text: 'firstItem', icon: <PeopleIcon /> },
   ];

@@ -1,14 +1,14 @@
-*{
-    color: white !important;
+* {
+  color: white;
 }
 
 body {
-  background-color: #080A1D !important;
+  background-color: #080a1d !important;
   overflow-x: hidden;
   contain: paint;
 }
 
-#root{
+#root {
   position: relative;
   height: 100%;
   display: flex;
@@ -17,42 +17,39 @@ body {
 //Override MUI
 .MuiButton {
   &-root {
+    background: rgba(7, 28, 82, 0.35);
     text-transform: none;
   }
-}
-
-.MuiSvgIcon{
-  &-root{
-    color:white !important;
+  &-root:hover {
+    background: rgb(7, 45, 127);
   }
 }
 
-.MuiDivider{
-  &-root{
-    background: rgba(53,133,249,0.50);
+.MuiDivider {
+  &-root {
+    background: #1976d2;
   }
 }
 
-.MuiListItemText{
-  &-root p{
+.MuiListItemText {
+  &-root p {
     color: white !important;
   }
 }
 
-
-.MuiTable{
-  &-root{
-    .MuiTableHead{
-      &-root{
-         background: rgb(3, 1, 24)
+.MuiTable {
+  &-root {
+    .MuiTableHead {
+      &-root {
+        background: rgb(3, 1, 24);
       }
     }
-    .MuiTableBody{
+    .MuiTableBody {
       &-root {
-        .MuiTableRow-root:nth-child(even){
-          background:#070d3b;
+        .MuiTableRow-root:nth-child(even) {
+          background: #070d3b;
         }
-        .MuiTableCell-root{
+        .MuiTableCell-root {
           border-bottom: 1px solid rgb(3, 30, 105);
         }
       }
@@ -60,25 +57,40 @@ body {
   }
 }
 
-.TableContainer{
-  &-root{
+.TableContainer {
+  &-root {
     background: #041141;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       background: #041141;
     }
-    &::-webkit-scrollbar-thumb{
+    &::-webkit-scrollbar-thumb {
       background: rgb(7, 28, 112);
     }
-    &::-webkit-scrollbar-track{
+    &::-webkit-scrollbar-track {
       background: #041141;
-      
     }
   }
 }
 
+.MuiFormControl-root {
+  .MuiFormLabel-root {
+    color: #1976d2aa;
+  }
+  .MuiFilledInput-root {
+    background: rgba(7, 28, 82, 0.35);
+    &::before {
+      border-bottom: 1px solid #1976d2;
+    }
+    &::after {
+      border-bottom: 1px solid green;
+    }
+  }
+}
 
+.MuiMenu-list {
+  background: rgb(1, 14, 45);
+}
 
 .MuiListItemIcon-root {
   min-width: 45px !important;
-  color: white;
 }

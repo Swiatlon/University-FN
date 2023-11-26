@@ -1,5 +1,5 @@
-import MiddleContainer from '@components/middleContent/MiddleContainer';
-import Navigation from '@components/navigation/Navigation';
+import MiddleContainer from '@components/TemplatesComponents/MiddleContent/MiddleContainer';
+import Navigation from '@components/TemplatesComponents/Navigation/Navigation';
 import { Outlet } from 'react-router-dom';
 
 const MainTemplate = () => {

@@ -29,6 +29,7 @@ const Container = styled(Box)(() => ({
 const MiddleContent = styled(Box)(() => ({
   '&': {
     height: '100%',
+    display: 'flex',
   },
 }));
 
