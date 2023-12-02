@@ -10,7 +10,7 @@ import theme from './theme/theme';
 import AdminPanel from 'views/adminPanel/AdminPanel';
 import './assets/styles/themeStyle.scss';
 import './app.scss';
-import CreatePatient from 'views/CreatePatient/CreatePatient';
+import CreateStudent from 'views/CreateStudent/CreateStudent';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
         element: <AdminPanel />,
       },
       {
-        path: 'CreatePatient',
-        element: <CreatePatient />,
+        path: 'CreateStudent',
+        element: <CreateStudent />,
       },
     ],
   },

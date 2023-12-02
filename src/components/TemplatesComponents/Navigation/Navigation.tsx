@@ -34,7 +34,7 @@ const NavigationTopContent = styled(Box)(() => ({
 const Navigation = () => {
   const menuItems = [
     { id: 1, text: 'AdminPanel', icon: <AdminPanelSettingsIcon />, linkTo: '/AdminPanel' },
-    { id: 2, text: 'CreatePatient', icon: <PeopleIcon />, linkTo: '/CreatePatient' },
+    { id: 2, text: 'Create Student', icon: <PeopleIcon />, linkTo: '/CreateStudent' },
     { id: 3, text: 'firstItem', icon: <PeopleIcon /> },
     { id: 4, text: 'firstItem', icon: <PeopleIcon /> },
   ];

@@ -8,8 +8,8 @@ interface FormInputProps<T extends FieldValues> extends React.ComponentProps<typ
   name: FieldPath<T>;
   control: Control<T>;
   rules?: Record<string, unknown>;
-  select?: boolean; // Updated to use "select" prop directly
-  options?: { label: string; value: string | number }[];
+  select?: boolean;
+  options?: { label: string; value: string | number | boolean }[];
 }
 
 const FormInput = <T extends FieldValues>({ label, name, control, rules, select, options, ...rest }: FormInputProps<T>) => {

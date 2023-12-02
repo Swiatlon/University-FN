@@ -1,11 +1,10 @@
 import { Grid, Table, TableHeaderRow } from '@devexpress/dx-react-grid-material-ui';
 import { styled } from '@mui/material/styles';
-import { Box, Container } from '@mui/material';
-import { testColumns, testRows } from './customTableTestData';
+import { Box } from '@mui/material';
 
 interface CustomTableProps {
-  rows: any[];
-  columns: any[];
+  rows: [];
+  columns: [];
 }
 
 const TableContainer = styled(Box)(() => ({
