@@ -5,18 +5,23 @@ import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import store from 'app/store';
 import CssBaseline from '@mui/material/CssBaseline';
-import MainTemplate from './templates/mainTemplate/MainTemplate';
+import MainTemplate from './templates/MainTemplate/MainTemplate';
 import theme from './theme/theme';
-import AdminPanel from 'views/adminPanel/AdminPanel';
+import AdminPanel from 'views/AdminPanel/AdminPanel';
 import './assets/styles/themeStyle.scss';
 import './app.scss';
 import CreateStudent from 'views/CreateStudent/CreateStudent';
+import AuthPanel from 'views/AuthPanel/AuthPanel';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainTemplate />,
     children: [
+      {
+        path: '/',
+        element: <AuthPanel />,
+      },
       {
         path: 'AdminPanel',
         element: <AdminPanel />,

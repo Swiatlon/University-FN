@@ -11,7 +11,8 @@ import { Link } from 'react-router-dom';
 
 const Drawer = styled(Box)(() => ({
   '&': {
-    width: '250px',
+    width: '0px',
+    overflow: 'hidden',
     height: '100vh',
     top: 0,
     left: 0,
