@@ -17,7 +17,7 @@ body {
 //Override MUI
 .MuiButton {
   &-root {
-    background: rgba(7, 28, 82, 0.35);
+    background: rgba(7, 28, 82, 0.979);
     text-transform: none;
   }
   &-root:hover {
@@ -73,6 +73,9 @@ body {
 }
 
 .MuiFormControl-root {
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #1976d2aa;
+  }
   .MuiFormLabel-root {
     color: #1976d2aa;
   }
