@@ -31,6 +31,7 @@
   justify-content: center;
   justify-items: center;
   text-align: center;
+  
   p {
     line-break: anywhere;
   }
@@ -39,19 +40,29 @@
 .Avatar {
   width: 40px;
   height: auto;
+  transition: transform 0.5s ease;
+  cursor: pointer;
 }
 
 .List {
   margin-left: 12px;
   min-width: 18.75rem;
-}
 
-.ListItem {
-  display: flex;
-  align-items: center;
-  padding-right: 2rem;
+  &Item {
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+  }
 }
 
 .Divider {
   margin-bottom: 16px;
+}
+
+.ScaleOnHover {
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
