@@ -1,0 +1,57 @@
+.Drawer {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #041141 36%, #081131 46%, rgba(1, 16, 71, 1) 87%, rgba(6, 14, 44, 1) 100%);
+  max-height: 100vh;
+  position: sticky;
+  left: 0;
+  top: 0;
+  grid-area: nav;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.Hamburger {
+  cursor: pointer;
+}
+
+.TopInformationContainer {
+  margin: 24px;
+}
+
+.LogoContainer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.UsernameInfo {
+  display: grid;
+  position: relative;
+  padding: 16px;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  p {
+    line-break: anywhere;
+  }
+}
+
+.Avatar {
+  width: 40px;
+  height: auto;
+}
+
+.List {
+  margin-left: 12px;
+  min-width: 18.75rem;
+}
+
+.ListItem {
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.Divider {
+  margin-bottom: 16px;
+}

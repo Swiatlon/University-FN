@@ -28,7 +28,7 @@ function AuthPanel() {
           Login Form
         </Typography>
         <FormInput control={control} name="login" label="Login" variant="outlined" rules={{ required: true }} />
-        <FormInput control={control} name="password" label="password" variant="outlined" rules={{ required: true }} type="password" />
+        <FormInput control={control} name="password" label="Password" variant="outlined" rules={{ required: true }} type="password" />
         <Box className="MaxContentCenter" mt={1}>
           <Button type="submit" size="large" variant="contained">
             Login
