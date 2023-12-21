@@ -46,10 +46,10 @@ const Navigation = ({ toggleMenuHandler, isOpen }: NavigationProps) => {
       <TopInformationContainer className="TopInformationContainer" isOpen={isOpen}>
         <Box className="LogoContainer">
           <Box className="Logo" component="img" src={Logo} />
-          <MenuIcon onClick={toggleMenuHandler} className="Hamburger" fontSize="medium" />
+          <MenuIcon onClick={toggleMenuHandler} className="Hamburger ScaleOnHover" fontSize="medium" />
         </Box>
         <Box className="UsernameInfo">
-          <Avatar src={UserIcon} alt="user icon" className="Avatar" />
+          <Avatar src={UserIcon} alt="user icon" className="Avatar ScaleOnHover" />
           {isOpen && (
             <Box className="UserNameRoleBox">
               <Typography variant="body1" fontWeight="bold" className="UserName">
@@ -69,7 +69,7 @@ const Navigation = ({ toggleMenuHandler, isOpen }: NavigationProps) => {
         {menuItems.map(item => (
           <Box component="li" className="ListItem">
             <ListItemButton key={item.id} component={Link} to={`${item.linkTo}`}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon className="ScaleOnHover">{item.icon}</ListItemIcon>
               <ListItemText secondary={item.text} />
             </ListItemButton>
             <KeyboardArrowDownIcon sx={{ cursor: 'pointer' }} />
