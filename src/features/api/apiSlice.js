@@ -6,6 +6,7 @@ const apiSlice = createApi({
     baseUrl: import.meta.env.VITE_DEVELOPMENT_BACKEND_ADDRESS,
   }),
   tagTypes: [],
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   endpoints: builder => ({}),
 });
 

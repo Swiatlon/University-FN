@@ -14,7 +14,7 @@ const theme = createTheme({
   typography: {
     h4: {
       fontWeight: 'bold',
-      fontSize: '1.85rem', // Adjust the font size as needed
+      fontSize: '1.85rem',
     },
   },
   components: {

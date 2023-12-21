@@ -2,22 +2,17 @@
   color: white;
 }
 
-body {
-  background-color: #080a1d !important;
-  overflow-x: hidden;
-  contain: paint;
-}
-
 #root {
-  position: relative;
-  height: 100%;
-  display: flex;
+  background-color: #080a1d !important;
+  min-height: 100vh;
+  display: grid;
+  contain: paint;
 }
 
 //Override MUI
 .MuiButton {
   &-root {
-    background: rgba(7, 28, 82, 0.35);
+    background: rgba(7, 28, 82, 0.979);
     text-transform: none;
   }
   &-root:hover {
@@ -73,6 +68,9 @@ body {
 }
 
 .MuiFormControl-root {
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #1976d2aa;
+  }
   .MuiFormLabel-root {
     color: #1976d2aa;
   }
@@ -89,8 +87,4 @@ body {
 
 .MuiMenu-list {
   background: rgb(1, 14, 45);
-}
-
-.MuiListItemIcon-root {
-  min-width: 45px !important;
 }
