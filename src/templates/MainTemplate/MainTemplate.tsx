@@ -10,7 +10,9 @@ interface AppContainerProps {
   isAuthenticated: boolean;
 }
 
-const AppContainer = styled(Box)<AppContainerProps>(({ isOpen, isAuthenticated }) => ({
+const AppContainer = styled(Box, {
+  shouldForwardProp: prop => prop !== 'isAuthenticated' && prop !== 'isOpen',
+})<AppContainerProps>(({ isOpen, isAuthenticated }) => ({
   gridTemplateAreas: isAuthenticated ? '"nav header" "nav content"' : '"nav content"',
   gridTemplateRows: isAuthenticated ? '64px auto' : 'auto',
   gridTemplateColumns: isOpen ? '300px auto' : '80px auto',
