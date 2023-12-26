@@ -6,17 +6,17 @@ import FormDatePicker from '@components/FormComponents/FormDatePicker/ReactHookF
 import { useAddStudentMutation } from '@features/students/studentsSlice';
 
 const defaultValues = {
-  name: 'name',
-  surname: 'surname',
+  name: '',
+  surname: '',
   birthDate: '' as const,
-  pesel: 'pesel',
-  country: 'country',
-  city: 'city',
-  postalCode: 'postalcode',
-  street: 'street',
-  buildingNumber: '12',
-  apartmentNumber: '32',
-  gender: 'Man',
+  pesel: '',
+  country: '',
+  city: '',
+  postalCode: '',
+  street: '',
+  buildingNumber: '',
+  apartmentNumber: '',
+  gender: '',
 };
 
 type Inputs = {
@@ -53,8 +53,7 @@ function CreateStudent() {
         </Typography>
         <FormInput control={control} name="name" label="Name" variant="filled" rules={{ required: true }} />
         <FormInput control={control} name="surname" label="Surname" variant="filled" rules={{ required: true }} />
-        <FormDatePicker control={control} name="birthDate" label="Birth Date" variant="filled" rules={{ required: true }} />
-        {/* <FormInput control={control} name="birthDate" label="Birth Date" variant="filled" rules={{ required: true }} /> */}
+        <FormDatePicker control={control} name="birthDate" label="Birth Date" slotProps={{ textField: { variant: 'filled' } }} rules={{ required: true }} />
         <FormInput control={control} name="pesel" label="Pesel" variant="filled" rules={{ required: true }} />
         <FormInput control={control} name="country" label="Country" variant="filled" rules={{ required: true }} />
         <FormInput control={control} name="postalCode" label="Postal Code" variant="filled" rules={{ required: true }} />

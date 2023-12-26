@@ -17,5 +17,9 @@
     align-content: space-evenly;
     flex-wrap: wrap;
     gap: 25px;
+
+    .MuiTextField-root {
+      max-width: 220px;
+    }
   }
 }

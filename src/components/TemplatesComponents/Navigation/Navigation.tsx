@@ -14,7 +14,9 @@ interface NavigationProps {
   toggleMenuHandler: () => void;
 }
 
-const TopInformationContainer = styled(Box)<{ isOpen: boolean } & BoxProps>(({ isOpen }) => ({
+const TopInformationContainer = styled(Box, {
+  shouldForwardProp: prop => prop !== 'isOpen',
+})<{ isOpen: boolean } & BoxProps>(({ isOpen }) => ({
   '.Logo': {
     opacity: isOpen ? 1 : 0,
     width: isOpen ? '120px' : '0px',
@@ -66,8 +68,8 @@ const Navigation = ({ toggleMenuHandler, isOpen }: NavigationProps) => {
       <Divider variant="middle" className="Divider"></Divider>
 
       <List component="ul" className="List">
-        {menuItems.map(item => (
-          <Box component="li" className="ListItem">
+        {menuItems.map((item, index) => (
+          <Box component="li" className="ListItem" key={index}>
             <ListItemButton key={item.id} component={Link} to={`${item.linkTo}`}>
               <ListItemIcon className="ScaleOnHover">{item.icon}</ListItemIcon>
               <ListItemText secondary={item.text} />

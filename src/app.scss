@@ -85,6 +85,15 @@
   }
 }
 
+.MuiDateCalendar-root {
+  background: rgb(1, 14, 45);
+  .MuiDayCalendar {
+    &-weekDayLabel {
+      color: white;
+    }
+  }
+}
+
 .MuiMenu-list {
   background: rgb(1, 14, 45);
 }
