@@ -5,30 +5,37 @@ import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import store from 'app/store';
 import CssBaseline from '@mui/material/CssBaseline';
-import MainTemplate from './templates/MainTemplate/MainTemplate';
 import theme from './theme/theme';
-import AdminPanel from 'views/AdminPanel/AdminPanel';
 import './assets/styles/themeStyle.scss';
-import './app.scss';
-import CreateStudent from 'views/CreateStudent/CreateStudent';
-import AuthPanel from 'views/AuthPanel/AuthPanel';
+import './assets/styles/app.scss';
+import Login from 'views/Login/Login';
+import App from 'App';
+import ProtectedRoutes from '@components/ProtectedRoutes/ProtectedRoutes';
+import PreAuthLayout from 'layouts/PreAuth/PreAuthLayout';
+import PostAuthLayout from 'layouts/PostAuth/PostAuthLayout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainTemplate />,
+    element: <App />,
     children: [
       {
-        path: '/',
-        element: <AuthPanel />,
+        path: '',
+        element: <PreAuthLayout />,
+        children: [{ path: 'login', element: <Login /> }],
       },
       {
-        path: 'AdminPanel',
-        element: <AdminPanel />,
-      },
-      {
-        path: 'CreateStudent',
-        element: <CreateStudent />,
+        path: 'postAuth',
+        element: <ProtectedRoutes />,
+        children: [
+          {
+            element: <PostAuthLayout />,
+            children: [
+              // { index: true, element: <AdminPanel /> },
+              // { path: 'create-student', element: <CreateStudent /> },
+            ],
+          },
+        ],
       },
     ],
   },
