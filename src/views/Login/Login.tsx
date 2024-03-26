@@ -14,7 +14,7 @@ type Inputs = {
   password: string;
 };
 
-function AuthPanel() {
+function Login() {
   const { handleSubmit, control } = useForm<Inputs>({ defaultValues });
   const onSubmit: SubmitHandler<Inputs> = data => {
     return data;
@@ -39,4 +39,4 @@ function AuthPanel() {
   );
 }
 
-export default AuthPanel;
+export default Login;
