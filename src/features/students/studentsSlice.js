@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import apiSlice from '../api/apiSlice';
 
 export const studentsSlice = apiSlice.injectEndpoints({

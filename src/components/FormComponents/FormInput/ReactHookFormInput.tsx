@@ -1,51 +1,50 @@
 import React from 'react';
-import { TextField, MenuItem, IconButton, InputAdornment } from '@mui/material';
-import { FieldValues, FieldPath, Control, useController } from 'react-hook-form';
+import { IconButton, InputAdornment, MenuItem, TextField } from '@mui/material';
+import { useController, type Control, type FieldPath, type FieldValues } from 'react-hook-form';
 import ClearIcon from '@mui/icons-material/Clear';
 
 interface FormInputProps<T extends FieldValues> extends React.ComponentProps<typeof TextField> {
-  label: string;
-  name: FieldPath<T>;
-  control: Control<T>;
-  rules?: Record<string, unknown>;
-  select?: boolean;
-  options?: { label: string; value: string | number | boolean }[];
+  readonly label: string;
+  readonly name: FieldPath<T>;
+  readonly control: Control<T>;
+  readonly rules?: Record<string, unknown>;
+  readonly select?: boolean;
+  readonly options?: { label: string; value: boolean | number | string }[];
 }
 
-const FormInput = <T extends FieldValues>({ label, name, control, rules, select, options, ...rest }: FormInputProps<T>) => {
+function FormInput<T extends FieldValues>({ label, name, control, rules, select, options, ...rest }: FormInputProps<T>) {
   const { field, fieldState } = useController({
-    name,
-    control,
-    rules,
-  });
+      control,
+      name,
+      rules,
+    }),
+    handleClear = () => {
+      field.onChange('');
+    };
 
-  const handleClear = () => {
-    field.onChange('');
-  };
-
-  if (select) {
+  if (select === true) {
     return (
       <TextField
-        select
-        label={label}
-        error={fieldState.invalid}
-        helperText={fieldState.error?.type}
         SelectProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              {field.value ? (
+                <IconButton edge="end" onClick={handleClear}>
+                  <ClearIcon />
+                </IconButton>
+              ) : null}
+            </InputAdornment>
+          ),
           sx: {
             '& .MuiSelect-icon': {
               display: field.value ? 'none' : 'inline',
             },
           },
-          endAdornment: (
-            <InputAdornment position="end">
-              {field.value && (
-                <IconButton onClick={handleClear} edge="end">
-                  <ClearIcon />
-                </IconButton>
-              )}
-            </InputAdornment>
-          ),
         }}
+        error={fieldState.invalid}
+        helperText={fieldState.error?.type}
+        label={label}
+        select
         {...field}
         {...rest}
       >
@@ -59,6 +58,6 @@ const FormInput = <T extends FieldValues>({ label, name, control, rules, select,
   }
 
   return <TextField error={fieldState.invalid} helperText={fieldState.error?.type} label={label} {...field} {...rest} />;
-};
+}
 
 export default FormInput;

@@ -3,8 +3,8 @@ import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 interface CustomTableProps {
-  rows: [];
-  columns: [];
+  readonly rows: [];
+  readonly columns: [];
 }
 
 const TableContainer = styled(Box)(() => ({
@@ -17,7 +17,7 @@ const TableContainer = styled(Box)(() => ({
 function CustomTable({ rows, columns }: CustomTableProps) {
   return (
     <TableContainer>
-      <Grid rows={rows} columns={columns}>
+      <Grid columns={columns} rows={rows}>
         <Table />
         <TableHeaderRow />
       </Grid>

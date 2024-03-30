@@ -1,23 +1,24 @@
 // ProtectedRoute.jsx
 import { Navigate, Outlet } from 'react-router-dom';
-
-const isAuthenticated = true; // Replace with actual authentication logic
-const userRole = 'admin'; // Replace with actual role checking logic
+// Replace with actual authentication logic
+const isAuthenticated = true,
+  userRole = 'admin';
 
 interface IProtectedRoutes {
-  requiredRole?: string;
+  readonly requiredRole?: string;
 }
 
 function ProtectedRoutes({ requiredRole }: IProtectedRoutes) {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!isAuthenticated) {
-    return <Navigate to="/preAuth/login" replace />;
+    return <Navigate replace to="/preAuth/login" />;
   }
 
   if (requiredRole && userRole !== requiredRole) {
-    return <Navigate to="/postAuth/not-authorized" replace />;
+    return <Navigate replace to="/postAuth/not-authorized" />;
   }
 
-  return <Outlet />; // Allows nested routes to be rendered
+  return <Outlet />;
 }
 
 export default ProtectedRoutes;
