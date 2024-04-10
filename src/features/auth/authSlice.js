@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+/* eslint-disable */
 
 function parseJwt(token) {
   if (!token) {

@@ -1,5 +1,5 @@
-import { Container, Box, Button, Typography } from '@mui/material';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { Box, Button, Container, Typography } from '@mui/material';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import './CreateStudent.scss';
 import FormInput from '@components/FormComponents/FormInput/ReactHookFormInput';
 import FormDatePicker from '@components/FormComponents/FormDatePicker/ReactHookFormDatePicker';
@@ -19,7 +19,7 @@ const defaultValues = {
   gender: '',
 };
 
-type Inputs = {
+interface Inputs {
   name: string;
   surname: string;
   birthDate: Date | '';
@@ -31,7 +31,7 @@ type Inputs = {
   buildingNumber: string;
   apartmentNumber: string;
   gender: string;
-};
+}
 
 const genderOptions = [
   { label: 'Women', value: 'Women' },
@@ -39,31 +39,31 @@ const genderOptions = [
 ];
 
 function CreateStudent() {
-  const { handleSubmit, control } = useForm<Inputs>({ defaultValues });
-  const [addStudent] = useAddStudentMutation();
-  const onSubmit: SubmitHandler<Inputs> = data => {
-    addStudent(data);
-  };
+  const { handleSubmit, control } = useForm<Inputs>({ defaultValues }),
+    [addStudent] = useAddStudentMutation(),
+    onSubmit: SubmitHandler<Inputs> = async data => {
+      return addStudent(data);
+    };
 
   return (
-    <Container maxWidth="sm" className="CreateStudentContainer">
+    <Container className="CreateStudentContainer" maxWidth="sm">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant="h4" className="MaxContentCenter">
+        <Typography className="MaxContentCenter" variant="h4">
           Add Student
         </Typography>
-        <FormInput control={control} name="name" label="Name" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="surname" label="Surname" variant="filled" rules={{ required: true }} />
-        <FormDatePicker control={control} name="birthDate" label="Birth Date" slotProps={{ textField: { variant: 'filled' } }} rules={{ required: true }} />
-        <FormInput control={control} name="pesel" label="Pesel" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="country" label="Country" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="postalCode" label="Postal Code" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="city" label="City" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="street" label="Street" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="buildingNumber" label="Building Number" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="apartmentNumber" label="Apartment Number" variant="filled" rules={{ required: true }} />
-        <FormInput control={control} name="gender" label="Gender" variant="filled" rules={{ required: true }} select options={genderOptions} sx={{ minWidth: '190px' }} />
+        <FormInput control={control} label="Name" name="name" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Surname" name="surname" rules={{ required: true }} variant="filled" />
+        <FormDatePicker control={control} label="Birth Date" name="birthDate" rules={{ required: true }} slotProps={{ textField: { variant: 'filled' } }} />
+        <FormInput control={control} label="Pesel" name="pesel" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Country" name="country" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Postal Code" name="postalCode" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="City" name="city" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Street" name="street" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Building Number" name="buildingNumber" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Apartment Number" name="apartmentNumber" rules={{ required: true }} variant="filled" />
+        <FormInput control={control} label="Gender" name="gender" options={genderOptions} rules={{ required: true }} select sx={{ minWidth: '190px' }} variant="filled" />
         <Box className="MaxContentCenter" mt={1}>
-          <Button type="submit" size="large" variant="contained">
+          <Button size="large" type="submit" variant="contained">
             Save Student
           </Button>
         </Box>

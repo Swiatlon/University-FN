@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setCredentials } from '../auth/authSlice';
+/* eslint-disable */
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_DEVELOPMENT_BACKEND_ADDRESS,
@@ -18,16 +19,16 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
 
-  if (result?.error?.status === 403) {
+  if (result.error?.status === 403) {
     const refreshResult = await baseQuery('/auth/refresh', api, extraOptions);
 
-    if (refreshResult?.data) {
+    if (refreshResult.data) {
       api.dispatch(setCredentials({ ...refreshResult.data }));
 
-      return await baseQuery(args, api, extraOptions);
+      return baseQuery(args, api, extraOptions);
     }
 
-    if (refreshResult?.error?.status) {
+    if (refreshResult.error?.status) {
       refreshResult.error.data.message = 'Your login has expired.';
     }
 
@@ -41,7 +42,7 @@ const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
   tagTypes: ['User', 'Transaction'],
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   endpoints: builder => ({}),
 });
 

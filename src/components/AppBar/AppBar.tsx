@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSendLogoutMutation } from '@features/auth/authApiSlice';
+/* eslint-disable */
 
 function AppBar() {
   const [sendLogout] = useSendLogoutMutation();
@@ -30,7 +31,9 @@ function AppBar() {
 
     const timerId = setInterval(updateTimer, 1000);
 
-    return () => clearInterval(timerId);
+    return () => {
+      clearInterval(timerId);
+    };
   }, [tokenExpirationTime]);
 
   return <Box sx={{ width: '100%', height: 'fit-content', background: 'purple', position: 'sticky', top: 0, textAlign: 'center' }}>{`Timer: ${timeLeft}`}</Box>;

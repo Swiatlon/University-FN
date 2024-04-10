@@ -31,37 +31,37 @@ function Navigation({ menuItems }: NavigationProps) {
   };
 
   return (
-    <Drawer isOpen={isOpenNav} component="nav">
+    <Drawer component="nav" isOpen={isOpenNav}>
       <Box className="ContentContainer">
         <Box className="HeaderContainer">
           <Box className="LogoContainer">
             <Box className="Logo IncreaseSizeAnimation" component="img" src={Logo} />
           </Box>
-          <MenuIcon onClick={toggleMenuHandler} className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" />
+          <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={toggleMenuHandler} />
         </Box>
 
         <Box className="UserProfileContainer">
-          <Avatar src={UserIcon} alt="user icon" className="Avatar IncreaseSizeAnimation" />
+          <Avatar alt="user icon" className="Avatar IncreaseSizeAnimation" src={UserIcon} />
           <Box className="UserInfoDisplay">
-            <Typography variant="body1" fontWeight="bold" className="UsernameText">
+            <Typography className="UsernameText" fontWeight="bold" variant="body1">
               Wiercik
             </Typography>
-            <Typography variant="body2" className="userRoleText">
+            <Typography className="userRoleText" variant="body2">
               Role: Admin
             </Typography>
           </Box>
         </Box>
 
-        <Divider variant="middle" className="Divider"></Divider>
+        <Divider className="Divider" variant="middle" />
 
-        <List component="ul" className="List">
+        <List className="List" component="ul">
           {menuItems.map(item => (
             <Box component="li" key={item.id}>
               <Box
                 className="ListItem IncreaseSizeAnimation"
                 onClick={() => {
                   if (item.linkTo) {
-                    return handleNavigate(item.linkTo);
+                    handleNavigate(item.linkTo);
                   }
                 }}
               >

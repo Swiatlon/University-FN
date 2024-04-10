@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-const PersistLogin = () => {
+function PersistLogin() {
   return <Outlet />;
-};
+}
 export default PersistLogin;

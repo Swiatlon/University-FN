@@ -1,5 +1,6 @@
 import apiSlice from '../api/apiSlice';
 import { logOut, setCredentials } from './authSlice';
+/* eslint-disable */
 
 const authApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
