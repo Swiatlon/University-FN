@@ -10,7 +10,7 @@ function AppBar() {
   const [sendLogout] = useSendLogoutMutation();
   const tokenExpirationTime = useSelector(selectTokenExpirationTime);
   const [timeLeft, setTimeLeft] = useState('');
-
+  // tutaj powijnno byc useLayoutEffect
   useEffect(() => {
     const updateTimer = () => {
       const now = new Date();

@@ -3,7 +3,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import Navigation from '@components/Navigation/Navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { Container, Content } from 'layouts/Styled';
-/* eslint-disable */
 
 import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '@features/auth/authSlice';

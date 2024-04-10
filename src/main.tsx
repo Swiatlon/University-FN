@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
-import store from 'app/store';
+import { store } from 'app/store';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme/theme';
 import './assets/styles/themeStyle.scss';

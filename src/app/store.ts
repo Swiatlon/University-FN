@@ -3,7 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import apiSlice from '../features/api/apiSlice';
 import authSlice from '@features/auth/authSlice';
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     authSlice,
@@ -15,4 +15,5 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
