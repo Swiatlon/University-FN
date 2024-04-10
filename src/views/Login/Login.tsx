@@ -1,8 +1,12 @@
-import './AuthPanel.scss';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import AnimatedCircles from '@components/AuthPanelElements/AnimatedCircles/AnimatedCircles';
 import FormInput from '@components/FormComponents/FormInput/ReactHookFormInput';
+import './AuthPanel.scss';
+import { useLoginMutation } from '@features/auth/authApiSlice';
+import { setCredentials } from '@features/auth/authSlice';
+import { useDispatch } from 'react-redux';
+/* eslint-disable */
 
 const defaultValues = {
   login: '',
@@ -15,10 +19,16 @@ interface Inputs {
 }
 
 function Login() {
-  const { handleSubmit, control } = useForm<Inputs>({ defaultValues }),
-    onSubmit: SubmitHandler<Inputs> = data => {
-      return data;
-    };
+  const dispatch = useDispatch();
+  const [loginUser] = useLoginMutation();
+  const { handleSubmit, control } = useForm<Inputs>({ defaultValues });
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    const { login, password } = data;
+    const { accessToken } = await loginUser({ identifier: login, password }).unwrap();
+    // @ts-ignore
+    dispatch(setCredentials({ accessToken }));
+  };
 
   return (
     <Box className="Container">

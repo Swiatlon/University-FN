@@ -5,12 +5,10 @@ export const studentsSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getStudents: builder.query({
       query: () => 'api/students',
-      method: 'GET',
     }),
 
     getSingleStudent: builder.query({
       query: studentId => `api/students/${studentId}`,
-      method: 'GET',
     }),
 
     addStudent: builder.mutation({
