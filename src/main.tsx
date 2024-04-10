@@ -13,6 +13,7 @@ import App from 'App';
 import ProtectedRoutes from '@components/ProtectedRoutes/ProtectedRoutes';
 import PreAuthLayout from 'layouts/PreAuth/PreAuthLayout';
 import PostAuthLayout from 'layouts/PostAuth/PostAuthLayout';
+import PersistLogin from '@components/PersistLogin/PersistLogin';
 
 const router = createBrowserRouter([
   {
@@ -29,10 +30,12 @@ const router = createBrowserRouter([
         element: <ProtectedRoutes />,
         children: [
           {
-            element: <PostAuthLayout />,
+            element: <PersistLogin />,
             children: [
-              // { index: true, element: <AdminPanel /> },
-              // { path: 'create-student', element: <CreateStudent /> },
+              {
+                element: <PostAuthLayout />,
+                children: [{ index: true, element: <div>Zaauutoryzowany tokenem</div> }],
+              },
             ],
           },
         ],

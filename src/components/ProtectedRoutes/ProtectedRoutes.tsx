@@ -1,23 +1,15 @@
-// ProtectedRoute.jsx
+import { selectCurrentToken } from '@features/auth/authSlice';
+import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const isAuthenticated = true; // Replace with actual authentication logic
-const userRole = 'admin'; // Replace with actual role checking logic
+function ProtectedRoutes() {
+  const isAuthenticated = useSelector(selectCurrentToken);
 
-interface IProtectedRoutes {
-  requiredRole?: string;
-}
-
-function ProtectedRoutes({ requiredRole }: IProtectedRoutes) {
   if (!isAuthenticated) {
-    return <Navigate to="/preAuth/login" replace />;
+    return <Navigate to="/login" replace />;
   }
 
-  if (requiredRole && userRole !== requiredRole) {
-    return <Navigate to="/postAuth/not-authorized" replace />;
-  }
-
-  return <Outlet />; // Allows nested routes to be rendered
+  return <Outlet />;
 }
 
 export default ProtectedRoutes;

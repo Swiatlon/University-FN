@@ -3,6 +3,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import AnimatedCircles from '@components/AuthPanelElements/AnimatedCircles/AnimatedCircles';
 import FormInput from '@components/FormComponents/FormInput/ReactHookFormInput';
 import './AuthPanel.scss';
+import { useLoginMutation } from '@features/auth/authApiSlice';
+import { setCredentials } from '@features/auth/authSlice';
+import { useDispatch } from 'react-redux';
 
 const defaultValues = {
   login: '',
@@ -15,9 +18,15 @@ type Inputs = {
 };
 
 function Login() {
+  const dispatch = useDispatch();
+  const [loginUser] = useLoginMutation();
   const { handleSubmit, control } = useForm<Inputs>({ defaultValues });
-  const onSubmit: SubmitHandler<Inputs> = data => {
-    return data;
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    const { login, password } = data;
+    const { accessToken } = await loginUser({ identifier: login, password }).unwrap();
+
+    dispatch(setCredentials({ accessToken }));
   };
 
   return (
