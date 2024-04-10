@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import shadows, { Shadows } from '@mui/material/styles/shadows';
+import shadows, { type Shadows } from '@mui/material/styles/shadows';
 
 const theme = createTheme({
   palette: {

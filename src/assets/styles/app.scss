@@ -71,9 +71,11 @@
   .MuiOutlinedInput-notchedOutline {
     border-color: #1976d2aa;
   }
+
   .MuiFormLabel-root {
     color: #1976d2aa;
   }
+
   .MuiFilledInput-root {
     background: rgba(7, 28, 82, 0.35);
     &::before {
@@ -83,8 +85,4 @@
       border-bottom: 1px solid green;
     }
   }
-}
-
-.MuiMenu-list {
-  background: rgb(1, 14, 45);
 }
