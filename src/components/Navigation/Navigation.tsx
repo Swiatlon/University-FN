@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Drawer } from './Styled';
 import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Box, Divider, Avatar, Typography, List, ListItemIcon, ListItemText } from '@mui/material';
+import { Avatar, Box, Divider, List, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import Logo from '@assets/images/Logo.png';
 import UserIcon from '@assets/icons/exampleUserIcon.png';
 import { useNavigate } from 'react-router-dom';
@@ -15,17 +15,15 @@ interface MenuItem {
 }
 
 interface NavigationProps {
-  menuItems: MenuItem[];
+  readonly menuItems: MenuItem[];
 }
 
 function Navigation({ menuItems }: NavigationProps) {
   const [isOpenNav, setIsOpenNav] = useState(true);
   const navigate = useNavigate();
-
   const handleNavigate = (linkTo: string) => {
     navigate(linkTo);
   };
-
   const toggleMenuHandler = () => {
     setIsOpenNav(!isOpenNav);
   };
