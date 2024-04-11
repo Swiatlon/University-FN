@@ -27,10 +27,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'postAuth',
-        element: <ProtectedRoutes />,
+        element: <PersistLogin />,
         children: [
           {
-            element: <PersistLogin />,
+            element: <ProtectedRoutes />,
             children: [
               {
                 element: <PostAuthLayout />,
