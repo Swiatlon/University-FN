@@ -1,23 +1,22 @@
 import { selectTokenExpirationTime } from '@features/auth/authSlice';
 import { parseISO, intervalToDuration, isAfter } from 'date-fns';
 import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSendLogoutMutation } from '@features/auth/authApiSlice';
-/* eslint-disable */
 
 function AppBar() {
   const [sendLogout] = useSendLogoutMutation();
   const tokenExpirationTime = useSelector(selectTokenExpirationTime);
   const [timeLeft, setTimeLeft] = useState('');
-  // tutaj powijnno byc useLayoutEffect
-  useEffect(() => {
-    const updateTimer = () => {
+
+  useLayoutEffect(() => {
+    const updateTimer = async () => {
       const now = new Date();
-      const expirationDate = parseISO(tokenExpirationTime);
+      const expirationDate = parseISO(tokenExpirationTime!);
       if (isAfter(now, expirationDate)) {
         clearInterval(timerId);
-        sendLogout();
+        await sendLogout();
         return;
       }
       const duration = intervalToDuration({ start: now, end: expirationDate });
