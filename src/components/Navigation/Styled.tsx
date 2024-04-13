@@ -21,7 +21,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     padding: 10,
     margin: 12,
     overflow: 'hidden',
-    transition: '1s all',
+    transition: '1s width',
   },
 
   '.HeaderContainer': {
@@ -57,11 +57,11 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     textAlign: 'center',
 
     '.Avatar': {
-      transition: '1s all',
       cursor: 'pointer',
       width: isOpen ? 60 : 40,
       height: 'auto',
       marginBottom: 4,
+      transition: 'width 1s linear, transform 1s linear',
     },
 
     p: {
@@ -89,13 +89,8 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     '.ListItem': {
       display: 'flex',
       alignItems: 'center',
-      transition: '1s transform',
       cursor: 'pointer',
       padding: 0,
-
-      '&:hover': {
-        transform: 'scale(1.1)',
-      },
 
       a: {
         textDecoration: 'none',
@@ -112,7 +107,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
   '.IncreaseSizeAnimation': {
     transition: '1s transform',
     '&:hover': {
-      transform: 'scale(1.2)',
+      transform: 'scale(1.08)',
     },
   },
 }));
