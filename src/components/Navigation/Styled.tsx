@@ -103,8 +103,14 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
         cursor: 'pointer',
       },
     },
+    '.ListItemChildren': {
+      svg: {
+        marginLeft: 20,
+        width: 23,
+        height: 23,
+      },
+    },
   },
-
   '.IncreaseSizeAnimation': {
     transition: '1s transform',
     '&:hover': {

@@ -13,6 +13,7 @@ export interface MenuItemProps {
   onToggleSubmenu?: (id: string) => void;
   onNavigate: (linkTo: string) => void;
   isOpen?: boolean;
+  isChildren?: boolean;
 }
 
 export type OpenMenuItemsState = Record<string, boolean>;
