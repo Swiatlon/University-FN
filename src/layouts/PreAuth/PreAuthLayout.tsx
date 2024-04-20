@@ -19,7 +19,7 @@ function PreAuthLayout() {
   return (
     <Container>
       <Navigation menuItems={menuItems} />
-      <Content>
+      <Content display="grid">
         <Outlet />
       </Content>
     </Container>

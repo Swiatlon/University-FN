@@ -35,7 +35,7 @@ function PostAuthLayout() {
           id: uuidv4(),
           text: 'Personal Data',
           icon: <DescriptionIcon />,
-          linkTo: '/profile/personal-data',
+          linkTo: 'profile/personal-data',
         },
         {
           id: uuidv4(),

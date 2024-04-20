@@ -35,7 +35,21 @@ function AppBar() {
     };
   }, [tokenExpirationTime]);
 
-  return <Box sx={{ width: '100%', height: 'fit-content', background: 'purple', position: 'sticky', top: 0, textAlign: 'center' }}>{`Timer: ${timeLeft}`}</Box>;
+  return (
+    <Box
+      sx={{
+        width: '100%',
+        height: '80px',
+        position: 'sticky',
+        top: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #02081f 100%,rgba(6, 14, 44, 1) 120%)',
+        boxShadow: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
+      }}
+    >{`Timer: ${timeLeft}`}</Box>
+  );
 }
 
 export default AppBar;
