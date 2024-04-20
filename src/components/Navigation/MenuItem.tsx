@@ -9,7 +9,7 @@ const useIsActive = (path: string | undefined) => {
   return location.pathname === path;
 };
 
-function MenuItemComponent({ item, onToggleSubmenu, onNavigate, isOpen }: MenuItemProps) {
+function MenuItemComponent({ item, onToggleSubmenu, onNavigate, isOpen, isChildren }: MenuItemProps) {
   const isActive = useIsActive(item.linkTo);
 
   const onClick = () => {
@@ -29,7 +29,7 @@ function MenuItemComponent({ item, onToggleSubmenu, onNavigate, isOpen }: MenuIt
   };
 
   return (
-    <ListItemButton className={`ListItem ${isActive ? 'active' : ''} ${item.linkTo ? 'IncreaseSizeAnimation' : ''}`} onClick={onClick}>
+    <ListItemButton className={`${isChildren ? 'ListItemChildren' : ''} ListItem ${isActive ? 'active' : ''} ${item.linkTo ? 'IncreaseSizeAnimation' : ''} `} onClick={onClick}>
       <ListItemIcon>{item.icon}</ListItemIcon>
       <ListItemText primary={item.text} />
       {renderArrowIcon()}

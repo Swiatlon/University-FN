@@ -55,7 +55,7 @@ function Navigation({ menuItems }: NavigationProps) {
                 <Collapse in={openMenuItems[item.id]} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     {item.children.map(subItem => (
-                      <MenuItemComponent item={subItem} key={subItem.id} onNavigate={onNavigate} />
+                      <MenuItemComponent isChildren item={subItem} key={subItem.id} onNavigate={onNavigate} />
                     ))}
                   </List>
                 </Collapse>
