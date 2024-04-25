@@ -7,9 +7,12 @@ import Logo from '@assets/images/Logo.png';
 import UserProfile from './UserProfile';
 import MenuItemComponent from './MenuItem';
 import type { OpenMenuItemsState, NavigationProps } from './types';
+import { useSelector } from 'react-redux';
+import { selectCurrentToken } from '@features/auth/authSlice';
 
 function Navigation({ menuItems }: NavigationProps) {
   //Data handlers
+  const token = useSelector(selectCurrentToken);
   const [isOpenNav, setIsOpenNav] = useState(true);
   const [openMenuItems, setOpenMenuItems] = useState<OpenMenuItemsState>(() =>
     //Lazy initialization pattern is only called when the component is mounted and not on every update
@@ -45,7 +48,7 @@ function Navigation({ menuItems }: NavigationProps) {
           </Box>
           <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={toggleMenuHandler} />
         </Box>
-        <UserProfile />
+        {Boolean(token) && <UserProfile />}
         <Divider className="Divider" variant="middle" />
         <List className="List" component="ul">
           {menuItems.map(item => (
