@@ -24,7 +24,7 @@ function PostAuthLayout() {
       id: uuidv4(),
       text: 'Dashboard',
       icon: <DashboardIcon />,
-      linkTo: '/dashboard',
+      linkTo: 'dashboard',
     },
     {
       id: uuidv4(),

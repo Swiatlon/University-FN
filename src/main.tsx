@@ -15,6 +15,7 @@ import PreAuthLayout from 'layouts/PreAuth/PreAuthLayout';
 import PostAuthLayout from 'layouts/PostAuth/PostAuthLayout';
 import PersistLogin from '@components/PersistLogin/PersistLogin';
 import PersonalData from 'views/PersonalData/PersonalData';
+import Dashboard from 'views/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                   {
                     index: true,
                     element: <div>Zaauutoryzowany tokenem</div>,
+                  },
+                  {
+                    path: 'dashboard',
+                    element: <Dashboard />,
                   },
                   {
                     path: 'profile',
