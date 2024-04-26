@@ -14,7 +14,8 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
   top: 0,
   left: 0,
   height: '100vh',
-  background: 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #041141 36%, #081131 46%, rgba(1, 16, 71, 1) 87%, rgba(6, 14, 44, 1) 100%)',
+  background: 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%,  rgba(6, 14, 44, 1) 7.5% ,rgba(6, 14, 44, 1) 120%)',
+  boxShadow: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
 
   '.ContentContainer': {
     width: isOpen ? maxDrawerWidth : minDrawerWidth,

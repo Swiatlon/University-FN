@@ -14,6 +14,7 @@ import ProtectedRoutes from '@components/ProtectedRoutes/ProtectedRoutes';
 import PreAuthLayout from 'layouts/PreAuth/PreAuthLayout';
 import PostAuthLayout from 'layouts/PostAuth/PostAuthLayout';
 import PersistLogin from '@components/PersistLogin/PersistLogin';
+import PersonalData from 'views/PersonalData/PersonalData';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,21 @@ const router = createBrowserRouter([
             children: [
               {
                 element: <PostAuthLayout />,
-                children: [{ index: true, element: <div>Zaauutoryzowany tokenem</div> }],
+                children: [
+                  {
+                    index: true,
+                    element: <div>Zaauutoryzowany tokenem</div>,
+                  },
+                  {
+                    path: 'profile',
+                    children: [
+                      {
+                        path: 'personal-data',
+                        element: <PersonalData />,
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },

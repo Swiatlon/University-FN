@@ -9,7 +9,7 @@
   contain: paint;
 }
 
-//Override MUI
+// Override MUI
 .MuiButton {
   &-root {
     background: rgba(7, 28, 82, 0.979);
@@ -22,7 +22,7 @@
 
 .MuiDivider {
   &-root {
-    background: #1976d2;
+    background: rgb(42, 105, 202);
   }
 }
 
