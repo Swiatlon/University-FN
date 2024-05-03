@@ -1,88 +1,19 @@
 * {
-  color: white;
+  font-family: 'Lato', sans-serif !important;
 }
 
 #root {
-  background-color: #080a1d !important;
+  background-color: #f2f6f9;
   min-height: 100vh;
   display: grid;
   contain: paint;
+  color: #070707;
 }
 
-// Override MUI
-.MuiButton {
-  &-root {
-    background: rgba(7, 28, 82, 0.979);
-    text-transform: none;
-  }
-  &-root:hover {
-    background: rgb(7, 45, 127);
-  }
+.MuiDivider-root {
+  background: white;
 }
 
-.MuiDivider {
-  &-root {
-    background: rgb(42, 105, 202);
-  }
-}
-
-.MuiListItemText {
-  &-root p {
-    color: white !important;
-  }
-}
-
-.MuiTable {
-  &-root {
-    .MuiTableHead {
-      &-root {
-        background: rgb(3, 1, 24);
-      }
-    }
-    .MuiTableBody {
-      &-root {
-        .MuiTableRow-root:nth-child(even) {
-          background: #070d3b;
-        }
-        .MuiTableCell-root {
-          border-bottom: 1px solid rgb(3, 30, 105);
-        }
-      }
-    }
-  }
-}
-
-.TableContainer {
-  &-root {
-    background: #041141;
-    &::-webkit-scrollbar {
-      background: #041141;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgb(7, 28, 112);
-    }
-    &::-webkit-scrollbar-track {
-      background: #041141;
-    }
-  }
-}
-
-.MuiFormControl-root {
-  .MuiOutlinedInput-notchedOutline {
-    border-color: #1976d2aa;
-  }
-
-  .MuiFormLabel-root {
-    color: #1976d2aa;
-  }
-
-  .MuiFilledInput-root {
-    background: rgba(7, 28, 82, 0.35);
-    &::before {
-      border-bottom: 1px solid #1976d2;
-    }
-    &::after {
-      border-bottom: 1px solid green;
-    }
-  }
+.MuiPaper-root {
+  border-radius: 4px;
 }

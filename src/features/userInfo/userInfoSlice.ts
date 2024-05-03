@@ -20,7 +20,14 @@ interface TransformedFrontReponse {
 export const userInfoSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getUserInfo: builder.query<TransformedFrontReponse, unknown>({
-      query: () => 'api/userInfo',
+      query: () => {
+        return {
+          url: 'api/userInfo',
+          params: {
+            visibilityFields: ['name', 'surname'],
+          },
+        };
+      },
       transformResponse: (response: BackendResponse) => ({
         ...response,
         roles: response.roles.map(role => role.name),

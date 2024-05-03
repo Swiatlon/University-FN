@@ -1,12 +1,11 @@
 import { Avatar, Box, Typography } from '@mui/material';
-import UserIcon from '@assets/icons/exampleUserIcon.png';
+import UserIcon from '@assets/images/user-photo.jpg';
 import { useGetUserInfoQuery } from '@features/userInfo/userInfoSlice';
 
 function UserProfile() {
-  const { data } = useGetUserInfoQuery();
+  const { data } = useGetUserInfoQuery(undefined);
 
   if (!data) {
-    // Handle the loading or undefined state appropriately
     return <div>Loading...</div>;
   }
 
@@ -14,7 +13,7 @@ function UserProfile() {
 
   return (
     <Box className="UserProfileContainer">
-      <Avatar alt="user icon" className="Avatar IncreaseSizeAnimation" src={UserIcon} />
+      <Avatar alt="user icon" className="Avatar IncreaseSizeAnimation" src={UserIcon as string} />
       <Box className="UserInfoDisplay">
         <Typography className="UsernameText" fontWeight="bold" variant="body1">
           {`${name} ${surname}`}
