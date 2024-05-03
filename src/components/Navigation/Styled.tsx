@@ -14,8 +14,13 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
   top: 0,
   left: 0,
   height: '100vh',
-  background: 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%,  rgba(6, 14, 44, 1) 7.5% ,rgba(6, 14, 44, 1) 120%)',
-  boxShadow: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
+  background: '#0448af',
+  boxShadow: '0px 4px 2px #010102',
+
+  '& *': {
+    color: 'white',
+    fontFamily: 'Inter, sans-serif !important',
+  },
 
   '.ContentContainer': {
     width: isOpen ? maxDrawerWidth : minDrawerWidth,
@@ -59,8 +64,8 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
 
     '.Avatar': {
       cursor: 'pointer',
-      width: isOpen ? 60 : 40,
-      height: 'auto',
+      width: isOpen ? 50 : 40,
+      height: isOpen ? 50 : 40,
       marginBottom: 4,
       transition: 'width 1s linear, transform 1s linear',
     },
