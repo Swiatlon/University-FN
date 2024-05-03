@@ -1,0 +1,16 @@
+.DetailsPaper {
+  width: 100%;
+  padding: 24px 33px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 48px;
+  row-gap: 24px;
+}
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .DetailsPaper {
+    justify-content: flex-start;
+    column-gap: 200px;
+  }
+}

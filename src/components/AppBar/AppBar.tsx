@@ -1,6 +1,6 @@
 import { selectTokenExpirationTime } from '@features/auth/authSlice';
 import { parseISO, intervalToDuration, isAfter } from 'date-fns';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSendLogoutMutation } from '@features/auth/authApiSlice';
@@ -41,14 +41,16 @@ function AppBar() {
         width: '100%',
         height: '80px',
         position: 'sticky',
+        background: 'white',
         top: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        background: 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #02081f 100%,rgba(6, 14, 44, 1) 120%)',
-        boxShadow: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
+        zIndex: 2,
       }}
-    >{`Timer: ${timeLeft}`}</Box>
+    >
+      <Box sx={{ display: 'flex', alignItems: 'center', alignContent: 'center', mx: 6, height: '100%' }}>
+        <Typography variant="h5">Personal Data</Typography>
+        <Typography sx={{ ml: 'auto' }} variant="body1">{`Timer: ${timeLeft}`}</Typography>
+      </Box>
+    </Box>
   );
 }
 

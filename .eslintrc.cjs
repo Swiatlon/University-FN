@@ -29,9 +29,12 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks', 'jsx-a11y', 'security', 'sonarjs', 'import', 'unused-imports', 'eslint-comments', 'react-refresh', 'prettier'],
   rules: {
+    'no-warning-comments': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     'import/no-unresolved': 'off',
+    'react/jsx-sort-props': 'off',
+    'no-underscore-dangle': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-no-bind': 'off',
     'no-magic-numbers': 'off',
