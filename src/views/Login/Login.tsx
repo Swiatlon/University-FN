@@ -6,6 +6,8 @@ import './AuthPanel.scss';
 import { useLoginMutation } from '@features/auth/authApiSlice';
 import { setCredentials } from '@features/auth/authSlice';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+//TODO: FIX THIS ESLINT + TYPESCRIPT
 /* eslint-disable */
 
 const defaultValues = {
@@ -19,6 +21,7 @@ interface Inputs {
 }
 
 function Login() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [loginUser] = useLoginMutation();
   const { handleSubmit, control } = useForm<Inputs>({ defaultValues });
@@ -35,13 +38,13 @@ function Login() {
       <AnimatedCircles />
       <form className="Form" onSubmit={handleSubmit(onSubmit)}>
         <Typography className="MaxContentCenter" variant="h4">
-          Login Form
+          {t('login_form')}
         </Typography>
         <FormInput control={control} label="Login" name="login" rules={{ required: true }} variant="outlined" />
         <FormInput control={control} label="Password" name="password" rules={{ required: true }} type="password" variant="outlined" />
         <Box className="MaxContentCenter" mt={1}>
           <Button size="large" type="submit" variant="contained">
-            Login
+            {t('login_action')}
           </Button>
         </Box>
       </form>

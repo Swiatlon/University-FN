@@ -1,3 +1,4 @@
+/// <reference types="vite-plugin-svgr/client" />
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -16,6 +17,7 @@ import PostAuthLayout from 'layouts/PostAuth/PostAuthLayout';
 import PersistLogin from '@components/PersistLogin/PersistLogin';
 import PersonalData from 'views/PersonalData/PersonalData';
 import Dashboard from 'views/Dashboard/Dashboard';
+import './i18n/index';
 
 const router = createBrowserRouter([
   {
