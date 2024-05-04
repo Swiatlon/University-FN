@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useRefreshMutation } from '@features/auth/authApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials, logOut, selectCurrentToken } from '@features/auth/authSlice';
+import { CircularProgress } from '@mui/material';
 
 interface RefreshResponse {
   accessToken: string;
@@ -32,7 +33,7 @@ function PersistLogin() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <CircularProgress />;
   }
 
   if (isError) {
