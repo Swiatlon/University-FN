@@ -17,29 +17,32 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
 import GroupIcon from '@mui/icons-material/Group';
+import { useTranslation } from 'react-i18next';
 
 function PostAuthLayout() {
+  const { t } = useTranslation();
+
   const menuItems = [
     {
       id: uuidv4(),
-      text: 'Dashboard',
+      text: t('dashboard'),
       icon: <DashboardIcon />,
       linkTo: 'dashboard',
     },
     {
       id: uuidv4(),
-      text: 'Profile',
+      text: t('profile'),
       icon: <PersonIcon />,
       children: [
         {
           id: uuidv4(),
-          text: 'Personal Data',
+          text: t('personal_data'),
           icon: <DescriptionIcon />,
           linkTo: 'profile/personal-data',
         },
         {
           id: uuidv4(),
-          text: 'Account Settings',
+          text: t('account_settings'),
           icon: <SettingsIcon />,
           linkTo: '/profile/settings',
         },
@@ -47,24 +50,24 @@ function PostAuthLayout() {
     },
     {
       id: uuidv4(),
-      text: 'Academics',
+      text: t('academics'),
       icon: <BookIcon />,
       children: [
         {
           id: uuidv4(),
-          text: 'Grades',
+          text: t('grades'),
           icon: <GradeIcon />,
           linkTo: '/academics/grades',
         },
         {
           id: uuidv4(),
-          text: 'Courses',
+          text: t('courses'),
           icon: <BookIcon />,
           linkTo: '/academics/courses',
         },
         {
           id: uuidv4(),
-          text: 'Timetable',
+          text: t('timetable'),
           icon: <EventIcon />,
           linkTo: '/academics/timetable',
         },
@@ -72,18 +75,18 @@ function PostAuthLayout() {
     },
     {
       id: uuidv4(),
-      text: 'Resources',
+      text: t('resources'),
       icon: <FolderIcon />,
       children: [
         {
           id: uuidv4(),
-          text: 'Sample Files',
+          text: t('sample_files'),
           icon: <DescriptionIcon />,
           linkTo: '/resources/sample-files',
         },
         {
           id: uuidv4(),
-          text: 'Library',
+          text: t('library'),
           icon: <LibraryBooksIcon />,
           linkTo: '/resources/library',
         },
@@ -91,29 +94,29 @@ function PostAuthLayout() {
     },
     {
       id: uuidv4(),
-      text: 'Financials',
+      text: t('financials'),
       icon: <PaymentIcon />,
     },
     {
       id: uuidv4(),
-      text: 'Community',
+      text: t('community'),
       icon: <SearchIcon />,
       children: [
         {
           id: uuidv4(),
-          text: 'Find a Teacher',
+          text: t('find_teacher'),
           icon: <SearchIcon />,
           linkTo: '/community/find-teacher',
         },
         {
           id: uuidv4(),
-          text: 'Events',
+          text: t('events'),
           icon: <EventIcon />,
           linkTo: '/community/events',
         },
         {
           id: uuidv4(),
-          text: 'Clubs',
+          text: t('clubs'),
           icon: <GroupIcon />,
           linkTo: '/community/clubs',
         },
@@ -121,13 +124,13 @@ function PostAuthLayout() {
     },
     {
       id: uuidv4(),
-      text: 'Messages',
+      text: t('messages'),
       icon: <MessageIcon />,
       linkTo: '/messages',
     },
     {
       id: uuidv4(),
-      text: 'Logout',
+      text: t('logout'),
       icon: <LogoutIcon />,
       linkTo: '/logout',
     },

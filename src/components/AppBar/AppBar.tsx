@@ -4,12 +4,38 @@ import { Box, Typography } from '@mui/material';
 import { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSendLogoutMutation } from '@features/auth/authApiSlice';
+import DropdownMenu from '@components/Reusable/DropdownMenu/DropdownMenu';
+import LanguageIcon from '@mui/icons-material/Language';
+import EnglandCircle from '@assets/icons/EnglandCircle.svg?react';
+import PolandCircle from '@assets/icons/PolandCircle.svg?react';
+import { useTranslation } from 'react-i18next';
 
 function AppBar() {
+  const { t, i18n } = useTranslation();
   const [sendLogout] = useSendLogoutMutation();
   const tokenExpirationTime = useSelector(selectTokenExpirationTime);
   const [timeLeft, setTimeLeft] = useState('');
 
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+  };
+
+  const languages = [
+    {
+      label: 'Polski',
+      onClick: () => {
+        changeLanguage('pl');
+      },
+      icon: <PolandCircle />,
+    },
+    {
+      label: 'Angielski',
+      onClick: () => {
+        changeLanguage('en');
+      },
+      icon: <EnglandCircle />,
+    },
+  ];
   useLayoutEffect(() => {
     const updateTimer = async () => {
       const now = new Date();
@@ -48,7 +74,10 @@ function AppBar() {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', alignContent: 'center', mx: 6, height: '100%' }}>
         <Typography variant="h5">Personal Data</Typography>
-        <Typography sx={{ ml: 'auto' }} variant="body1">{`Timer: ${timeLeft}`}</Typography>
+        <Box sx={{ ml: 'auto', display: 'flex', gap: 6 }}>
+          <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} />
+          <Typography variant="body1" sx={{ m: 'auto' }}>{`Timer: ${timeLeft}`}</Typography>
+        </Box>
       </Box>
     </Box>
   );

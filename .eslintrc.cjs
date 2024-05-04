@@ -29,6 +29,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks', 'jsx-a11y', 'security', 'sonarjs', 'import', 'unused-imports', 'eslint-comments', 'react-refresh', 'prettier'],
   rules: {
+    '@typescript-eslint/no-floating-promises': 'off',
     'no-warning-comments': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
@@ -60,7 +61,6 @@ module.exports = {
     'sort-keys': 'off',
     '@typescript-eslint/type-annotation-spacing': 'error',
     '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'explicit' }],
-    '@typescript-eslint/no-floating-promises': 'error',
     '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'error',

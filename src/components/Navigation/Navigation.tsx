@@ -11,11 +11,9 @@ import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '@features/auth/authSlice';
 
 function Navigation({ menuItems }: NavigationProps) {
-  //Data handlers
   const token = useSelector(selectCurrentToken);
   const [isOpenNav, setIsOpenNav] = useState(true);
   const [openMenuItems, setOpenMenuItems] = useState<OpenMenuItemsState>(() =>
-    //Lazy initialization pattern is only called when the component is mounted and not on every update
     menuItems.reduce<OpenMenuItemsState>((acc, item) => {
       acc[item.id] = false;
       return acc;
@@ -23,7 +21,6 @@ function Navigation({ menuItems }: NavigationProps) {
   );
   const navigate = useNavigate();
 
-  //Functions
   const onNavigate = useCallback(
     (linkTo: string) => {
       navigate(linkTo);

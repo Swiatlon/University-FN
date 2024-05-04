@@ -1,3 +1,5 @@
+/* eslint-disable react/no-multi-comp */
+
 import { useGetUserAllDataQuery } from '@features/userAllData/userAllData';
 import { Box, Paper, Typography, Avatar } from '@mui/material';
 import UserIcon from '@assets/images/user-photo.jpg';
@@ -19,35 +21,51 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DoDisturbAltRoundedIcon from '@mui/icons-material/DoDisturbAltRounded';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import './style.scss';
+import { useTranslation } from 'react-i18next';
 
-const personalDetails = [
-  { icon: <AccountCircleIcon color="primary" />, name: 'name' },
-  { icon: <AccountCircleIcon color="primary" />, name: 'surname' },
-  { icon: <CakeIcon color="primary" />, name: 'dateOfBirth' },
-  { icon: <ContactMailIcon color="primary" />, name: 'pesel' },
-  { icon: <PublicIcon color="primary" />, name: 'gender' },
-  { icon: <LanguageIcon color="primary" />, name: 'nationality' },
-];
-
-const addressDetails = [
-  { icon: <PublicIcon color="primary" />, name: 'country' },
-  { icon: <LocationCityIcon color="primary" />, name: 'city' },
-  { icon: <MailOutlineIcon color="primary" />, name: 'postalCode' },
-  { icon: <HomeIcon color="primary" />, name: 'street' },
-  { icon: <MapsHomeWorkIcon color="primary" />, name: 'buildingNumber' },
-  { icon: <HomeIcon color="primary" />, name: 'apartmentNumber' },
-];
-
-const additionalDetails = [
-  { icon: <EmailIcon color="primary" />, name: 'contactEmail' },
-  { icon: <PhoneIcon color="primary" />, name: 'contactPhone' },
-  { icon: <DateRangeIcon color="primary" />, name: 'dateOfAdmission' },
-  { icon: <HistoryEduIcon color="primary" />, name: 'permissionForDataProcessing', format: (bool: boolean) => (bool ? <CheckBoxIcon color="primary" /> : <DoDisturbAltRoundedIcon color="primary" />) },
-  { icon: <HistoryEduIcon color="primary" />, name: 'permissionForPhoto', format: (bool: boolean) => (bool ? <CheckBoxIcon color="primary" /> : <DoDisturbAltRoundedIcon color="primary" />) },
-];
+function FormatPermissionIcon({ hasPermission }: boolean) {
+  return hasPermission ? <CheckBoxIcon color="primary" /> : <DoDisturbAltRoundedIcon color="primary" />;
+}
 
 function PersonalDataForm() {
+  const { t } = useTranslation();
   const { data, isLoading } = useGetUserAllDataQuery(undefined);
+
+  const personalDetails = [
+    { icon: <AccountCircleIcon color="primary" />, name: 'name', label: t('name') },
+    { icon: <AccountCircleIcon color="primary" />, name: 'surname', label: t('surname') },
+    { icon: <CakeIcon color="primary" />, name: 'dateOfBirth', label: t('dateOfBirth') },
+    { icon: <ContactMailIcon color="primary" />, name: 'pesel', label: t('pesel') },
+    { icon: <PublicIcon color="primary" />, name: 'gender', label: t('gender') },
+    { icon: <LanguageIcon color="primary" />, name: 'nationality', label: t('nationality') },
+  ];
+
+  const addressDetails = [
+    { icon: <PublicIcon color="primary" />, name: 'country', label: t('country') },
+    { icon: <LocationCityIcon color="primary" />, name: 'city', label: t('city') },
+    { icon: <MailOutlineIcon color="primary" />, name: 'postalCode', label: t('postalCode') },
+    { icon: <HomeIcon color="primary" />, name: 'street', label: t('street') },
+    { icon: <MapsHomeWorkIcon color="primary" />, name: 'buildingNumber', label: t('buildingNumber') },
+    { icon: <HomeIcon color="primary" />, name: 'apartmentNumber', label: t('apartmentNumber') },
+  ];
+
+  const additionalDetails = [
+    { icon: <EmailIcon color="primary" />, name: 'contactEmail', label: t('contactEmail') },
+    { icon: <PhoneIcon color="primary" />, name: 'contactPhone', label: t('contactPhone') },
+    { icon: <DateRangeIcon color="primary" />, name: 'dateOfAdmission', label: t('dateOfAdmission') },
+    {
+      icon: <HistoryEduIcon color="primary" />,
+      name: 'permissionForDataProcessing',
+      label: t('permissionForDataProcessing'),
+      format: FormatPermissionIcon,
+    },
+    {
+      icon: <HistoryEduIcon color="primary" />,
+      name: 'permissionForPhoto',
+      label: t('permissionForPhoto'),
+      format: FormatPermissionIcon,
+    },
+  ];
 
   if (isLoading) {
     return <FullScreenLoader />;
@@ -63,9 +81,9 @@ function PersonalDataForm() {
         <Paper>There need to be something</Paper>
       </Box>
       <Paper className="DetailsPaper">
-        <DetailsDisplay title="Personal Details" details={personalDetails} data={data as unknown as Record<string, string>} />
-        <DetailsDisplay title="Address Details" details={addressDetails} data={data as unknown as Record<string, string>} />
-        <DetailsDisplay title="Additional Details" details={additionalDetails} data={data as unknown as Record<string, boolean | string>} />
+        <DetailsDisplay title={t('personalDetails')} details={personalDetails} data={data as unknown as Record<string, string>} />
+        <DetailsDisplay title={t('addressDetails')} details={addressDetails} data={data as unknown as Record<string, string>} />
+        <DetailsDisplay title={t('additionalDetails')} details={additionalDetails} data={data as unknown as Record<string, boolean | string>} />
       </Paper>
     </Box>
   );
