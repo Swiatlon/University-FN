@@ -27,7 +27,7 @@ const authApiSlice = apiSlice.injectEndpoints({
             dispatch(logOut());
             dispatch(apiSlice.util.resetApiState());
           })
-          .catch((err: string) => {
+          .catch((err: unknown) => {
             return err;
           });
       },
@@ -43,7 +43,7 @@ const authApiSlice = apiSlice.injectEndpoints({
           .then(({ data: { accessToken } }: { data: { accessToken: string } }) => {
             dispatch(setCredentials({ accessToken }));
           })
-          .catch((err: string) => {
+          .catch((err: unknown) => {
             return err;
           });
       },

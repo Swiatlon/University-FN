@@ -11,7 +11,7 @@ module.exports = {
     'plugin:react/all',
     'plugin:jsx-a11y/strict',
     'plugin:security/recommended-legacy',
-    'plugin:sonarjs/recommended',
+    'plugin:sonarjs/recommended-legacy',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',

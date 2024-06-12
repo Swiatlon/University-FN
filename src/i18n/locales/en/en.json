@@ -40,5 +40,7 @@
   "permissionForPhoto": "Permission for Photo",
   "personalDetails": "Personal Details",
   "addressDetails": "Address Details",
-  "additionalDetails": "Additional Details"
+  "additionalDetails": "Additional Details",
+  "polish": "Polish",
+  "english": "English"
 }

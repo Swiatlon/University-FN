@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Menu, MenuItem } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 interface DropdownItem {
   label: string;
@@ -15,6 +16,8 @@ interface DropdownMenuProps {
 }
 
 function DropdownMenu({ label, items, startIcon }: DropdownMenuProps) {
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
   const [selection, setSelection] = useState({
     label,
     icon: startIcon,
@@ -32,9 +35,9 @@ function DropdownMenu({ label, items, startIcon }: DropdownMenuProps) {
   };
 
   return (
-    <Box sx={{ m: 1 }}>
+    <Box sx={{ m: 1 }} key={currentLanguage}>
       <Button onClick={handleClick} startIcon={selection.icon}>
-        {selection.label}
+        {t(selection.label)}
       </Button>
       <Menu id="dropdown-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
         {items.map(item => (

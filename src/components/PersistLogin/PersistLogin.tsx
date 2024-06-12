@@ -28,7 +28,7 @@ function PersistLogin() {
         }
       };
 
-      verifyRefreshToken().catch(err => err as string);
+      verifyRefreshToken().catch((err: unknown) => err as string);
     }
   }, []);
 

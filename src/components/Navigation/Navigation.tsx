@@ -7,19 +7,27 @@ import Logo from '@assets/images/Logo.png';
 import UserProfile from './UserProfile';
 import MenuItemComponent from './MenuItem';
 import type { OpenMenuItemsState, NavigationProps } from './types';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from 'hooks/storeHooks';
 import { selectCurrentToken } from '@features/auth/authSlice';
+import { selectIsDrawerOpen, toggleDrawer } from '@features/view/viewSlice';
+import { useDispatch } from 'react-redux';
 
 function Navigation({ menuItems }: NavigationProps) {
-  const token = useSelector(selectCurrentToken);
-  const [isOpenNav, setIsOpenNav] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token = useTypedSelector(selectCurrentToken);
+  const isOpen = useTypedSelector(selectIsDrawerOpen);
+
+  const handleToggleDrawer = () => {
+    dispatch(toggleDrawer());
+  };
+
   const [openMenuItems, setOpenMenuItems] = useState<OpenMenuItemsState>(() =>
     menuItems.reduce<OpenMenuItemsState>((acc, item) => {
       acc[item.id] = false;
       return acc;
     }, {})
   );
-  const navigate = useNavigate();
 
   const onNavigate = useCallback(
     (linkTo: string) => {
@@ -28,22 +36,18 @@ function Navigation({ menuItems }: NavigationProps) {
     [navigate]
   );
 
-  const toggleMenuHandler = useCallback(() => {
-    setIsOpenNav(!isOpenNav);
-  }, [isOpenNav]);
-
   const onToggleSubmenu = useCallback((id: string) => {
     setOpenMenuItems(prevState => ({ ...prevState, [id]: !prevState[id] }));
   }, []);
 
   return (
-    <Drawer component="nav" isOpen={isOpenNav}>
+    <Drawer component="nav" isOpen={isOpen}>
       <Box className="ContentContainer">
         <Box className="HeaderContainer">
           <Box className="LogoContainer">
             <Box className="Logo IncreaseSizeAnimation" component="img" src={Logo} />
           </Box>
-          <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={toggleMenuHandler} />
+          <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={handleToggleDrawer} />
         </Box>
         {Boolean(token) && <UserProfile />}
         <Divider className="Divider" variant="middle" />

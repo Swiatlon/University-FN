@@ -42,5 +42,7 @@
   "permissionForPhoto": "Zgoda na użycie zdjęć",
   "personalDetails": "Dane osobowe",
   "addressDetails": "Dane adresowe",
-  "additionalDetails": "Dane dodatkowe"
+  "additionalDetails": "Dane dodatkowe",
+  "polish": "Polski",
+  "english": "Angielski"
 }

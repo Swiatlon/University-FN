@@ -8,6 +8,8 @@ interface isOpenProp {
 const shouldForwardProp = (prop: PropertyKey) => prop !== 'isOpen';
 const minDrawerWidth = '60px';
 const maxDrawerWidth = '260px';
+const minDrawerWidthMobile = 0;
+const maxDrawerWidthMobile = '100vw';
 
 export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }) => ({
   position: 'sticky',
@@ -28,6 +30,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     margin: 12,
     overflow: 'hidden',
     transition: '1s width',
+    justifyContent: 'center',
   },
 
   '.HeaderContainer': {
@@ -64,8 +67,8 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
 
     '.Avatar': {
       cursor: 'pointer',
-      width: isOpen ? 50 : 40,
-      height: isOpen ? 50 : 40,
+      width: '40px',
+      height: '40px',
       marginBottom: 4,
       transition: 'width 1s linear, transform 1s linear',
     },
@@ -120,6 +123,19 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     transition: '1s transform',
     '&:hover': {
       transform: 'scale(1.08)',
+    },
+  },
+
+  '@media (max-width: 768px)': {
+    '.ContentContainer': {
+      transition: '1.5s all',
+      margin: 0,
+      padding: isOpen ? '24px' : 0,
+      width: isOpen ? maxDrawerWidthMobile : minDrawerWidthMobile,
+    },
+
+    '.MenuToggleIcon': {
+      display: isOpen ? 'block' : 'none',
     },
   },
 }));

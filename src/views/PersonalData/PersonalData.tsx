@@ -2,6 +2,7 @@
 
 import { useGetUserAllDataQuery } from '@features/userAllData/userAllData';
 import { Box, Paper, Typography, Avatar } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import UserIcon from '@assets/images/user-photo.jpg';
 import FullScreenLoader from '@components/Reusable/FullScreenLoader/FullScreenLoader';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -21,7 +22,6 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DoDisturbAltRoundedIcon from '@mui/icons-material/DoDisturbAltRounded';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import './style.scss';
-import { useTranslation } from 'react-i18next';
 
 function FormatPermissionIcon({ hasPermission }: boolean) {
   return hasPermission ? <CheckBoxIcon color="primary" /> : <DoDisturbAltRoundedIcon color="primary" />;
@@ -72,9 +72,9 @@ function PersonalDataForm() {
   }
 
   return (
-    <Box sx={{ m: 6, pr: 2, position: 'relative', width: '90%' }}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'min-content auto', gap: 2, mb: 2 }}>
-        <Paper sx={{ display: 'grid', gridTemplateColumns: '1fr', justifyItems: 'center', gap: 2, p: 4 }}>
+    <Box sx={{ m: 6, pr: 2, position: 'relative', maxWidth: '90%' }}>
+      <Box className="BasicInfoBox">
+        <Paper className="AvatarBox">
           <Avatar alt="user icon" sx={{ width: 120, height: 120 }} src={UserIcon as string} />
           <Typography variant="h6" color="primary" sx={{ textWrap: 'nowrap', fontWeight: 600 }}>{`${data?.name} ${data?.surname}`}</Typography>
         </Paper>
