@@ -6,14 +6,14 @@ import { useTranslation } from 'react-i18next';
 import Timer from './Timer';
 import { Box } from '@mui/material';
 
-function ConfigAppBar() {
+export function useLanguageMenuItems() {
   const { t, i18n } = useTranslation();
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
 
-  const languages = [
+  return [
     {
       label: t('polish'),
       onClick: () => {
@@ -29,9 +29,15 @@ function ConfigAppBar() {
       icon: <EnglandCircle />,
     },
   ];
+}
+
+function ConfigAppBar() {
+  const { t } = useTranslation();
+  const languages = useLanguageMenuItems();
+
   return (
-    <Box sx={{ ml: 'auto', display: 'flex', gap: 6 }}>
-      <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} />
+    <Box className="ConfigAppBar">
+      <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} hideLabelOnMobile />
       <Timer />
     </Box>
   );

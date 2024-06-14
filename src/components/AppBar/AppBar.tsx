@@ -23,8 +23,8 @@ function AppBar() {
         zIndex: 2,
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', alignContent: 'center', mr: 4, ml: 4, height: '100%', gap: 2 }}>
-        <MenuIcon fontSize="medium" onClick={handleToggleDrawer} className="AppBarHamburger" sx={{ cursor: 'pointer' }} />
+      <Box className="AppBarBox">
+        <MenuIcon fontSize="medium" onClick={handleToggleDrawer} className="AppBarHamburger" />
         <Typography variant="h5">Personal Data</Typography>
         <ConfigAppBar />
       </Box>
