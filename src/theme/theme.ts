@@ -4,11 +4,11 @@ import shadows, { type Shadows } from '@mui/material/styles/shadows';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
-      contrastText: '#fff',
+      main: '#156beb',
+      contrastText: '#070707',
     },
     text: {
-      primary: '#ffffff',
+      primary: '#070707;',
     },
   },
   typography: {

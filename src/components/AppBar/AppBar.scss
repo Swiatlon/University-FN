@@ -1,0 +1,37 @@
+.AppBarBox {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  margin-right: 4rem;
+  margin-left: 4rem;
+
+  @media (max-width: 600px) {
+    text-wrap: nowrap;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}
+
+.AppBarHamburger {
+  cursor: pointer;
+  margin-right: 24px;
+
+  @media (max-width: 600px) {
+    margin-right: 16px;
+  }
+}
+
+.ConfigAppBar {
+  display: flex;
+  margin-left: auto;
+  button {
+    min-width: min-content !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .AppBarHamburger {
+    display: none;
+  }
+}

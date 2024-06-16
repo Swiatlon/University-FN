@@ -1,72 +1,69 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Drawer } from './Styled';
-import MenuIcon from '@mui/icons-material/Menu';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Avatar, Box, Divider, List, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import Logo from '@assets/images/Logo.png';
-import UserIcon from '@assets/icons/exampleUserIcon.png';
 import { useNavigate } from 'react-router-dom';
-
-interface MenuItem {
-  id: string;
-  text: string;
-  icon: JSX.Element;
-  linkTo?: string;
-}
-
-interface NavigationProps {
-  readonly menuItems: MenuItem[];
-}
+import { Box, Collapse, Divider, List } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import Logo from '@assets/images/Logo.png';
+import UserProfile from './UserProfile';
+import MenuItemComponent from './MenuItem';
+import type { OpenMenuItemsState, NavigationProps } from './types';
+import { useTypedSelector } from 'hooks/storeHooks';
+import { selectCurrentToken } from '@features/auth/authSlice';
+import { selectIsDrawerOpen, toggleDrawer } from '@features/view/viewSlice';
+import { useDispatch } from 'react-redux';
 
 function Navigation({ menuItems }: NavigationProps) {
-  const [isOpenNav, setIsOpenNav] = useState(true);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleNavigate = (linkTo: string) => {
-    navigate(linkTo);
-  };
-  const toggleMenuHandler = () => {
-    setIsOpenNav(!isOpenNav);
+  const token = useTypedSelector(selectCurrentToken);
+  const isOpen = useTypedSelector(selectIsDrawerOpen);
+
+  const handleToggleDrawer = () => {
+    dispatch(toggleDrawer());
   };
 
+  const [openMenuItems, setOpenMenuItems] = useState<OpenMenuItemsState>(() =>
+    menuItems.reduce<OpenMenuItemsState>((acc, item) => {
+      acc[item.id] = false;
+      return acc;
+    }, {})
+  );
+
+  const onNavigate = useCallback(
+    (linkTo: string) => {
+      navigate(linkTo);
+    },
+    [navigate]
+  );
+
+  const onToggleSubmenu = useCallback((id: string) => {
+    setOpenMenuItems(prevState => ({ ...prevState, [id]: !prevState[id] }));
+  }, []);
+
   return (
-    <Drawer component="nav" isOpen={isOpenNav}>
+    <Drawer component="nav" isOpen={isOpen}>
       <Box className="ContentContainer">
         <Box className="HeaderContainer">
           <Box className="LogoContainer">
             <Box className="Logo IncreaseSizeAnimation" component="img" src={Logo} />
           </Box>
-          <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={toggleMenuHandler} />
+          <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={handleToggleDrawer} />
         </Box>
-
-        <Box className="UserProfileContainer">
-          <Avatar alt="user icon" className="Avatar IncreaseSizeAnimation" src={UserIcon} />
-          <Box className="UserInfoDisplay">
-            <Typography className="UsernameText" fontWeight="bold" variant="body1">
-              Wiercik
-            </Typography>
-            <Typography className="userRoleText" variant="body2">
-              Role: Admin
-            </Typography>
-          </Box>
-        </Box>
-
+        {Boolean(token) && <UserProfile />}
         <Divider className="Divider" variant="middle" />
-
         <List className="List" component="ul">
           {menuItems.map(item => (
-            <Box component="li" key={item.id}>
-              <Box
-                className="ListItem IncreaseSizeAnimation"
-                onClick={() => {
-                  if (item.linkTo) {
-                    handleNavigate(item.linkTo);
-                  }
-                }}
-              >
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText>{item.text}</ListItemText>
-                <KeyboardArrowDownIcon />
-              </Box>
+            <Box key={item.id}>
+              <MenuItemComponent isOpen={openMenuItems[item.id]} item={item} onNavigate={onNavigate} onToggleSubmenu={item.children ? onToggleSubmenu : undefined} />
+              {item.children ? (
+                <Collapse in={openMenuItems[item.id]} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.children.map(subItem => (
+                      <MenuItemComponent isChildren item={subItem} key={subItem.id} onNavigate={onNavigate} />
+                    ))}
+                  </List>
+                </Collapse>
+              ) : null}
             </Box>
           ))}
         </List>

@@ -8,20 +8,29 @@ interface isOpenProp {
 const shouldForwardProp = (prop: PropertyKey) => prop !== 'isOpen';
 const minDrawerWidth = '60px';
 const maxDrawerWidth = '260px';
+const minDrawerWidthMobile = 0;
+const maxDrawerWidthMobile = '100vw';
 
 export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }) => ({
   position: 'sticky',
   top: 0,
   left: 0,
   height: '100vh',
-  background: 'linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, #041141 36%, #081131 46%, rgba(1, 16, 71, 1) 87%, rgba(6, 14, 44, 1) 100%)',
+  background: '#0448af',
+  boxShadow: '0px 4px 2px #010102',
+
+  '& *': {
+    color: 'white',
+    fontFamily: 'Inter, sans-serif !important',
+  },
 
   '.ContentContainer': {
     width: isOpen ? maxDrawerWidth : minDrawerWidth,
     padding: 10,
     margin: 12,
     overflow: 'hidden',
-    transition: '1s all',
+    transition: '1s width',
+    justifyContent: 'center',
   },
 
   '.HeaderContainer': {
@@ -57,11 +66,11 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     textAlign: 'center',
 
     '.Avatar': {
-      transition: '1s all',
       cursor: 'pointer',
-      width: isOpen ? 60 : 40,
-      height: 'auto',
+      width: '40px',
+      height: '40px',
       marginBottom: 4,
+      transition: 'width 1s linear, transform 1s linear',
     },
 
     p: {
@@ -89,13 +98,9 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     '.ListItem': {
       display: 'flex',
       alignItems: 'center',
-      transition: '1s transform',
       cursor: 'pointer',
+      textWrap: 'noWrap',
       padding: 0,
-
-      '&:hover': {
-        transform: 'scale(1.1)',
-      },
 
       a: {
         textDecoration: 'none',
@@ -107,12 +112,32 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
         cursor: 'pointer',
       },
     },
+    '.ListItemChildren': {
+      svg: {
+        transition: '1s margin',
+        marginLeft: isOpen ? 20 : 4,
+        width: 20,
+        height: 20,
+      },
+    },
   },
-
   '.IncreaseSizeAnimation': {
     transition: '1s transform',
     '&:hover': {
-      transform: 'scale(1.2)',
+      transform: 'scale(1.08)',
+    },
+  },
+
+  '@media (max-width: 768px)': {
+    '.ContentContainer': {
+      transition: '1.5s all',
+      margin: 'auto',
+      padding: isOpen ? '24px' : 0,
+      width: isOpen ? maxDrawerWidthMobile : minDrawerWidthMobile,
+    },
+
+    '.MenuToggleIcon': {
+      display: isOpen ? 'block' : 'none',
     },
   },
 }));
