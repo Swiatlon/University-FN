@@ -1,0 +1,42 @@
+.DetailsBox {
+  @media (max-width: '600px') {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.Title {
+  font-weight: 600;
+
+  @media (max-width: '600px') {
+    text-align: center;
+  }
+}
+
+.Row {
+  display: flex;
+  margin: 12px 0px;
+
+  @media (max-width: '600px') {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.SubTitleBox {
+  display: flex;
+}
+
+.SubTitle {
+  font-weight: bold;
+}
+
+.Label {
+  margin-left: 12px;
+
+  @media (max-width: '600px') {
+    text-align: left;
+    margin-left: 32px;
+  }
+}

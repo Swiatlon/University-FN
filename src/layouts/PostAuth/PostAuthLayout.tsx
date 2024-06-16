@@ -18,6 +18,8 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
 import GroupIcon from '@mui/icons-material/Group';
 import { useTranslation } from 'react-i18next';
+import './PostAuthLayout.scss';
+import { Box } from '@mui/material';
 
 function PostAuthLayout() {
   const { t } = useTranslation();
@@ -141,7 +143,9 @@ function PostAuthLayout() {
       <Navigation menuItems={menuItems} />
       <Content>
         <AppBar />
-        <Outlet />
+        <Box className="ContentContainer">
+          <Outlet />
+        </Box>
       </Content>
     </Container>
   );

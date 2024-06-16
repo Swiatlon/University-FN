@@ -99,6 +99,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
       display: 'flex',
       alignItems: 'center',
       cursor: 'pointer',
+      textWrap: 'noWrap',
       padding: 0,
 
       a: {
@@ -113,9 +114,10 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     },
     '.ListItemChildren': {
       svg: {
-        marginLeft: 20,
-        width: 23,
-        height: 23,
+        transition: '1s margin',
+        marginLeft: isOpen ? 20 : 4,
+        width: 20,
+        height: 20,
       },
     },
   },
@@ -129,7 +131,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
   '@media (max-width: 768px)': {
     '.ContentContainer': {
       transition: '1.5s all',
-      margin: 0,
+      margin: 'auto',
       padding: isOpen ? '24px' : 0,
       width: isOpen ? maxDrawerWidthMobile : minDrawerWidthMobile,
     },

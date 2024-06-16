@@ -21,7 +21,7 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import DoDisturbAltRoundedIcon from '@mui/icons-material/DoDisturbAltRounded';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
-import './style.scss';
+import './PersonalData.scss';
 
 function FormatPermissionIcon({ hasPermission }: boolean) {
   return hasPermission ? <CheckBoxIcon color="primary" /> : <DoDisturbAltRoundedIcon color="primary" />;
@@ -72,7 +72,7 @@ function PersonalDataForm() {
   }
 
   return (
-    <Box sx={{ m: 6, pr: 2, position: 'relative', maxWidth: '90%' }}>
+    <>
       <Box className="BasicInfoBox">
         <Paper className="AvatarBox">
           <Avatar alt="user icon" sx={{ width: 120, height: 120 }} src={UserIcon as string} />
@@ -85,7 +85,7 @@ function PersonalDataForm() {
         <DetailsDisplay title={t('addressDetails')} details={addressDetails} data={data as unknown as Record<string, string>} />
         <DetailsDisplay title={t('additionalDetails')} details={additionalDetails} data={data as unknown as Record<string, boolean | string>} />
       </Paper>
-    </Box>
+    </>
   );
 }
 

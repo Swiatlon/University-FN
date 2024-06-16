@@ -1,5 +1,7 @@
-import { Box, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { createElement } from 'react';
+import './DetailsDisplay.scss';
 
 interface Detail {
   icon: JSX.Element | ((value: boolean) => JSX.Element);
@@ -15,25 +17,51 @@ interface DetailsDisplayProps {
 }
 
 function DetailsDisplay({ title, details, data }: DetailsDisplayProps) {
+  const renderIcon = (icon: JSX.Element | ((value: boolean) => JSX.Element), value: boolean) => {
+    return typeof icon === 'function' ? icon(value) : icon;
+  };
+
+  const renderValue = (format: ((value: boolean) => JSX.Element) | undefined, value: boolean | string) => {
+    if (format) {
+      return createElement(format, { hasPermission: value });
+    }
+    return value;
+  };
+
   return (
-    <Box>
-      <Typography variant="h6" color="primary" fontWeight="bold">
+    <Box className="DetailsBox">
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
+          <Typography variant="h6" color="primary" className="Title">
+            {title}:
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          {details.map(detail => {
+            const value = Boolean(data[detail.name]);
+            const iconDisplay = renderIcon(detail.icon, value);
+            const valueDisplay = renderValue(detail.format, data[detail.name]);
+
+            return (
+              <Typography key={detail.name} className="Row">
+                <Box gap={1} className="SubTitleBox">
+                  {iconDisplay}
+                  <Typography className="SubTitle">{detail.label}:</Typography>
+                </Box>
+                <Typography className="Label">{valueDisplay}</Typography>
+              </Typography>
+            );
+          })}
+        </AccordionDetails>
+      </Accordion>
+    </Box>
+  );
+
+  return (
+    <Box className="DetailsBox">
+      <Typography variant="h6" color="primary" className="Title">
         {title}:
       </Typography>
-      {details.map(detail => {
-        //TODO: IN FUTURE TRY TO CHECK
-        const iconDisplay = typeof detail.icon === 'function' ? detail.icon(Boolean(data[detail.name])) : detail.icon;
-        const displayName = detail.label;
-        const valueDisplay = detail.format ? createElement(detail.format, { hasPermission: data[detail.name] }) : data[detail.name];
-
-        return (
-          <Typography key={detail.name} sx={{ display: 'flex', alignItems: 'center', my: 2 }}>
-            {iconDisplay}
-            <span style={{ marginLeft: 16, fontWeight: '600' }}>{displayName}:</span>
-            <span style={{ marginLeft: 16 }}>{valueDisplay}</span>
-          </Typography>
-        );
-      })}
     </Box>
   );
 }
