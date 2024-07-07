@@ -1,4 +1,4 @@
-import DropdownMenu from '@components/Reusable/DropdownMenu/DropdownMenu';
+import DropdownMenu from 'Components/Reusable/DropdownMenu/DropdownMenu';
 import LanguageIcon from '@mui/icons-material/Language';
 import EnglandCircle from '@assets/icons/EnglandCircle.svg?react';
 import PolandCircle from '@assets/icons/PolandCircle.svg?react';

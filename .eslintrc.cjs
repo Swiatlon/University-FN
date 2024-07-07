@@ -32,6 +32,8 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'off',
     'no-warning-comments': 'off',
     'no-use-before-define': 'off',
+    '@typescript-eslint/no-invalid-void-type': 'off',
+    'no-console': ['warn', { allow: ['warn'] }],
     '@typescript-eslint/no-use-before-define': 'off',
     'import/no-unresolved': 'off',
     'react/jsx-sort-props': 'off',

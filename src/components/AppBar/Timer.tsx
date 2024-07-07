@@ -1,6 +1,6 @@
-import { useSendLogoutMutation } from '@features/auth/authApiSlice';
-import { selectTokenExpirationTime } from '@features/auth/authSlice';
 import { Typography, useMediaQuery } from '@mui/material';
+import { useSendLogoutMutation } from 'Redux/Slices/auth/authApiSlice';
+import { selectTokenExpirationTime } from 'Redux/Slices/auth/authSlice';
 import { parseISO, isAfter, intervalToDuration } from 'date-fns';
 import { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ function Timer() {
   useLayoutEffect(() => {
     const updateTimer = async () => {
       const now = new Date();
-      const expirationDate = parseISO(tokenExpirationTime!);
+      const expirationDate = parseISO(tokenExpirationTime);
       if (isAfter(now, expirationDate)) {
         clearInterval(timerId);
         await sendLogout();

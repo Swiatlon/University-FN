@@ -1,4 +1,4 @@
-import { selectCurrentToken } from '@features/auth/authSlice';
+import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 

@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useRefreshMutation } from '@features/auth/authApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCredentials, logOut, selectCurrentToken } from '@features/auth/authSlice';
 import { CircularProgress } from '@mui/material';
+import { useRefreshMutation } from 'Redux/Slices/auth/authApiSlice';
+import { selectCurrentToken, setCredentials, logOut } from 'Redux/Slices/auth/authSlice';
 
 interface RefreshResponse {
   accessToken: string;

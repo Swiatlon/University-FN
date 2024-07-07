@@ -8,9 +8,9 @@ import UserProfile from './UserProfile';
 import MenuItemComponent from './MenuItem';
 import type { OpenMenuItemsState, NavigationProps } from './types';
 import { useTypedSelector } from 'hooks/storeHooks';
-import { selectCurrentToken } from '@features/auth/authSlice';
-import { selectIsDrawerOpen, toggleDrawer } from '@features/view/viewSlice';
 import { useDispatch } from 'react-redux';
+import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
+import { selectIsDrawerOpen, toggleDrawer } from 'Redux/Slices/view/viewSlice';
 
 function Navigation({ menuItems }: NavigationProps) {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { Container, Content } from 'layouts/Styled';
-import AppBar from '@components/AppBar/AppBar';
-import Navigation from '@components/Navigation/Navigation';
+import { Container, Content } from 'Layouts/Styled';
+import AppBar from 'Components/AppBar/AppBar';
+import Navigation from 'Components/Navigation/Navigation';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import GradeIcon from '@mui/icons-material/Grade';
