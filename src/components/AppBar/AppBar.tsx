@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { toggleDrawer } from '@features/view/viewSlice';
+import { toggleDrawer } from 'Redux/Slices/view/viewSlice';
 import { useDispatch } from 'react-redux';
 import './AppBar.scss';
 import ConfigAppBar from './ConfigAppBar';

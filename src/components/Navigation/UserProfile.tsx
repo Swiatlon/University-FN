@@ -1,7 +1,7 @@
 import { Avatar, Box, Typography, CircularProgress } from '@mui/material';
-import UserIcon from '@assets/images/user-photo.jpg';
-import { useGetUserInfoQuery } from '@features/userInfo/userInfoSlice';
+import UserIcon from '@assets/images/userPhoto.png';
 import { useTranslation } from 'react-i18next';
+import { useGetUserInfoQuery } from 'Redux/Slices/userInfo/userInfoSlice';
 
 function UserProfile() {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ function UserProfile() {
 
   return (
     <Box className="UserProfileContainer">
-      <Avatar alt="user icon" className="Avatar IncreaseSizeAnimation" src={UserIcon as string} />
+      <Avatar alt="user icon" className="Avatar IncreaseSizeAnimation" src={UserIcon} />
       <Box className="UserInfoDisplay">
         <Typography className="UsernameText" fontWeight="bold" variant="body1">
           {`${name} ${surname}`}

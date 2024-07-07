@@ -38,6 +38,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          '&::before': {
+            display: 'none',
+          },
+        },
+      },
+    },
   },
   shadows: shadows.map(() => 'none') as Shadows,
 });

@@ -20,7 +20,7 @@ interface DropdownMenuProps {
 function DropdownMenu({ label, items, startIcon, hideLabelOnMobile }: DropdownMenuProps) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
-  const isMobile = useMediaQuery('(max-width:600px)');
+  const isMobile = useMediaQuery('(max-width:910px)');
   const [selection, setSelection] = useState({
     label,
     icon: startIcon,

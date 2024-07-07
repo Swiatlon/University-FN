@@ -128,7 +128,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     },
   },
 
-  '@media (max-width: 768px)': {
+  '@media (max-width: 910px)': {
     '.ContentContainer': {
       transition: '1.5s all',
       margin: 'auto',
