@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Collapse, Divider, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '@assets/images/Logo.png';
-import UserProfile from './UserProfile';
-import MenuItemComponent from './MenuItem';
-import type { OpenMenuItemsState, NavigationProps } from './types';
+import UserProfile from './Elements/HeaderItems/UserProfile';
+import MenuItemComponent from './Elements/MenuItems/MenuItem';
+import type { OpenMenuItemsState, NavigationProps } from './Types/types';
 import { useTypedSelector } from 'Hooks/storeHooks';
 import { useDispatch } from 'react-redux';
 import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
@@ -49,8 +49,10 @@ function Navigation({ menuItems }: NavigationProps) {
           </Box>
           <MenuIcon className="MenuToggleIcon IncreaseSizeAnimation" fontSize="medium" onClick={handleToggleDrawer} />
         </Box>
+
         {Boolean(token) && <UserProfile />}
         <Divider className="Divider" variant="middle" />
+
         <List className="List" component="ul">
           {menuItems.map(item => (
             <Box key={item.id}>

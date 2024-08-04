@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Paper } from '@mui/material';
 import { useGetAuthorizedStudentAllDataQuery } from 'Redux/Slices/Students/studentsSlice';
-import FullScreenLoader from 'Components/Reusable/FullScreenLoader/FullScreenLoader';
+import FullScreenLoader from 'Components/Shared/FullScreenLoader/FullScreenLoader';
 import type { DetailRowProps } from 'Components/ViewsComponents/PersonalData/DetailRow';
 import BasicInfo from 'Components/ViewsComponents/PersonalData/BasicInfo';
 import { PersonalDetails } from 'Components/ViewsComponents/PersonalData/PersonalDetails';

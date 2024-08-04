@@ -33,6 +33,14 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
     justifyContent: 'center',
   },
 
+  '.IncreaseSizeAnimation': {
+    transition: '0.3s transform',
+
+    '&:hover': {
+      transform: 'scale(1.08)',
+    },
+  },
+
   '.HeaderContainer': {
     display: 'flex',
     alignItems: 'center',
@@ -91,7 +99,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
   },
 
   '.List': {
-    transition: '0.5s all',
+    transition: '0.5s padding',
     marginTop: 24,
     paddingLeft: isOpen ? '0px' : '4px',
     display: 'grid',
@@ -104,30 +112,32 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
       textWrap: 'noWrap',
       padding: 0,
 
-      a: {
-        textDecoration: 'none',
-      },
-
       svg: {
         width: 27,
         height: 27,
         cursor: 'pointer',
       },
-    },
-    '.ListItemChildren': {
-      svg: {
-        transition: '1s margin',
-        marginLeft: isOpen ? 20 : 4,
-        width: 20,
-        height: 20,
+
+      '&.ListItemChildren': {
+        svg: {
+          transition: '1s margin',
+          marginLeft: isOpen ? 20 : 4,
+          width: 20,
+          height: 20,
+        },
+      },
+
+      '&.active .MuiTypography-root': {
+        fontWeight: 'bold',
+        borderRight: '2px solid white',
+        display: 'inline',
+        paddingRight: '10px',
       },
     },
   },
-  '.IncreaseSizeAnimation': {
-    transition: '1s transform',
-    '&:hover': {
-      transform: 'scale(1.08)',
-    },
+
+  '& a': {
+    textDecoration: 'none',
   },
 
   '@media (max-width: 910px)': {

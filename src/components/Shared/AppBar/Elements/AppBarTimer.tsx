@@ -5,7 +5,7 @@ import { parseISO, isAfter, intervalToDuration } from 'date-fns';
 import { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-function Timer() {
+function AppBarTimer() {
   const [sendLogout] = useSendLogoutMutation();
   const tokenExpirationTime = useSelector(selectTokenExpirationTime);
   const [timeLeft, setTimeLeft] = useState('');
@@ -43,4 +43,4 @@ function Timer() {
   );
 }
 
-export default Timer;
+export default AppBarTimer;
