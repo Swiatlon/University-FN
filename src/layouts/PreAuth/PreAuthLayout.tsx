@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
-import Navigation from 'Components/Navigation/Navigation';
+import Navigation from 'Components/Shared/Navigation/Navigation';
 import { v4 as uuidv4 } from 'uuid';
 import { Container, Content } from 'Layouts/Styled';
 import { useSelector } from 'react-redux';
