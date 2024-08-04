@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Api from 'Redux/Api';
 import type { IGetAuthorizedStudentAllDataBackendResponse, IGetAuthorizedStudentAllDataTransformedReponse } from 'Contract/Slices/Students/Students';
 export const studentsSlice = Api.injectEndpoints({
@@ -29,30 +28,7 @@ export const studentsSlice = Api.injectEndpoints({
         })),
       }),
     }),
-
-    addStudent: builder.mutation({
-      query: newStudent => ({
-        url: 'api/students',
-        method: 'POST',
-        body: newStudent,
-      }),
-    }),
-
-    updateStudent: builder.mutation({
-      query: ({ studentId, updatedStudent }) => ({
-        url: `api/students/${studentId}`,
-        method: 'PUT',
-        body: updatedStudent,
-      }),
-    }),
-
-    deleteStudent: builder.mutation({
-      query: studentId => ({
-        url: `api/students/${studentId}`,
-        method: 'DELETE',
-      }),
-    }),
   }),
 });
 
-export const { useGetStudentsQuery, useGetSingleStudentQuery, useAddStudentMutation, useUpdateStudentMutation, useDeleteStudentMutation, useGetAuthorizedStudentAllDataQuery } = studentsSlice;
+export const { useGetStudentsQuery, useGetSingleStudentQuery, useGetAuthorizedStudentAllDataQuery } = studentsSlice;

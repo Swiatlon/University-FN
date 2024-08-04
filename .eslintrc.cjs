@@ -29,6 +29,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks', 'jsx-a11y', 'security', 'sonarjs', 'import', 'unused-imports', 'eslint-comments', 'react-refresh', 'prettier'],
   rules: {
+    'react/function-component-definition': ['off'],
+    '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     'no-warning-comments': 'off',
     'no-use-before-define': 'off',
@@ -52,7 +54,7 @@ module.exports = {
     'eslint-comments/no-unused-disable': 'error',
     'sonarjs/cognitive-complexity': ['error', 15],
     'sonarjs/no-duplicate-string': 'error',
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'prettier/prettier': ['error', { endOfLine: 'auto', printWidth: 180 }],
     '@typescript-eslint/naming-convention': ['off'],
     'react/jsx-no-literals': 'off',
     'react/forbid-component-props': ['off'],

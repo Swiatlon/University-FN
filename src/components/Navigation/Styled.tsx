@@ -91,7 +91,9 @@ export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }
   },
 
   '.List': {
+    transition: '0.5s all',
     marginTop: 24,
+    paddingLeft: isOpen ? '0px' : '4px',
     display: 'grid',
     gap: 24,
 

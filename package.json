@@ -1,7 +1,7 @@
 {
   "name": "client",
   "private": true,
-  "version": "0.4.0-beta",
+  "version": "0.5.0-alfa",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,13 +23,18 @@
     "@mui/material": "^5.15.15",
     "@mui/x-date-pickers": "^6.19.9",
     "@reduxjs/toolkit": "^2.2.5",
+    "ag-grid-community": "^32.0.0",
+    "ag-grid-react": "^32.0.0",
+    "classnames": "^2.5.1",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.18.0",
     "i18next": "^23.11.3",
     "i18next-http-backend": "^2.5.1",
     "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
     "match-sorter": "^6.3.4",
+    "qs": "^6.12.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.2",
@@ -41,6 +46,8 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.7",
+    "@types/qs": "^6.9.15",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.2.24",
     "@types/react-redux": "^7.1.33",

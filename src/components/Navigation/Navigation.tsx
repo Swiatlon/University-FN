@@ -7,7 +7,7 @@ import Logo from '@assets/images/Logo.png';
 import UserProfile from './UserProfile';
 import MenuItemComponent from './MenuItem';
 import type { OpenMenuItemsState, NavigationProps } from './types';
-import { useTypedSelector } from 'hooks/storeHooks';
+import { useTypedSelector } from 'Hooks/storeHooks';
 import { useDispatch } from 'react-redux';
 import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
 import { selectIsDrawerOpen, toggleDrawer } from 'Redux/Slices/view/viewSlice';
