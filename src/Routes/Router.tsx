@@ -9,6 +9,7 @@ import PreAuthLayout from 'Layouts/PreAuth/PreAuthLayout';
 import { useSelector } from 'react-redux';
 import { getRoleBasedComponent } from './Utils/RouterUtils';
 import { selectUserRoles } from 'Redux/Slices/userInfo/userInfoSlice';
+import Teachers from './PostAuth/Teachers/Teachers';
 
 const RoleBasedPersonalData: React.FC = () => {
   const roles = useSelector(selectUserRoles);
@@ -50,6 +51,15 @@ export const router = createBrowserRouter([
                       {
                         path: 'personal-data',
                         element: <RoleBasedPersonalData />,
+                      },
+                    ],
+                  },
+                  {
+                    path: 'community',
+                    children: [
+                      {
+                        path: 'teachers',
+                        element: <Teachers />,
                       },
                     ],
                   },

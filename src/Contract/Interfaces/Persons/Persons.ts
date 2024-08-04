@@ -41,3 +41,11 @@ export interface IStudent extends IPerson {
   degreePaths: IDegreePath[];
   modules: IModule[];
 }
+
+export interface ITeacher {
+  id: number;
+  contactEmail: string;
+  contactPhone: string;
+  name: string;
+  surname: string;
+}

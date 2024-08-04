@@ -106,9 +106,9 @@ function PostAuthLayout() {
       children: [
         {
           id: uuidv4(),
-          text: t('find_teacher'),
+          text: t('teachers'),
           icon: <SearchIcon />,
-          linkTo: '/community/find-teacher',
+          linkTo: 'community/teachers',
         },
         {
           id: uuidv4(),

@@ -1,6 +1,7 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { setCredentials } from './Slices/auth/authSlice';
+import qs from 'qs';
 
 interface AuthState {
   token: string | null;
@@ -19,6 +20,11 @@ const baseQuery = fetchBaseQuery({
 
     return headers;
   },
+  paramsSerializer: params =>
+    qs.stringify(params, {
+      arrayFormat: 'brackets',
+      encode: false,
+    }),
 });
 
 export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {

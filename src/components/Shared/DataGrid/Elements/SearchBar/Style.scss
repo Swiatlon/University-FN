@@ -1,0 +1,19 @@
+.SearchBar {
+  display: flex;
+  justify-content: flex-start;
+
+  fieldset {
+    border-radius: 2px 2px 0px 0px;
+  }
+
+  .SearchInput {
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+    background: white;
+    width: 100%;
+
+    * {
+      border-color: rgba(0, 0, 0, 0.23) !important;
+    }
+  }
+}
