@@ -1,0 +1,26 @@
+.PaginationContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8px;
+  row-gap: 16px;
+  background: white;
+  border: 1px solid rgba(192, 192, 192, 0.5);
+  border-radius: 0px 0px 2px 2px;
+}
+
+.PaginationContainer.Disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.PaginationContainer.CenterJustify {
+  justify-content: center;
+}
+
+.PaginationControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

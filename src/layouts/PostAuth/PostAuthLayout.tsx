@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { Container, Content } from 'layouts/Styled';
-import AppBar from '@components/AppBar/AppBar';
-import Navigation from '@components/Navigation/Navigation';
+import { Container, Content } from 'Layouts/Styled';
+import AppBar from 'Components/Shared/AppBar/AppBar';
+import Navigation from 'Components/Shared/Navigation/Navigation';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import GradeIcon from '@mui/icons-material/Grade';
@@ -17,6 +17,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
 import GroupIcon from '@mui/icons-material/Group';
+import SchoolIcon from '@mui/icons-material/School';
 import { useTranslation } from 'react-i18next';
 import './PostAuthLayout.scss';
 import { Box } from '@mui/material';
@@ -106,9 +107,9 @@ function PostAuthLayout() {
       children: [
         {
           id: uuidv4(),
-          text: t('find_teacher'),
-          icon: <SearchIcon />,
-          linkTo: '/community/find-teacher',
+          text: t('teachers'),
+          icon: <SchoolIcon />,
+          linkTo: 'community/teachers',
         },
         {
           id: uuidv4(),

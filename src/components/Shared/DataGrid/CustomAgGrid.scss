@@ -1,0 +1,79 @@
+$ag-background-color: #ffffff;
+$ag-odd-row-background-color: #f9f9f9;
+$ag-header-background-color: #f5f5f5;
+$ag-header-foreground-color: #000000;
+$ag-font-size: 14px;
+$ag-grid-size: 1px;
+$ag-header-height: 56px;
+$ag-row-height: 52px;
+$ag-foreground-color: #000000;
+$ag-secondary-foreground-color: #757575;
+$ag-border-color: #e0e0e0;
+$ag-header-column-separator: #e0e0e0;
+
+.ag-theme-material {
+  --ag-background-color: #{$ag-background-color};
+  --ag-odd-row-background-color: #{$ag-odd-row-background-color};
+  --ag-header-background-color: #{$ag-header-background-color};
+  --ag-header-foreground-color: #{$ag-header-foreground-color};
+  --ag-font-size: #{$ag-font-size};
+  --ag-grid-size: #{$ag-grid-size};
+  --ag-header-height: #{$ag-header-height};
+  --ag-row-height: #{$ag-row-height};
+  --ag-foreground-color: #{$ag-foreground-color};
+  --ag-secondary-foreground-color: #{$ag-secondary-foreground-color};
+  --ag-border-color: #{$ag-border-color};
+  --ag-header-column-separator: #{$ag-header-column-separator};
+
+  .ag-root {
+    border: 1px solid var(--ag-border-color);
+  }
+
+  .ag-header {
+    background-color: white;
+    color: var(--ag-header-foreground-color);
+    border-bottom: 1px solid var(--ag-border-color);
+  }
+
+  .ag-header-cell {
+    font-weight: 700;
+    padding: 0 16px;
+    border-right: 1px solid var(--ag-border-color);
+  }
+
+  .ag-row {
+    border-bottom: 1px solid var(--ag-border-color);
+    height: var(--ag-row-height);
+  }
+
+  .ag-cell {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    font-size: var(--ag-font-size);
+    color: var(--ag-foreground-color);
+    border-right: 1px solid var(--ag-border-color);
+  }
+
+  .ag-row-odd {
+    background-color: var(--ag-odd-row-background-color);
+  }
+
+  .ag-row:hover {
+    background-color: lighten($ag-odd-row-background-color, 10%);
+  }
+
+  .ag-pinned-left-header,
+  .ag-pinned-right-header {
+    background-color: var(--ag-header-background-color);
+  }
+
+  .ag-cell-focus {
+    border: none;
+    outline: none;
+  }
+
+  .ag-theme-material .ag-header-cell::after {
+    display: none;
+  }
+}

@@ -9,4 +9,5 @@ export const Container = styled(Box)({
 
 export const Content = styled(Box)({
   width: '100%',
+  position: 'relative',
 });

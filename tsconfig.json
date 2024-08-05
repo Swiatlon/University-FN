@@ -35,7 +35,7 @@
     }
   },
   "include": ["src/**/*", "./custom.d.ts"],
-  "exclude": ["node_modules", "dist"], // Exclude directories
+  "exclude": ["node_modules", "dist"],
   "references": [
     {
       "path": "./tsconfig.node.json"
