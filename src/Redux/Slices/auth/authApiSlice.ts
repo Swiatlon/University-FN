@@ -1,5 +1,6 @@
 import Api from 'Redux/Api';
 import { logOut, setCredentials } from './authSlice';
+import { extendedOnQueryStartedWithNotifications } from 'Utils/Slices/ExtendedOnQueryStarted';
 
 interface Credentials {
   username: string;
@@ -12,7 +13,15 @@ const authApiSlice = Api.injectEndpoints({
       query: (credentials: Credentials) => ({
         url: '/auth',
         method: 'POST',
-        body: { ...credentials },
+        body: credentials,
+      }),
+      onQueryStarted: extendedOnQueryStartedWithNotifications({
+        successMessage: 'Login successful!',
+        successCallback: (data: { accessToken: string }, dispatch) => {
+          if (setCredentials) {
+            dispatch(setCredentials({ accessToken: data.accessToken }));
+          }
+        },
       }),
     }),
 
@@ -21,16 +30,15 @@ const authApiSlice = Api.injectEndpoints({
         url: '/auth/logout',
         method: 'POST',
       }),
-      onQueryStarted(_arg, { dispatch, queryFulfilled }) {
-        queryFulfilled
-          .then(() => {
-            dispatch(logOut());
+      onQueryStarted: extendedOnQueryStartedWithNotifications({
+        successMessage: 'Logout successful',
+        successCallback: (_data, dispatch) => {
+          if (logOut) {
+            dispatch(logOut(undefined));
             dispatch(Api.util.resetApiState());
-          })
-          .catch((err: unknown) => {
-            return err;
-          });
-      },
+          }
+        },
+      }),
     }),
 
     refresh: builder.mutation({
@@ -38,17 +46,17 @@ const authApiSlice = Api.injectEndpoints({
         url: '/auth/refresh',
         method: 'GET',
       }),
-      onQueryStarted(_arg, { dispatch, queryFulfilled }) {
-        queryFulfilled
-          .then(({ data: { accessToken } }: { data: { accessToken: string } }) => {
-            dispatch(setCredentials({ accessToken }));
-          })
-          .catch((err: unknown) => {
-            return err;
-          });
-      },
+      onQueryStarted: extendedOnQueryStartedWithNotifications({
+        successMessage: 'Token refreshed',
+        successCallback: (data: { accessToken: string }, dispatch) => {
+          if (setCredentials) {
+            dispatch(setCredentials({ accessToken: data.accessToken }));
+          }
+        },
+      }),
     }),
   }),
 });
 
 export const { useLoginMutation, useSendLogoutMutation, useRefreshMutation } = authApiSlice;
+export default authApiSlice;
