@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { getRoleBasedComponent } from './Utils/RouterUtils';
 import { selectUserRoles } from 'Redux/Slices/userInfo/userInfoSlice';
 import Teachers from './PostAuth/Teachers/Teachers';
+import Logout from './PostAuth/Logout/Logout';
+import ErrorPage from './Shared/Error/ErrorPage';
 
 const RoleBasedPersonalData: React.FC = () => {
   const roles = useSelector(selectUserRoles);
@@ -21,6 +23,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '',
@@ -39,12 +42,14 @@ export const router = createBrowserRouter([
                 children: [
                   {
                     index: true,
-                    element: <div>Zaauutoryzowany tokenem</div>,
+                    element: <Dashboard />,
                   },
+
                   {
                     path: 'dashboard',
                     element: <Dashboard />,
                   },
+
                   {
                     path: 'profile',
                     children: [
@@ -54,6 +59,7 @@ export const router = createBrowserRouter([
                       },
                     ],
                   },
+
                   {
                     path: 'community',
                     children: [
@@ -62,6 +68,11 @@ export const router = createBrowserRouter([
                         element: <Teachers />,
                       },
                     ],
+                  },
+
+                  {
+                    path: 'logout',
+                    element: <Logout />,
                   },
                 ],
               },
