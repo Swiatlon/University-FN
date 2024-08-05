@@ -29,6 +29,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-hooks', 'jsx-a11y', 'security', 'sonarjs', 'import', 'unused-imports', 'eslint-comments', 'react-refresh', 'prettier'],
   rules: {
+    'max-params': 'off',
+    '@typescript-eslint/max-params': 'error',
     'react/function-component-definition': ['off'],
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
