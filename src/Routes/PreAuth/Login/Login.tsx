@@ -22,7 +22,7 @@ function Login() {
 
   const onSubmit: SubmitHandler<IInputs> = async data => {
     const { login, password } = data;
-    await loginUser({ username: login, password });
+    await loginUser({ identifier: login, password });
   };
 
   return (

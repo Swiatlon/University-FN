@@ -1,7 +1,7 @@
 import type { RolesEnum } from 'Contract/Enums/Enums';
 
 export interface ILoginRequest {
-  username: string;
+  identifier: string;
   password: string;
 }
 

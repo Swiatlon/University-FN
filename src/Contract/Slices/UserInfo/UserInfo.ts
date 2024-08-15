@@ -5,3 +5,7 @@ export interface IGetUserInfoReponse {
   name: string;
   surname: string;
 }
+
+export interface IGetUserInfoTransformedReponse extends Omit<IGetUserInfoReponse, 'roles'> {
+  roles: string[];
+}

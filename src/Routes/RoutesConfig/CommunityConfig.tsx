@@ -16,5 +16,8 @@ export const communityConfig = {
         },
       },
     },
+    {
+      path: 'events',
+    },
   ],
 };
