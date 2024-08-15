@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-interface isOpenProp {
+interface IIsOpenProp {
   isOpen: boolean;
 }
 
@@ -11,7 +11,7 @@ const maxDrawerWidth = '260px';
 const minDrawerWidthMobile = 0;
 const maxDrawerWidthMobile = '100vw';
 
-export const Drawer = styled(Box, { shouldForwardProp })<isOpenProp>(({ isOpen }) => ({
+export const Drawer = styled(Box, { shouldForwardProp })<IIsOpenProp>(({ isOpen }) => ({
   position: 'sticky',
   top: 0,
   left: 0,

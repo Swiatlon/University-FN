@@ -2,13 +2,13 @@ import React from 'react';
 import { Paper } from '@mui/material';
 import DetailSection from 'Components/ViewsComponents/PersonalData/DetailSection';
 
-interface AcademicInfoProps {
+interface IAcademicInfoProps {
   degreeCourse: string;
   degreePath: string;
   modules: string[];
 }
 
-export function AcademicInfo({ degreeCourse, degreePath, modules }: AcademicInfoProps): React.ReactElement {
+export function AcademicInfo({ degreeCourse, degreePath, modules }: IAcademicInfoProps): React.ReactElement {
   return (
     <Paper className="DetailsPaper">
       <DetailSection

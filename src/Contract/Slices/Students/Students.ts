@@ -8,4 +8,4 @@ export interface IGetAuthorizedStudentAllDataBackendResponse extends Omit<IStude
   modules: { id: number; module: { id: number; name: string } }[];
 }
 
-export type IGetAuthorizedStudentAllDataTransformedReponse = IStudent;
+export interface IGetAuthorizedStudentAllDataTransformedReponse extends IStudent {}

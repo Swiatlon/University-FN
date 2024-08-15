@@ -2,15 +2,15 @@ import React from 'react';
 import * as Icons from '@mui/icons-material';
 import type { SvgIconProps } from '@mui/material/SvgIcon';
 
-export type MuiIconsName = keyof typeof Icons;
+export type MuiIconsNameType = keyof typeof Icons;
 
-interface IconComponentProps extends SvgIconProps {
-  name: MuiIconsName;
+interface IIconComponentProps extends SvgIconProps {
+  name: MuiIconsNameType;
 }
 
-const iconComponents: { [K in MuiIconsName]: React.ComponentType<SvgIconProps> } = Icons;
+const iconComponents: { [K in MuiIconsNameType]: React.ComponentType<SvgIconProps> } = Icons;
 
-export function IconComponent({ name, ...props }: IconComponentProps): React.ReactElement {
+export function IconComponent({ name, ...props }: IIconComponentProps): React.ReactElement {
   const SpecificIcon = iconComponents[name];
 
   return <SpecificIcon {...props} />;

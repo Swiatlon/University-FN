@@ -1,6 +1,6 @@
 import type { IDegreeCourse, IDegreePath, IModule } from 'Contract/Interfaces/Courses/Courses';
 
-export enum Gender {
+export enum GenderEnum {
   Men = 'Men',
   Women = 'Women',
 }
@@ -26,7 +26,7 @@ export interface IPerson {
   name: string;
   surname: string;
   pesel: string;
-  gender: Gender;
+  gender: GenderEnum;
   dateOfBirth: Date;
   nationality: string;
   contactEmail: string;

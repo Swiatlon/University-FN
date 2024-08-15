@@ -1,23 +1,25 @@
 import type { JSXElementConstructor, ReactElement } from 'react';
+import type { RolesEnum } from 'Contract/Enums/Enums';
 
-export interface MenuItem {
+export interface IMenuItem {
   id: string;
   text: string;
   icon: ReactElement<unknown, JSXElementConstructor<unknown> | string>;
   linkTo?: string;
-  children?: MenuItem[];
+  children?: IMenuItem[];
+  notAvailableForRoles?: RolesEnum[];
 }
 
-export interface MenuItemProps {
-  item: MenuItem;
+export interface IMenuItemProps {
+  item: IMenuItem;
   onToggleSubmenu?: (id: string) => void;
   onNavigate: (linkTo: string) => void;
   isOpen?: boolean;
   isChildren?: boolean;
 }
 
-export type OpenMenuItemsState = Record<string, boolean>;
+export type OpenMenuItemsStateType = Record<string, boolean>;
 
-export interface NavigationProps {
-  readonly menuItems: MenuItem[];
+export interface INavigationProps {
+  readonly menuItems: IMenuItem[];
 }

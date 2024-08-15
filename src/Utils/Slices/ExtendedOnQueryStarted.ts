@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-destructuring */
 import { enqueueSnackbar } from 'notistack';
 import type { AnyAction, Dispatch } from '@reduxjs/toolkit';
 
@@ -13,6 +14,11 @@ interface IError {
     request: Request;
     response: Response;
   };
+}
+
+interface IResponseData {
+  isError?: boolean;
+  message?: string;
 }
 
 interface IQueryStartedConfig<T, U> {
@@ -36,6 +42,11 @@ export const extendedOnQueryStartedWithNotifications = <T, U>({ successMessage, 
   return async (arg: unknown, { dispatch, queryFulfilled }: { dispatch: Dispatch<AnyAction>; queryFulfilled: Promise<{ data: T }> }) => {
     try {
       const { data } = await queryFulfilled;
+
+      if ((data as IResponseData).isError && (data as IResponseData).message) {
+        throw new Error((data as IResponseData).message);
+      }
+
       const result = successCallback(data, dispatch, queryFulfilled, arg);
 
       enqueueSnackbar(successMessage, { variant: 'success' });
@@ -44,8 +55,9 @@ export const extendedOnQueryStartedWithNotifications = <T, U>({ successMessage, 
       let message = 'Operation failed';
 
       if (isIError(error)) {
-        // eslint-disable-next-line @typescript-eslint/prefer-destructuring
         message = error.error.data.message;
+      } else if (error instanceof Error) {
+        message = error.message;
       }
 
       enqueueSnackbar(message, { variant: 'error' });

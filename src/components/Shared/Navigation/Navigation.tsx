@@ -1,29 +1,31 @@
 import { useState, useCallback } from 'react';
-import { Drawer } from './Styled';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Box, Collapse, Divider, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Box, Collapse, Divider, List } from '@mui/material';
+import { useTypedSelector } from 'Hooks/useStore.Hooks';
+import { selectCurrentToken, selectUserRoles } from 'Redux/StateSlices/Auth/Auth.State.Slice';
+import { selectIsDrawerOpen, toggleDrawer } from 'Redux/StateSlices/View/View.State.Slice';
 import Logo from '@assets/images/Logo.png';
 import UserProfile from './Elements/HeaderItems/UserProfile';
 import MenuItemComponent from './Elements/MenuItems/MenuItem';
-import type { OpenMenuItemsState, NavigationProps } from './Types/types';
-import { useTypedSelector } from 'Hooks/storeHooks';
-import { useDispatch } from 'react-redux';
-import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
-import { selectIsDrawerOpen, toggleDrawer } from 'Redux/Slices/view/viewSlice';
+import { Drawer } from './Styled';
+import type { OpenMenuItemsStateType, INavigationProps } from './Types/types';
 
-function Navigation({ menuItems }: NavigationProps) {
+function Navigation({ menuItems }: INavigationProps) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const token = useTypedSelector(selectCurrentToken);
   const isOpen = useTypedSelector(selectIsDrawerOpen);
+  const userRoles = useTypedSelector(selectUserRoles);
 
   const handleToggleDrawer = () => {
     dispatch(toggleDrawer());
   };
 
-  const [openMenuItems, setOpenMenuItems] = useState<OpenMenuItemsState>(() =>
-    menuItems.reduce<OpenMenuItemsState>((acc, item) => {
+  const [openMenuItems, setOpenMenuItems] = useState<OpenMenuItemsStateType>(() =>
+    menuItems.reduce<OpenMenuItemsStateType>((acc, item) => {
       acc[item.id] = false;
       return acc;
     }, {})
@@ -54,20 +56,30 @@ function Navigation({ menuItems }: NavigationProps) {
         <Divider className="Divider" variant="middle" />
 
         <List className="List" component="ul">
-          {menuItems.map(item => (
-            <Box key={item.id}>
-              <MenuItemComponent isOpen={openMenuItems[item.id]} item={item} onNavigate={onNavigate} onToggleSubmenu={item.children ? onToggleSubmenu : undefined} />
-              {item.children ? (
-                <Collapse in={openMenuItems[item.id]} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    {item.children.map(subItem => (
-                      <MenuItemComponent isChildren item={subItem} key={subItem.id} onNavigate={onNavigate} />
-                    ))}
-                  </List>
-                </Collapse>
-              ) : null}
-            </Box>
-          ))}
+          {menuItems.map(item => {
+            if (userRoles.some(role => item.notAvailableForRoles?.includes(role))) {
+              return null;
+            }
+
+            return (
+              <Box key={item.id}>
+                <MenuItemComponent isOpen={openMenuItems[item.id]} item={item} onNavigate={onNavigate} onToggleSubmenu={item.children ? onToggleSubmenu : undefined} />
+                {item.children ? (
+                  <Collapse in={openMenuItems[item.id]} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      {item.children.map(subItem => {
+                        if (userRoles.some(role => subItem.notAvailableForRoles?.includes(role))) {
+                          return null;
+                        }
+
+                        return <MenuItemComponent isChildren item={subItem} key={subItem.id} onNavigate={onNavigate} />;
+                      })}
+                    </List>
+                  </Collapse>
+                ) : null}
+              </Box>
+            );
+          })}
         </List>
       </Box>
     </Drawer>

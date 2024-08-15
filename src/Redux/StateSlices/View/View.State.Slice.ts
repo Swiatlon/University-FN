@@ -4,9 +4,9 @@ interface IViewSlice {
   isDrawerOpen: boolean;
 }
 
-const initialState = {
+const initialState: IViewSlice = {
   isDrawerOpen: true,
-} as IViewSlice;
+};
 
 const viewSlice = createSlice({
   name: 'viewSlice',
@@ -17,7 +17,9 @@ const viewSlice = createSlice({
     },
   },
   selectors: {
-    selectIsDrawerOpen: state => state.isDrawerOpen,
+    selectIsDrawerOpen: state => {
+      return state.isDrawerOpen;
+    },
   },
 });
 

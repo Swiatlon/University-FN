@@ -27,8 +27,57 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['react', '@typescript-eslint', 'react-hooks', 'jsx-a11y', 'security', 'sonarjs', 'import', 'unused-imports', 'eslint-comments', 'react-refresh', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks', 'jsx-a11y', 'security', 'sonarjs', 'unused-imports', 'eslint-comments', 'react-refresh', 'prettier'],
   rules: {
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'external', // External modules (e.g., lodash, axios)
+          'builtin', // Node.js built-in modules (e.g., fs, path)
+          'internal', // Internal project modules
+          'parent', // Parent imports (e.g., ../utils)
+          'sibling', // Sibling imports (e.g., ./Component)
+          'index', // Index imports (e.g., ./, ../index)
+          'object', // Imports that assign variables from an object
+          'type', // TypeScript type imports
+        ],
+        pathGroups: [
+          {
+            pattern: 'react*',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@mui/**',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@assets/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: 'Components/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: '**/*.scss',
+            group: 'type',
+            position: 'after',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        'newlines-between': 'never',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+    'capitalized-comments': ['off'],
     'max-params': 'off',
     '@typescript-eslint/max-params': 'error',
     'react/function-component-definition': ['off'],

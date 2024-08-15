@@ -1,13 +1,13 @@
 import { Box, Typography } from '@mui/material';
-import { IconComponent, type MuiIconsName } from './IconComponent';
+import { IconComponent, type MuiIconsNameType } from './IconComponent';
 
-export interface DetailRowProps {
-  icon: MuiIconsName;
+export interface IDetailRowProps {
+  icon: MuiIconsNameType;
   label: string;
   value: string | number | boolean | undefined;
 }
 
-export function DetailRow({ icon, label, value }: DetailRowProps) {
+export function DetailRow({ icon, label, value }: IDetailRowProps) {
   return (
     <Box className="Row">
       <Box gap={1} className="SubTitleBox">

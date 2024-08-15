@@ -1,15 +1,15 @@
 import React, { useState, useCallback } from 'react';
-import { Box, InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { Box, InputAdornment, TextField } from '@mui/material';
 import { debounce } from 'lodash';
 import './Style.scss';
 
-interface SearchBarProps {
+interface ISearchBarProps {
   onSearch: (value: string) => void;
   disabled?: boolean;
 }
 
-function SearchBar({ onSearch, disabled }: SearchBarProps) {
+function SearchBar({ onSearch, disabled }: ISearchBarProps) {
   const [searchText, setSearchText] = useState('');
 
   const debouncedSearch = useCallback(

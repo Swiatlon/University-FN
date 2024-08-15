@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Pagination as MUIPagination, type SelectChangeEvent } from '@mui/material';
-import './Style.scss';
 import PaginationContainer from './PaginationContainer';
 import PaginationOptions from './PaginationOptions';
+import './Style.scss';
 
-interface PaginationProps {
+interface IPaginationProps {
   totalRows?: number;
   page: number;
   pageSize: number;
@@ -12,7 +12,7 @@ interface PaginationProps {
   disabled?: boolean;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ totalRows = 0, page, pageSize, setPagination, disabled }) => {
+const Pagination: React.FC<IPaginationProps> = ({ totalRows = 0, page, pageSize, setPagination, disabled }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const paginationRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<HTMLDivElement>(null);

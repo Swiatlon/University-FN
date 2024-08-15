@@ -1,13 +1,13 @@
 import React from 'react';
 import { Paper } from '@mui/material';
 import DetailSection from 'Components/ViewsComponents/PersonalData/DetailSection';
-import type { Section } from 'Routes/PostAuth/PersonalData/Student/StudentPersonalData';
+import type { ISection } from 'Routes/PostAuth/PersonalData/Student/StudentPersonalData';
 
-interface PersonalDetailsProps {
-  sections: Section[];
+interface IPersonalDetailsProps {
+  sections: ISection[];
 }
 
-export function PersonalDetails({ sections }: PersonalDetailsProps): React.ReactElement {
+export function PersonalDetails({ sections }: IPersonalDetailsProps): React.ReactElement {
   return (
     <Paper className="DetailsPaper DetailsCenterPaper">
       {sections.map(section => (

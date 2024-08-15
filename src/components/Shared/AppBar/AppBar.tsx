@@ -1,18 +1,17 @@
-import { Box, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { toggleDrawer } from 'Redux/Slices/view/viewSlice';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { startCase, toLower } from 'lodash';
-import './AppBar.scss';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Box, Typography } from '@mui/material';
+import { useTypedMatches } from 'Hooks/useTypedMatches.Hook';
+import { toggleDrawer } from 'Redux/StateSlices/View/View.State.Slice';
 import AppBarConfig from './Elements/AppBarConfig';
+import './AppBar.scss';
 
 function AppBar() {
   const dispatch = useDispatch();
-  const location = useLocation();
+  const matches = useTypedMatches();
+  const currentMatch = matches.find(match => match.handle);
 
-  const pathArray = location.pathname.split('/');
-  const pageTitle = startCase(toLower(pathArray[pathArray.length - 1]));
+  const pageTitle = currentMatch?.handle?.navigation?.text;
 
   const handleToggleDrawer = () => {
     dispatch(toggleDrawer());

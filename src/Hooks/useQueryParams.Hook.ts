@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import type { IQueryParams, TSearchQuery } from 'Contract/Interfaces/Requests/Requests';
+import type { IQueryParams, TSearchQueryType } from 'Contract/Interfaces/Requests/Requests';
 
-interface UseQueryParamsProps {
+interface IUseQueryParamsProps {
   initialQueryParams?: Partial<IQueryParams>;
 }
 
-const useQueryParams = ({ initialQueryParams = {} }: UseQueryParamsProps) => {
+const useQueryParams = ({ initialQueryParams = {} }: IUseQueryParamsProps) => {
   const [queryParams, setQueryParams] = useState<IQueryParams>({
     pagination: { page: 1, pageSize: 1_000 },
     ...initialQueryParams,
@@ -14,7 +14,7 @@ const useQueryParams = ({ initialQueryParams = {} }: UseQueryParamsProps) => {
   const setSearch = (lookupText: string, fields?: string[]) => {
     setQueryParams(prevState => ({
       ...prevState,
-      search: fields ? ({ lookupText, fields } as TSearchQuery) : ({ lookupText, searchAllFields: true } as TSearchQuery),
+      search: fields ? ({ lookupText, fields } as TSearchQueryType) : ({ lookupText, searchAllFields: true } as TSearchQueryType),
     }));
   };
 

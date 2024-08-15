@@ -1,10 +1,10 @@
-import DropdownMenu from 'Components/Shared/DropdownMenu/DropdownMenu';
+import { useTranslation } from 'react-i18next';
 import LanguageIcon from '@mui/icons-material/Language';
+import { Box } from '@mui/material';
 import EnglandCircle from '@assets/icons/EnglandCircle.svg?react';
 import PolandCircle from '@assets/icons/PolandCircle.svg?react';
-import { useTranslation } from 'react-i18next';
+import DropdownMenu from 'Components/Shared/DropdownMenu/DropdownMenu';
 import AppBarTimer from './AppBarTimer';
-import { Box } from '@mui/material';
 
 export function useLanguageMenuItems() {
   const { t, i18n } = useTranslation();

@@ -1,14 +1,14 @@
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { DetailRow, type DetailRowProps } from './DetailRow';
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import { DetailRow, type IDetailRowProps } from './DetailRow';
 import 'Routes/PostAuth/PersonalData/Styles/PersonalData.scss';
 
-interface DetailSectionProps {
+interface IDetailSectionProps {
   title: string;
-  details: DetailRowProps[];
+  details: IDetailRowProps[];
 }
 
-function DetailSection({ title, details }: DetailSectionProps) {
+function DetailSection({ title, details }: IDetailSectionProps) {
   return (
     <Accordion defaultExpanded disableGutters>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>

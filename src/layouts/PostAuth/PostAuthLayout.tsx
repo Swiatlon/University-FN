@@ -1,26 +1,27 @@
+import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import { Container, Content } from 'Layouts/Styled';
-import AppBar from 'Components/Shared/AppBar/AppBar';
-import Navigation from 'Components/Shared/Navigation/Navigation';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PersonIcon from '@mui/icons-material/Person';
-import GradeIcon from '@mui/icons-material/Grade';
 import BookIcon from '@mui/icons-material/Book';
-import SearchIcon from '@mui/icons-material/Search';
-import MessageIcon from '@mui/icons-material/Message';
-import FolderIcon from '@mui/icons-material/Folder';
-import PaymentIcon from '@mui/icons-material/Payment';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import LogoutIcon from '@mui/icons-material/Logout';
-import SettingsIcon from '@mui/icons-material/Settings';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
+import FolderIcon from '@mui/icons-material/Folder';
+import GradeIcon from '@mui/icons-material/Grade';
 import GroupIcon from '@mui/icons-material/Group';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MessageIcon from '@mui/icons-material/Message';
+import PaymentIcon from '@mui/icons-material/Payment';
+import PersonIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
-import { useTranslation } from 'react-i18next';
+import SearchIcon from '@mui/icons-material/Search';
+import SettingsIcon from '@mui/icons-material/Settings';
 import './PostAuthLayout.scss';
 import { Box } from '@mui/material';
+import { RolesEnum } from 'Contract/Enums/Enums';
+import { Container, Content } from 'Layouts/Styled';
+import { v4 as uuidv4 } from 'uuid';
+import AppBar from 'Components/Shared/AppBar/AppBar';
+import Navigation from 'Components/Shared/Navigation/Navigation';
 
 function PostAuthLayout() {
   const { t } = useTranslation();
@@ -31,11 +32,13 @@ function PostAuthLayout() {
       text: t('dashboard'),
       icon: <DashboardIcon />,
       linkTo: 'dashboard',
+      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
     },
     {
       id: uuidv4(),
       text: t('profile'),
       icon: <PersonIcon />,
+      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
       children: [
         {
           id: uuidv4(),
@@ -55,6 +58,7 @@ function PostAuthLayout() {
       id: uuidv4(),
       text: t('academics'),
       icon: <BookIcon />,
+      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
       children: [
         {
           id: uuidv4(),
@@ -80,6 +84,7 @@ function PostAuthLayout() {
       id: uuidv4(),
       text: t('resources'),
       icon: <FolderIcon />,
+      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
       children: [
         {
           id: uuidv4(),
@@ -99,6 +104,7 @@ function PostAuthLayout() {
       id: uuidv4(),
       text: t('financials'),
       icon: <PaymentIcon />,
+      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
     },
     {
       id: uuidv4(),
@@ -110,6 +116,7 @@ function PostAuthLayout() {
           text: t('teachers'),
           icon: <SchoolIcon />,
           linkTo: 'community/teachers',
+          notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
         },
         {
           id: uuidv4(),
@@ -122,6 +129,7 @@ function PostAuthLayout() {
           text: t('clubs'),
           icon: <GroupIcon />,
           linkTo: '/community/clubs',
+          notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
         },
       ],
     },
@@ -130,12 +138,13 @@ function PostAuthLayout() {
       text: t('messages'),
       icon: <MessageIcon />,
       linkTo: '/messages',
+      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
     },
     {
       id: uuidv4(),
       text: t('logout'),
       icon: <LogoutIcon />,
-      linkTo: '/logout',
+      linkTo: 'logout',
     },
   ];
 

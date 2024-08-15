@@ -1,8 +1,8 @@
-import { enqueueSnackbar } from 'notistack';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useRouteError } from 'react-router-dom';
-import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
+import { enqueueSnackbar } from 'notistack';
+import { selectCurrentToken } from 'Redux/StateSlices/Auth/Auth.State.Slice';
 
 function ErrorPage() {
   const isAuthenticated = useSelector(selectCurrentToken);

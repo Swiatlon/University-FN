@@ -1,15 +1,15 @@
-import { Box, Typography, type SelectChangeEvent } from '@mui/material';
 import React from 'react';
-import PageSizeSelect from './PageSizeSelect';
+import { Box, Typography, type SelectChangeEvent } from '@mui/material';
 import { beautifyNumbers } from 'Routes/Utils/Decorators';
+import PageSizeSelect from './PageSizeSelect';
 
-interface PaginationOptionsProps {
+interface IPaginationOptionsProps {
   pageSize: number;
   totalRows: number;
   handlePageSizeChange: (event: SelectChangeEvent<number>) => void;
 }
 
-const PaginationOptions = React.forwardRef<HTMLDivElement, PaginationOptionsProps>(({ pageSize, totalRows, handlePageSizeChange }, ref) => (
+const PaginationOptions = React.forwardRef<HTMLDivElement, IPaginationOptionsProps>(({ pageSize, totalRows, handlePageSizeChange }, ref) => (
   <Box ref={ref} className="PaginationControls">
     <Typography>Rows per page:</Typography>
     <PageSizeSelect value={pageSize} onChange={handlePageSizeChange} />

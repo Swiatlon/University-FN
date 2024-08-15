@@ -1,14 +1,14 @@
 import { Fade, ListItemIcon, ListItemText, Tooltip, Typography } from '@mui/material';
 import MenuItemArrowIcon from './MenuItemArrowIcon';
-import type { MenuItem } from '../../Types/types';
+import type { IMenuItem } from '../../Types/types';
 
-interface ListItemContentProps {
-  item: MenuItem;
+interface IListItemContentProps {
+  item: IMenuItem;
   isOpenDrawer: boolean;
   isOpen?: boolean;
 }
 
-const MenuItemContent = ({ item, isOpenDrawer, isOpen }: ListItemContentProps) => (
+const MenuItemContent = ({ item, isOpenDrawer, isOpen }: IListItemContentProps) => (
   <>
     <Tooltip
       placement="right"
@@ -26,7 +26,7 @@ const MenuItemContent = ({ item, isOpenDrawer, isOpen }: ListItemContentProps) =
       <ListItemIcon>{item.icon}</ListItemIcon>
     </Tooltip>
     <ListItemText primary={item.text} />
-    {item.children ? <MenuItemArrowIcon isOpen={isOpen!} /> : null}
+    {item.children && item.children.length > 0 ? <MenuItemArrowIcon isOpen={isOpen!} /> : null}
   </>
 );
 

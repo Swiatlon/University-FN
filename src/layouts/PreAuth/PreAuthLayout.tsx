@@ -1,11 +1,11 @@
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
-import Navigation from 'Components/Shared/Navigation/Navigation';
-import { v4 as uuidv4 } from 'uuid';
 import { Container, Content } from 'Layouts/Styled';
-import { useSelector } from 'react-redux';
-import { selectCurrentToken } from 'Redux/Slices/auth/authSlice';
-import { useTranslation } from 'react-i18next';
+import { selectCurrentToken } from 'Redux/StateSlices/Auth/Auth.State.Slice';
+import { v4 as uuidv4 } from 'uuid';
+import Navigation from 'Components/Shared/Navigation/Navigation';
 
 function PreAuthLayout() {
   const { t } = useTranslation();

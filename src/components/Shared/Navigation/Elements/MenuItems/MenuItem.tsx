@@ -1,12 +1,12 @@
-import { ListItemButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { ListItemButton } from '@mui/material';
 import concatClasses from 'classnames';
-import { useTypedSelector } from 'Hooks/storeHooks';
-import { selectIsDrawerOpen } from 'Redux/Slices/view/viewSlice';
+import { useTypedSelector } from 'Hooks/useStore.Hooks';
+import { selectIsDrawerOpen } from 'Redux/StateSlices/View/View.State.Slice';
 import MenuItemContent from './MenuItemContent';
-import type { MenuItemProps } from '../../Types/types';
+import type { IMenuItemProps } from '../../Types/types';
 
-function MenuItemComponent({ item, onToggleSubmenu, isOpen, isChildren }: MenuItemProps) {
+function MenuItemComponent({ item, onToggleSubmenu, isOpen, isChildren }: IMenuItemProps) {
   const isOpenDrawer = useTypedSelector(selectIsDrawerOpen);
 
   const className = concatClasses('ListItem IncreaseSizeAnimation', {

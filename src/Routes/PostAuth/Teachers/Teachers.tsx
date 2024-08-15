@@ -1,8 +1,8 @@
 import { useMemo, useCallback } from 'react';
 import { Box } from '@mui/material';
+import useQueryParams from 'Hooks/useQueryParams.Hook';
+import { useGetAllTeachersQuery } from 'Redux/ApiSlices/Community/Community.Api.Slice';
 import DataGrid from 'Components/Shared/DataGrid/DataGrid';
-import { useGetAllTeachersQuery } from 'Redux/Slices/Community/CommunitySlice';
-import useQueryParams from 'Hooks/useQueryParams';
 import type { IQueryParams } from 'Contract/Interfaces/Requests/Requests';
 
 const initialQueryParams: IQueryParams = {

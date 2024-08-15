@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { useSendLogoutMutation } from 'Redux/Slices/auth/authApiSlice';
+import { useSendLogoutMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
 
 function Logout() {
   const [sendLogout] = useSendLogoutMutation();
 
   useEffect(() => {
-    sendLogout(undefined);
-  });
+    sendLogout();
+  }, []);
 
   return null;
 }

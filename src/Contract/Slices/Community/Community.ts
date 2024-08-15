@@ -1,7 +1,7 @@
 import type { ITeacher } from 'Contract/Interfaces/Persons/Persons';
 import type { IQueryParams } from 'Contract/Interfaces/Requests/Requests';
 
-export interface getAllTeachersResponse {
+export interface IGetAllTeachersResponse {
   items: ITeacher[];
   count?: number;
 }

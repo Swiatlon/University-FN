@@ -1,23 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Dashboard from '@mui/icons-material/Dashboard';
-import Login from './PreAuth/Login/Login';
 import App from 'App';
-import PersistLogin from 'Components/Middlewares/PersistLogin/PersistLogin';
-import ProtectedRoutes from 'Components/Middlewares/ProtectedRoutes/ProtectedRoutes';
 import PostAuthLayout from 'Layouts/PostAuth/PostAuthLayout';
 import PreAuthLayout from 'Layouts/PreAuth/PreAuthLayout';
-import { useSelector } from 'react-redux';
-import { getRoleBasedComponent } from './Utils/RouterUtils';
-import { selectUserRoles } from 'Redux/Slices/userInfo/userInfoSlice';
-import Teachers from './PostAuth/Teachers/Teachers';
-import Logout from './PostAuth/Logout/Logout';
+import PersistLoginMiddleware from 'Middlewares/PersistLogin/PersistLogin.Middleware';
+import ProtectedRoutesMiddleware from 'Middlewares/ProtectedRoutes/ProtectedRoutes.Middleware';
+import { communityConfig } from './RoutesConfig/CommunityConfig';
+import { dashboardConfig } from './RoutesConfig/DashboardConfig';
+import { indexPostAuthConfig } from './RoutesConfig/IndexPostAuthConfig';
+import { loginConfig } from './RoutesConfig/LoginConfig';
+import { logoutConfig } from './RoutesConfig/LogoutConfig';
+import { profileConfig } from './RoutesConfig/ProfileConfig';
 import ErrorPage from './Shared/Error/ErrorPage';
-
-const RoleBasedPersonalData: React.FC = () => {
-  const roles = useSelector(selectUserRoles);
-
-  return getRoleBasedComponent(roles);
-};
 
 export const router = createBrowserRouter([
   {
@@ -28,53 +21,18 @@ export const router = createBrowserRouter([
       {
         path: '',
         element: <PreAuthLayout />,
-        children: [{ path: 'login', element: <Login /> }],
+        children: [loginConfig],
       },
       {
         path: 'postAuth',
-        element: <PersistLogin />,
+        element: <PersistLoginMiddleware />,
         children: [
           {
-            element: <ProtectedRoutes />,
+            element: <ProtectedRoutesMiddleware />,
             children: [
               {
                 element: <PostAuthLayout />,
-                children: [
-                  {
-                    index: true,
-                    element: <Dashboard />,
-                  },
-
-                  {
-                    path: 'dashboard',
-                    element: <Dashboard />,
-                  },
-
-                  {
-                    path: 'profile',
-                    children: [
-                      {
-                        path: 'personal-data',
-                        element: <RoleBasedPersonalData />,
-                      },
-                    ],
-                  },
-
-                  {
-                    path: 'community',
-                    children: [
-                      {
-                        path: 'teachers',
-                        element: <Teachers />,
-                      },
-                    ],
-                  },
-
-                  {
-                    path: 'logout',
-                    element: <Logout />,
-                  },
-                ],
+                children: [indexPostAuthConfig, dashboardConfig, profileConfig, communityConfig, logoutConfig],
               },
             ],
           },

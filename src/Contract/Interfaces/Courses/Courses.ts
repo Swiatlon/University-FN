@@ -3,8 +3,8 @@ export interface ICoursesBaseSchema {
   name: string;
 }
 
-export type IDegreeCourse = ICoursesBaseSchema;
+export interface IDegreeCourse extends ICoursesBaseSchema {}
 
-export type IDegreePath = ICoursesBaseSchema;
+export interface IDegreePath extends ICoursesBaseSchema {}
 
-export type IModule = ICoursesBaseSchema;
+export interface IModule extends ICoursesBaseSchema {}

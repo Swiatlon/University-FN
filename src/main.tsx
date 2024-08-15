@@ -1,11 +1,11 @@
 /// <reference types="vite-plugin-svgr/client" />
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
+import { RouterProvider } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { SnackbarProvider } from 'notistack';
+import ReactDOM from 'react-dom/client';
 import { store } from 'Redux/Store';
 import { router } from 'Routes/Router';
 import theme from './theme/theme';

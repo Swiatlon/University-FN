@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
-import { useRefreshMutation } from 'Redux/Slices/auth/authApiSlice';
-import { selectCurrentToken, setCredentials, logOut } from 'Redux/Slices/auth/authSlice';
+import { useRefreshMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
+import { selectCurrentToken, setCredentials, logOut } from 'Redux/StateSlices/Auth/Auth.State.Slice';
 
-interface RefreshResponse {
+interface IRefreshResponse {
   accessToken: string;
 }
 
-function PersistLogin() {
+function PersistLoginMiddleware() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [refresh, { isLoading, isError }] = useRefreshMutation();
@@ -19,7 +19,7 @@ function PersistLogin() {
     if (!token) {
       const verifyRefreshToken = async () => {
         try {
-          const result: RefreshResponse = (await refresh().unwrap()) as RefreshResponse;
+          const result: IRefreshResponse = (await refresh().unwrap()) as IRefreshResponse;
           const { accessToken } = result;
           dispatch(setCredentials({ accessToken }));
         } catch (error) {
@@ -37,10 +37,10 @@ function PersistLogin() {
   }
 
   if (isError) {
-    return <div>Failed to refresh session</div>;
+    throw Error('Failed to refresh session');
   }
 
   return <Outlet />;
 }
 
-export default PersistLogin;
+export default PersistLoginMiddleware;

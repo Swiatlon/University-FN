@@ -1,20 +1,16 @@
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useLoginMutation } from 'Redux/Slices/auth/authApiSlice';
-import AnimatedCircles from 'Components/AuthPanelElements/AnimatedCircles/AnimatedCircles';
-import FormInput from 'Components/FormComponents/FormInput/ReactHookFormInput';
+import { Box, Typography, Button, TextField } from '@mui/material';
+import { useLoginMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
+import AnimatedCircles from 'Components/DEPRECATED/AnimatedCircles/AnimatedCircles';
 import './AuthPanel.scss';
-
-//TODO: FIX THIS ESLINT + TYPESCRIPT
 
 const defaultValues = {
   login: '',
   password: '',
 };
 
-interface Inputs {
+interface IInputs {
   login: string;
   password: string;
 }
@@ -22,11 +18,11 @@ interface Inputs {
 function Login() {
   const { t } = useTranslation();
   const [loginUser] = useLoginMutation();
-  const { handleSubmit, control } = useForm<Inputs>({ defaultValues });
+  const { handleSubmit, control } = useForm<IInputs>({ defaultValues });
 
-  const onSubmit: SubmitHandler<Inputs> = async data => {
+  const onSubmit: SubmitHandler<IInputs> = async data => {
     const { login, password } = data;
-    await loginUser({ identifier: login, password });
+    await loginUser({ username: login, password });
   };
 
   return (
@@ -36,8 +32,42 @@ function Login() {
         <Typography className="MaxContentCenter" variant="h4">
           {t('login_form')}
         </Typography>
-        <FormInput control={control} label="Login" name="login" rules={{ required: true }} variant="outlined" />
-        <FormInput control={control} label="Password" name="password" rules={{ required: true }} type="password" variant="outlined" />
+
+        <Controller
+          name="login"
+          control={control}
+          rules={{ required: true }}
+          render={({ field, fieldState }) => (
+            <TextField
+              {...field}
+              label={t('login')}
+              variant="outlined"
+              fullWidth
+              error={Boolean(fieldState.error)}
+              helperText={fieldState.error ? t('login_required') : null}
+              margin="normal"
+            />
+          )}
+        />
+
+        <Controller
+          name="password"
+          control={control}
+          rules={{ required: true }}
+          render={({ field, fieldState }) => (
+            <TextField
+              {...field}
+              label={t('password')}
+              type="password"
+              variant="outlined"
+              fullWidth
+              error={Boolean(fieldState.error)}
+              helperText={fieldState.error ? t('password_required') : null}
+              margin="normal"
+            />
+          )}
+        />
+
         <Box className="MaxContentCenter" mt={1}>
           <Button size="large" type="submit" variant="contained">
             {t('login_action')}

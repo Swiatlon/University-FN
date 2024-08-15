@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Box, Button, Menu, MenuItem, Typography, useMediaQuery } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
-import { useTranslation } from 'react-i18next';
 
-interface DropdownItem {
+interface IDropdownItem {
   label: string;
   onClick?: () => void;
   icon: React.ReactElement;
   nonClickable?: boolean;
 }
 
-interface DropdownMenuProps {
+interface IDropdownMenuProps {
   label: string;
-  items: DropdownItem[];
+  items: IDropdownItem[];
   startIcon?: React.ReactElement;
   hideLabelOnMobile?: boolean;
 }
 
-function DropdownMenu({ label, items, startIcon, hideLabelOnMobile }: DropdownMenuProps) {
+function DropdownMenu({ label, items, startIcon, hideLabelOnMobile }: IDropdownMenuProps) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const isMobile = useMediaQuery('(max-width:910px)');

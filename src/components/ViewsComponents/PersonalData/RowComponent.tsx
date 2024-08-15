@@ -1,15 +1,15 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import type { SvgIconProps } from '@mui/material/SvgIcon';
+import Typography from '@mui/material/Typography';
 
-interface RowComponentProps {
+interface IRowComponentProps {
   IconComponent: React.ComponentType<SvgIconProps>;
   subtitle: string | undefined;
   label: string | undefined;
 }
 
-function RowComponent({ IconComponent, subtitle, label }: RowComponentProps) {
+function RowComponent({ IconComponent, subtitle, label }: IRowComponentProps) {
   return (
     <Box className="Row">
       <Box gap={1} className="SubTitleBox">

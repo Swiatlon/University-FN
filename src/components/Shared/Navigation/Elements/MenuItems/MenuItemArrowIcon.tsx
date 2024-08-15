@@ -1,11 +1,11 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-interface ArrowIconProps {
+interface IArrowIconProps {
   isOpen: boolean;
 }
 
-const MenuArrowIcon = ({ isOpen }: ArrowIconProps) => {
+const MenuArrowIcon = ({ isOpen }: IArrowIconProps) => {
   return isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />;
 };
 

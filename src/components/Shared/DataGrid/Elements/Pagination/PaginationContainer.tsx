@@ -1,14 +1,14 @@
+import React from 'react';
 import { Box } from '@mui/material';
 import concatClasses from 'classnames';
-import React from 'react';
 
-interface PaginationContainerProps {
+interface IPaginationContainerProps {
   children: React.ReactNode;
   disabled?: boolean;
   isWrapped: boolean;
 }
 
-const PaginationContainer = React.forwardRef<HTMLDivElement, PaginationContainerProps>(({ children, disabled, isWrapped }, ref) => {
+const PaginationContainer = React.forwardRef<HTMLDivElement, IPaginationContainerProps>(({ children, disabled, isWrapped }, ref) => {
   const className = concatClasses('PaginationContainer', {
     Disabled: disabled,
     CenterJustify: isWrapped,

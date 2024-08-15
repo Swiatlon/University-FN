@@ -1,23 +1,24 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Paper } from '@mui/material';
-import { useGetAuthorizedStudentAllDataQuery } from 'Redux/Slices/Students/studentsSlice';
+import { useGetAuthorizedStudentAllDataQuery } from 'Redux/ApiSlices/Students/Students.Api.Slice';
 import FullScreenLoader from 'Components/Shared/FullScreenLoader/FullScreenLoader';
-import type { DetailRowProps } from 'Components/ViewsComponents/PersonalData/DetailRow';
 import BasicInfo from 'Components/ViewsComponents/PersonalData/BasicInfo';
+import type { IDetailRowProps } from 'Components/ViewsComponents/PersonalData/DetailRow';
 import { PersonalDetails } from 'Components/ViewsComponents/PersonalData/PersonalDetails';
+
 import '../Styles/PersonalData.scss';
 
-export interface Section {
+export interface ISection {
   title: string;
-  details: DetailRowProps[];
+  details: IDetailRowProps[];
 }
 
 function EmployeePersonalData() {
   const { t } = useTranslation();
   const { data, isLoading } = useGetAuthorizedStudentAllDataQuery();
 
-  const sections: Section[] = useMemo(
+  const sections: ISection[] = useMemo(
     () => [
       {
         title: t('personalDetails'),

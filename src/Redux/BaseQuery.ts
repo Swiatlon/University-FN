@@ -1,9 +1,9 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { setCredentials } from './Slices/auth/authSlice';
 import qs from 'qs';
+import { setCredentials } from './StateSlices/Auth/Auth.State.Slice';
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-interface AuthState {
+interface IAuthState {
   token: string | null;
   expDate: string | null;
 }
@@ -12,7 +12,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_DEVELOPMENT_BACKEND_ADDRESS,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
-    const { token } = (getState() as { authSlice: AuthState }).authSlice;
+    const { token } = (getState() as { authSlice: IAuthState }).authSlice;
 
     if (token) {
       headers.set('authorization', `Bearer ${token}`);
