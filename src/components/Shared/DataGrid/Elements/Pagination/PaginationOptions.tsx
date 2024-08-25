@@ -9,13 +9,15 @@ interface IPaginationOptionsProps {
   handlePageSizeChange: (event: SelectChangeEvent<number>) => void;
 }
 
-const PaginationOptions = React.forwardRef<HTMLDivElement, IPaginationOptionsProps>(({ pageSize, totalRows, handlePageSizeChange }, ref) => (
-  <Box ref={ref} className="PaginationControls">
-    <Typography>Rows per page:</Typography>
-    <PageSizeSelect value={pageSize} onChange={handlePageSizeChange} />
-    <Typography>Total: {beautifyNumbers(totalRows)}</Typography>
-  </Box>
-));
+const PaginationOptions = React.forwardRef<HTMLDivElement, IPaginationOptionsProps>(
+  ({ pageSize, totalRows, handlePageSizeChange }, ref) => (
+    <Box ref={ref} className="PaginationControls">
+      <Typography>Rows per page:</Typography>
+      <PageSizeSelect value={pageSize} onChange={handlePageSizeChange} />
+      <Typography>Total: {beautifyNumbers(totalRows)}</Typography>
+    </Box>
+  )
+);
 
 PaginationOptions.displayName = 'PaginationOptions';
 

@@ -68,7 +68,12 @@ const Pagination: React.FC<IPaginationProps> = ({ totalRows = 0, page, pageSize,
         showFirstButton
         showLastButton
       />
-      <PaginationOptions pageSize={pageSize} totalRows={totalRows} handlePageSizeChange={handlePageSizeChange} ref={controlsRef} />
+      <PaginationOptions
+        pageSize={pageSize}
+        totalRows={totalRows}
+        handlePageSizeChange={handlePageSizeChange}
+        ref={controlsRef}
+      />
     </PaginationContainer>
   );
 };

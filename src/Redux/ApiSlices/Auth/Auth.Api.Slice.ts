@@ -1,7 +1,13 @@
-import Api from 'Redux/Api';
+import Api from 'Redux/Config/Api';
 import { extendedOnQueryStartedWithNotifications } from 'Utils/Slices/ExtendedOnQueryStarted';
 import { logOut, setCredentials } from '../../StateSlices/Auth/Auth.State.Slice';
-import type { ILoginRequest, ILoginResponse, ILogoutResponse, IRefreshResponse } from 'Contract/Slices/Auth/Auth';
+import type {
+  ILoginRequest,
+  ILoginResponse,
+  ILogoutResponse,
+  IRefreshRequest,
+  IRefreshResponse,
+} from 'Contract/Slices/Auth/Auth';
 
 const authApiSlice = Api.injectEndpoints({
   endpoints: builder => ({
@@ -33,10 +39,13 @@ const authApiSlice = Api.injectEndpoints({
       }),
     }),
 
-    refresh: builder.mutation<IRefreshResponse, void>({
-      query: () => ({
+    refresh: builder.mutation<IRefreshResponse, IRefreshRequest>({
+      query: ({ sessionID }) => ({
         url: '/auth/refresh',
-        method: 'GET',
+        method: 'POST',
+        body: {
+          sessionID,
+        },
       }),
       onQueryStarted: extendedOnQueryStartedWithNotifications({
         successMessage: 'Token refreshed',

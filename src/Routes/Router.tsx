@@ -4,12 +4,14 @@ import PostAuthLayout from 'Layouts/PostAuth/PostAuthLayout';
 import PreAuthLayout from 'Layouts/PreAuth/PreAuthLayout';
 import PersistLoginMiddleware from 'Middlewares/PersistLogin/PersistLogin.Middleware';
 import ProtectedRoutesMiddleware from 'Middlewares/ProtectedRoutes/ProtectedRoutes.Middleware';
-import { communityConfig } from './RoutesConfig/CommunityConfig';
-import { dashboardConfig } from './RoutesConfig/DashboardConfig';
-import { indexPostAuthConfig } from './RoutesConfig/IndexPostAuthConfig';
-import { loginConfig } from './RoutesConfig/LoginConfig';
-import { logoutConfig } from './RoutesConfig/LogoutConfig';
-import { profileConfig } from './RoutesConfig/ProfileConfig';
+import SessionMiddleware from 'Middlewares/Session/Session.Middleware';
+import { communityConfig } from './RoutesConfigs/CommunityConfig';
+import { dashboardConfig } from './RoutesConfigs/DashboardConfig';
+import { indexPostAuthConfig } from './RoutesConfigs/IndexPostAuthConfig';
+import { indexPreAuthConfig } from './RoutesConfigs/IndexPreAuthConfig';
+import { loginConfig } from './RoutesConfigs/LoginConfig';
+import { logoutConfig } from './RoutesConfigs/LogoutConfig';
+import { profileConfig } from './RoutesConfigs/ProfileConfig';
 import ErrorPage from './Shared/Error/ErrorPage';
 
 export const router = createBrowserRouter([
@@ -19,20 +21,25 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '',
-        element: <PreAuthLayout />,
-        children: [loginConfig],
-      },
-      {
-        path: 'postAuth',
-        element: <PersistLoginMiddleware />,
+        element: <SessionMiddleware />,
         children: [
           {
-            element: <ProtectedRoutesMiddleware />,
+            path: '',
+            element: <PreAuthLayout />,
+            children: [indexPreAuthConfig, loginConfig],
+          },
+          {
+            path: 'postAuth',
+            element: <PersistLoginMiddleware />,
             children: [
               {
-                element: <PostAuthLayout />,
-                children: [indexPostAuthConfig, dashboardConfig, profileConfig, communityConfig, logoutConfig],
+                element: <ProtectedRoutesMiddleware />,
+                children: [
+                  {
+                    element: <PostAuthLayout />,
+                    children: [indexPostAuthConfig, dashboardConfig, profileConfig, communityConfig, logoutConfig],
+                  },
+                ],
               },
             ],
           },

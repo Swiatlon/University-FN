@@ -38,8 +38,14 @@ const isIError = (error: unknown): error is IError => {
   );
 };
 
-export const extendedOnQueryStartedWithNotifications = <T, U>({ successMessage, successCallback }: IQueryStartedConfig<T, U>) => {
-  return async (arg: unknown, { dispatch, queryFulfilled }: { dispatch: Dispatch<AnyAction>; queryFulfilled: Promise<{ data: T }> }) => {
+export const extendedOnQueryStartedWithNotifications = <T, U>({
+  successMessage,
+  successCallback,
+}: IQueryStartedConfig<T, U>) => {
+  return async (
+    arg: unknown,
+    { dispatch, queryFulfilled }: { dispatch: Dispatch<AnyAction>; queryFulfilled: Promise<{ data: T }> }
+  ) => {
     try {
       const { data } = await queryFulfilled;
 

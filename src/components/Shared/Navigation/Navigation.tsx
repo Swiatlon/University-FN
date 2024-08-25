@@ -63,7 +63,12 @@ function Navigation({ menuItems }: INavigationProps) {
 
             return (
               <Box key={item.id}>
-                <MenuItemComponent isOpen={openMenuItems[item.id]} item={item} onNavigate={onNavigate} onToggleSubmenu={item.children ? onToggleSubmenu : undefined} />
+                <MenuItemComponent
+                  isOpen={openMenuItems[item.id]}
+                  item={item}
+                  onNavigate={onNavigate}
+                  onToggleSubmenu={item.children ? onToggleSubmenu : undefined}
+                />
                 {item.children ? (
                   <Collapse in={openMenuItems[item.id]} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>

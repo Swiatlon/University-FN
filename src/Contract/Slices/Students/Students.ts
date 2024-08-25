@@ -1,6 +1,7 @@
 import type { IStudent, IAddress, IConsent } from 'Contract/Interfaces/Persons/Persons';
 
-export interface IGetAuthorizedStudentAllDataBackendResponse extends Omit<IStudent, 'degreeCourses' | 'degreePaths' | 'modules'> {
+export interface IGetAuthorizedStudentAllDataBackendResponse
+  extends Omit<IStudent, 'degreeCourses' | 'degreePaths' | 'modules'> {
   address: IAddress;
   consent: IConsent;
   degreeCourses: { id: number; degreeCourse: { id: number; name: string } }[];

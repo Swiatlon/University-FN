@@ -4,22 +4,20 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { useRefreshMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
 import { selectCurrentToken, setCredentials, logOut } from 'Redux/StateSlices/Auth/Auth.State.Slice';
-
-interface IRefreshResponse {
-  accessToken: string;
-}
+import type { IRefreshResponse } from 'Contract/Slices/Auth/Auth';
 
 function PersistLoginMiddleware() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [refresh, { isLoading, isError }] = useRefreshMutation();
   const token = useSelector(selectCurrentToken);
+  const sessionID = sessionStorage.getItem('sessionUUID')!;
 
   useEffect(() => {
     if (!token) {
       const verifyRefreshToken = async () => {
         try {
-          const result: IRefreshResponse = (await refresh().unwrap()) as IRefreshResponse;
+          const result: IRefreshResponse = await refresh({ sessionID }).unwrap();
           const { accessToken } = result;
           dispatch(setCredentials({ accessToken }));
         } catch (error) {

@@ -6,6 +6,9 @@ const theme = createTheme({
     primary: {
       main: '#1976d2',
     },
+    secondary: {
+      main: '#476d94',
+    },
     text: {
       primary: '#070707;',
     },
@@ -43,6 +46,16 @@ const theme = createTheme({
           '&::before': {
             display: 'none',
           },
+        },
+      },
+    },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#0448af',
+          color: '#fff',
+          fontWeight: 'bold',
+          paddingLeft: '32px',
         },
       },
     },

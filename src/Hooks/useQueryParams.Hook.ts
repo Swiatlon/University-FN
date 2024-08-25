@@ -14,7 +14,9 @@ const useQueryParams = ({ initialQueryParams = {} }: IUseQueryParamsProps) => {
   const setSearch = (lookupText: string, fields?: string[]) => {
     setQueryParams(prevState => ({
       ...prevState,
-      search: fields ? ({ lookupText, fields } as TSearchQueryType) : ({ lookupText, searchAllFields: true } as TSearchQueryType),
+      search: fields
+        ? ({ lookupText, fields } as TSearchQueryType)
+        : ({ lookupText, searchAllFields: true } as TSearchQueryType),
     }));
   };
 

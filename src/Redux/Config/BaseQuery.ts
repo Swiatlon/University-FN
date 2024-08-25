@@ -1,6 +1,6 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import qs from 'qs';
-import { setCredentials } from './StateSlices/Auth/Auth.State.Slice';
+import { setCredentials } from '../StateSlices/Auth/Auth.State.Slice';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 interface IAuthState {
@@ -27,7 +27,11 @@ const baseQuery = fetchBaseQuery({
     }),
 });
 
-export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {
+export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQueryError> = async (
+  args,
+  api,
+  extraOptions
+) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status !== 403) {

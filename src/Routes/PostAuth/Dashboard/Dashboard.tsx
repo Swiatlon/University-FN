@@ -1,11 +1,7 @@
 import { Box } from '@mui/material';
 
 function Dashboard() {
-  return (
-    <Box>
-      <h1>Dashboard</h1>
-    </Box>
-  );
+  return <Box sx={{ width: '500px' }} />;
 }
 
 export default Dashboard;

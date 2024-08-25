@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { parseJwt } from 'Utils/Slices/JWT.Utils';
 import type { RolesEnum } from 'Contract/Enums/Enums';
-import type { RootStateType } from 'Redux/Store';
+import type { RootStateType } from 'Redux/Config/Store';
 
 interface IAuthState {
   token: string | null;
@@ -28,7 +28,10 @@ const authSlice = createSlice({
         return { payload: { accessToken, expDate, roles } };
       },
 
-      reducer: (state, action: PayloadAction<{ accessToken: string; expDate: string | null; roles: RolesEnum[] | [] }>) => {
+      reducer: (
+        state,
+        action: PayloadAction<{ accessToken: string; expDate: string | null; roles: RolesEnum[] | [] }>
+      ) => {
         const { accessToken, expDate, roles } = action.payload;
 
         state.token = accessToken;

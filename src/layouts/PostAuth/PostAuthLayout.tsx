@@ -122,7 +122,7 @@ function PostAuthLayout() {
           id: uuidv4(),
           text: t('events'),
           icon: <EventIcon />,
-          linkTo: '/community/events',
+          linkTo: 'community/events',
         },
         {
           id: uuidv4(),

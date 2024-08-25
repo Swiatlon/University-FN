@@ -3,6 +3,8 @@ import type { RolesEnum } from 'Contract/Enums/Enums';
 export interface ILoginRequest {
   identifier: string;
   password: string;
+  rememberMe: boolean;
+  sessionID: string;
 }
 
 export interface ILoginResponse {
@@ -10,6 +12,10 @@ export interface ILoginResponse {
 }
 
 export interface ILogoutResponse {}
+
+export interface IRefreshRequest {
+  sessionID: string;
+}
 
 export interface IRefreshResponse {
   accessToken: string;

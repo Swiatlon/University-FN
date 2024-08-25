@@ -1,6 +1,6 @@
 import { RolesEnum } from 'Contract/Enums/Enums';
 import { startCase, toLower } from 'lodash';
-import Api from 'Redux/Api';
+import Api from 'Redux/Config/Api';
 import type { IGetUserInfoReponse, IGetUserInfoTransformedReponse } from 'Contract/Slices/UserInfo/UserInfo';
 
 export const userInfoSlice = Api.injectEndpoints({

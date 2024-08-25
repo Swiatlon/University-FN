@@ -8,18 +8,20 @@ interface IPaginationContainerProps {
   isWrapped: boolean;
 }
 
-const PaginationContainer = React.forwardRef<HTMLDivElement, IPaginationContainerProps>(({ children, disabled, isWrapped }, ref) => {
-  const className = concatClasses('PaginationContainer', {
-    Disabled: disabled,
-    CenterJustify: isWrapped,
-  });
+const PaginationContainer = React.forwardRef<HTMLDivElement, IPaginationContainerProps>(
+  ({ children, disabled, isWrapped }, ref) => {
+    const className = concatClasses('PaginationContainer', {
+      Disabled: disabled,
+      CenterJustify: isWrapped,
+    });
 
-  return (
-    <Box ref={ref} className={className}>
-      {children}
-    </Box>
-  );
-});
+    return (
+      <Box ref={ref} className={className}>
+        {children}
+      </Box>
+    );
+  }
+);
 
 PaginationContainer.displayName = 'PaginationContainer';
 

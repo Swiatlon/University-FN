@@ -1,81 +1,58 @@
-import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
+import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Box, Typography, Button, TextField } from '@mui/material';
+import { Box, Typography, Button, Paper } from '@mui/material';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useLoginMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
-import AnimatedCircles from 'Components/DEPRECATED/AnimatedCircles/AnimatedCircles';
-import './AuthPanel.scss';
+import ExampleUserIcon from '@assets/Icons/exampleUserIcon.png';
+import RHFTextField from 'Components/Shared/FormComponents/TextField/RHFTextField';
+import LoginAdditionalActions from 'Components/ViewsComponents/Login/LoginAdditionalActions';
+import PasswordField from 'Components/ViewsComponents/Login/PasswordField';
+import { loginValidationSchema } from './Login.Yup';
+import type { ILoginFields } from './Types/Login.Types';
+import './Styles/AuthPanel.scss';
 
-const defaultValues = {
-  login: '',
-  password: '',
-};
-
-interface IInputs {
-  login: string;
-  password: string;
-}
-
-function Login() {
+const Login: React.FC = () => {
   const { t } = useTranslation();
   const [loginUser] = useLoginMutation();
-  const { handleSubmit, control } = useForm<IInputs>({ defaultValues });
 
-  const onSubmit: SubmitHandler<IInputs> = async data => {
-    const { login, password } = data;
-    await loginUser({ identifier: login, password });
+  const methods = useForm<ILoginFields>({
+    resolver: yupResolver(loginValidationSchema),
+    defaultValues: {
+      login: '',
+      password: '',
+      rememberMe: false,
+    },
+  });
+  const { handleSubmit } = methods;
+
+  const onSubmit: SubmitHandler<ILoginFields> = async data => {
+    const sessionUUID = sessionStorage.getItem('sessionUUID')!;
+    const { login, password, rememberMe } = data;
+
+    await loginUser({
+      identifier: login,
+      password,
+      rememberMe,
+      sessionID: sessionUUID,
+    });
   };
 
   return (
-    <Box className="Container">
-      <AnimatedCircles />
-      <form className="Form" onSubmit={handleSubmit(onSubmit)}>
-        <Typography className="MaxContentCenter" variant="h4">
-          {t('login_form')}
+    <FormProvider {...methods}>
+      <Paper className="Container" component="form" onSubmit={handleSubmit(onSubmit)}>
+        <Box component="img" src={ExampleUserIcon} sx={{ width: '96px', mb: 2 }} />
+        <Typography variant="h4" color="primary" sx={{ mb: 4 }}>
+          {t('Login Form')}
         </Typography>
-
-        <Controller
-          name="login"
-          control={control}
-          rules={{ required: true }}
-          render={({ field, fieldState }) => (
-            <TextField
-              {...field}
-              label={t('login')}
-              variant="outlined"
-              fullWidth
-              error={Boolean(fieldState.error)}
-              helperText={fieldState.error ? t('login_required') : null}
-              margin="normal"
-            />
-          )}
-        />
-
-        <Controller
-          name="password"
-          control={control}
-          rules={{ required: true }}
-          render={({ field, fieldState }) => (
-            <TextField
-              {...field}
-              label={t('password')}
-              type="password"
-              variant="outlined"
-              fullWidth
-              error={Boolean(fieldState.error)}
-              helperText={fieldState.error ? t('password_required') : null}
-              margin="normal"
-            />
-          )}
-        />
-
-        <Box className="MaxContentCenter" mt={1}>
-          <Button size="large" type="submit" variant="contained">
-            {t('login_action')}
-          </Button>
-        </Box>
-      </form>
-    </Box>
+        <RHFTextField name="login" label={t('Username')} fullWidth sx={{ mb: 4 }} />
+        <PasswordField name="password" label={t('Password')} sx={{ mb: 3 }} />
+        <LoginAdditionalActions />
+        <Button fullWidth size="large" type="submit" variant="contained">
+          {t('login')}
+        </Button>
+      </Paper>
+    </FormProvider>
   );
-}
+};
 
 export default Login;

@@ -25,7 +25,11 @@ function PersonalDataForm() {
         details: [
           { icon: 'AccountCircle', label: t('name'), value: data?.name },
           { icon: 'AccountCircle', label: t('surname'), value: data?.surname },
-          { icon: 'Cake', label: t('dateOfBirth'), value: data?.dateOfBirth ? new Date(data.dateOfBirth).toLocaleDateString() : undefined },
+          {
+            icon: 'Cake',
+            label: t('dateOfBirth'),
+            value: data?.dateOfBirth ? new Date(data.dateOfBirth).toLocaleDateString() : undefined,
+          },
           { icon: 'ContactMail', label: t('pesel'), value: data?.pesel },
           { icon: 'Public', label: t('gender'), value: data?.gender },
           { icon: 'Language', label: t('nationality'), value: data?.nationality },
@@ -47,9 +51,21 @@ function PersonalDataForm() {
         details: [
           { icon: 'Email', label: t('contactEmail'), value: data?.contactEmail },
           { icon: 'Phone', label: t('contactPhone'), value: data?.contactPhone },
-          { icon: 'DateRange', label: t('dateOfAdmission'), value: data?.dateOfAdmission ? new Date(data.dateOfAdmission).toLocaleDateString() : undefined },
-          { icon: 'HistoryEdu', label: t('permissionForDataProcessing'), value: data?.consent.permissionForDataProcessing ? 'Yes' : 'No' },
-          { icon: 'HistoryEdu', label: t('permissionForPhoto'), value: data?.consent.permissionForPhoto ? 'Yes' : 'No' },
+          {
+            icon: 'DateRange',
+            label: t('dateOfAdmission'),
+            value: data?.dateOfAdmission ? new Date(data.dateOfAdmission).toLocaleDateString() : undefined,
+          },
+          {
+            icon: 'HistoryEdu',
+            label: t('permissionForDataProcessing'),
+            value: data?.consent.permissionForDataProcessing ? 'Yes' : 'No',
+          },
+          {
+            icon: 'HistoryEdu',
+            label: t('permissionForPhoto'),
+            value: data?.consent.permissionForPhoto ? 'Yes' : 'No',
+          },
         ],
       },
     ],
@@ -62,7 +78,11 @@ function PersonalDataForm() {
     <>
       <Box className="BasicInfoBox">
         <BasicInfo name={data?.name ?? ''} surname={data?.surname ?? ''} />
-        <AcademicInfo degreeCourse={data?.degreeCourses[0]?.name ?? ''} degreePath={data?.degreePaths[0]?.name ?? ''} modules={data?.modules.map(module => module.name) ?? []} />
+        <AcademicInfo
+          degreeCourse={data?.degreeCourses[0]?.name ?? ''}
+          degreePath={data?.degreePaths[0]?.name ?? ''}
+          modules={data?.modules.map(module => module.name) ?? []}
+        />
       </Box>
       <PersonalDetails sections={sections} />
     </>

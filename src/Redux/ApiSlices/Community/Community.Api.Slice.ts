@@ -1,5 +1,11 @@
-import Api from 'Redux/Api';
-import type { IGetAllTeachersResponse, IGetAllTeachersQueryParams } from 'Contract/Slices/Community/Community';
+import Api from 'Redux/Config/Api';
+import type {
+  IGetAllTeachersResponse,
+  IGetAllTeachersQueryParams,
+  IGetAllEventsResponse,
+  ICreateEventRequest,
+  ICreateEventResponse,
+} from 'Contract/Slices/Community/Community';
 
 export const communitySlice = Api.injectEndpoints({
   endpoints: builder => ({
@@ -15,7 +21,25 @@ export const communitySlice = Api.injectEndpoints({
         };
       },
     }),
+
+    getAllEvents: builder.query<IGetAllEventsResponse[], void>({
+      query: () => {
+        return {
+          url: '/api/community/events',
+        };
+      },
+    }),
+
+    createEvent: builder.mutation<ICreateEventResponse, ICreateEventRequest>({
+      query: newEvent => {
+        return {
+          url: '/api/community/events',
+          method: 'POST',
+          body: newEvent,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetAllTeachersQuery } = communitySlice;
+export const { useGetAllTeachersQuery, useGetAllEventsQuery, useCreateEventMutation } = communitySlice;
