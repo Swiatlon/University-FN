@@ -23,21 +23,19 @@ export const communitySlice = Api.injectEndpoints({
     }),
 
     getAllEvents: builder.query<IGetAllEventsResponse[], void>({
-      query: () => {
-        return {
-          url: '/api/community/events',
-        };
-      },
+      query: () => ({
+        url: '/api/community/events',
+      }),
+      providesTags: ['eventsGet'],
     }),
 
     createEvent: builder.mutation<ICreateEventResponse, ICreateEventRequest>({
-      query: newEvent => {
-        return {
-          url: '/api/community/events',
-          method: 'POST',
-          body: newEvent,
-        };
-      },
+      query: newEvent => ({
+        url: '/api/community/events',
+        method: 'POST',
+        body: newEvent,
+      }),
+      invalidatesTags: ['eventsGet'],
     }),
   }),
 });

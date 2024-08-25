@@ -6,21 +6,21 @@ import { useCreateEventMutation } from 'Redux/ApiSlices/Community/Community.Api.
 import RHFDateRangePicker from 'Components/Shared/FormComponents/DateRangePicker/RHFDateRangePicker';
 import RHFTextField from 'Components/Shared/FormComponents/TextField/RHFTextField';
 import { eventValidationSchema, type EventFormValuesType } from './EventCreateDialogYup';
-import { newDate } from 'react-datepicker/dist/date_utils';
 
 interface IProps {
+  initialStartDate: Date;
   onClose: () => void;
 }
 
-const EventCreateDialog: React.FC<IProps> = ({ onClose }) => {
+const EventCreateDialog: React.FC<IProps> = ({ onClose, initialStartDate }) => {
   const methods = useForm<EventFormValuesType>({
     resolver: yupResolver(eventValidationSchema),
     defaultValues: {
-      title: 'abc',
-      description: 'defg',
-      dateRange: { startDate: new Date(), endDate: new Date() },
-      startTime: '05:00',
-      endTime: '07:00',
+      title: '',
+      description: '',
+      dateRange: { startDate: initialStartDate, endDate: undefined },
+      startTime: '00:00',
+      endTime: '00:00',
     },
   });
 

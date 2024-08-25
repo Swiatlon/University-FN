@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Box } from '@mui/material';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin, { type DateClickArg } from '@fullcalendar/interaction';
@@ -5,6 +6,8 @@ import listPlugin from '@fullcalendar/list';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { useDialog } from 'Contexts/Dialogs/Dialogs.Context';
+import { useGetAllEventsQuery } from 'Redux/ApiSlices/Community/Community.Api.Slice';
+import CenteredLoader from 'Components/Shared/CenteredLoader/CenteredLoader';
 import EventContent from 'Components/ViewsComponents/Events/EventContent';
 import EventCreateDialog from 'Components/ViewsComponents/Events/EventCreate/EventCreateDialog';
 import EventDialog from 'Components/ViewsComponents/Events/EventDialog';
@@ -15,10 +18,20 @@ const renderContent = (eventInfo: EventContentArg) => {
 };
 
 function Events() {
-  // const _theme = useTheme();
+  const { data, isFetching } = useGetAllEventsQuery();
   const { enqueueDialog } = useDialog();
 
-  const events = [{}];
+  const events = useMemo(() => {
+    return (
+      data?.map(event => ({
+        id: event.id.toString(),
+        title: event.title,
+        start: event.startDate,
+        end: event.endDate,
+        description: event.description,
+      })) ?? []
+    );
+  }, [data]);
 
   const handleEventClick = (clickInfo: EventClickArg) => {
     const event: EventApi = clickInfo.event;
@@ -36,12 +49,13 @@ function Events() {
     ));
   };
 
-  const handleDateClick = (_arg: DateClickArg) => {
-    enqueueDialog(props => <EventCreateDialog {...props} />);
+  const handleDateClick = (arg: DateClickArg) => {
+    enqueueDialog(props => <EventCreateDialog initialStartDate={arg.date} {...props} />);
   };
 
   return (
     <Box sx={{ position: 'relative', height: 'calc(100vh - 180px)', minWidth: '800px' }}>
+      {isFetching ? <CenteredLoader /> : null}
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         expandRows
@@ -66,12 +80,6 @@ function Events() {
         slotMaxTime="24:01"
         slotDuration="00:30"
         slotLabelInterval="02:00"
-        /*
-         * eventTextColor={theme.palette.text.primary}
-         * eventBackgroundColor={theme.palette.primary.main}
-         */
-        eventColor="white"
-        // eventBorderColor={theme.palette.primary.main}
         eventContent={renderContent}
         eventClick={handleEventClick}
         dateClick={handleDateClick}

@@ -26,7 +26,7 @@ export interface ICreateEventRequest {
   description: string;
   startDate: Date;
   endDate: Date;
-  organizators: any[];
+  organizators: string[];
 }
 
 export interface ICreateEventResponse {
@@ -35,5 +35,5 @@ export interface ICreateEventResponse {
   description: string;
   startDate: Date;
   endDate: Date;
-  organizators: any[];
+  organizators: string[];
 }
