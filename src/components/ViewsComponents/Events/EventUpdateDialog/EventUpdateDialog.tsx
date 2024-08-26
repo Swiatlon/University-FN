@@ -2,29 +2,34 @@ import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useCreateEventMutation } from 'Redux/ApiSlices/Community/Community.Api.Slice';
+import { useUpdateEventMutation } from 'Redux/ApiSlices/Community/Community.Api.Slice';
 import RHFDateRangePicker from 'Components/Shared/FormComponents/DateRangePicker/RHFDateRangePicker';
 import RHFTextField from 'Components/Shared/FormComponents/TextField/RHFTextField';
-import { eventValidationSchema, type EventFormValuesType } from './EventCreateDialogYup';
+import { eventValidationSchema, type EventFormValuesType } from '../EventManageDialog.Yup';
+import type { IEventUpdateDialog } from 'Types/Events/Events.Interfaces';
 
-interface IProps {
-  initialStartDate: Date;
-  onClose: () => void;
-}
-
-const EventCreateDialog: React.FC<IProps> = ({ onClose, initialStartDate }) => {
+const EventUpdateDialog: React.FC<IEventUpdateDialog> = ({
+  onClose,
+  eventID,
+  initialTitle,
+  initialDescription,
+  initialStartDate,
+  initialEndDate,
+  initialStartTime,
+  initialEndTime,
+}) => {
+  const [updateEvent] = useUpdateEventMutation();
   const methods = useForm<EventFormValuesType>({
     resolver: yupResolver(eventValidationSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      dateRange: { startDate: initialStartDate, endDate: undefined },
-      startTime: '00:00',
-      endTime: '00:00',
+      title: initialTitle,
+      description: initialDescription,
+      dateRange: { startDate: initialStartDate, endDate: initialEndDate },
+      startTime: initialStartTime,
+      endTime: initialEndTime,
     },
   });
 
-  const [createEvent] = useCreateEventMutation();
   const { handleSubmit } = methods;
 
   const onSubmit = (data: EventFormValuesType) => {
@@ -34,14 +39,14 @@ const EventCreateDialog: React.FC<IProps> = ({ onClose, initialStartDate }) => {
       dateRange: { startDate, endDate },
     } = data;
 
-    createEvent({ title, description, startDate, endDate, organizators: [] });
+    updateEvent({ id: eventID, title, description, startDate, endDate, organizators: [] });
     onClose();
   };
 
   return (
     <FormProvider {...methods}>
       <Dialog open onClose={onClose}>
-        <DialogTitle>Create New Event</DialogTitle>
+        <DialogTitle>Update Event</DialogTitle>
         <DialogContent>
           <RHFTextField name="title" label="Event Title" fullWidth margin="normal" />
           <RHFTextField name="description" label="Description" fullWidth margin="normal" multiline rows={4} />
@@ -66,4 +71,4 @@ const EventCreateDialog: React.FC<IProps> = ({ onClose, initialStartDate }) => {
   );
 };
 
-export default EventCreateDialog;
+export default EventUpdateDialog;
