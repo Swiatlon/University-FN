@@ -8,7 +8,7 @@ export const dashboardConfig = {
       text: 'Dashboard',
     },
     permissions: {
-      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
+      availableForRoles: [RolesEnum.STUDENT],
     },
   },
   element: <Dashboard />,

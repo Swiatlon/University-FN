@@ -8,7 +8,7 @@ export interface IRouteHandle {
     icon: React.JSX.Element;
   };
   permissions?: {
-    notAvailableForRoles?: RolesEnum[];
+    availableForRoles?: RolesEnum[];
   };
 }
 

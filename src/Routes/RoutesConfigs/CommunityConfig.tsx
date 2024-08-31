@@ -13,7 +13,7 @@ export const communityConfig = {
           text: 'Find Teacher',
         },
         permissions: {
-          notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
+          availableForRoles: [RolesEnum.STUDENT],
         },
       },
     },
@@ -25,7 +25,7 @@ export const communityConfig = {
           text: 'Events',
         },
         permissions: {
-          notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
+          availableForRoles: [RolesEnum.STUDENT],
         },
       },
     },

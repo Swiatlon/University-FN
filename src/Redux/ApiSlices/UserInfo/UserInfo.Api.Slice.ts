@@ -10,7 +10,7 @@ export const userInfoSlice = Api.injectEndpoints({
         return {
           url: 'api/userInfo',
           params: {
-            visibilityFields: ['name', 'surname'],
+            visibilityFields: ['name', 'surname', 'organizer'],
           },
         };
       },

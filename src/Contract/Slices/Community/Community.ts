@@ -13,27 +13,15 @@ export interface ICommunityPagination {
 
 export interface IGetAllTeachersQueryParams extends IQueryParams {}
 
-export interface IGetAllEventsResponse {
-  id: number;
-  title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
+export interface IGetAllEventOrganizersResponse {
+  organizerId: number;
+  organizerType: string;
+  name: string;
+  surname?: string;
 }
 
-export interface ICreateEventRequest {
-  title: string;
-  description: string;
-  startDate: Date;
-  endDate: Date;
-  organizators: any[];
-}
-
-export interface ICreateEventResponse {
-  id: number;
-  title: string;
-  description: string;
-  startDate: Date;
-  endDate: Date;
-  organizators: any[];
+export interface ITransformedGetAllEventOrganizersResponse {
+  organizerId: number;
+  organizerType: string;
+  name: string;
 }
