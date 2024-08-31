@@ -1,36 +1,9 @@
 import type { ReactElement } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Box, Divider } from '@mui/material';
-import { useDialog } from 'Contexts/Dialogs/Dialogs.Context';
-import { useDeleteEventMutation } from 'Redux/ApiSlices/Community/Community.Api.Slice';
 import { formatFullDateTime } from 'Routes/Utils/Date.Utils';
-import EventUpdateDialog from '../EventUpdateDialog/EventUpdateDialog';
 import type { IEventShowDialog } from 'Types/Events/Events.Interfaces';
 
 const EventShowDialog = ({ onClose, event }: IEventShowDialog): ReactElement => {
-  const [deleteEvent] = useDeleteEventMutation();
-  const { enqueueDialog } = useDialog();
-
-  const handleUpdateClick = () => {
-    onClose();
-    enqueueDialog(props => (
-      <EventUpdateDialog
-        {...props}
-        eventID={event.id}
-        initialTitle={event.title}
-        initialDescription={event.description}
-        initialStartDate={event.startDate!}
-        initialEndDate={event.endDate!}
-        initialStartTime={event.startTime}
-        initialEndTime={event.endTime}
-      />
-    ));
-  };
-
-  const handleDeleteClick = async () => {
-    onClose();
-    await deleteEvent({ id: event.id });
-  };
-
   return (
     <Dialog open onClose={onClose} fullWidth>
       <DialogTitle>{event.title}</DialogTitle>
@@ -59,12 +32,6 @@ const EventShowDialog = ({ onClose, event }: IEventShowDialog): ReactElement => 
         </Box>
       </DialogContent>
       <DialogActions sx={{ padding: '1rem', justifyContent: 'flex-end' }}>
-        <Button onClick={handleDeleteClick} variant="contained" color="error">
-          Delete
-        </Button>
-        <Button onClick={handleUpdateClick} variant="contained" color="secondary">
-          Update
-        </Button>
         <Button onClick={onClose} variant="contained" color="primary">
           Close
         </Button>

@@ -16,7 +16,7 @@ export const profileConfig = {
       text: 'Profile',
     },
     permissions: {
-      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
+      availableForRoles: [RolesEnum.STUDENT],
     },
   },
   children: [
@@ -27,6 +27,7 @@ export const profileConfig = {
         navigation: {
           text: 'Personal Data',
         },
+        availableForRoles: [RolesEnum.STUDENT],
       },
     },
   ],

@@ -1,3 +1,5 @@
+import type { ITransformedGetAllEventOrganizersResponse } from './Community';
+
 export interface IGetAllEventsResponse {
   id: number;
   title: string;
@@ -16,7 +18,8 @@ export interface ICreateEventRequest {
   description: string;
   startDate: Date;
   endDate: Date;
-  organizators: string[];
+  organizators: ITransformedGetAllEventOrganizersResponse[];
+  author: string;
 }
 
 export interface ICreateEventResponse {

@@ -1,7 +1,12 @@
 import Api from 'Redux/Config/Api';
 import { formatTime } from 'Routes/Utils/Date.Utils';
 import { extendedOnQueryStartedWithNotifications } from 'Utils/Slices/ExtendedOnQueryStarted';
-import type { IGetAllTeachersResponse, IGetAllTeachersQueryParams } from 'Contract/Slices/Community/Community';
+import type {
+  IGetAllTeachersResponse,
+  IGetAllTeachersQueryParams,
+  IGetAllEventOrganizersResponse,
+  ITransformedGetAllEventOrganizersResponse,
+} from 'Contract/Slices/Community/Community';
 import type {
   ITransformedGetAllEventsResponse,
   IGetAllEventsResponse,
@@ -78,6 +83,20 @@ export const communitySlice = Api.injectEndpoints({
 
       invalidatesTags: ['eventsGet'],
     }),
+
+    getAllEventOrganizers: builder.query<ITransformedGetAllEventOrganizersResponse[], void>({
+      query: () => ({
+        url: '/api/community/eventOrganizers',
+      }),
+      transformResponse: (response: IGetAllEventOrganizersResponse[]) =>
+        response.map(organizer => {
+          return {
+            organizerId: organizer.organizerId,
+            organizerType: organizer.organizerType,
+            name: organizer.surname ? `${organizer.name} ${organizer.surname}` : organizer.name,
+          };
+        }),
+    }),
   }),
 });
 
@@ -87,4 +106,5 @@ export const {
   useCreateEventMutation,
   useUpdateEventMutation,
   useDeleteEventMutation,
+  useGetAllEventOrganizersQuery,
 } = communitySlice;

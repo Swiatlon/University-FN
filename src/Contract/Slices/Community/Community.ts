@@ -12,3 +12,16 @@ export interface ICommunityPagination {
 }
 
 export interface IGetAllTeachersQueryParams extends IQueryParams {}
+
+export interface IGetAllEventOrganizersResponse {
+  organizerId: number;
+  organizerType: string;
+  name: string;
+  surname?: string;
+}
+
+export interface ITransformedGetAllEventOrganizersResponse {
+  organizerId: number;
+  organizerType: string;
+  name: string;
+}

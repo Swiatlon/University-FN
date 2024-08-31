@@ -7,6 +7,7 @@ import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { useDialog } from 'Contexts/Dialogs/Dialogs.Context';
 import { useGetAllEventsQuery } from 'Redux/ApiSlices/Community/Community.Api.Slice';
+import { useGetUserInfoQuery } from 'Redux/ApiSlices/UserInfo/UserInfo.Api.Slice';
 import CenteredLoader from 'Components/Shared/CenteredLoader/CenteredLoader';
 import EventCreateDialog from 'Components/ViewsComponents/Events/EventAddDialog/EventCreateDialog';
 import EventContent from 'Components/ViewsComponents/Events/EventContent/EventContent';
@@ -19,6 +20,7 @@ const renderContent = (eventInfo: EventContentArg) => {
 
 function Events() {
   const { data, isFetching } = useGetAllEventsQuery();
+  const { data: userData } = useGetUserInfoQuery();
   const { enqueueDialog } = useDialog();
 
   const events = useMemo(() => {
@@ -48,12 +50,18 @@ function Events() {
 
   const handleEventAddClick = (arg: EventAddArg) => {
     const startDate = arg.event.start!;
-    enqueueDialog(props => <EventCreateDialog {...props} initialStartDate={startDate} />);
+
+    if (userData?.organizer) {
+      enqueueDialog(props => <EventCreateDialog {...props} initialStartDate={startDate} />);
+    }
   };
 
   const handleDateClick = (arg: DateClickArg) => {
     const startDate = arg.date;
-    enqueueDialog(props => <EventCreateDialog {...props} initialStartDate={startDate} />);
+
+    if (userData?.organizer) {
+      enqueueDialog(props => <EventCreateDialog {...props} initialStartDate={startDate} />);
+    }
   };
 
   const handleEventClick = (clickInfo: EventClickArg) => {
