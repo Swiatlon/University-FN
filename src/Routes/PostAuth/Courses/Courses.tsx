@@ -1,4 +1,3 @@
-import React from 'react';
 import { Paper } from '@mui/material';
 import { useGetAuthorizedStudentAllDataQuery } from 'Redux/ApiSlices/Students/Students.Api.Slice';
 import FullScreenLoader from 'Components/Shared/FullScreenLoader/FullScreenLoader';

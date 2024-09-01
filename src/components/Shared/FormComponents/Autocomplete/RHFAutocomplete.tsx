@@ -43,7 +43,7 @@ const RHFAutocomplete = <T,>({
           getOptionLabel={handleGetOptionLabel}
           disabled={loading}
           isOptionEqualToValue={(option, value) => handleGetOptionLabel(option) === handleGetOptionLabel(value)}
-          onChange={(event, value) => {
+          onChange={(_event, value) => {
             field.onChange(value);
           }}
           value={(field.value as T) || null}
