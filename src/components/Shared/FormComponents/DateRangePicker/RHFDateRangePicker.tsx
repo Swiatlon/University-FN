@@ -5,7 +5,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { get } from 'lodash';
 import DateRangePickerCustomInput from './Elements/DateRangePickerInputField';
 import DateRangePickerTimeChoosingFooter from './Elements/DateRangePickerTimeChoosingFooter';
-import { formattedDateRange } from './Utils/RHFDateRangePicker.Utils';
 import type { IRHFDateRangePickerProps, DateRange } from './Types/RHFDateRangePicker.Types';
 import './Style/RHFDateRangePicker.scss';
 
@@ -70,7 +69,8 @@ const RHFDateRangePicker: React.FC<IRHFDateRangePickerProps> = ({ name, label, w
             shouldCloseOnSelect={false}
             customInput={
               <DateRangePickerCustomInput
-                value={formattedDateRange(startDate, endDate)}
+                startDate={startDate}
+                endDate={endDate}
                 label={label}
                 errorMessages={errorMessages}
                 onClear={handleClear}

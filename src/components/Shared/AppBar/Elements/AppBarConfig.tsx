@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import LanguageIcon from '@mui/icons-material/Language';
 import { Box } from '@mui/material';
 import EnglandCircle from '@assets/icons/EnglandCircle.svg?react';
 import PolandCircle from '@assets/icons/PolandCircle.svg?react';
-import DropdownMenu from 'Components/Shared/DropdownMenu/DropdownMenu';
 import AppBarTimer from './AppBarTimer';
 
 export function useLanguageMenuItems() {
@@ -32,12 +30,9 @@ export function useLanguageMenuItems() {
 }
 
 function AppBarConfig() {
-  const { t } = useTranslation();
-  const languages = useLanguageMenuItems();
-
   return (
     <Box className="ConfigAppBar">
-      <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} hideLabelOnMobile />
+      {/* <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} hideLabelOnMobile /> */}
       <AppBarTimer />
     </Box>
   );

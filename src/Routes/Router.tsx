@@ -5,6 +5,7 @@ import PreAuthLayout from 'Layouts/PreAuth/PreAuthLayout';
 import PersistLoginMiddleware from 'Middlewares/PersistLogin/PersistLogin.Middleware';
 import ProtectedRoutesMiddleware from 'Middlewares/ProtectedRoutes/ProtectedRoutes.Middleware';
 import SessionMiddleware from 'Middlewares/Session/Session.Middleware';
+import { academicsConfig } from './RoutesConfigs/AcademicsConfig';
 import { communityConfig } from './RoutesConfigs/CommunityConfig';
 import { dashboardConfig } from './RoutesConfigs/DashboardConfig';
 import { indexPostAuthConfig } from './RoutesConfigs/IndexPostAuthConfig';
@@ -37,7 +38,14 @@ export const router = createBrowserRouter([
                 children: [
                   {
                     element: <PostAuthLayout />,
-                    children: [indexPostAuthConfig, dashboardConfig, profileConfig, communityConfig, logoutConfig],
+                    children: [
+                      indexPostAuthConfig,
+                      dashboardConfig,
+                      profileConfig,
+                      communityConfig,
+                      academicsConfig,
+                      logoutConfig,
+                    ],
                   },
                 ],
               },

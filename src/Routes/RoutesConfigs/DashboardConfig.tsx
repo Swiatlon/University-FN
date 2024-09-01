@@ -2,13 +2,13 @@ import { RolesEnum } from 'Contract/Enums/Enums';
 import Dashboard from 'Routes/PostAuth/Dashboard/Dashboard';
 
 export const dashboardConfig = {
-  path: 'dashboard',
+  path: '*',
   handle: {
     navigation: {
       text: 'Dashboard',
     },
     permissions: {
-      notAvailableForRoles: [RolesEnum.EXTERNAL_PARTICIPANT, RolesEnum.COMPANY],
+      availableForRoles: [RolesEnum.STUDENT],
     },
   },
   element: <Dashboard />,

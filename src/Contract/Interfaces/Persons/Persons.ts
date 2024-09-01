@@ -1,4 +1,4 @@
-import type { IDegreeCourse, IDegreePath, IModule } from 'Contract/Interfaces/Courses/Courses';
+import type { IDegreeCourse, IDegreePath, IModule } from 'Contract/Interfaces/Academics/Academics';
 
 export enum GenderEnum {
   Men = 'Men',

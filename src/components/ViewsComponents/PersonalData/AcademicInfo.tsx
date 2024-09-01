@@ -14,9 +14,9 @@ export function AcademicInfo({ degreeCourse, degreePath, modules }: IAcademicInf
       <DetailSection
         title="Academic Informations"
         details={[
-          { icon: 'School', label: 'Kierunek', value: degreeCourse },
-          { icon: 'Timeline', label: 'Sciezka', value: degreePath },
-          { icon: 'LibraryBooks', label: 'Moduly', value: modules.join(', ') },
+          { icon: 'School', label: 'Degree Course', value: degreeCourse },
+          { icon: 'Timeline', label: 'Degree Path', value: degreePath },
+          { icon: 'LibraryBooks', label: 'Modules', value: modules.join(', ') },
         ]}
       />
     </Paper>

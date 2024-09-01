@@ -10,13 +10,13 @@ const ProtectedRoutesMiddleware: React.FC = () => {
 
   const userRoles = useSelector(selectUserRoles);
   const isAuthenticated = useSelector(selectCurrentToken);
-  const notAllowedRoles = currentMatch?.handle?.permissions?.notAvailableForRoles;
+  const notAllowedRoles = currentMatch?.handle?.permissions?.availableForRoles;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  if (userRoles.some(role => notAllowedRoles?.includes(role))) {
+  if (userRoles.some(role => notAllowedRoles && !notAllowedRoles.includes(role))) {
     return <Navigate to="/" replace />;
   }
 

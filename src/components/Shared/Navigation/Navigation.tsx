@@ -57,7 +57,7 @@ function Navigation({ menuItems }: INavigationProps) {
 
         <List className="List" component="ul">
           {menuItems.map(item => {
-            if (userRoles.some(role => item.notAvailableForRoles?.includes(role))) {
+            if (userRoles.some(role => item.availableForRoles && !item.availableForRoles.includes(role))) {
               return null;
             }
 
@@ -73,7 +73,9 @@ function Navigation({ menuItems }: INavigationProps) {
                   <Collapse in={openMenuItems[item.id]} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                       {item.children.map(subItem => {
-                        if (userRoles.some(role => subItem.notAvailableForRoles?.includes(role))) {
+                        if (
+                          userRoles.some(role => subItem.availableForRoles && !subItem.availableForRoles.includes(role))
+                        ) {
                           return null;
                         }
 

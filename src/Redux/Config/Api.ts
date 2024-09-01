@@ -4,7 +4,7 @@ import { baseQueryWithReauth } from './BaseQuery';
 const Api = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
-  tagTypes: [],
+  tagTypes: ['eventsGet'],
 
   endpoints: _builder => ({}),
 });

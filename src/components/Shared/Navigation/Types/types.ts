@@ -7,7 +7,7 @@ export interface IMenuItem {
   icon: ReactElement<unknown, JSXElementConstructor<unknown> | string>;
   linkTo?: string;
   children?: IMenuItem[];
-  notAvailableForRoles?: RolesEnum[];
+  availableForRoles?: RolesEnum[];
 }
 
 export interface IMenuItemProps {

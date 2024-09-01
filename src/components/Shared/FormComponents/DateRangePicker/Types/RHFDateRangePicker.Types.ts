@@ -18,7 +18,8 @@ export interface IRHFDateRangePickerProps {
 }
 
 export interface IDateRangePickerCustomInputProps {
-  value: string;
+  startDate: Date;
+  endDate: NullableDateType;
   label?: string;
   errorMessages: string[];
   onClear: (event: React.MouseEvent<HTMLButtonElement>) => void;
