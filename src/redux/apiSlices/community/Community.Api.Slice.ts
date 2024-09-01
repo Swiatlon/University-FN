@@ -1,12 +1,12 @@
-import Api from 'Redux/Config/Api';
-import { formatTime } from 'Routes/Utils/Date.Utils';
-import { extendedOnQueryStartedWithNotifications } from 'Utils/Slices/ExtendedOnQueryStarted';
+import Api from 'redux/config/Api';
+import { formatTime } from 'routes/utils/Date.Utils';
+import { extendedOnQueryStartedWithNotifications } from 'utils/slices/ExtendedOnQueryStarted';
 import type {
   IGetAllTeachersResponse,
   IGetAllTeachersQueryParams,
   IGetAllEventOrganizersResponse,
   ITransformedGetAllEventOrganizersResponse,
-} from 'Contract/Slices/Community/Community';
+} from 'contract/slices/community/Community';
 import type {
   ITransformedGetAllEventsResponse,
   IGetAllEventsResponse,
@@ -16,7 +16,7 @@ import type {
   IUpdateEventRequest,
   IDeleteEventResponse,
   IDeleteEventRequest,
-} from 'Contract/Slices/Community/Events.Interfaces';
+} from 'contract/slices/community/Events.Interfaces';
 
 export const communitySlice = Api.injectEndpoints({
   endpoints: builder => ({

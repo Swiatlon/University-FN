@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper } from '@mui/material';
-import DetailSection from 'Components/ViewsComponents/PersonalData/DetailSection';
+import DetailSection from 'components/viewsComponents/personalData/DetailSection';
 
 interface IAcademicInfoProps {
   degreeCourse: string;

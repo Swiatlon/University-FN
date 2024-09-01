@@ -2,15 +2,15 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Collapse, Divider, List } from '@mui/material';
-import Logo from 'Assets/images/Logo.png';
-import { useTypedSelector } from 'Hooks/useStore.Hooks';
-import { selectCurrentToken, selectUserRoles } from 'Redux/StateSlices/Auth/Auth.State.Slice';
-import { selectIsDrawerOpen, toggleDrawer } from 'Redux/StateSlices/View/View.State.Slice';
-import UserProfile from './Elements/HeaderItems/UserProfile';
-import MenuItemComponent from './Elements/MenuItems/MenuItem';
+import { Box, Divider, List, Collapse } from '@mui/material';
+import { useTypedSelector } from 'hooks/useStore.Hooks';
+import { selectCurrentToken, selectUserRoles } from 'redux/stateSlices/auth/Auth.State.Slice';
+import { selectIsDrawerOpen, toggleDrawer } from 'redux/stateSlices/view/View.State.Slice';
+import Logo from 'assets/images/Logo.png';
+import UserProfile from './elements/headerItems/UserProfile';
+import MenuItemComponent from './elements/menuItems/MenuItem';
 import { Drawer } from './Styled';
-import type { OpenMenuItemsStateType, INavigationProps } from './Types/types';
+import type { INavigationProps, OpenMenuItemsStateType } from './types/types';
 
 function Navigation({ menuItems }: INavigationProps) {
   const dispatch = useDispatch();

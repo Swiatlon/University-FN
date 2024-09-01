@@ -1,13 +1,12 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Paper } from '@mui/material';
-import { useGetAuthorizedStudentAllDataQuery } from 'Redux/ApiSlices/Students/Students.Api.Slice';
-import FullScreenLoader from 'Components/Shared/FullScreenLoader/FullScreenLoader';
-import BasicInfo from 'Components/ViewsComponents/PersonalData/BasicInfo';
-import type { IDetailRowProps } from 'Components/ViewsComponents/PersonalData/DetailRow';
-import { PersonalDetails } from 'Components/ViewsComponents/PersonalData/PersonalDetails';
-
-import '../Styles/PersonalData.scss';
+import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import BasicInfo from 'components/viewsComponents/personalData/BasicInfo';
+import { PersonalDetails } from 'components/viewsComponents/personalData/PersonalDetails';
+import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
+import type { IDetailRowProps } from 'components/viewsComponents/personalData/DetailRow';
+import '../styles/PersonalData.scss';
 
 export interface ISection {
   title: string;

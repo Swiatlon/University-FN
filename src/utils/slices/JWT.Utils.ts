@@ -1,4 +1,4 @@
-import type { IDecodedJwt } from 'Contract/Slices/Auth/Auth';
+import type { IDecodedJwt } from 'contract/slices/auth/Auth';
 
 export function parseJwt(token: string | null): IDecodedJwt | undefined {
   if (!token) {

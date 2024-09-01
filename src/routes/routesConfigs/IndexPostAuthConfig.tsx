@@ -1,4 +1,4 @@
-import Dashboard from 'Routes/PostAuth/Dashboard/Dashboard';
+import Dashboard from 'routes/postAuth/dashboard/Dashboard';
 
 export const indexPostAuthConfig = {
   index: true,

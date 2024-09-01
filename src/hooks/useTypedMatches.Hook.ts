@@ -1,6 +1,6 @@
 import type React from 'react';
 import { useMatches as originalUseMatches } from 'react-router-dom';
-import type { RolesEnum } from 'Contract/Enums/Enums';
+import type { RolesEnum } from 'contract/enums/Enums';
 
 export interface IRouteHandle {
   navigation?: {

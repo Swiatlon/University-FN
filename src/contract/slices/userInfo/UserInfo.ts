@@ -1,4 +1,4 @@
-import type { RolesEnum } from 'Contract/Enums/Enums';
+import type { RolesEnum } from 'contract/enums/Enums';
 
 export interface IGetUserInfoReponse {
   roles: RolesEnum[];

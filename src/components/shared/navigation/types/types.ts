@@ -1,5 +1,5 @@
 import type { JSXElementConstructor, ReactElement } from 'react';
-import type { RolesEnum } from 'Contract/Enums/Enums';
+import type { RolesEnum } from 'contract/enums/Enums';
 
 export interface IMenuItem {
   id: string;

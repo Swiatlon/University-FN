@@ -5,13 +5,13 @@ import interactionPlugin, { type DateClickArg } from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { useDialog } from 'Contexts/Dialogs/Dialogs.Context';
-import { useGetAllEventsQuery } from 'Redux/ApiSlices/Community/Community.Api.Slice';
-import { useGetUserInfoQuery } from 'Redux/ApiSlices/UserInfo/UserInfo.Api.Slice';
-import CenteredLoader from 'Components/Shared/CenteredLoader/CenteredLoader';
-import EventCreateDialog from 'Components/ViewsComponents/Events/EventAddDialog/EventCreateDialog';
-import EventContent from 'Components/ViewsComponents/Events/EventContent/EventContent';
-import EventShowDialog from 'Components/ViewsComponents/Events/EventShowDialog/EventShowDialog';
+import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
+import EventCreateDialog from 'components/viewsComponents/events/eventAddDialog/EventCreateDialog';
+import EventContent from 'components/viewsComponents/events/eventContent/EventContent';
+import EventShowDialog from 'components/viewsComponents/events/eventShowDialog/EventShowDialog';
+import { useDialog } from 'contexts/dialogs/Dialogs.Context';
+import { useGetAllEventsQuery } from 'redux/apiSlices/community/Community.Api.Slice';
+import { useGetUserInfoQuery } from 'redux/apiSlices/userInfo/UserInfo.Api.Slice';
 import type { EventClickArg, EventContentArg, EventAddArg } from '@fullcalendar/core/index.js';
 
 const renderContent = (eventInfo: EventContentArg) => {

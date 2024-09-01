@@ -1,6 +1,6 @@
 import { Fade, ListItemIcon, ListItemText, Tooltip, Typography } from '@mui/material';
 import MenuItemArrowIcon from './MenuItemArrowIcon';
-import type { IMenuItem } from '../../Types/types';
+import type { IMenuItem } from '../../types/types';
 
 interface IListItemContentProps {
   item: IMenuItem;

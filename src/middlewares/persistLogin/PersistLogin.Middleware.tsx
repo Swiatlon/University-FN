@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
-import { useRefreshMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
-import { selectCurrentToken, setCredentials, logOut } from 'Redux/StateSlices/Auth/Auth.State.Slice';
-import type { IRefreshResponse } from 'Contract/Slices/Auth/Auth';
+import { useRefreshMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
+import { selectCurrentToken, setCredentials, logOut } from 'redux/stateSlices/auth/Auth.State.Slice';
+import type { IRefreshResponse } from 'contract/slices/auth/Auth';
 
 function PersistLoginMiddleware() {
   const navigate = useNavigate();

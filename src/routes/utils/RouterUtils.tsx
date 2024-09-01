@@ -1,6 +1,6 @@
-import { RolesEnum } from 'Contract/Enums/Enums';
-import StudentPersonalData from 'Routes/PostAuth/PersonalData/Student/StudentPersonalData';
-import TeacherPersonalData from 'Routes/PostAuth/PersonalData/Teacher/TeacherPersonalData';
+import { RolesEnum } from 'contract/enums/Enums';
+import StudentPersonalData from 'routes/postAuth/personalData/student/StudentPersonalData';
+import TeacherPersonalData from 'routes/postAuth/personalData/teacher/TeacherPersonalData';
 
 export const getRoleBasedComponent = (roles: string[]) => {
   if (roles.includes(RolesEnum.STUDENT)) {

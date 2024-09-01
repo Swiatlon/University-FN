@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
+import RHFCheckbox from 'components/shared/formComponents/checkbox/RHFCheckbox';
 import { t } from 'i18next';
-import { useRandomLoginMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
-import RHFCheckbox from 'Components/Shared/FormComponents/Checkbox/RHFCheckbox';
+import { useRandomLoginMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
 
 function LoginAdditionalActions() {
   const sessionUUID = sessionStorage.getItem('sessionUUID')!;

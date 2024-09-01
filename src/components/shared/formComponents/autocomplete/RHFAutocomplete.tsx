@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from 'react-hook-form';
 import { Autocomplete, TextField, CircularProgress } from '@mui/material';
-import type { IRHFAutocompleteWithoutTagsProps } from './Types/RHFAutoComplete.Types';
+import type { IRHFAutocompleteWithoutTagsProps } from './types/RHFAutoComplete.Types';
 
 const RHFAutocomplete = <T,>({
   baseProps: { name },

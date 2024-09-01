@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-import type { NullableDateType } from '../Types/RHFDateRangePicker.Types';
+import type { NullableDateType } from '../types/RHFDateRangePicker.Types';
 
 const formatDate = (date: NullableDateType): string => {
   if (!date) return '';

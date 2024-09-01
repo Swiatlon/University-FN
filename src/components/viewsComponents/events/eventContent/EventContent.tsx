@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import type { IEventContentProps } from 'Types/Events/Events.Interfaces';
+import type { IEventContentProps } from 'types/events/Events.Interfaces';
 
 const EventContent: React.FC<IEventContentProps> = ({ eventInfo }) => {
   const { start, end } = eventInfo.event;

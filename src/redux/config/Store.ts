@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import authSlice from 'Redux/StateSlices/Auth/Auth.State.Slice';
-import viewSlice from 'Redux/StateSlices/View/View.State.Slice';
+import authSlice from 'redux/stateSlices/auth/Auth.State.Slice';
+import viewSlice from 'redux/stateSlices/view/View.State.Slice';
 import Api from './Api';
 
 export const store = configureStore({

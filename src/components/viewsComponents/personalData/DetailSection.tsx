@@ -2,7 +2,7 @@ import React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
 import { DetailRow, type IDetailRowProps } from './DetailRow';
-import 'Routes/PostAuth/PersonalData/Styles/PersonalData.scss';
+import 'routes/postAuth/personalData/styles/PersonalData.scss';
 
 interface IDetailSectionProps {
   title: string;

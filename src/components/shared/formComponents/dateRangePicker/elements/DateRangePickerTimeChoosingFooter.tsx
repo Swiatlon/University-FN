@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import RHFTextField from '../../TextField/RHFTextField';
-import type { IWithTimeProps } from '../Types/RHFDateRangePicker.Types';
+import RHFTextField from '../../textField/RHFTextField';
+import type { IWithTimeProps } from '../types/RHFDateRangePicker.Types';
 
 interface IProps {
   withTime: IWithTimeProps;

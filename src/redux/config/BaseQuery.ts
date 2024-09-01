@@ -1,6 +1,6 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import qs from 'qs';
-import { setCredentials } from '../StateSlices/Auth/Auth.State.Slice';
+import { setCredentials } from '../stateSlices/auth/Auth.State.Slice';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 interface IAuthState {

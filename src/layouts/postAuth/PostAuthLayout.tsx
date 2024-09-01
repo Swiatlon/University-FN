@@ -9,11 +9,11 @@ import SchoolIcon from '@mui/icons-material/School';
 import SearchIcon from '@mui/icons-material/Search';
 import './PostAuthLayout.scss';
 import { Box } from '@mui/material';
-import { RolesEnum } from 'Contract/Enums/Enums';
-import { Container, Content } from 'Layouts/Styled';
+import AppBar from 'components/shared/appBar/AppBar';
+import Navigation from 'components/shared/navigation/Navigation';
+import { RolesEnum } from 'contract/enums/Enums';
+import { Container, Content } from 'layouts/Styled';
 import { v4 as uuidv4 } from 'uuid';
-import AppBar from 'Components/Shared/AppBar/AppBar';
-import Navigation from 'Components/Shared/Navigation/Navigation';
 
 function PostAuthLayout() {
   const { t } = useTranslation();

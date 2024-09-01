@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { ListItemButton } from '@mui/material';
 import concatClasses from 'classnames';
-import { useTypedSelector } from 'Hooks/useStore.Hooks';
-import { selectIsDrawerOpen } from 'Redux/StateSlices/View/View.State.Slice';
+import { useTypedSelector } from 'hooks/useStore.Hooks';
+import { selectIsDrawerOpen } from 'redux/stateSlices/view/View.State.Slice';
 import MenuItemContent from './MenuItemContent';
-import type { IMenuItemProps } from '../../Types/types';
+import type { IMenuItemProps } from '../../types/types';
 
 function MenuItemComponent({ item, onToggleSubmenu, isOpen, isChildren }: IMenuItemProps) {
   const isOpenDrawer = useTypedSelector(selectIsDrawerOpen);

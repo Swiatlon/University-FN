@@ -3,7 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import { Checkbox, Autocomplete, CircularProgress, TextField } from '@mui/material';
-import type { IRHFAutocompleteWithTagsProps } from './Types/RHFAutoComplete.Types';
+import type { IRHFAutocompleteWithTagsProps } from './types/RHFAutoComplete.Types';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;

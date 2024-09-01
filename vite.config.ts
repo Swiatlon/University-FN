@@ -7,9 +7,9 @@ export default defineConfig({
   plugins: [react(), svgrPlugin({}), tsconfigPaths()],
   resolve: {
     alias: {
-      '@Components': '/src/Components',
-      Features: '/src/Features',
-      Assets: '/src/Assets',
+      components: '/src/components',
+      features: '/src/features',
+      assets: '/src/assets',
     },
   },
 });

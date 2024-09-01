@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useRouteError } from 'react-router-dom';
 import { enqueueSnackbar } from 'notistack';
-import { selectCurrentToken } from 'Redux/StateSlices/Auth/Auth.State.Slice';
+import { selectCurrentToken } from 'redux/stateSlices/auth/Auth.State.Slice';
 
 function ErrorPage() {
   const isAuthenticated = useSelector(selectCurrentToken);

@@ -1,8 +1,8 @@
-import Api from 'Redux/Config/Api';
+import Api from 'redux/config/Api';
 import type {
   IGetAuthorizedStudentAllDataBackendResponse,
   IGetAuthorizedStudentAllDataTransformedReponse,
-} from 'Contract/Slices/Students/Students';
+} from 'contract/slices/students/Students';
 
 export const studentsSlice = Api.injectEndpoints({
   endpoints: builder => ({

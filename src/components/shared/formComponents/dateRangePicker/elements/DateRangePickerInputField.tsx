@@ -2,8 +2,8 @@ import { forwardRef } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import { IconButton, InputAdornment, TextField, Typography, Stack } from '@mui/material';
-import { formattedDateRange } from '../Utils/RHFDateRangePicker.Utils';
-import type { IDateRangePickerCustomInputProps } from '../Types/RHFDateRangePicker.Types';
+import { formattedDateRange } from '../utils/RHFDateRangePicker.Utils';
+import type { IDateRangePickerCustomInputProps } from '../types/RHFDateRangePicker.Types';
 
 const DateRangePickerCustomInput = forwardRef<HTMLInputElement, IDateRangePickerCustomInputProps>(
   ({ startDate, endDate, label, errorMessages, onClear, onClick }, ref) => {

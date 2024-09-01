@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { parseJwt } from 'Utils/Slices/JWT.Utils';
-import type { RolesEnum } from 'Contract/Enums/Enums';
-import type { RootStateType } from 'Redux/Config/Store';
+import { parseJwt } from 'utils/slices/JWT.Utils';
+import type { RolesEnum } from 'contract/enums/Enums';
+import type { RootStateType } from 'redux/config/Store';
 
 interface IAuthState {
   token: string | null;

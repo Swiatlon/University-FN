@@ -1,13 +1,13 @@
-import Api from 'Redux/Config/Api';
-import { extendedOnQueryStartedWithNotifications } from 'Utils/Slices/ExtendedOnQueryStarted';
-import { logOut, setCredentials } from '../../StateSlices/Auth/Auth.State.Slice';
+import Api from 'redux/config/Api';
+import { extendedOnQueryStartedWithNotifications } from 'utils/slices/ExtendedOnQueryStarted';
+import { logOut, setCredentials } from '../../stateSlices/auth/Auth.State.Slice';
 import type {
   ILoginRequest,
   ILoginResponse,
   ILogoutResponse,
   IRefreshRequest,
   IRefreshResponse,
-} from 'Contract/Slices/Auth/Auth';
+} from 'contract/slices/auth/Auth';
 
 const authApiSlice = Api.injectEndpoints({
   endpoints: builder => ({

@@ -2,14 +2,14 @@ import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography, Button, Paper } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
-import ExampleUserIcon from 'Assets/Icons/exampleUserIcon.png';
-import { useLoginMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
-import RHFTextField from 'Components/Shared/FormComponents/TextField/RHFTextField';
-import LoginAdditionalActions from 'Components/ViewsComponents/Login/LoginAdditionalActions';
-import PasswordField from 'Components/ViewsComponents/Login/PasswordField';
+import RHFTextField from 'components/shared/formComponents/textField/RHFTextField';
+import LoginAdditionalActions from 'components/viewsComponents/login/LoginAdditionalActions';
+import PasswordField from 'components/viewsComponents/login/PasswordField';
+import { useLoginMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
+import ExampleUserIcon from 'assets/icons/exampleUserIcon.png';
 import { loginValidationSchema } from './Login.Yup';
-import type { ILoginFields } from './Types/Login.Types';
-import './Styles/AuthPanel.scss';
+import type { ILoginFields } from './types/Login.Types';
+import './styles/AuthPanel.scss';
 
 const Login: React.FC = () => {
   const { t } = useTranslation();

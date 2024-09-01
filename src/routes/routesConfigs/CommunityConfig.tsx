@@ -1,6 +1,6 @@
-import { RolesEnum } from 'Contract/Enums/Enums';
-import Events from 'Routes/PostAuth/Events/Events';
-import Teachers from 'Routes/PostAuth/Teachers/Teachers';
+import { RolesEnum } from 'contract/enums/Enums';
+import Events from 'routes/postAuth/events/Events';
+import Teachers from 'routes/postAuth/teachers/Teachers';
 
 export const communityConfig = {
   path: 'community',

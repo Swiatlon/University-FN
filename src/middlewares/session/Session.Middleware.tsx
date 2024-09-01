@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useEffectOnce } from 'Hooks/useExtendedUseEffect';
+import { useEffectOnce } from 'hooks/useExtendedUseEffect';
 import { v4 as uuidv4 } from 'uuid';
 
 function SessionMiddleware() {

@@ -1,19 +1,19 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from 'App';
-import PostAuthLayout from 'Layouts/PostAuth/PostAuthLayout';
-import PreAuthLayout from 'Layouts/PreAuth/PreAuthLayout';
-import PersistLoginMiddleware from 'Middlewares/PersistLogin/PersistLogin.Middleware';
-import ProtectedRoutesMiddleware from 'Middlewares/ProtectedRoutes/ProtectedRoutes.Middleware';
-import SessionMiddleware from 'Middlewares/Session/Session.Middleware';
-import { academicsConfig } from './RoutesConfigs/AcademicsConfig';
-import { communityConfig } from './RoutesConfigs/CommunityConfig';
-import { dashboardConfig } from './RoutesConfigs/DashboardConfig';
-import { indexPostAuthConfig } from './RoutesConfigs/IndexPostAuthConfig';
-import { indexPreAuthConfig } from './RoutesConfigs/IndexPreAuthConfig';
-import { loginConfig } from './RoutesConfigs/LoginConfig';
-import { logoutConfig } from './RoutesConfigs/LogoutConfig';
-import { profileConfig } from './RoutesConfigs/ProfileConfig';
-import ErrorPage from './Shared/Error/ErrorPage';
+import PostAuthLayout from 'layouts/postAuth/PostAuthLayout';
+import PreAuthLayout from 'layouts/preAuth/PreAuthLayout';
+import PersistLoginMiddleware from 'middlewares/persistLogin/PersistLogin.Middleware';
+import ProtectedRoutesMiddleware from 'middlewares/protectedRoutes/ProtectedRoutes.Middleware';
+import SessionMiddleware from 'middlewares/session/Session.Middleware';
+import { academicsConfig } from './routesConfigs/AcademicsConfig';
+import { communityConfig } from './routesConfigs/CommunityConfig';
+import { dashboardConfig } from './routesConfigs/DashboardConfig';
+import { indexPostAuthConfig } from './routesConfigs/IndexPostAuthConfig';
+import { indexPreAuthConfig } from './routesConfigs/IndexPreAuthConfig';
+import { loginConfig } from './routesConfigs/LoginConfig';
+import { logoutConfig } from './routesConfigs/LogoutConfig';
+import { profileConfig } from './routesConfigs/ProfileConfig';
+import ErrorPage from './shared/error/ErrorPage';
 
 export const router = createBrowserRouter([
   {

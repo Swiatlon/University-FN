@@ -1,5 +1,5 @@
-import { RolesEnum } from 'Contract/Enums/Enums';
-import Dashboard from 'Routes/PostAuth/Dashboard/Dashboard';
+import { RolesEnum } from 'contract/enums/Enums';
+import Dashboard from 'routes/postAuth/dashboard/Dashboard';
 
 export const dashboardConfig = {
   path: '*',

@@ -2,14 +2,14 @@ import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
+import RHFAutocompleteWithTags from 'components/shared/formComponents/autocomplete/RHFAutoCompleteWithTags';
+import RHFDateRangePicker from 'components/shared/formComponents/dateRangePicker/RHFDateRangePicker';
+import RHFTextField from 'components/shared/formComponents/textField/RHFTextField';
 import { stringify } from 'qs';
-import { useCreateEventMutation, useGetAllEventOrganizersQuery } from 'Redux/ApiSlices/Community/Community.Api.Slice';
-import { useGetUserInfoQuery } from 'Redux/ApiSlices/UserInfo/UserInfo.Api.Slice';
-import RHFAutocompleteWithTags from 'Components/Shared/FormComponents/Autocomplete/RHFAutoCompleteWithTags';
-import RHFDateRangePicker from 'Components/Shared/FormComponents/DateRangePicker/RHFDateRangePicker';
-import RHFTextField from 'Components/Shared/FormComponents/TextField/RHFTextField';
+import { useGetAllEventOrganizersQuery, useCreateEventMutation } from 'redux/apiSlices/community/Community.Api.Slice';
+import { useGetUserInfoQuery } from 'redux/apiSlices/userInfo/UserInfo.Api.Slice';
 import { eventValidationSchema, type EventFormValuesType } from '../EventManageDialog.Yup';
-import type { IEventCreateDialog } from 'Types/Events/Events.Interfaces';
+import type { IEventCreateDialog } from 'types/events/Events.Interfaces';
 
 const EventCreateDialog: React.FC<IEventCreateDialog> = ({ onClose, initialStartDate }) => {
   const { data: eventOrganizers = [], isFetching } = useGetAllEventOrganizersQuery();

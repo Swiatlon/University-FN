@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box, Typography } from '@mui/material';
-import { useTypedMatches } from 'Hooks/useTypedMatches.Hook';
-import { toggleDrawer } from 'Redux/StateSlices/View/View.State.Slice';
-import AppBarConfig from './Elements/AppBarConfig';
+import { useTypedMatches } from 'hooks/useTypedMatches.Hook';
+import { toggleDrawer } from 'redux/stateSlices/view/View.State.Slice';
 import './AppBar.scss';
+import AppBarConfig from './elements/AppBarConfig';
 
 function AppBar() {
   const dispatch = useDispatch();

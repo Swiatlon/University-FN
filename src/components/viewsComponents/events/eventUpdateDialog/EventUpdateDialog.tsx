@@ -2,11 +2,11 @@ import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useUpdateEventMutation } from 'Redux/ApiSlices/Community/Community.Api.Slice';
-import RHFDateRangePicker from 'Components/Shared/FormComponents/DateRangePicker/RHFDateRangePicker';
-import RHFTextField from 'Components/Shared/FormComponents/TextField/RHFTextField';
+import RHFDateRangePicker from 'components/shared/formComponents/dateRangePicker/RHFDateRangePicker';
+import RHFTextField from 'components/shared/formComponents/textField/RHFTextField';
+import { useUpdateEventMutation } from 'redux/apiSlices/community/Community.Api.Slice';
 import { eventValidationSchema, type EventFormValuesType } from '../EventManageDialog.Yup';
-import type { IEventUpdateDialog } from 'Types/Events/Events.Interfaces';
+import type { IEventUpdateDialog } from 'types/events/Events.Interfaces';
 
 const EventUpdateDialog: React.FC<IEventUpdateDialog> = ({
   onClose,

@@ -3,10 +3,10 @@ import DatePicker from 'react-datepicker';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 import { get } from 'lodash';
-import DateRangePickerCustomInput from './Elements/DateRangePickerInputField';
-import DateRangePickerTimeChoosingFooter from './Elements/DateRangePickerTimeChoosingFooter';
-import type { IRHFDateRangePickerProps, DateRange } from './Types/RHFDateRangePicker.Types';
-import './Style/RHFDateRangePicker.scss';
+import DateRangePickerCustomInput from './elements/DateRangePickerInputField';
+import DateRangePickerTimeChoosingFooter from './elements/DateRangePickerTimeChoosingFooter';
+import type { IRHFDateRangePickerProps, DateRange } from './types/RHFDateRangePicker.Types';
+import './styles/RHFDateRangePicker.scss';
 
 const RHFDateRangePicker: React.FC<IRHFDateRangePickerProps> = ({ name, label, withTime }) => {
   const {

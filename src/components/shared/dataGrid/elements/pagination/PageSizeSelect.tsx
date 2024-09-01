@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select, MenuItem, type SelectChangeEvent } from '@mui/material';
-import { beautifyNumbers } from 'Routes/Utils/Decorators';
+import { beautifyNumbers } from 'routes/utils/Decorators';
 
 interface IPageSizeSelectProps {
   value: number;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper } from '@mui/material';
-import DetailSection from 'Components/ViewsComponents/PersonalData/DetailSection';
-import type { ISection } from 'Routes/PostAuth/PersonalData/Student/StudentPersonalData';
+import DetailSection from 'components/viewsComponents/personalData/DetailSection';
+import type { ISection } from 'routes/postAuth/personalData/student/StudentPersonalData';
 
 interface IPersonalDetailsProps {
   sections: ISection[];

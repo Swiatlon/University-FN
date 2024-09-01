@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-import { Container, Content } from 'Layouts/Styled';
-import { selectCurrentToken } from 'Redux/StateSlices/Auth/Auth.State.Slice';
+import { Container, Content } from 'layouts/Styled';
+import { selectCurrentToken } from 'redux/stateSlices/auth/Auth.State.Slice';
 
 function PreAuthLayout() {
   const isAuthenticated = useSelector(selectCurrentToken);

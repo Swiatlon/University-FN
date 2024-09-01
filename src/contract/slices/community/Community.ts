@@ -1,5 +1,5 @@
-import type { ITeacher } from 'Contract/Interfaces/Persons/Persons';
-import type { IQueryParams } from 'Contract/Interfaces/Requests/Requests';
+import type { ITeacher } from 'contract/interfaces/persons/Persons';
+import type { IQueryParams } from 'contract/interfaces/requests/Requests';
 
 export interface IGetAllTeachersResponse {
   items: ITeacher[];

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useTypedMatches } from 'Hooks/useTypedMatches.Hook';
-import { selectCurrentToken, selectUserRoles } from 'Redux/StateSlices/Auth/Auth.State.Slice';
+import { useTypedMatches } from 'hooks/useTypedMatches.Hook';
+import { selectCurrentToken, selectUserRoles } from 'redux/stateSlices/auth/Auth.State.Slice';
 
 const ProtectedRoutesMiddleware: React.FC = () => {
   const matches = useTypedMatches();

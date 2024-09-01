@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { IQueryParams, TSearchQueryType } from 'Contract/Interfaces/Requests/Requests';
+import type { IQueryParams, TSearchQueryType } from 'contract/interfaces/requests/Requests';
 
 interface IUseQueryParamsProps {
   initialQueryParams?: Partial<IQueryParams>;

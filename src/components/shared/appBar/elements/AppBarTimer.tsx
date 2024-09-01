@@ -2,8 +2,8 @@ import { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Typography, useMediaQuery } from '@mui/material';
 import { parseISO, isAfter, intervalToDuration } from 'date-fns';
-import { useSendLogoutMutation } from 'Redux/ApiSlices/Auth/Auth.Api.Slice';
-import { selectTokenExpirationTime } from 'Redux/StateSlices/Auth/Auth.State.Slice';
+import { useSendLogoutMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
+import { selectTokenExpirationTime } from 'redux/stateSlices/auth/Auth.State.Slice';
 
 function AppBarTimer() {
   const [sendLogout] = useSendLogoutMutation();

@@ -1,4 +1,4 @@
-import Logout from 'Routes/PostAuth/Logout/Logout';
+import Logout from 'routes/postAuth/logout/Logout';
 
 export const logoutConfig = {
   path: 'logout',

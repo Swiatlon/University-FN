@@ -1,5 +1,6 @@
-import type { IDegreeCourse, IDegreePath, IModule } from 'Contract/Interfaces/Academics/Academics';
-import type { IStudent, IAddress, IConsent } from 'Contract/Interfaces/Persons/Persons';
+import type { IDegreeCourse, IDegreePath, IModule } from 'contract/interfaces/academics/Academics';
+import type { IStudent, IAddress, IConsent } from 'contract/interfaces/persons/Persons';
+
 export interface IGetAuthorizedStudentAllDataBackendResponse
   extends Omit<IStudent, 'degreeCourses' | 'degreePaths' | 'modules'> {
   address: IAddress;
