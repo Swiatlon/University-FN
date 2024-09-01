@@ -29,9 +29,9 @@
     "noPropertyAccessFromIndexSignature": true,
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@features/*": ["features/*"],
-      "@assets/*": ["assets/*"]
+      "@Components/*": ["Components/*"],
+      "Features/*": ["Features/*"],
+      "Assets/*": ["Assets/*"]
     }
   },
   "include": ["src/**/*", "./custom.d.ts"],

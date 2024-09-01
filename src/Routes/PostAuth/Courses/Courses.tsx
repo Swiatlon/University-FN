@@ -1,8 +1,8 @@
 import { Paper } from '@mui/material';
+import FullScreenLoader from '@Components/Shared/FullScreenLoader/FullScreenLoader';
 import { useGetAuthorizedStudentAllDataQuery } from 'Redux/ApiSlices/Students/Students.Api.Slice';
-import FullScreenLoader from 'Components/Shared/FullScreenLoader/FullScreenLoader';
-import type { IDetailRowProps } from 'Components/ViewsComponents/PersonalData/DetailRow';
-import DetailSection from 'Components/ViewsComponents/PersonalData/DetailSection';
+import DetailSection from '../../../Components/ViewsComponents/PersonalData/DetailSection';
+import type { IDetailRowProps } from '../../../Components/ViewsComponents/PersonalData/DetailRow';
 
 function Courses() {
   const { data, isFetching } = useGetAuthorizedStudentAllDataQuery();

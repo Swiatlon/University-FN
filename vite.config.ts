@@ -5,4 +5,11 @@ import svgrPlugin from 'vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [react(), svgrPlugin({}), tsconfigPaths()],
+  resolve: {
+    alias: {
+      '@Components': '/src/Components',
+      Features: '/src/Features',
+      Assets: '/src/Assets',
+    },
+  },
 });

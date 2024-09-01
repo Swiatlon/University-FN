@@ -65,7 +65,7 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: '@assets/**',
+            pattern: 'assets/**',
             group: 'internal',
             position: 'after',
           },
