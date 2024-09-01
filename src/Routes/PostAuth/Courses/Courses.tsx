@@ -34,7 +34,6 @@ function Courses() {
       nestedTitle: 'Subjects',
       nestedElements: module.module.subjects.map(subject => ({
         icon: 'Description',
-        label: 'Subject',
         value: subject.name,
       })),
     })) ?? [];
