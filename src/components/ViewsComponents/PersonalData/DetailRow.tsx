@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import { Box, Typography } from '@mui/material';
 import { IconComponent, type MuiIconsNameType } from './IconComponent';
 
@@ -5,6 +6,8 @@ export interface IDetailRowProps {
   icon: MuiIconsNameType;
   label: string;
   value: string | number | boolean | undefined;
+  nestedElements?: IDetailRowProps[];
+  nestedTitle?: string;
 }
 
 export function DetailRow({ icon, label, value }: IDetailRowProps) {

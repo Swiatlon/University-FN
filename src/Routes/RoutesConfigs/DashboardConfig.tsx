@@ -2,7 +2,7 @@ import { RolesEnum } from 'Contract/Enums/Enums';
 import Dashboard from 'Routes/PostAuth/Dashboard/Dashboard';
 
 export const dashboardConfig = {
-  path: 'dashboard',
+  path: '*',
   handle: {
     navigation: {
       text: 'Dashboard',

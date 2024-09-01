@@ -8,19 +8,31 @@ export const studentsSlice = Api.injectEndpoints({
   endpoints: builder => ({
     getAuthorizedStudentAllData: builder.query<IGetAuthorizedStudentAllDataTransformedReponse, void>({
       query: () => 'api/students/me',
-      transformResponse: (response: IGetAuthorizedStudentAllDataBackendResponse) => ({
+      transformResponse: (
+        response: IGetAuthorizedStudentAllDataBackendResponse
+      ): IGetAuthorizedStudentAllDataTransformedReponse => ({
         ...response,
         degreeCourses: response.degreeCourses.map(dc => ({
-          id: dc.degreeCourse.id.toString(),
-          name: dc.degreeCourse.name,
+          id: dc.id,
+          degreeCourse: {
+            id: dc.degreeCourse.id,
+            name: dc.degreeCourse.name,
+          },
         })),
         degreePaths: response.degreePaths.map(dp => ({
-          id: dp.degreePath.id.toString(),
-          name: dp.degreePath.name,
+          id: dp.id,
+          degreePath: {
+            id: dp.degreePath.id,
+            name: dp.degreePath.name,
+          },
         })),
         modules: response.modules.map(m => ({
-          id: m.module.id.toString(),
-          name: m.module.name,
+          id: m.id,
+          module: {
+            id: m.module.id,
+            name: m.module.name,
+            subjects: m.module.subjects,
+          },
         })),
       }),
     }),

@@ -46,7 +46,7 @@ function PostAuthLayout() {
           id: uuidv4(),
           text: t('courses'),
           icon: <BookIcon />,
-          linkTo: '/academics/courses',
+          linkTo: 'academics/courses',
         },
       ],
     },

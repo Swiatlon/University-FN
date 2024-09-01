@@ -79,9 +79,9 @@ function PersonalDataForm() {
       <Box className="BasicInfoBox">
         <BasicInfo name={data?.name ?? ''} surname={data?.surname ?? ''} />
         <AcademicInfo
-          degreeCourse={data?.degreeCourses[0]?.name ?? ''}
-          degreePath={data?.degreePaths[0]?.name ?? ''}
-          modules={data?.modules.map(module => module.name) ?? []}
+          degreeCourse={data?.degreeCourses[0]?.degreeCourse.name ?? ''}
+          degreePath={data?.degreePaths[0]?.degreePath.name ?? ''}
+          modules={data?.modules.map(module => module.module.name) ?? []}
         />
       </Box>
       <PersonalDetails sections={sections} />
