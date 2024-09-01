@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/material';
-import EnglandCircle from '@assets/icons/EnglandCircle.svg?react';
-import PolandCircle from '@assets/icons/PolandCircle.svg?react';
+import EnglandCircle from 'Assets/icons/EnglandCircle.svg?react';
+import PolandCircle from 'Assets/icons/PolandCircle.svg?react';
 import AppBarTimer from './AppBarTimer';
 
 export function useLanguageMenuItems() {

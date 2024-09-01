@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Avatar, Box, Typography, CircularProgress } from '@mui/material';
+import UserIcon from 'Assets/images/userPhoto.png';
 import { useGetUserInfoQuery } from 'Redux/ApiSlices/UserInfo/UserInfo.Api.Slice';
-import UserIcon from '@assets/images/userPhoto.png';
 
 function UserProfile() {
   const { t } = useTranslation();
