@@ -3,10 +3,7 @@ import { Outlet } from 'react-router-dom';
 import BookIcon from '@mui/icons-material/Book';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
-import FolderIcon from '@mui/icons-material/Folder';
 import LogoutIcon from '@mui/icons-material/Logout';
-import MessageIcon from '@mui/icons-material/Message';
-import PaymentIcon from '@mui/icons-material/Payment';
 import PersonIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
 import SearchIcon from '@mui/icons-material/Search';
@@ -52,26 +49,6 @@ function PostAuthLayout() {
     },
     {
       id: uuidv4(),
-      text: t('resources'),
-      icon: <FolderIcon />,
-      availableForRoles: [RolesEnum.STUDENT],
-      children: [
-        {
-          id: uuidv4(),
-          text: t('sample_files'),
-          icon: <DescriptionIcon />,
-          linkTo: '/resources/sample-files',
-        },
-      ],
-    },
-    {
-      id: uuidv4(),
-      text: t('financials'),
-      icon: <PaymentIcon />,
-      availableForRoles: [RolesEnum.STUDENT],
-    },
-    {
-      id: uuidv4(),
       text: t('community'),
       icon: <SearchIcon />,
       children: [
@@ -89,13 +66,6 @@ function PostAuthLayout() {
           linkTo: 'community/events',
         },
       ],
-    },
-    {
-      id: uuidv4(),
-      text: t('messages'),
-      icon: <MessageIcon />,
-      linkTo: '/messages',
-      availableForRoles: [RolesEnum.STUDENT],
     },
     {
       id: uuidv4(),

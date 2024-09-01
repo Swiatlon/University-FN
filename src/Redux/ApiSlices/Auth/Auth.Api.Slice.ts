@@ -54,8 +54,22 @@ const authApiSlice = Api.injectEndpoints({
         },
       }),
     }),
+
+    randomLogin: builder.mutation<ILoginResponse, { sessionID: string }>({
+      query: ({ sessionID }) => ({
+        url: '/auth/random-login',
+        method: 'POST',
+        body: { sessionID },
+      }),
+      onQueryStarted: extendedOnQueryStartedWithNotifications({
+        successMessage: 'Random login successful!',
+        successCallback: (data, dispatch) => {
+          dispatch(setCredentials({ accessToken: data.accessToken }));
+        },
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useSendLogoutMutation, useRefreshMutation } = authApiSlice;
+export const { useLoginMutation, useSendLogoutMutation, useRefreshMutation, useRandomLoginMutation } = authApiSlice;
 export default authApiSlice;
