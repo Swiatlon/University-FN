@@ -38,10 +38,10 @@ function Courses() {
     })) ?? [];
 
   return (
-    <Paper className="DetailsPaper">
+    <Paper className="DetailsPaper DetailsPaperCourses">
       <DetailSection title="Degree Courses" details={degreeCourseDetails} />
       <DetailSection title="Degree Paths" details={degreePathDetails} />
-      <DetailSection title="Modules" details={moduleDetails} renderNested />
+      <DetailSection title="Modules" details={moduleDetails} renderNested className="ModulesCourses" />
     </Paper>
   );
 }

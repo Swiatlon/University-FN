@@ -1,6 +1,5 @@
-import React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import { Accordion, AccordionSummary, AccordionDetails, Typography, Box } from '@mui/material';
 import { DetailRow, type IDetailRowProps } from './DetailRow';
 import 'routes/postAuth/personalData/styles/PersonalData.scss';
 
@@ -8,28 +7,40 @@ interface IDetailSectionProps {
   title: string;
   details: IDetailRowProps[];
   renderNested?: boolean;
+  nestedList?: boolean;
+  defaultExpanded?: boolean;
+  className?: string;
 }
 
-function DetailSection({ title, details, renderNested }: IDetailSectionProps) {
+function DetailSection({
+  title,
+  details,
+  renderNested,
+  defaultExpanded = true,
+  className,
+  nestedList,
+}: IDetailSectionProps) {
   return (
-    <Accordion defaultExpanded disableGutters>
+    <Accordion defaultExpanded={defaultExpanded} disableGutters className={className}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6" color="primary">
           {title}:
         </Typography>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails className={nestedList ? 'NestedDetailsCenterPaper' : 'DetailsCenterPaper'}>
         {details.map(detail => (
-          <React.Fragment key={detail.label}>
+          <Box key={detail.label}>
             <DetailRow {...detail} />
             {renderNested && detail.nestedElements && detail.nestedElements.length > 0 ? (
               <DetailSection
+                defaultExpanded={false}
                 title={detail.nestedTitle ?? `Nested Elements for ${detail.value}`}
                 details={detail.nestedElements}
                 renderNested={renderNested}
+                nestedList
               />
             ) : null}
-          </React.Fragment>
+          </Box>
         ))}
       </AccordionDetails>
     </Accordion>
