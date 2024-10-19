@@ -13,7 +13,7 @@ export interface IMenuItem {
 export interface IMenuItemProps {
   item: IMenuItem;
   onToggleSubmenu?: (id: string) => void;
-  onNavigate: (linkTo: string) => void;
+  onNavigate: () => void;
   isOpen?: boolean;
   isChildren?: boolean;
 }

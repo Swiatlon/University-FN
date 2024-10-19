@@ -35,7 +35,6 @@ const Pagination: React.FC<IPaginationProps> = ({ totalRows = 0, page, pageSize,
     [setPagination]
   );
 
-  // Function for styles
   const checkWrapping = useCallback(() => {
     if (containerRef.current && paginationRef.current && controlsRef.current) {
       const containerWidth = containerRef.current.clientWidth;

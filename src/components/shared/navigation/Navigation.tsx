@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box, Divider, List, Collapse } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTypedSelector } from 'hooks/useStore.Hooks';
 import { selectCurrentToken, selectUserRoles } from 'redux/stateSlices/auth/Auth.State.Slice';
 import { selectIsDrawerOpen, toggleDrawer } from 'redux/stateSlices/view/View.State.Slice';
@@ -15,6 +16,7 @@ import type { INavigationProps, OpenMenuItemsStateType } from './types/types';
 function Navigation({ menuItems }: INavigationProps) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isMenuFullWidth = useMediaQuery('(max-width:910px)');
 
   const token = useTypedSelector(selectCurrentToken);
   const isOpen = useTypedSelector(selectIsDrawerOpen);
@@ -31,12 +33,11 @@ function Navigation({ menuItems }: INavigationProps) {
     }, {})
   );
 
-  const onNavigate = useCallback(
-    (linkTo: string) => {
-      navigate(linkTo);
-    },
-    [navigate]
-  );
+  const onNavigate = useCallback(() => {
+    if (isMenuFullWidth) {
+      handleToggleDrawer();
+    }
+  }, [navigate, isMenuFullWidth]);
 
   const onToggleSubmenu = useCallback((id: string) => {
     setOpenMenuItems(prevState => ({ ...prevState, [id]: !prevState[id] }));

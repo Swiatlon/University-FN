@@ -23,14 +23,12 @@ export function DetailRow({ icon, label, value }: IDetailRowProps) {
     );
   }
 
-  if (!label) {
-    return (
-      <Box className="Row">
-        <Box gap={1} className="SubTitleBox">
-          <IconComponent name={icon} color="primary" />
-          <Typography className="Label">{value?.toString() ?? 'N/A'}</Typography>
-        </Box>
+  return (
+    <Box className="Row">
+      <Box gap={1} className="SubTitleBox">
+        <IconComponent name={icon} color="primary" />
+        <Typography className="Label">{value?.toString() ?? 'N/A'}</Typography>
       </Box>
-    );
-  }
+    </Box>
+  );
 }

@@ -6,7 +6,7 @@ import { selectIsDrawerOpen } from 'redux/stateSlices/view/View.State.Slice';
 import MenuItemContent from './MenuItemContent';
 import type { IMenuItemProps } from '../../types/types';
 
-function MenuItemComponent({ item, onToggleSubmenu, isOpen, isChildren }: IMenuItemProps) {
+function MenuItemComponent({ item, onToggleSubmenu, isOpen, isChildren, onNavigate }: IMenuItemProps) {
   const isOpenDrawer = useTypedSelector(selectIsDrawerOpen);
 
   const className = concatClasses('ListItem IncreaseSizeAnimation', {
@@ -21,7 +21,14 @@ function MenuItemComponent({ item, onToggleSubmenu, isOpen, isChildren }: IMenuI
 
   if (item.linkTo) {
     return (
-      <ListItemButton component={NavLink} to={item.linkTo} className={className} onClick={onClick}>
+      <ListItemButton
+        component={NavLink}
+        to={item.linkTo}
+        className={className}
+        onClick={() => {
+          onNavigate();
+        }}
+      >
         <MenuItemContent item={item} isOpenDrawer={isOpenDrawer} isOpen={isOpen} />
       </ListItemButton>
     );
