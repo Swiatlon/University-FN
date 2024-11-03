@@ -8,15 +8,17 @@
   background: white;
   border: 1px solid rgba(192, 192, 192, 0.5);
   border-radius: 0px 0px 2px 2px;
+
+  @media (max-width: '519px') {
+    &.CenterJustify {
+      justify-content: center;
+    }
+  }
 }
 
 .PaginationContainer.Disabled {
   pointer-events: none;
   opacity: 0.6;
-}
-
-.PaginationContainer.CenterJustify {
-  justify-content: center;
 }
 
 .PaginationControls {

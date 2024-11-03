@@ -1,5 +1,6 @@
 .BasicInfoBox {
   display: grid;
+  grid-template-columns: -webkit-min-content auto;
   grid-template-columns: min-content auto;
   gap: 16px;
   margin-bottom: 16px;
@@ -60,7 +61,8 @@
 .DetailsCenterPaper {
   display: grid;
   text-wrap: auto;
-  column-gap: 36px;
+  -moz-column-gap: 36px;
+       column-gap: 36px;
   grid-template-columns: repeat(auto-fit, minmax(350px, auto));
 
   @media (max-width: '600px') {
@@ -82,7 +84,6 @@
 
 .Row {
   display: grid;
-  grid-template-columns: min-content auto;
   margin: 12px 0px;
 
   @media (max-width: '600px') {
@@ -96,6 +97,8 @@
 }
 
 .SubTitle {
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   font-weight: bold;
 }
