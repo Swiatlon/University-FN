@@ -5,12 +5,14 @@ import type { RootStateType } from 'redux/config/Store';
 
 interface IAuthState {
   token: string | null;
+  accountId: string | null;
   expDate: string | null;
   userRoles: RolesEnum[] | [];
 }
 
 const initialState: IAuthState = {
   token: null,
+  accountId: null,
   expDate: null,
   userRoles: [],
 };
@@ -23,20 +25,19 @@ const authSlice = createSlice({
       prepare: ({ accessToken }: { accessToken: string }) => {
         const decoded = parseJwt(accessToken);
         const expDate = decoded?.exp ? new Date(decoded.exp * 1000).toISOString() : null;
-        const roles = decoded?.roles ?? [];
+        const userRoles = decoded?.roles ?? [];
+        const accountId = decoded?.accountId ?? null;
 
-        return { payload: { accessToken, expDate, roles } };
+        return { payload: { token: accessToken, expDate, userRoles, accountId } };
       },
 
-      reducer: (
-        state,
-        action: PayloadAction<{ accessToken: string; expDate: string | null; roles: RolesEnum[] | [] }>
-      ) => {
-        const { accessToken, expDate, roles } = action.payload;
+      reducer: (state, action: PayloadAction<IAuthState>) => {
+        const { token, expDate, userRoles, accountId } = action.payload;
 
-        state.token = accessToken;
+        state.token = token;
         state.expDate = expDate;
-        state.userRoles = roles;
+        state.userRoles = userRoles;
+        state.accountId = accountId;
       },
     },
 
@@ -51,6 +52,7 @@ const authSlice = createSlice({
 export const selectCurrentToken = (state: RootStateType) => state.authSlice.token;
 export const selectTokenExpirationTime = (state: RootStateType) => state.authSlice.expDate;
 export const selectUserRoles = (state: RootStateType) => state.authSlice.userRoles;
+export const selectAccountId = (state: RootStateType) => state.authSlice.accountId;
 
 export const { setCredentials, logOut } = authSlice.actions;
 

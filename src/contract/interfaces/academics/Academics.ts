@@ -1,3 +1,5 @@
+import type { GradeValueEnum, PassDateAttemptEnum } from 'contract/enums/Enums';
+
 export interface IDegreeCourse {
   id: number;
   degreeCourse: {
@@ -26,4 +28,10 @@ export interface IModule {
     name: string;
     subjects: ISubject[];
   };
+}
+
+export interface IGrade {
+  subject: string;
+  grade: GradeValueEnum;
+  passDate: PassDateAttemptEnum;
 }
