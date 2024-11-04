@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import BookIcon from '@mui/icons-material/Book';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
+import GradingIcon from '@mui/icons-material/Grading';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
@@ -44,6 +45,12 @@ function PostAuthLayout() {
           text: t('courses'),
           icon: <BookIcon />,
           linkTo: 'academics/courses',
+        },
+        {
+          id: uuidv4(),
+          text: t('grades'),
+          icon: <GradingIcon />,
+          linkTo: 'academics/grades',
         },
       ],
     },

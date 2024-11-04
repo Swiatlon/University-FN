@@ -1,5 +1,6 @@
 import { RolesEnum } from 'contract/enums/Enums';
 import Courses from 'routes/postAuth/courses/Courses';
+import Grades from 'routes/postAuth/grades/Grades';
 
 export const academicsConfig = {
   path: 'Academics',
@@ -10,6 +11,18 @@ export const academicsConfig = {
       handle: {
         navigation: {
           text: 'Courses',
+        },
+        permissions: {
+          availableForRoles: [RolesEnum.STUDENT],
+        },
+      },
+    },
+    {
+      path: 'Grades',
+      element: <Grades />,
+      handle: {
+        navigation: {
+          text: 'Grades',
         },
         permissions: {
           availableForRoles: [RolesEnum.STUDENT],
