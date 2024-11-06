@@ -5,12 +5,14 @@ import type { RootStateType } from 'redux/config/Store';
 
 interface IAuthState {
   token: string | null;
+  accountId: string | null;
   expDate: string | null;
   userRoles: RolesEnum[] | [];
 }
 
 const initialState: IAuthState = {
   token: null,
+  accountId: null,
   expDate: null,
   userRoles: [],
 };
@@ -24,8 +26,9 @@ const authSlice = createSlice({
         const decoded = parseJwt(accessToken);
         const expDate = decoded?.exp ? new Date(decoded.exp * 1000).toISOString() : null;
         const roles = decoded?.roles ?? [];
+        const accountId = decoded?.accountId;
 
-        return { payload: { accessToken, expDate, roles } };
+        return { payload: { accessToken, expDate, roles, accountId } };
       },
 
       reducer: (
