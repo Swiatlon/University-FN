@@ -7,12 +7,10 @@ import type {
 export const gradesSlice = Api.injectEndpoints({
   endpoints: builder => ({
     getStudentGrades: builder.query<IGetStudentGradesResponse, IGetStudentGradesQueryParams>({
-      query: ({ id }) => {
-        return {
-          url: `/api/grades/${id}`,
-          method: 'GET',
-        };
-      },
+      query: ({ id }) => ({
+        url: `/api/grades/${id}`,
+        method: 'GET',
+      }),
     }),
   }),
 });
