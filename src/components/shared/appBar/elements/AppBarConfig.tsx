@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/material';
 import EnglandCircle from 'assets/icons/EnglandCircle.svg?react';
 import PolandCircle from 'assets/icons/PolandCircle.svg?react';
+import AppBarExtendSessionButton from './AppBarExtendSessionButton';
 import AppBarTimer from './AppBarTimer';
 
 export function useLanguageMenuItems() {
@@ -33,6 +34,7 @@ function AppBarConfig() {
   return (
     <Box className="ConfigAppBar">
       {/* <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} hideLabelOnMobile /> */}
+      <AppBarExtendSessionButton />
       <AppBarTimer />
     </Box>
   );
