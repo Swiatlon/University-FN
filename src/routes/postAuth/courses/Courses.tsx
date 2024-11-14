@@ -1,11 +1,19 @@
+import { useSelector } from 'react-redux';
 import { Paper } from '@mui/material';
 import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import { selectAccountId, selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
 import DetailSection from '../../../components/viewsComponents/personalData/DetailSection';
 import type { IDetailRowProps } from '../../../components/viewsComponents/personalData/DetailRow';
 
 function Courses() {
-  const { data, isFetching } = useGetAuthorizedStudentAllDataQuery();
+  const accountId = useSelector(selectAccountId);
+  const studentId = useSelector(selectId);
+
+  const { data, isFetching } = useGetAuthorizedStudentAllDataQuery(
+    { accountId: accountId!, studentId: studentId! },
+    { skip: !accountId || !studentId }
+  );
 
   if (isFetching) {
     return <FullScreenLoader />;

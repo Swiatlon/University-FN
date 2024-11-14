@@ -13,7 +13,7 @@ const authApiSlice = Api.injectEndpoints({
   endpoints: builder => ({
     login: builder.mutation<ILoginResponse, ILoginRequest>({
       query: credentials => ({
-        url: '/auth',
+        url: '/auth/login',
         method: 'POST',
         body: credentials,
       }),

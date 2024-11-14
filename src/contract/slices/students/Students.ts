@@ -10,4 +10,9 @@ export interface IGetAuthorizedStudentAllDataBackendResponse
   modules: IModule[];
 }
 
+export interface IGetAuthorizedStudentAllDataRequest {
+  accountId: string;
+  studentId: string;
+}
+
 export interface IGetAuthorizedStudentAllDataTransformedReponse extends IStudent {}

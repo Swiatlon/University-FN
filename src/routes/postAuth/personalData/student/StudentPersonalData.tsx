@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
 import { AcademicInfo } from 'components/viewsComponents/personalData/AcademicInfo';
 import BasicInfo from 'components/viewsComponents/personalData/BasicInfo';
 import { PersonalDetails } from 'components/viewsComponents/personalData/PersonalDetails';
+import { selectAccountId, selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
 import type { IDetailRowProps } from 'components/viewsComponents/personalData/DetailRow';
 import '../styles/PersonalData.scss';
@@ -16,7 +18,13 @@ export interface ISection {
 
 function PersonalDataForm() {
   const { t } = useTranslation();
-  const { data, isLoading } = useGetAuthorizedStudentAllDataQuery();
+  const accountId = useSelector(selectAccountId);
+  const studentId = useSelector(selectId);
+
+  const { data, isLoading } = useGetAuthorizedStudentAllDataQuery(
+    { accountId: accountId!, studentId: studentId! },
+    { skip: !accountId || !studentId }
+  );
 
   const sections: ISection[] = useMemo(
     () => [

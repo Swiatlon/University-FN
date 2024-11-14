@@ -11,7 +11,7 @@ import EventContent from 'components/viewsComponents/events/eventContent/EventCo
 import EventShowDialog from 'components/viewsComponents/events/eventShowDialog/EventShowDialog';
 import { useDialog } from 'contexts/dialogs/Dialogs.Context';
 import { useGetAllEventsQuery } from 'redux/apiSlices/community/Community.Api.Slice';
-import { useGetUserInfoQuery } from 'redux/apiSlices/userInfo/UserInfo.Api.Slice';
+import { useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import type { EventClickArg, EventContentArg, EventAddArg } from '@fullcalendar/core/index.js';
 
 const renderContent = (eventInfo: EventContentArg) => {
@@ -20,7 +20,7 @@ const renderContent = (eventInfo: EventContentArg) => {
 
 function Events() {
   const { data, isFetching } = useGetAllEventsQuery();
-  const { data: userData } = useGetUserInfoQuery();
+  const { data: userData } = useGetLoggedAccountBasicDataQuery();
   const { enqueueDialog } = useDialog();
 
   const events = useMemo(() => {

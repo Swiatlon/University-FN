@@ -7,13 +7,13 @@ import RHFDateRangePicker from 'components/shared/formComponents/dateRangePicker
 import RHFTextField from 'components/shared/formComponents/textField/RHFTextField';
 import { stringify } from 'qs';
 import { useGetAllEventOrganizersQuery, useCreateEventMutation } from 'redux/apiSlices/community/Community.Api.Slice';
-import { useGetUserInfoQuery } from 'redux/apiSlices/userInfo/UserInfo.Api.Slice';
+import { useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { eventValidationSchema, type EventFormValuesType } from '../EventManageDialog.Yup';
 import type { IEventCreateDialog } from 'types/events/Events.Interfaces';
 
 const EventCreateDialog: React.FC<IEventCreateDialog> = ({ onClose, initialStartDate }) => {
   const { data: eventOrganizers = [], isFetching } = useGetAllEventOrganizersQuery();
-  const { data: userData } = useGetUserInfoQuery();
+  const { data: userData } = useGetLoggedAccountBasicDataQuery();
 
   const [createEvent] = useCreateEventMutation();
   const methods = useForm<EventFormValuesType>({

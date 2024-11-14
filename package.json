@@ -10,8 +10,7 @@
     "eslint": "eslint --fix",
     "prettier": "prettier --config .prettierrc.json src/* --write",
     "format": "eslint --fix . && prettier --config .prettierrc.json src/* --write",
-    "preview": "vite preview",
-    "prepare": "husky install"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@date-io/dayjs": "^3.0.0",
