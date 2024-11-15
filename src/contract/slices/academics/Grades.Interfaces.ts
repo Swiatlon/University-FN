@@ -6,5 +6,6 @@ export interface IGetStudentGradesResponse {
 }
 
 export interface IGetStudentGradesQueryParams extends IQueryParams {
-  id?: string;
+  studentId: string;
+  accountId: string;
 }

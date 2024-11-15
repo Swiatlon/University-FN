@@ -1,16 +1,16 @@
 import Api from 'redux/config/Api';
-import type {
-  IGetStudentGradesQueryParams,
-  IGetStudentGradesResponse,
-} from 'contract/slices/academics/Grades.Interfaces';
+import type { IGrade } from 'contract/interfaces/academics/Academics';
+import type { IGetStudentGradesQueryParams } from 'contract/slices/academics/Grades.Interfaces';
 
 export const gradesSlice = Api.injectEndpoints({
   endpoints: builder => ({
-    getStudentGrades: builder.query<IGetStudentGradesResponse, IGetStudentGradesQueryParams>({
-      query: ({ id }) => {
+    getStudentGrades: builder.query<IGrade[], IGetStudentGradesQueryParams>({
+      query: ({ studentId, accountId }) => {
         return {
-          url: `/api/grades/${id}`,
-          method: 'GET',
+          url: `/grades/${studentId}`,
+          params: {
+            accountId,
+          },
         };
       },
     }),

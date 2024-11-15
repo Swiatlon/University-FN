@@ -1,6 +1,6 @@
 import { RolesEnum } from 'contract/enums/Enums';
 import Courses from 'routes/postAuth/courses/Courses';
-import Grades from 'routes/postAuth/grades/Grades';
+import Grades from 'components/viewsComponents/grades/Grades';
 
 export const academicsConfig = {
   path: 'Academics',

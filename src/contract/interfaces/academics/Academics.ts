@@ -31,7 +31,10 @@ export interface IModule {
 }
 
 export interface IGrade {
-  subject: string;
+  subject: {
+    id: number;
+    name: string;
+  };
   grade: GradeValueEnum;
-  passDate: PassDateAttemptEnum;
+  passDateAttempt: PassDateAttemptEnum;
 }
