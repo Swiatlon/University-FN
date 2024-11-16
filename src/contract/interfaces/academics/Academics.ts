@@ -35,6 +35,6 @@ export interface IGrade {
     id: number;
     name: string;
   };
-  grade: GradeValueEnum;
-  passDateAttempt: PassDateAttemptEnum;
+  grade: GradeValueEnum | null;
+  passDateAttempt: PassDateAttemptEnum | null;
 }
