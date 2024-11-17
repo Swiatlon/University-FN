@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Paper } from '@mui/material';
-import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import { selectAccountId, selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
 import DetailSection from '../../../components/viewsComponents/personalData/DetailSection';
@@ -16,7 +16,7 @@ function Courses() {
   );
 
   if (isFetching) {
-    return <FullScreenLoader />;
+    return <CenteredLoader />;
   }
 
   const degreeCourseDetails: IDetailRowProps[] =
