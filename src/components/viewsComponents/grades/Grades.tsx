@@ -21,9 +21,9 @@ const Grades = () => {
 
   return (
     <>
-      <GradesInformationBoxes />
-      <GradesSummarizeChart grades={grades} />
-      <GradesDataGrid grades={grades} />
+      <GradesInformationBoxes grades={grades!} />
+      <GradesSummarizeChart grades={grades!} />
+      <GradesDataGrid grades={grades!} />
     </>
   );
 };

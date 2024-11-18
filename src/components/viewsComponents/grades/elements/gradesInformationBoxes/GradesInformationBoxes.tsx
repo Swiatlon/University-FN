@@ -1,49 +1,19 @@
-import { useSelector } from 'react-redux';
 import { ErrorOutline, CheckCircleOutline, Warning, InfoOutlined, EqualizerRounded } from '@mui/icons-material';
 import { Box } from '@mui/material';
 import SummaryCard from 'components/shared/summaryCard/SummaryCard';
 import { GradeValueEnum } from 'contract/enums/Enums';
 import _ from 'lodash';
-import { useGetStudentGradesQuery } from 'redux/apiSlices/academics/Grades.Api.Slice';
-import { selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
-import { selectAccountId } from 'redux/stateSlices/auth/Auth.State.Slice';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
-const GradesInformationBoxes = () => {
-  const accountId = useSelector(selectAccountId);
-  const studentId = useSelector(selectId);
+interface IGradesInformationBoxes {
+  grades: IGrade[];
+}
 
-  const { data: grades } = useGetStudentGradesQuery(
-    { accountId: accountId!, studentId: studentId! },
-    { skip: !accountId || !studentId }
-  );
-
+const GradesInformationBoxes = ({ grades }: IGradesInformationBoxes) => {
   const gradesCount = grades.length;
   const highestGradesCount = _.filter(grades, { grade: GradeValueEnum.Excellent }).length;
   const underPerformingGradesCount = _.filter(grades, { grade: GradeValueEnum.Fair }).length;
-  const notPassedGradesCount = _.filter(
-    grades,
-    grade => grade.grade === GradeValueEnum.Poor || grade.grade === null
-  ).length;
-
-  const calculateAverageGrade = (gradesList: IGrade[]): string => {
-    if (gradesList.length === 0) {
-      return '0.00';
-    }
-
-    const validGrades = _.map(gradesList, 'grade').filter(value => _.isNumber(value));
-    const average = _.mean(validGrades);
-
-    return average.toFixed(2);
-  };
-
-  const calculatePercentage = (count: number): string => {
-    if (gradesCount === 0) {
-      return '0%';
-    }
-
-    return `${Math.round((count / gradesCount) * 100)}%`;
-  };
+  const notPassedGradesCount = _.filter(grades, { grade: GradeValueEnum.Poor }).length;
 
   const cards = [
     {
@@ -56,9 +26,10 @@ const GradesInformationBoxes = () => {
     {
       id: 1,
       icon: <ErrorOutline sx={{ color: '#f70000', fontSize: '28px' }} />,
-      title: calculatePercentage(notPassedGradesCount),
+      title: calculatePercentage(notPassedGradesCount, gradesCount),
       text: 'Not passed subjects',
       color: '#ffc1b5',
+      hideWhen: notPassedGradesCount === 0,
     },
     {
       id: 6,
@@ -66,6 +37,7 @@ const GradesInformationBoxes = () => {
       title: '100%',
       text: 'All subjects passed',
       color: '#a5e8a7',
+      hideWhen: notPassedGradesCount > 0,
     },
     {
       id: 2,
@@ -77,9 +49,10 @@ const GradesInformationBoxes = () => {
     {
       id: 3,
       icon: <Warning sx={{ color: '#ff9800', fontSize: '28px' }} />,
-      title: calculatePercentage(underPerformingGradesCount),
+      title: calculatePercentage(underPerformingGradesCount, gradesCount),
       text: 'Underperforming grades',
       color: '#ffecb3',
+      hideWhen: underPerformingGradesCount === 0,
     },
     {
       id: 7,
@@ -87,6 +60,7 @@ const GradesInformationBoxes = () => {
       title: '0%',
       text: 'No underperforming grades',
       color: '#a5e8a7',
+      hideWhen: underPerformingGradesCount > 0,
     },
     {
       id: 4,
@@ -95,7 +69,7 @@ const GradesInformationBoxes = () => {
       text: 'Total subjects you are enrolled in',
       color: '#bbdefb',
     },
-  ];
+  ].filter(card => card.hideWhen === false || card.hideWhen === undefined);
 
   return (
     <Box
@@ -114,3 +88,22 @@ const GradesInformationBoxes = () => {
 };
 
 export default GradesInformationBoxes;
+
+const calculateAverageGrade = (gradesList: IGrade[]): string => {
+  if (gradesList.length === 0) {
+    return '0.00';
+  }
+
+  const validGrades = _.map(gradesList, 'grade').filter(Number);
+  const average = _.mean(validGrades);
+
+  return average.toFixed(2);
+};
+
+const calculatePercentage = (count: number, gradesCount: number): string => {
+  if (gradesCount === 0) {
+    return '0%';
+  }
+
+  return `${Math.round((count / gradesCount) * 100)}%`;
+};

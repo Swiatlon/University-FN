@@ -4,11 +4,11 @@ import { gradesColumns } from './Columns';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface IGradesDataGridProps {
-  grades?: IGrade[];
+  grades: IGrade[];
 }
 
 const GradesDataGrid = ({ grades }: IGradesDataGridProps) => {
-  const rowData: IGrade[] = useMemo(() => grades ?? [], [grades]);
+  const rowData: IGrade[] = useMemo(() => grades, [grades]);
 
   return (
     <DataGrid
