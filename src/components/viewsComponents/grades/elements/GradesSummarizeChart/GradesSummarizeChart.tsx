@@ -5,12 +5,11 @@ import { Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } 
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface GradesSummarizeChartProps {
-  grades?: IGrade[];
+  grades: IGrade[];
 }
 
 const GradesSummarizeChart: React.FC<GradesSummarizeChartProps> = ({ grades }) => {
-  const data = grades ?? [];
-  const gradeGroups = _.groupBy(data, 'grade');
+  const gradeGroups = _.groupBy(grades, 'grade');
   const groupedData = [
     { grade: 2, count: gradeGroups[2]?.length ?? 0, fill: '#c40101' },
     { grade: 3, count: gradeGroups[3]?.length ?? 0, fill: '#ff9800' },

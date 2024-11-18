@@ -5,7 +5,7 @@ import { selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice'
 import { selectAccountId } from 'redux/stateSlices/auth/Auth.State.Slice';
 import GradesDataGrid from './elements/gradesDataGrid/GradesDataGrid';
 import GradesInformationBoxes from './elements/gradesInformationBoxes/GradesInformationBoxes';
-import GradesSummarizeChart from './elements/GradesSummarizeChart/GradesSummarizeChart';
+import GradesSummarizeChart from './elements/gradesSummarizeChart/GradesSummarizeChart';
 import type { IGetStudentGradesQueryParams } from 'contract/slices/academics/Grades.Interfaces';
 
 const Grades = () => {
@@ -21,9 +21,9 @@ const Grades = () => {
 
   return (
     <>
-      <GradesInformationBoxes />
-      <GradesSummarizeChart grades={grades} />
-      <GradesDataGrid grades={grades} />
+      <GradesInformationBoxes grades={grades!} />
+      <GradesSummarizeChart grades={grades!} />
+      <GradesDataGrid grades={grades!} />
     </>
   );
 };
