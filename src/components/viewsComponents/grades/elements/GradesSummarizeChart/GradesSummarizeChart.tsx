@@ -24,7 +24,7 @@ const GradesSummarizeChart: React.FC<GradesSummarizeChartProps> = ({ grades }) =
   return (
     <Box sx={{ background: 'white', my: 2 }}>
       <Typography variant="h6" fontWeight="bold" textAlign="center" sx={{ py: 4 }}>
-        Amount Of Grades
+        Grades Presentation
       </Typography>
 
       <ResponsiveContainer width="100%" minHeight="450px">
