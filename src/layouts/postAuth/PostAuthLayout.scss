@@ -1,10 +1,9 @@
 .ContentContainer {
-  margin: 48px;
-  // max-width: 90%;
+  height: calc(100% - 120px);;
   position: relative;
+  margin: 24px;
 
-  @media (max-width: 600px) {
-    margin: 24px;
+@media (max-width: 600px) {
     max-width: 100%;
   }
 }

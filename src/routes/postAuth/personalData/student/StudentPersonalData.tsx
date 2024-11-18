@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
-import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import { AcademicInfo } from 'components/viewsComponents/personalData/AcademicInfo';
 import BasicInfo from 'components/viewsComponents/personalData/BasicInfo';
 import { PersonalDetails } from 'components/viewsComponents/personalData/PersonalDetails';
@@ -80,7 +80,7 @@ function PersonalDataForm() {
     [t, data]
   );
 
-  if (isLoading) return <FullScreenLoader />;
+  if (isLoading) return <CenteredLoader />;
 
   return (
     <>

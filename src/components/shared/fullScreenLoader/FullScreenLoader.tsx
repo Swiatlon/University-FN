@@ -1,6 +1,10 @@
 import { CircularProgress, Box } from '@mui/material';
 
-function FullScreenLoader() {
+interface IFullScreenLoader {
+  bgColor?: string;
+}
+
+function FullScreenLoader({ bgColor }: IFullScreenLoader) {
   return (
     <Box
       sx={{
@@ -12,7 +16,7 @@ function FullScreenLoader() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: bgColor || 'rgba(255, 255, 255, 0.712)',
         zIndex: 1300,
       }}
     >

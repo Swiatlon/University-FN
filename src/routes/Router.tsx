@@ -25,15 +25,15 @@ export const router = createBrowserRouter([
         element: <SessionMiddleware />,
         children: [
           {
-            path: '',
-            element: <PreAuthLayout />,
-            children: [indexPreAuthConfig, loginConfig],
-          },
-          {
-            path: 'postAuth',
             element: <PersistLoginMiddleware />,
             children: [
               {
+                path: '',
+                element: <PreAuthLayout />,
+                children: [indexPreAuthConfig, loginConfig],
+              },
+              {
+                path: 'postAuth',
                 element: <ProtectedRoutesMiddleware />,
                 children: [
                   {

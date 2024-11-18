@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Box, Paper } from '@mui/material';
-import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import BasicInfo from 'components/viewsComponents/personalData/BasicInfo';
 import { PersonalDetails } from 'components/viewsComponents/personalData/PersonalDetails';
 import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
@@ -71,7 +71,7 @@ function EmployeePersonalData() {
     [t, data]
   );
 
-  if (isLoading) return <FullScreenLoader />;
+  if (isLoading) return <CenteredLoader />;
 
   return (
     <>
