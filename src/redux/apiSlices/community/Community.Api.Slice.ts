@@ -23,7 +23,7 @@ export const communitySlice = Api.injectEndpoints({
     getAllTeachers: builder.query<IGetAllTeachersResponse, IGetAllTeachersQueryParams>({
       query: ({ pagination, selectFields, search }) => {
         return {
-          url: '/api/community/getAllTeachers',
+          url: '/community/getAllTeachers',
           params: {
             pagination,
             selectFields,

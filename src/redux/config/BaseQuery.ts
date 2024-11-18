@@ -9,7 +9,7 @@ interface IAuthState {
 }
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: import.meta.env.VITE_DEVELOPMENT_BACKEND_ADDRESS,
+  baseUrl: `${import.meta.env.VITE_DEVELOPMENT_BACKEND_ADDRESS}/api`,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const { token } = (getState() as { authSlice: IAuthState }).authSlice;
@@ -26,6 +26,8 @@ const baseQuery = fetchBaseQuery({
       encode: false,
     }),
 });
+
+//TODO DOROBIC ERRORY:)
 
 export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQueryError> = async (
   args,

@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Avatar, Box, Typography, CircularProgress } from '@mui/material';
-import { useGetUserInfoQuery } from 'redux/apiSlices/userInfo/UserInfo.Api.Slice';
+import { useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import UserIcon from 'assets/images/userPhoto.png';
 
 function UserProfile() {
   const { t } = useTranslation();
-  const { data } = useGetUserInfoQuery();
+  const { data } = useGetLoggedAccountBasicDataQuery();
 
   if (!data) {
     return <CircularProgress />;
