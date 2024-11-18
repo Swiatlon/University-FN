@@ -1,7 +1,7 @@
 import { CircularProgress, Box } from '@mui/material';
 
 interface IFullScreenLoader {
-  bgColor: string;
+  bgColor?: string;
 }
 
 function FullScreenLoader({ bgColor }: IFullScreenLoader) {
