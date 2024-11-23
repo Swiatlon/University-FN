@@ -6,12 +6,11 @@ import _ from 'lodash';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface IGradesInformationBoxes {
-  grades?: IGrade[];
+  grades: IGrade[];
 }
 
 const GradesInformationBoxes = ({ grades }: IGradesInformationBoxes) => {
-  const data = grades ?? [];
-  const gradesCount = data.length;
+  const gradesCount = grades.length;
   const highestGradesCount = _.filter(grades, { grade: GradeValueEnum.Excellent }).length;
   const underPerformingGradesCount = _.filter(grades, { grade: GradeValueEnum.Fair }).length;
   const notPassedGradesCount = _.filter(grades, { grade: GradeValueEnum.Poor }).length;
@@ -20,7 +19,7 @@ const GradesInformationBoxes = ({ grades }: IGradesInformationBoxes) => {
     {
       id: 5,
       icon: <EqualizerRounded sx={{ color: '#2196f3', fontSize: '28px' }} />,
-      title: calculateAverageGrade(data),
+      title: calculateAverageGrade(grades),
       text: 'Average from your grades',
       color: '#bbdefb',
     },
