@@ -13,7 +13,7 @@ export const DataGridContainer = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 }));
 
-export const DataGridWrapper = styled(Box)(({ theme }) => ({
+export const DataGridWrapper = styled(Box)(() => ({
   zIndex: 100,
   position: 'relative',
 }));
