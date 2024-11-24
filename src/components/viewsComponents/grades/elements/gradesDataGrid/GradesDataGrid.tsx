@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import DataGrid from 'components/shared/dataGrid/DataGrid';
+import DataGrid, { SearchBarVariantEnum } from 'components/shared/dataGrid/DataGrid';
 import { gradesColumns } from './Columns';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
@@ -12,10 +12,12 @@ const GradesDataGrid = ({ grades }: IGradesDataGridProps) => {
 
   return (
     <DataGrid
-      sx={{ height: '70vh', width: '100%' }}
+      sx={{ height: '60vh', width: '100%', pb: 2 }}
       columnDefs={gradesColumns}
       rowData={rowData}
+      searchVariant={SearchBarVariantEnum.FrontEnd}
       rowSelection="single"
+      exportFileName="grades_export"
     />
   );
 };

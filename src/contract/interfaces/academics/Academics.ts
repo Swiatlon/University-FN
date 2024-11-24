@@ -31,6 +31,7 @@ export interface IModule {
 }
 
 export interface IGrade {
+  id: string;
   subject: {
     id: number;
     name: string;

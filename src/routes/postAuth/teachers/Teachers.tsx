@@ -1,6 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import { Box } from '@mui/material';
-import DataGrid from 'components/shared/dataGrid/DataGrid';
+import DataGrid, { SearchBarVariantEnum } from 'components/shared/dataGrid/DataGrid';
 import useQueryParams from 'hooks/useQueryParams.Hook';
 import { useGetAllTeachersQuery } from 'redux/apiSlices/community/Community.Api.Slice';
 import type { IQueryParams } from 'contract/interfaces/requests/Requests';
@@ -13,7 +13,6 @@ const initialQueryParams: IQueryParams = {
 const Teachers = () => {
   const { queryParams, setSearch, setPagination, setPaginationPage } = useQueryParams({ initialQueryParams });
   const { data, isFetching, error } = useGetAllTeachersQuery(queryParams);
-
   const rowData = useMemo(() => data?.items ?? [], [data]);
   const columns = useMemo(
     () => [
@@ -29,7 +28,7 @@ const Teachers = () => {
   const handleSearch = useCallback(
     (value: string) => {
       setPaginationPage(1);
-      setSearch(value);
+      setSearch(value, ['name', 'surname', 'contactEmail', 'contactPhone']);
     },
     [setPaginationPage, setSearch]
   );
@@ -53,7 +52,9 @@ const Teachers = () => {
         rowData={rowData}
         isLoading={isFetching}
         rowSelection="single"
+        searchVariant={SearchBarVariantEnum.BackEnd}
         handleSearch={handleSearch}
+        exportFileName="teachers_export"
         pagination={{
           setPagination: handlePagination,
           page: queryParams.pagination!.page,
