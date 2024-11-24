@@ -55,10 +55,7 @@ function AppBarTimer() {
 
       const { minutes = 0, seconds = 0 } = intervalToDuration({ start: now, end: expirationDate });
       const matchingThreshold = _.find(timeThresholds, threshold => minutes < threshold.minutes);
-      const formattedTime = `
-        ${_.padStart(minutes.toString(), 2, '0')}:
-        ${_.padStart(seconds.toString(), 2, '0')}
-      `;
+      const formattedTime = `${_.padStart(minutes.toString(), 2, '0')}:${_.padStart(seconds.toString(), 2, '0')}`;
 
       setTimeLeft(formattedTime);
       setTimerState(matchingThreshold?.state ?? TimerStatesEnum.Normal);
