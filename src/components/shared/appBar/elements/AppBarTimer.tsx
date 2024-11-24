@@ -2,19 +2,29 @@ import { useLayoutEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ErrorOutline, WarningAmber } from '@mui/icons-material';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import { TimerStatesEnum } from 'contract/enums/Enums';
 import { parseISO, isAfter, intervalToDuration } from 'date-fns';
 import _ from 'lodash';
 import { useSendLogoutMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
 import { selectTokenExpirationTime } from 'redux/stateSlices/auth/Auth.State.Slice';
 import AppBarExtSessionIcon from './AppBarExtSessionIcon';
 
+export enum TimerStatesEnum {
+  Critical = 'critical',
+  Warning = 'warning',
+  Normal = 'normal',
+}
+
 interface ITimeThresholds {
   minutes: number;
   state: TimerStatesEnum;
 }
 
-const timerStylesByState: Record<TimerStatesEnum, { color: string; icon?: JSX.Element }> = {
+interface ITimerStylesKeys {
+  color: string;
+  icon?: JSX.Element;
+}
+
+const timerStylesByState: Record<TimerStatesEnum, ITimerStylesKeys> = {
   [TimerStatesEnum.Critical]: { color: '#f70000', icon: <ErrorOutline sx={{ color: '#f70000', mr: 1 }} /> },
   [TimerStatesEnum.Warning]: { color: '#ff9800', icon: <WarningAmber sx={{ color: '#ff9800', mr: 1 }} /> },
   [TimerStatesEnum.Normal]: { color: 'black' },

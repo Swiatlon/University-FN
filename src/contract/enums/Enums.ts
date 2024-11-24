@@ -24,9 +24,3 @@ export enum PassDateAttemptEnum {
   FourthAttempt = 3,
 }
 export const passDateAttemptEnumArray = Object.values(PassDateAttemptEnum).filter(Number) as PassDateAttemptEnum[];
-
-export enum TimerStatesEnum {
-  Critical = 'critical',
-  Warning = 'warning',
-  Normal = 'normal',
-}
