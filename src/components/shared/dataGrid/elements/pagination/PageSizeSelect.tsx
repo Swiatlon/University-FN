@@ -8,7 +8,7 @@ interface IPageSizeSelectProps {
   disabled?: boolean;
 }
 
-const pageSizeOptions = [500, 1000, 10000, 100000];
+const pageSizeOptions = [100, 500, 1000, 10000, 100000];
 
 const PageSizeSelect: React.FC<IPageSizeSelectProps> = ({ value, onChange, disabled }) => {
   return (
