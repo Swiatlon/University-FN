@@ -72,7 +72,12 @@ function DataGrid({
       </ToolbarContainer>
 
       <DataGridWrapper sx={sx} className="ag-theme-quartz">
-        <AgGridReact {...props} columnDefs={columnDefs} defaultColDef={{ resizable: false }} ref={gridRef} />
+        <AgGridReact
+          {...props}
+          columnDefs={columnDefs}
+          defaultColDef={{ resizable: false, unSortIcon: true }}
+          ref={gridRef}
+        />
       </DataGridWrapper>
 
       {isLoading ? <DataGridLoader /> : null}

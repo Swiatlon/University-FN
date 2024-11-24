@@ -28,7 +28,6 @@ export const gradesColumns: ColDef<IExtendedColumns>[] = [
     flex: 1,
     minWidth: 50,
     maxWidth: 100,
-    unSortIcon: true,
   },
   {
     headerName: 'Subject',
@@ -36,7 +35,6 @@ export const gradesColumns: ColDef<IExtendedColumns>[] = [
     flex: 1,
     minWidth: 200,
     sort: 'asc',
-    unSortIcon: true,
     cellStyle: {
       fontWeight: 'bold',
     },
@@ -46,7 +44,6 @@ export const gradesColumns: ColDef<IExtendedColumns>[] = [
     field: 'grade',
     flex: 1,
     minWidth: 100,
-    unSortIcon: true,
     sortable: true,
   },
   { headerName: 'Pass Attempt', field: 'passDateAttempt', flex: 1, minWidth: 100, sortable: true, unSortIcon: true },
@@ -54,7 +51,6 @@ export const gradesColumns: ColDef<IExtendedColumns>[] = [
     headerName: 'Passed',
     field: 'passed',
     flex: 1,
-    unSortIcon: true,
     minWidth: 180,
     valueGetter: ({ data }) => {
       const grade = data?.grade;
