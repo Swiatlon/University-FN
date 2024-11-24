@@ -18,6 +18,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<IIsOpenProp>(({ isOpen 
   height: '100vh',
   background: '#0448af',
   boxShadow: '0px 4px 2px #010102',
+  zIndex: 1300,
 
   '& *': {
     color: 'white',
@@ -29,7 +30,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<IIsOpenProp>(({ isOpen 
     padding: 10,
     margin: 12,
     overflow: 'hidden',
-    transition: '1s width',
+    transition: 'all 0.5s cubic-bezier(0, 0, 0.2, 1)',
     justifyContent: 'center',
   },
 
@@ -56,7 +57,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<IIsOpenProp>(({ isOpen 
       gap: 10,
       opacity: isOpen ? '1' : 0,
       width: isOpen ? '100%' : 0,
-      transition: '1s all',
+      transition: 'all 0.5s cubic-bezier(0, 0, 0.2, 1)',
     },
 
     '.MenuToggleIcon': {
@@ -78,7 +79,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<IIsOpenProp>(({ isOpen 
       width: '40px',
       height: '40px',
       marginBottom: 4,
-      transition: 'width 1s linear, transform 1s linear',
+      transition: 'width 0.5s cubic-bezier(0, 0, 0.2, 1), transform 0.5s cubic-bezier(0, 0, 0.2, 1)',
     },
 
     p: {
@@ -86,7 +87,7 @@ export const Drawer = styled(Box, { shouldForwardProp })<IIsOpenProp>(({ isOpen 
     },
 
     '.UserInfoDisplay': {
-      transition: '0.5s opacity, 1s height, 1s width',
+      transition: '0.5s opacity, height 0.5s cubic-bezier(0, 0, 0.2, 1), width 0.5s cubic-bezier(0, 0, 0.2, 1)',
       opacity: isOpen ? 1 : 0,
       width: isOpen ? maxDrawerWidth : 0,
       height: isOpen ? 50 : 0,

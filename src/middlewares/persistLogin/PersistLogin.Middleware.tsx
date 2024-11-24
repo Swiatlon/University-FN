@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import { useEffectOnce } from 'hooks/useExtendedUseEffect';
 import { useRefreshMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
-import { selectCurrentToken, setCredentials, logOut } from 'redux/stateSlices/auth/Auth.State.Slice';
-import type { IRefreshResponse } from 'contract/slices/auth/Auth';
+import { selectCurrentToken, logOut, setCredentials } from 'redux/stateSlices/auth/Auth.State.Slice';
 
 function PersistLoginMiddleware() {
   const navigate = useNavigate();
@@ -14,31 +14,30 @@ function PersistLoginMiddleware() {
   const token = useSelector(selectCurrentToken);
   const sessionID = sessionStorage.getItem('sessionUUID')!;
 
-  useEffect(() => {
-    if (!token) {
-      const verifyRefreshToken = async () => {
-        try {
-          const result: IRefreshResponse = await refresh({ sessionID }).unwrap();
-          const { accessToken } = result;
-          dispatch(setCredentials({ accessToken }));
-        } catch (error) {
-          dispatch(logOut());
-          navigate('/login');
-        }
-      };
-
-      verifyRefreshToken();
+  const refreshToken = async () => {
+    if (!token && !isLoading) {
+      try {
+        const result = await refresh({ sessionID }).unwrap();
+        const { accessToken } = result;
+        dispatch(setCredentials({ accessToken }));
+      } catch (error) {
+        dispatch(logOut());
+        navigate('/login');
+      }
     }
-
     setIsTokenReady(true);
-  }, [token]);
+  };
+
+  useEffectOnce(() => {
+    refreshToken();
+  });
 
   if (isLoading || !isTokenReady) {
     return <FullScreenLoader />;
   }
 
   if (isError) {
-    throw Error('Failed to refresh session');
+    throw new Error('Failed to refresh session');
   }
 
   return <Outlet />;

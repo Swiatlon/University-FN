@@ -49,3 +49,12 @@ export interface ITeacher {
   name: string;
   surname: string;
 }
+
+export interface IStudentTodo {
+  id: number;
+  title: string;
+  description: string;
+  endDate: Date;
+  color: string;
+  student: number;
+}
