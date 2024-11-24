@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
 import { useRefreshMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
 import { selectCurrentToken, setCredentials, logOut } from 'redux/stateSlices/auth/Auth.State.Slice';
-import { useEffectOnlyOnUpdate } from 'utils/useEffect/UseEffect';
 import type { IRefreshResponse } from 'contract/slices/auth/Auth';
 
 function PersistLoginMiddleware() {
@@ -15,7 +14,7 @@ function PersistLoginMiddleware() {
   const token = useSelector(selectCurrentToken);
   const sessionID = sessionStorage.getItem('sessionUUID')!;
 
-  useEffectOnlyOnUpdate(() => {
+  useEffect(() => {
     if (!token) {
       const verifyRefreshToken = async () => {
         try {
