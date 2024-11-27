@@ -47,4 +47,8 @@ $ag-header-column-separator: #e0e0e0;
   .ag-row:hover {
     background-color: lighten($ag-header-background-color, 50%);
   }
+
+  .ag-icon {
+    color: white;
+  }
 }
