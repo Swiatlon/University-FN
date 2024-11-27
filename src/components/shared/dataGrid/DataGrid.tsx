@@ -3,7 +3,6 @@ import { Divider, type BoxProps } from '@mui/material';
 import { AgGridReact, type AgGridReactProps } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
-import 'ag-grid-community/styles/ag-theme-material.css';
 import './CustomAgGrid.scss';
 import ColumnVisibilityDropdown from './elements/columnsVisibility/ColumnsVisibility';
 import { DataGridContainer, DataGridWrapper, ToolbarContainer } from './elements/containers/Containers';
