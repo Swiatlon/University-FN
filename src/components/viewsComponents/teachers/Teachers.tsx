@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import DataGrid, { SearchBarVariantEnum } from 'components/shared/dataGrid/DataGrid';
 import useQueryParams from 'hooks/useQueryParams.Hook';
 import { useGetAllTeachersQuery } from 'redux/apiSlices/community/Community.Api.Slice';
+import type { ColDef } from 'ag-grid-community';
 import type { IQueryParams } from 'contract/interfaces/requests/Requests';
 
 const initialQueryParams: IQueryParams = {
@@ -10,29 +11,27 @@ const initialQueryParams: IQueryParams = {
   pagination: { page: 1, pageSize: 500 },
 };
 
+const columns: ColDef[] = [
+  { headerName: 'ID', field: 'id', maxWidth: 100 },
+  {
+    headerName: 'Name',
+    field: 'name',
+    flex: 1,
+    minWidth: 200,
+    sort: 'asc',
+    cellStyle: {
+      fontWeight: 'bold',
+    },
+  },
+  { headerName: 'Surname', field: 'surname', flex: 1, minWidth: 200 },
+  { headerName: 'Email', field: 'contactEmail', flex: 2, minWidth: 300 },
+  { headerName: 'Phone', field: 'contactPhone', flex: 2, minWidth: 150 },
+];
+
 const Teachers = () => {
   const { queryParams, setSearch, setPagination, setPaginationPage } = useQueryParams({ initialQueryParams });
   const { data, isFetching, error } = useGetAllTeachersQuery(queryParams);
   const rowData = useMemo(() => data?.items ?? [], [data]);
-  const columns = useMemo(
-    () => [
-      { headerName: 'ID', field: 'id', maxWidth: 100 },
-      {
-        headerName: 'Name',
-        field: 'name',
-        flex: 1,
-        minWidth: 200,
-        sort: 'asc',
-        cellStyle: {
-          fontWeight: 'bold',
-        },
-      },
-      { headerName: 'Surname', field: 'surname', flex: 1, minWidth: 200 },
-      { headerName: 'Email', field: 'contactEmail', flex: 2, minWidth: 300 },
-      { headerName: 'Phone', field: 'contactPhone', flex: 2, minWidth: 150 },
-    ],
-    []
-  );
 
   const handleSearch = useCallback(
     (value: string) => {
