@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import BookIcon from '@mui/icons-material/Book';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EventIcon from '@mui/icons-material/Event';
 import GradingIcon from '@mui/icons-material/Grading';
@@ -20,6 +21,13 @@ function PostAuthLayout() {
   const { t } = useTranslation();
 
   const menuItems = [
+    {
+      id: uuidv4(),
+      text: t('dashboard'),
+      icon: <DashboardIcon />,
+      availableForRoles: [RolesEnum.STUDENT],
+      linkTo: 'dashboard',
+    },
     {
       id: uuidv4(),
       text: t('profile'),

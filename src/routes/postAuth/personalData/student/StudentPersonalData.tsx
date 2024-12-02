@@ -6,7 +6,7 @@ import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import { AcademicInfo } from 'components/viewsComponents/personalData/AcademicInfo';
 import BasicInfo from 'components/viewsComponents/personalData/BasicInfo';
 import { PersonalDetails } from 'components/viewsComponents/personalData/PersonalDetails';
-import { selectAccountId, selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
+import { selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
 import type { IDetailRowProps } from 'components/viewsComponents/personalData/DetailRow';
 import '../styles/PersonalData.scss';
@@ -18,13 +18,8 @@ export interface ISection {
 
 function PersonalDataForm() {
   const { t } = useTranslation();
-  const accountId = useSelector(selectAccountId);
   const studentId = useSelector(selectId);
-
-  const { data, isLoading } = useGetAuthorizedStudentAllDataQuery(
-    { accountId: accountId!, studentId: studentId! },
-    { skip: !accountId || !studentId }
-  );
+  const { data, isLoading } = useGetAuthorizedStudentAllDataQuery({ studentId: studentId! }, { skip: !studentId });
 
   const sections: ISection[] = useMemo(
     () => [
@@ -85,7 +80,7 @@ function PersonalDataForm() {
   return (
     <>
       <Box className="BasicInfoBox">
-        <BasicInfo name={data?.name ?? ''} surname={data?.surname ?? ''} />
+        <BasicInfo name={data?.name ?? 'Name'} surname={data?.surname ?? 'Surname'} size={120} />
         <AcademicInfo
           degreeCourse={data?.degreeCourses[0]?.degreeCourse.name ?? ''}
           degreePath={data?.degreePaths[0]?.degreePath.name ?? ''}

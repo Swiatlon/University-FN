@@ -15,9 +15,18 @@ interface IDropdownMenuProps {
   items: IDropdownItem[];
   startIcon?: React.ReactElement;
   hideLabelOnMobile?: boolean;
+  buttonVariant?: 'outlined' | 'text' | 'contained';
+  customButton?: React.ReactElement;
 }
 
-function DropdownMenu({ label, items, startIcon, hideLabelOnMobile }: IDropdownMenuProps) {
+function DropdownMenu({
+  label,
+  items,
+  startIcon,
+  hideLabelOnMobile,
+  buttonVariant = 'outlined',
+  customButton,
+}: IDropdownMenuProps) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const isMobile = useMediaQuery('(max-width:910px)');
@@ -39,9 +48,15 @@ function DropdownMenu({ label, items, startIcon, hideLabelOnMobile }: IDropdownM
 
   return (
     <Box sx={{ m: 1 }} key={currentLanguage}>
-      <Button onClick={handleClick} startIcon={selection.icon}>
-        {hideLabelOnMobile && isMobile ? null : t(selection.label)}
-      </Button>
+      {customButton ? (
+        React.cloneElement(customButton, {
+          onClick: handleClick,
+        })
+      ) : (
+        <Button onClick={handleClick} startIcon={selection.icon} variant={buttonVariant}>
+          {hideLabelOnMobile && isMobile ? null : t(selection.label)}
+        </Button>
+      )}
       <Menu id="dropdown-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
         {items.map(item => (
           <MenuItem

@@ -36,4 +36,9 @@ export const selectId = createSelector(
   result => result.data?.id
 );
 
+export const selectAccountFullName = createSelector(
+  LoggedAccountSlice.endpoints.getLoggedAccountBasicData.select(),
+  result => ({ name: result.data?.name, surname: result.data?.surname })
+);
+
 export const { useGetLoggedAccountBasicDataQuery } = LoggedAccountSlice;
