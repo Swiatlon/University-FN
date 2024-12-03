@@ -1,0 +1,80 @@
+name: Check ESLint and Build
+
+on:
+  pull_request:
+    paths:
+      - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.cjs'
+      - '**/*.mjs'
+
+jobs:
+  lint:
+    name: Lint Modified Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint modified files
+        run: |
+          echo "Identifying modified files..."
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          echo "Base SHA: $BASE_SHA"
+          echo "Head SHA: $HEAD_SHA"
+          MODIFIED_FILES=$(git diff --name-only $BASE_SHA $HEAD_SHA -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
+          echo "Modified files: $MODIFIED_FILES"
+          if [ -n "$MODIFIED_FILES" ]; then
+            echo "Running ESLint..."
+            npx eslint $MODIFIED_FILES --format table || exit 2
+          else
+            echo "No modified files to lint"
+          fi
+
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build || (echo "Build failed. Check the logs above." && exit 1)

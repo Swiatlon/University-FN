@@ -1,8 +1,16 @@
 import Api from 'redux/config/Api';
+import { extendedOnQueryStartedWithNotifications } from 'utils/slices/ExtendedOnQueryStarted';
+import type { IStudentTodo } from 'contract/interfaces/persons/Persons';
 import type {
   IGetAuthorizedStudentAllDataBackendResponse,
   IGetAuthorizedStudentAllDataRequest,
   IGetAuthorizedStudentAllDataTransformedReponse,
+  IGetStudentTodosResponse,
+  IGetStudentTodosRequest,
+  ICreateStudentTodoRequest,
+  IDeleteStudentTodoRequest,
+  IGetStudentTodosTransformedResponse,
+  IUpdateStudentTodoRequest,
 } from 'contract/slices/students/Students';
 
 export const studentsSlice = Api.injectEndpoints({
@@ -11,9 +19,8 @@ export const studentsSlice = Api.injectEndpoints({
       IGetAuthorizedStudentAllDataTransformedReponse,
       IGetAuthorizedStudentAllDataRequest
     >({
-      query: ({ studentId, accountId }) => ({
+      query: ({ studentId }) => ({
         url: `/students/allData/${studentId}`,
-        params: { accountId },
       }),
       transformResponse: (
         response: IGetAuthorizedStudentAllDataBackendResponse
@@ -43,7 +50,56 @@ export const studentsSlice = Api.injectEndpoints({
         })),
       }),
     }),
+
+    getStudentTodos: builder.query<IGetStudentTodosTransformedResponse[], IGetStudentTodosRequest>({
+      query: ({ studentId }) => ({
+        url: `/students/${studentId}/todos`,
+      }),
+      transformResponse: (response: IGetStudentTodosResponse[]) => {
+        return response.map(todo => ({
+          ...todo,
+          student: todo.student.id,
+        }));
+      },
+      providesTags: ['studentsTodosGet'],
+    }),
+
+    createStudentTodo: builder.mutation<IStudentTodo, ICreateStudentTodoRequest>({
+      query: newTodo => ({
+        url: `/students/todos`,
+        method: 'POST',
+        body: newTodo,
+      }),
+      onQueryStarted: extendedOnQueryStartedWithNotifications({
+        successMessage: 'Created todo!',
+        successCallback: (_data, _dispatch) => {},
+      }),
+      invalidatesTags: ['studentsTodosGet'],
+    }),
+
+    updateStudentTodo: builder.mutation<void, IUpdateStudentTodoRequest>({
+      query: ({ student, id, updatedTodo }) => ({
+        url: `/students/${student}/todos/${id}`,
+        method: 'PUT',
+        body: updatedTodo,
+      }),
+      invalidatesTags: ['studentsTodosGet'],
+    }),
+
+    deleteStudentTodo: builder.mutation<void, IDeleteStudentTodoRequest>({
+      query: ({ studentId, todoId }) => ({
+        url: `/students/${studentId}/todos/${todoId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['studentsTodosGet'],
+    }),
   }),
 });
 
-export const { useGetAuthorizedStudentAllDataQuery } = studentsSlice;
+export const {
+  useGetAuthorizedStudentAllDataQuery,
+  useGetStudentTodosQuery,
+  useCreateStudentTodoMutation,
+  useDeleteStudentTodoMutation,
+  useUpdateStudentTodoMutation,
+} = studentsSlice;

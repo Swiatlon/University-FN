@@ -1,19 +1,14 @@
 import { useSelector } from 'react-redux';
 import { Paper } from '@mui/material';
 import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
-import { selectAccountId, selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
+import { selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { useGetAuthorizedStudentAllDataQuery } from 'redux/apiSlices/students/Students.Api.Slice';
 import DetailSection from '../../../components/viewsComponents/personalData/DetailSection';
 import type { IDetailRowProps } from '../../../components/viewsComponents/personalData/DetailRow';
 
 function Courses() {
-  const accountId = useSelector(selectAccountId);
   const studentId = useSelector(selectId);
-
-  const { data, isFetching } = useGetAuthorizedStudentAllDataQuery(
-    { accountId: accountId!, studentId: studentId! },
-    { skip: !accountId || !studentId }
-  );
+  const { data, isFetching } = useGetAuthorizedStudentAllDataQuery({ studentId: studentId! }, { skip: !studentId });
 
   if (isFetching) {
     return <CenteredLoader />;

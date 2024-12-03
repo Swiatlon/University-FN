@@ -90,7 +90,7 @@ const GradesInformationBoxes = ({ grades }: IGradesInformationBoxes) => {
 
 export default GradesInformationBoxes;
 
-const calculateAverageGrade = (gradesList: IGrade[]): string => {
+export const calculateAverageGrade = (gradesList: IGrade[]): string => {
   if (gradesList.length === 0) {
     return '0.00';
   }

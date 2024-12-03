@@ -27,8 +27,6 @@ const baseQuery = fetchBaseQuery({
     }),
 });
 
-//TODO DOROBIC ERRORY:)
-
 export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQueryError> = async (
   args,
   api,
@@ -41,7 +39,6 @@ export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, Fetch
   }
 
   const refreshResult = await baseQuery('/auth/refresh', api, extraOptions);
-
   if (refreshResult.data) {
     const data = refreshResult.data as { accessToken?: string };
 
@@ -56,6 +53,8 @@ export const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, Fetch
   if (refreshResult.error) {
     const errorData = refreshResult.error.data as { message?: string };
     errorData.message = 'Your login has expired.';
+
+    return result;
   }
 
   return refreshResult;
