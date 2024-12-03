@@ -1,13 +1,7 @@
 import Api from 'redux/config/Api';
 import { extendedOnQueryStartedWithNotifications } from 'utils/slices/ExtendedOnQueryStarted';
 import { logOut, setCredentials } from '../../stateSlices/auth/Auth.State.Slice';
-import type {
-  ILoginRequest,
-  ILoginResponse,
-  ILogoutResponse,
-  IRefreshRequest,
-  IRefreshResponse,
-} from 'contract/slices/auth/Auth';
+import type { ILoginRequest, ILoginResponse, ILogoutResponse, IRefreshResponse } from 'contract/slices/auth/Auth';
 
 const authApiSlice = Api.injectEndpoints({
   endpoints: builder => ({
@@ -39,27 +33,21 @@ const authApiSlice = Api.injectEndpoints({
       }),
     }),
 
-    refresh: builder.mutation<IRefreshResponse, IRefreshRequest>({
-      query: ({ sessionID }) => ({
+    refresh: builder.mutation<IRefreshResponse, void>({
+      query: () => ({
         url: '/auth/refresh',
         method: 'POST',
-        body: {
-          sessionID,
-        },
       }),
-      onQueryStarted: extendedOnQueryStartedWithNotifications({
-        successMessage: 'Token refreshed',
-        successCallback: (data, dispatch) => {
-          dispatch(setCredentials({ accessToken: data.accessToken }));
-        },
-      }),
+      onQueryStarted: async (_arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        dispatch(setCredentials({ accessToken: data.accessToken }));
+      },
     }),
 
-    randomLogin: builder.mutation<ILoginResponse, { sessionID: string }>({
-      query: ({ sessionID }) => ({
+    randomLogin: builder.mutation<ILoginResponse, void>({
+      query: () => ({
         url: '/auth/random-login',
         method: 'POST',
-        body: { sessionID },
       }),
       onQueryStarted: extendedOnQueryStartedWithNotifications({
         successMessage: 'Random login successful!',

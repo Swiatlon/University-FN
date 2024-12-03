@@ -4,7 +4,6 @@ import PostAuthLayout from 'layouts/postAuth/PostAuthLayout';
 import PreAuthLayout from 'layouts/preAuth/PreAuthLayout';
 import PersistLoginMiddleware from 'middlewares/persistLogin/PersistLogin.Middleware';
 import ProtectedRoutesMiddleware from 'middlewares/protectedRoutes/ProtectedRoutes.Middleware';
-import SessionMiddleware from 'middlewares/session/Session.Middleware';
 import { academicsConfig } from './routesConfigs/AcademicsConfig';
 import { communityConfig } from './routesConfigs/CommunityConfig';
 import { dashboardConfig } from './routesConfigs/DashboardConfig';
@@ -22,31 +21,26 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        element: <SessionMiddleware />,
+        element: <PersistLoginMiddleware />,
         children: [
           {
-            element: <PersistLoginMiddleware />,
+            path: '',
+            element: <PreAuthLayout />,
+            children: [indexPreAuthConfig, loginConfig],
+          },
+          {
+            path: 'postAuth',
+            element: <ProtectedRoutesMiddleware />,
             children: [
               {
-                path: '',
-                element: <PreAuthLayout />,
-                children: [indexPreAuthConfig, loginConfig],
-              },
-              {
-                path: 'postAuth',
-                element: <ProtectedRoutesMiddleware />,
+                element: <PostAuthLayout />,
                 children: [
-                  {
-                    element: <PostAuthLayout />,
-                    children: [
-                      indexPostAuthConfig,
-                      dashboardConfig,
-                      profileConfig,
-                      communityConfig,
-                      academicsConfig,
-                      logoutConfig,
-                    ],
-                  },
+                  indexPostAuthConfig,
+                  dashboardConfig,
+                  profileConfig,
+                  communityConfig,
+                  academicsConfig,
+                  logoutConfig,
                 ],
               },
             ],

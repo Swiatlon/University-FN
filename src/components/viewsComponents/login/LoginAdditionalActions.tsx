@@ -4,11 +4,10 @@ import { t } from 'i18next';
 import { useRandomLoginMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
 
 function LoginAdditionalActions() {
-  const sessionUUID = sessionStorage.getItem('sessionUUID')!;
   const [randomLogin] = useRandomLoginMutation();
 
   const handleRandomLogin = async () => {
-    await randomLogin({ sessionID: sessionUUID }).unwrap();
+    await randomLogin().unwrap();
   };
 
   return (
