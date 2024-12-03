@@ -49,7 +49,7 @@ export const extendedOnQueryStartedWithNotifications = <T, U>({
     try {
       const { data } = await queryFulfilled;
 
-      if ((data as IResponseData).isError && (data as IResponseData).message) {
+      if ((data as IResponseData | undefined)?.isError && (data as IResponseData).message) {
         throw new Error((data as IResponseData).message);
       }
 

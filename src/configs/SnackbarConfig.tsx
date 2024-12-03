@@ -8,12 +8,16 @@ interface SnackbarConfigProps {
 const SnackbarConfig: React.FC<SnackbarConfigProps> = ({ children }) => {
   return (
     <SnackbarProvider
-      autoHideDuration={3000}
+      autoHideDuration={1000}
       maxSnack={2}
       preventDuplicate
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'right',
+        horizontal: 'center',
+      }}
+      style={{
+        minWidth: '300px',
+        pointerEvents: 'none',
       }}
     >
       {children}
