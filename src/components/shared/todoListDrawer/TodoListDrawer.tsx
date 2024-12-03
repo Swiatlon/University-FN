@@ -7,11 +7,14 @@ import { useGetStudentTodosQuery } from 'redux/apiSlices/students/Students.Api.S
 import TaskCard from './elements/TaskCard';
 import TodoCreateDialog from './elements/TodoCreateDialog';
 
-const TodoListDrawer: React.FC = () => {
-  const isMobile = useMediaQuery('(max-width: 500px)');
+interface ITodoListDrawerProps {
+  maxDrawerWidth: number;
+}
+
+const TodoListDrawer = ({ maxDrawerWidth }: ITodoListDrawerProps) => {
   const studentId = useSelector(selectId)!;
-  const drawerWidth = isMobile ? 280 : 450;
-  const [openDrawer, setOpenDrawer] = useState<boolean>(true);
+  const isEnoughSpaceForDrawer = useMediaQuery('(min-width: 1400px)');
+  const [openDrawer, setOpenDrawer] = useState<boolean>(isEnoughSpaceForDrawer);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { data: tasks } = useGetStudentTodosQuery({ studentId }, { skip: !studentId });
 
@@ -30,10 +33,13 @@ const TodoListDrawer: React.FC = () => {
         open={openDrawer}
         variant="persistent"
         sx={{
+          position: 'fixed',
+          width: openDrawer ? maxDrawerWidth : 0,
+          height: '100%',
+
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            mt: 'auto',
-            height: 'calc(100vh - 80px)',
+            width: openDrawer ? maxDrawerWidth : 0,
+            mt: 10,
             bottom: 0,
             boxSizing: 'border-box',
             borderTop: '1px solid rgba(0, 0, 0, 0.05)',
@@ -55,7 +61,7 @@ const TodoListDrawer: React.FC = () => {
         sx={{
           position: 'fixed',
           top: '30%',
-          right: openDrawer ? drawerWidth : 0,
+          right: openDrawer ? maxDrawerWidth : 0,
           zIndex: 1202,
           background: 'white',
           border: '1px solid #ddd',
