@@ -34,6 +34,7 @@ export const TaskCard: React.FC<ITaskCardProps> = ({ task: { title, description,
     setSelectedTask({ title, description, endDate, color, student, id });
     setIsDialogOpen(true);
   };
+
   const items = [
     {
       label: 'Edit',
