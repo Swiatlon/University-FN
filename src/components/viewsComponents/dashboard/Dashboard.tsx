@@ -61,7 +61,7 @@ function Dashboard() {
             Hi, <span style={{ whiteSpace: 'nowrap' }}>Name + Surname!</span>
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Check your performance stats <br /> to make sure you're on track <br /> with your academic goals!
+            Check your performance stats <br /> to make sure you are on track <br /> with your academic goals!
           </Typography>
           <Button variant="text" sx={{ maxWidth: '114px', p: 0 }}>
             See all Grades

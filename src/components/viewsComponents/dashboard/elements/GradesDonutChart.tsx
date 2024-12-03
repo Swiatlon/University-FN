@@ -61,8 +61,8 @@ const GradesDonutChart: React.FC<GradesDonutChartProps> = ({ groupedData, averag
         startAngle={90}
         endAngle={450}
       >
-        {groupedData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={entry.fill} />
+        {groupedData.map(entry => (
+          <Cell key={`cell-${entry.grade}`} fill={entry.fill} />
         ))}
       </Pie>
       <text

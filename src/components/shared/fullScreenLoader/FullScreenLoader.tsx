@@ -16,7 +16,7 @@ function FullScreenLoader({ bgColor }: IFullScreenLoader) {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: bgColor || 'rgba(255, 255, 255, 0.712)',
+        backgroundColor: bgColor ?? 'rgba(255, 255, 255, 0.712)',
         zIndex: 1300,
       }}
     >
