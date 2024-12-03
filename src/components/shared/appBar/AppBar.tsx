@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useTypedMatches } from 'hooks/useTypedMatches.Hook';
-import { toggleDrawer } from 'redux/stateSlices/view/View.State.Slice';
+import { toggleDrawer, setDrawerState } from 'redux/stateSlices/view/View.State.Slice';
 import './AppBar.scss';
 import AppBarConfig from './elements/AppBarConfig';
+
+const mobileBreakpoint = '(max-width:910px)';
 
 function AppBar() {
   const dispatch = useDispatch();
@@ -12,6 +15,12 @@ function AppBar() {
   const currentMatch = matches.find(match => match.handle);
 
   const pageTitle = currentMatch?.handle?.navigation?.text;
+  const isMobile = useMediaQuery(mobileBreakpoint);
+
+  useEffect(() => {
+    const shouldDrawerBeOpen = !isMobile;
+    dispatch(setDrawerState(shouldDrawerBeOpen));
+  }, [isMobile, dispatch]);
 
   const handleToggleDrawer = () => {
     dispatch(toggleDrawer());
