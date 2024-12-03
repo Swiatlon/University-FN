@@ -13,9 +13,7 @@ export interface ILoginResponse {
 
 export interface ILogoutResponse {}
 
-export interface IRefreshRequest {
-  sessionID: string;
-}
+export interface IRefreshRequest {}
 
 export interface IRefreshResponse {
   accessToken: string;

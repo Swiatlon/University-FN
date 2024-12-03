@@ -23,6 +23,7 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: {
       prepare: ({ accessToken }: { accessToken: string }) => {
+        localStorage.setItem('accessToken', accessToken);
         const decoded = parseJwt(accessToken);
         const expDate = decoded?.exp ? new Date(decoded.exp * 1000).toISOString() : null;
         const userRoles = decoded?.roles ?? [];
@@ -42,6 +43,7 @@ const authSlice = createSlice({
     },
 
     logOut: state => {
+      localStorage.removeItem('accessToken');
       state.token = null;
       state.expDate = null;
       state.userRoles = [];

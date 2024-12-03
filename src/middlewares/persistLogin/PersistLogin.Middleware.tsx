@@ -9,35 +9,32 @@ import { selectCurrentToken, logOut, setCredentials } from 'redux/stateSlices/au
 function PersistLoginMiddleware() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isTokenReady, setIsTokenReady] = useState(false);
-  const [refresh, { isLoading, isError }] = useRefreshMutation();
-  const token = useSelector(selectCurrentToken);
-  const sessionID = sessionStorage.getItem('sessionUUID')!;
-
-  const refreshToken = async () => {
-    if (!token && !isLoading) {
-      try {
-        const result = await refresh({ sessionID }).unwrap();
-        const { accessToken } = result;
-        dispatch(setCredentials({ accessToken }));
-      } catch (error) {
-        dispatch(logOut());
-        navigate('/login');
-      }
-    }
-    setIsTokenReady(true);
-  };
+  const [refresh, { isLoading }] = useRefreshMutation();
+  const token = useSelector(selectCurrentToken) ?? localStorage.getItem('accessToken');
+  const [checkingSession, setCheckingSession] = useState(true);
 
   useEffectOnce(() => {
-    refreshToken();
+    const verifyToken = async () => {
+      try {
+        const result = await refresh().unwrap();
+        dispatch(setCredentials({ accessToken: result.accessToken }));
+      } catch (err) {
+        dispatch(logOut());
+        navigate('/login');
+      } finally {
+        setCheckingSession(false);
+      }
+    };
+
+    if (!token) {
+      setCheckingSession(false);
+    }
+
+    verifyToken();
   });
 
-  if (isLoading || !isTokenReady) {
+  if (isLoading || checkingSession) {
     return <FullScreenLoader />;
-  }
-
-  if (isError) {
-    throw new Error('Failed to refresh session');
   }
 
   return <Outlet />;

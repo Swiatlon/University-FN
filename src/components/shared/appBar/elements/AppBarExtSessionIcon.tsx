@@ -9,13 +9,8 @@ interface IAppBarExtSessionIconProps {
 
 function AppBarExtSessionIcon({ timerColor }: IAppBarExtSessionIconProps) {
   const [refresh, { isLoading }] = useRefreshMutation();
-
   const handleExtendSession = async () => {
-    const sessionID = sessionStorage.getItem('sessionUUID');
-
-    if (sessionID) {
-      await refresh({ sessionID });
-    }
+    await refresh();
   };
 
   return (
