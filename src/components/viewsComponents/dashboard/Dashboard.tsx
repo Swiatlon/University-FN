@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, CircularProgress, Paper, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Paper, Typography, useMediaQuery } from '@mui/material';
 import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import TodoListDrawer from 'components/shared/todoListDrawer/TodoListDrawer';
 import _ from 'lodash';
@@ -17,17 +17,10 @@ function Dashboard() {
   const isMobile = useMediaQuery('(max-width: 500px)');
   const maxDrawerWidth = isMobile ? 280 : 450;
   const { data } = useGetLoggedAccountBasicDataQuery();
-
-  if (!data) {
-    return <CircularProgress />;
-  }
-
-  const { name, surname } = data;
-
   const initialQueryParams: IGetStudentGradesQueryParams = { studentId: studentId! };
   const { data: grades, isFetching } = useGetStudentGradesQuery(initialQueryParams, { skip: !studentId });
 
-  if (isFetching) {
+  if (isFetching || !data) {
     return <CenteredLoader />;
   }
 
@@ -67,7 +60,7 @@ function Dashboard() {
           }}
         >
           <Typography variant="h4" color="#524e61" fontWeight="bold">
-            Hi, <span style={{ whiteSpace: 'nowrap' }}> {`${name} ${surname}!`}</span>
+            Hi, <span style={{ whiteSpace: 'nowrap' }}> {`${data.name} ${data.surname}!`}</span>
           </Typography>
           <Typography variant="body1" color="text.secondary">
             Check your performance stats <br /> to make sure you are on track <br /> with your academic goals!
