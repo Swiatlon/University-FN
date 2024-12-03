@@ -1,19 +1,28 @@
 import { useSelector } from 'react-redux';
-import { Box, Button, Paper, Typography, useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Box, Button, CircularProgress, Paper, Typography, useMediaQuery } from '@mui/material';
 import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import TodoListDrawer from 'components/shared/todoListDrawer/TodoListDrawer';
 import _ from 'lodash';
 import { useGetStudentGradesQuery } from 'redux/apiSlices/academics/Grades.Api.Slice';
-import { selectId } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
+import { selectId, useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
 import { calculateAverageGrade } from '../grades/elements/gradesInformationBoxes/GradesInformationBoxes';
 import GradesDonutChart from './elements/GradesDonutChart';
 import type { IGetStudentGradesQueryParams } from 'contract/slices/academics/Grades.Interfaces';
 import './Dashboard.scss';
 
 function Dashboard() {
+  const navigate = useNavigate();
   const studentId = useSelector(selectId);
   const isMobile = useMediaQuery('(max-width: 500px)');
   const maxDrawerWidth = isMobile ? 280 : 450;
+  const { data } = useGetLoggedAccountBasicDataQuery();
+
+  if (!data) {
+    return <CircularProgress />;
+  }
+
+  const { name, surname } = data;
 
   const initialQueryParams: IGetStudentGradesQueryParams = { studentId: studentId! };
   const { data: grades, isFetching } = useGetStudentGradesQuery(initialQueryParams, { skip: !studentId });
@@ -58,12 +67,18 @@ function Dashboard() {
           }}
         >
           <Typography variant="h4" color="#524e61" fontWeight="bold">
-            Hi, <span style={{ whiteSpace: 'nowrap' }}>Name + Surname!</span>
+            Hi, <span style={{ whiteSpace: 'nowrap' }}> {`${name} ${surname}!`}</span>
           </Typography>
           <Typography variant="body1" color="text.secondary">
             Check your performance stats <br /> to make sure you are on track <br /> with your academic goals!
           </Typography>
-          <Button variant="text" sx={{ maxWidth: '114px', p: 0 }}>
+          <Button
+            variant="text"
+            sx={{ maxWidth: '114px', p: 0 }}
+            onClick={() => {
+              navigate('/postAuth/academics/grades');
+            }}
+          >
             See all Grades
           </Button>
         </Box>
