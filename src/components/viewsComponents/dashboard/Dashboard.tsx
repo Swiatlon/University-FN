@@ -67,7 +67,7 @@ function Dashboard() {
           </Typography>
           <Button
             variant="text"
-            sx={{ maxWidth: '114px', p: 0 }}
+            sx={{ whiteSpace: 'nowrap', maxWidth: '100px' }}
             onClick={() => {
               navigate('/postAuth/academics/grades');
             }}

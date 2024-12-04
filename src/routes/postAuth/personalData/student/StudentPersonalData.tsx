@@ -61,7 +61,7 @@ function PersonalDataForm() {
           },
           {
             icon: 'HistoryEdu',
-            label: t('permissionForDataProcessing'),
+            label: t('Consent for Data Handling'),
             value: data?.consent.permissionForDataProcessing ? 'Yes' : 'No',
           },
           {
@@ -80,7 +80,7 @@ function PersonalDataForm() {
   return (
     <>
       <Box className="BasicInfoBox">
-        <BasicInfo name={data?.name ?? 'Name'} surname={data?.surname ?? 'Surname'} size={120} />
+        <BasicInfo name={data?.name ?? 'Name'} surname={data?.surname ?? 'Surname'} size={100} />
         <AcademicInfo
           degreeCourse={data?.degreeCourses[0]?.degreeCourse.name ?? ''}
           degreePath={data?.degreePaths[0]?.degreePath.name ?? ''}
