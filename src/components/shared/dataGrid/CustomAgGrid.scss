@@ -32,10 +32,14 @@ $ag-header-column-separator: #e0e0e0;
     font-weight: 600;
   }
 
-  .ag-header-cell:not(:first-child) .ag-header-cell-label::before {
+  .ag-header-cell[aria-colindex='1']:not(:first-child) .ag-header-cell-label::before {
+    display: none;
+  }
+
+  .ag-header-cell:not([aria-colindex='1']):not(:first-child) .ag-header-cell-label::before {
     content: '';
     position: absolute;
-    left: 0px;
+    left: 0;
     padding: 7px 1px;
     background: white;
   }
