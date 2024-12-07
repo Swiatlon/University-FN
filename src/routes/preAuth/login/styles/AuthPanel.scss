@@ -9,8 +9,9 @@
     0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: '400px') {
+@media (max-width: '600px') {
   .Container {
+    transform: scale(0.9);
     padding: 12px 24px 32px 24px;
   }
 }

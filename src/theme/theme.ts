@@ -25,6 +25,13 @@ const theme = createTheme({
         disableElevation: true,
         disableRipple: true,
       },
+      styleOverrides: {
+        root: {
+          fontWeight: 500,
+          textTransform: 'none',
+          padding: '8px 16px',
+        },
+      },
     },
     MuiToolbar: {
       styleOverrides: {

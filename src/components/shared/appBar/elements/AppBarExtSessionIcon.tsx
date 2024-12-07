@@ -1,6 +1,7 @@
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { IconButton, Tooltip } from '@mui/material';
 import FullScreenLoader from 'components/shared/fullScreenLoader/FullScreenLoader';
+import { enqueueSnackbar } from 'notistack';
 import { useRefreshMutation } from 'redux/apiSlices/auth/Auth.Api.Slice';
 
 interface IAppBarExtSessionIconProps {
@@ -9,8 +10,13 @@ interface IAppBarExtSessionIconProps {
 
 function AppBarExtSessionIcon({ timerColor }: IAppBarExtSessionIconProps) {
   const [refresh, { isLoading }] = useRefreshMutation();
+
   const handleExtendSession = async () => {
-    await refresh();
+    await refresh()
+      .unwrap()
+      .then(() => {
+        enqueueSnackbar('Session extended', { variant: 'success' });
+      });
   };
 
   return (

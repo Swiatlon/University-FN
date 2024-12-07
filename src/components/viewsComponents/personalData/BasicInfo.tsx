@@ -12,7 +12,7 @@ function BasicInfo({ name, surname, size }: IBasicInfoProps): React.ReactElement
   return (
     <Paper className="AvatarBox">
       <Avatar alt={`${name} ${surname}`} sx={{ width: size, height: size }} aria-label="User avatar" src={UserIcon} />
-      <Typography variant="h6" color="primary" sx={{ textWrap: 'nowrap', fontWeight: 600 }}>
+      <Typography variant="h6" color="primary" sx={{ fontWeight: 600, textAlign: 'center' }}>
         {`${name} ${surname}`}
       </Typography>
     </Paper>

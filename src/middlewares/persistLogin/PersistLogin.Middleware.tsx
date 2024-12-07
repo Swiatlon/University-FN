@@ -28,6 +28,7 @@ function PersistLoginMiddleware() {
 
     if (!token) {
       setCheckingSession(false);
+      return;
     }
 
     verifyToken();
