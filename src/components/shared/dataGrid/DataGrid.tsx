@@ -27,8 +27,9 @@ interface IAgGridBoxProps extends Omit<AgGridReactProps, 'pagination'> {
   sx?: BoxProps['sx'];
   isLoading?: boolean;
   handleSearch?: (value: string) => void;
-  searchVariant: SearchBarVariantEnum;
-  exportFileName: string;
+  smallVersion?: boolean;
+  searchVariant?: SearchBarVariantEnum;
+  exportFileName?: string;
   pagination?: {
     setPagination: (page: number, pageSize: number) => void;
     page: number;
@@ -44,6 +45,7 @@ function DataGrid({
   pagination,
   columnDefs,
   searchVariant,
+  smallVersion,
   exportFileName,
   ...props
 }: IAgGridBoxProps) {
@@ -60,15 +62,17 @@ function DataGrid({
 
   return (
     <DataGridContainer>
-      <ToolbarContainer>
-        <ColumnVisibilityDropdown columnsSettings={columnsSettings} gridRef={gridRef} />
-        <Divider sx={{ py: 1.5 }} />
-        <RowExport columns={columnsSettings} gridRef={gridRef} fileName={exportFileName} />
-        {searchVariant === SearchBarVariantEnum.FrontEnd && <FrontEndSearchBar gridRef={gridRef} />}
-        {searchVariant === SearchBarVariantEnum.BackEnd && handleSearch ? (
-          <BackendSearchBar onSearch={handleSearch} disabled={isLoading} />
-        ) : null}
-      </ToolbarContainer>
+      {!smallVersion && (
+        <ToolbarContainer>
+          <ColumnVisibilityDropdown columnsSettings={columnsSettings} gridRef={gridRef} />
+          <Divider sx={{ py: 1.5 }} />
+          {exportFileName ? <RowExport columns={columnsSettings} gridRef={gridRef} fileName={exportFileName} /> : null}
+          {searchVariant === SearchBarVariantEnum.FrontEnd && <FrontEndSearchBar gridRef={gridRef} />}
+          {searchVariant === SearchBarVariantEnum.BackEnd && handleSearch ? (
+            <BackendSearchBar onSearch={handleSearch} disabled={isLoading} />
+          ) : null}
+        </ToolbarContainer>
+      )}
 
       <DataGridWrapper sx={sx} className="ag-theme-quartz">
         <AgGridReact

@@ -37,23 +37,6 @@
   }
 }
 
-.DetailsPaperCourses {
-  display: grid;
-  grid-template-columns: 50% 50%;
-
-  .ModulesCourses {
-    grid-column: span 2;
-  }
-
-  @media (max-width: '1200px') {
-    .ModulesCourses {
-      grid-column: span 1;
-    }
-
-    grid-template-columns: 1fr;
-  }
-}
-
 .NestedDetailsCenterPaper {
   display: grid;
   text-wrap: auto;
