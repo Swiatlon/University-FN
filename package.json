@@ -29,6 +29,7 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.16.7",
     "@mui/x-date-pickers": "^6.20.2",
+    "@mui/x-tree-view": "^7.23.0",
     "@reduxjs/toolkit": "^2.2.5",
     "ag-grid-community": "^32.0.0",
     "ag-grid-react": "^32.0.0",

@@ -11,6 +11,8 @@ import type {
   IDeleteStudentTodoRequest,
   IGetStudentTodosTransformedResponse,
   IUpdateStudentTodoRequest,
+  IGetStudentCoursesResponse,
+  IGetStudentCoursesRequest,
 } from 'contract/slices/students/Students';
 
 export const studentsSlice = Api.injectEndpoints({
@@ -20,7 +22,7 @@ export const studentsSlice = Api.injectEndpoints({
       IGetAuthorizedStudentAllDataRequest
     >({
       query: ({ studentId }) => ({
-        url: `/students/allData/${studentId}`,
+        url: `/students/${studentId}/allData`,
       }),
       transformResponse: (
         response: IGetAuthorizedStudentAllDataBackendResponse
@@ -48,6 +50,12 @@ export const studentsSlice = Api.injectEndpoints({
             subjects: m.module.subjects,
           },
         })),
+      }),
+    }),
+
+    getStudentsCourses: builder.query<IGetStudentCoursesResponse, IGetStudentCoursesRequest>({
+      query: ({ studentId }) => ({
+        url: `/students/${studentId}/courses`,
       }),
     }),
 
@@ -102,4 +110,5 @@ export const {
   useCreateStudentTodoMutation,
   useDeleteStudentTodoMutation,
   useUpdateStudentTodoMutation,
+  useGetStudentsCoursesQuery,
 } = studentsSlice;

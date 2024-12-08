@@ -56,6 +56,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        },
+      },
+    },
     MuiDialogTitle: {
       styleOverrides: {
         root: {

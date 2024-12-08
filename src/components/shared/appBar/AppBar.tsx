@@ -34,6 +34,7 @@ function AppBar() {
         position: 'sticky',
         background: 'white',
         top: 0,
+        zIndex: '999',
       }}
     >
       <Box className="AppBarBox">
