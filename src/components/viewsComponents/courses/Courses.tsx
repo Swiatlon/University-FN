@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box, Accordion, AccordionDetails } from '@mui/material';
 import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
