@@ -5,13 +5,12 @@ import interactionPlugin, { type DateClickArg } from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import EventCreateDialog from 'components/viewsComponents/events/eventAddDialog/EventCreateDialog';
 import EventContent from 'components/viewsComponents/events/eventContent/EventContent';
 import EventShowDialog from 'components/viewsComponents/events/eventShowDialog/EventShowDialog';
 import { useDialog } from 'contexts/dialogs/Dialogs.Context';
-import { useGetAllEventsQuery } from 'redux/apiSlices/community/Community.Api.Slice';
 import { useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
+import { staticEvents } from './EventsData';
 import type { EventClickArg, EventContentArg, EventAddArg } from '@fullcalendar/core/index.js';
 
 const renderContent = (eventInfo: EventContentArg) => {
@@ -19,34 +18,10 @@ const renderContent = (eventInfo: EventContentArg) => {
 };
 
 function Events() {
-  const { data, isFetching } = useGetAllEventsQuery();
   const { data: userData } = useGetLoggedAccountBasicDataQuery();
   const { enqueueDialog } = useDialog();
 
-  const events = useMemo(() => {
-    return (
-      data?.map(event => {
-        const startDate = new Date(event.startDate);
-        const endDate = new Date(event.endDate);
-        const isEndAtMidnight = event.endTime === '00:00';
-
-        if (isEndAtMidnight) {
-          endDate.setHours(24, 0, 0);
-        }
-
-        return {
-          id: event.id.toString(),
-          title: event.title,
-          start: startDate.toISOString(),
-          end: endDate.toISOString(),
-          description: event.description,
-          startDateTime: event.startTime,
-          endDateTime: event.endTime,
-          allDay: event.startTime === '00:00' && event.endTime === '00:00',
-        };
-      }) ?? []
-    );
-  }, [data]);
+  const events = useMemo(() => staticEvents, []);
 
   const handleEventAddClick = (arg: EventAddArg) => {
     const startDate = arg.event.start!;
@@ -85,7 +60,6 @@ function Events() {
 
   return (
     <Box sx={{ position: 'relative', height: 'calc(100vh - 180px)', minWidth: '800px' }}>
-      {isFetching ? <CenteredLoader /> : null}
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         expandRows
