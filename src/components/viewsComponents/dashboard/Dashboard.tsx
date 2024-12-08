@@ -29,24 +29,21 @@ function Dashboard() {
   }
 
   return (
-    <Box sx={{ p: 5 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 6,
-        }}
-      >
-        <Box>
+    <Box>
+      <Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 2,
+            pb: 2,
+          }}
+        >
           <GradesSection grades={grades} userData={userData} />
-        </Box>
-        <Box>
           <ClosestEvents />
         </Box>
 
-        <Box>
-          <Announcements />
-        </Box>
+        <Announcements />
       </Box>
 
       <TodoListDrawer maxDrawerWidth={maxDrawerWidth} />

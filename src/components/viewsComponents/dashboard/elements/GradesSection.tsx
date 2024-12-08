@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Typography, Paper, Box, Button } from '@mui/material';
+import { Typography, Paper, Box, Button, useMediaQuery } from '@mui/material';
 import { calculateAverageGrade } from 'components/viewsComponents/grades/elements/gradesInformationBoxes/GradesInformationBoxes';
 import _ from 'lodash';
 import GradesDonutChart from './GradesDonutChart';
@@ -13,6 +13,7 @@ interface GradesSectionProps {
 
 const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData }) => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery('(max-width:800px)');
 
   const averageGrade = calculateAverageGrade(grades ?? []);
   const gradeGroups = _.groupBy(grades, 'grade');
@@ -28,8 +29,10 @@ const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData }) => {
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
+        flexBasis: isMobile ? '350px' : '550px',
+        flexGrow: isMobile ? 0 : 1,
         gap: 2,
-        p: 4,
+        p: isMobile ? 2 : 4,
         width: 'fit-content',
       }}
     >
@@ -38,8 +41,7 @@ const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData }) => {
           display: 'flex',
           flexDirection: 'column',
           gap: 3,
-          flex: 1,
-          minWidth: '180px',
+          minWidth: '200px',
         }}
       >
         <Typography variant="h5" color="#524e61" fontWeight="bold">

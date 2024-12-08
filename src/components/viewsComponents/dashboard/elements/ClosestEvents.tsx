@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
 import { staticEvents } from 'routes/postAuth/events/EventsData';
 
 const ClosestEvents: React.FC = () => {
   const now = new Date();
+  const navigate = useNavigate();
 
   const closestEvents = useMemo(() => {
     return staticEvents
@@ -28,15 +30,20 @@ const ClosestEvents: React.FC = () => {
     return startDate.toLocaleDateString();
   };
 
+  const handleNavigate = () => {
+    navigate(`community/events`);
+  };
+
   return (
     <Paper
       sx={{
+        flex: 1,
+        flexGrow: 7,
+        flexBasis: '300px',
         display: 'flex',
         flexDirection: 'column',
         gap: 1,
         p: 2,
-        width: 'fit-content',
-        minHeight: '289px',
       }}
     >
       <Typography variant="h5" color="#524e61" fontWeight="bold">
@@ -46,10 +53,13 @@ const ClosestEvents: React.FC = () => {
         {closestEvents.map(event => (
           <ListItem
             key={event.id}
+            onClick={handleNavigate}
             sx={{
               borderBottom: '1px solid #ddd',
               paddingLeft: 0,
               alignItems: 'flex-start',
+              cursor: 'pointer',
+
               ':last-child': {
                 borderBottom: 'none',
               },

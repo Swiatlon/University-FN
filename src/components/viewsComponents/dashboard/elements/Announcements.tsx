@@ -1,5 +1,5 @@
 import React from 'react';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
 
 interface IMessage {
@@ -73,7 +73,7 @@ const Messages: React.FC = () => {
                 color: '#888',
               }}
             >
-              <CalendarMonthIcon fontSize="small" />
+              <EventIcon fontSize="small" />
               <Typography variant="caption" component="span">
                 {new Date(message.date).toLocaleDateString()}
               </Typography>
