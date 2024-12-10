@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import _ from 'lodash';
 import { Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import GradesChartCustomTooltip from '../gradesChartCustomTooltip/GradesChartCustomTooltip';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface GradesSummarizeChartProps {
@@ -51,39 +52,11 @@ const GradesSummarizeChart: React.FC<GradesSummarizeChartProps> = ({ grades }) =
               angle: -90,
             }}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
+          <Tooltip content={<GradesChartCustomTooltip />} cursor={{ fill: 'transparent' }} />
         </BarChart>
       </ResponsiveContainer>
     </Box>
   );
-};
-
-interface ICustomTooltipProps {
-  active?: boolean;
-  payload?: { payload: { grade: number; count: number } }[];
-}
-
-const CustomTooltip: React.FC<ICustomTooltipProps> = ({ active, payload }) => {
-  if (active && payload?.[0]) {
-    const { grade, count } = payload[0].payload;
-
-    return (
-      <Box
-        sx={{
-          backgroundColor: 'white',
-          padding: 2,
-          display: 'grid',
-          gap: 1,
-        }}
-      >
-        <Typography variant="subtitle1" fontWeight="bold">
-          Grade: {grade}
-        </Typography>
-        <Typography variant="subtitle2">Amount: {count}</Typography>
-      </Box>
-    );
-  }
-  return null;
 };
 
 export default GradesSummarizeChart;

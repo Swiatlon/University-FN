@@ -7,13 +7,11 @@ import { useGetStudentTodosQuery } from 'redux/apiSlices/students/Students.Api.S
 import TaskCard from './elements/TaskCard';
 import TodoCreateDialog from './elements/TodoCreateDialog';
 
-interface ITodoListDrawerProps {
-  maxDrawerWidth: number;
-}
-
-const TodoListDrawer = ({ maxDrawerWidth }: ITodoListDrawerProps) => {
+const TodoListDrawer = () => {
   const studentId = useSelector(selectId)!;
+  const isMobile = useMediaQuery('(max-width: 600px)');
   const isEnoughSpaceForDrawer = useMediaQuery('(min-width: 1400px)');
+  const maxDrawerWidth = isMobile ? 280 : 450;
   const [openDrawer, setOpenDrawer] = useState<boolean>(isEnoughSpaceForDrawer);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { data: tasks } = useGetStudentTodosQuery({ studentId }, { skip: !studentId });

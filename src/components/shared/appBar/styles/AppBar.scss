@@ -1,0 +1,36 @@
+.AppBarBox {
+  height: 80px;
+  background: white;
+  padding: 0rem 4rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  @media (max-width: 600px) {
+    padding: 0rem 1rem;
+  }
+
+  .ConfigAppBar {
+    display: flex;
+    margin-left: auto;
+
+    button {
+      min-width: min-content !important;
+    }
+  }
+
+  .AppBarHamburger {
+    margin-right: 16px;
+    cursor: pointer;
+
+    @media (min-width: 910px) {
+      display: none;
+    }
+  }
+}
+
+
+

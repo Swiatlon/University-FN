@@ -7,9 +7,20 @@ export default defineConfig({
   plugins: [react(), svgrPlugin({}), tsconfigPaths()],
   resolve: {
     alias: {
-      components: '/src/components',
-      features: '/src/features',
       assets: '/src/assets',
+      components: '/src/components',
+      configs: '/src/configs',
+      contexts: '/src/contexts',
+      contract: '/src/contract',
+      hooks: '/src/hooks',
+      i18n: "/src/i18n",
+      layouts: '/src/layouts',
+      middlewares: "/src/middlewares",
+      routes: '/src/routes',
+      theme: '/src/theme',
+      types: '/src/types',
+      utils: "/src/utils"
+      // Redux ?!?!
     },
   },
 });

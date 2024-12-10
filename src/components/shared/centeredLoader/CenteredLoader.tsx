@@ -1,6 +1,6 @@
 import { CircularProgress, Box } from '@mui/material';
 
-function CenteredLoader() {
+const CenteredLoader = () => {
   return (
     <Box
       sx={{
@@ -16,6 +16,6 @@ function CenteredLoader() {
       <CircularProgress color="primary" />
     </Box>
   );
-}
+};
 
 export default CenteredLoader;

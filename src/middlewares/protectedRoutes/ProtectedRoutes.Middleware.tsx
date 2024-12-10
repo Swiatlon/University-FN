@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useTypedSelector } from 'hooks/useStore.Hooks';
 import { useTypedMatches } from 'hooks/useTypedMatches.Hook';
 import { selectCurrentToken, selectUserRoles } from 'redux/stateSlices/auth/Auth.State.Slice';
 
@@ -8,8 +8,8 @@ const ProtectedRoutesMiddleware: React.FC = () => {
   const matches = useTypedMatches();
   const currentMatch = matches.find(match => match.handle);
 
-  const userRoles = useSelector(selectUserRoles);
-  const isAuthenticated = useSelector(selectCurrentToken);
+  const userRoles = useTypedSelector(selectUserRoles);
+  const isAuthenticated = useTypedSelector(selectCurrentToken);
   const notAllowedRoles = currentMatch?.handle?.permissions?.availableForRoles;
 
   if (!isAuthenticated) {

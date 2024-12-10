@@ -1,0 +1,34 @@
+.DashboardBasicInfoBox {
+  display: grid;
+  grid-template-columns: -webkit-min-content auto;
+  grid-template-columns: min-content auto;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.GradesSectionContainer {
+  width: fit-content;
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex-basis: 550px;
+  flex-grow: 1;
+
+  .InfoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 200px;
+  }
+
+
+  @media (max-width: 900px) {
+    flex-basis: 350px;
+    flex-grow: 0;
+    padding: 16px;
+  }
+}
+
+
+

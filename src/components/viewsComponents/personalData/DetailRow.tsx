@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unused-prop-types */
 import { Box, Typography } from '@mui/material';
-import { IconComponent, type MuiIconsNameType } from './IconComponent';
+import { IconComponent, type MuiIconsNameType } from '../../shared/Icon/IconComponent';
 
 export interface IDetailRowProps {
   icon: MuiIconsNameType;

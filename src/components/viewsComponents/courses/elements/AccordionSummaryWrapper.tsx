@@ -12,7 +12,6 @@ interface AccordionSummaryWrapperProps {
 const AccordionSummaryWrapper: React.FC<AccordionSummaryWrapperProps> = ({ level, title }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
   const marginLeft = isSmallScreen ? level * 1.2 : level * 4;
 
   return (

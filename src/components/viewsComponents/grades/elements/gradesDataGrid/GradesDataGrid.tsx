@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import DataGrid, { SearchBarVariantEnum } from 'components/shared/dataGrid/DataGrid';
-import { gradesColumns } from './Columns';
+import { gradesColumns } from '../../constants/Columns';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface IGradesDataGridProps {

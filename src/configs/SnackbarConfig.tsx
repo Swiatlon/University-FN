@@ -1,23 +1,21 @@
 import React from 'react';
 import { SnackbarProvider } from 'notistack';
+import SnackbarCloseIcon from './SnackbarCloseIcon';
 
-interface SnackbarConfigProps {
+interface ISnackbarConfigProps {
   children: React.ReactNode;
 }
 
-const SnackbarConfig: React.FC<SnackbarConfigProps> = ({ children }) => {
+const SnackbarConfig = ({ children }: ISnackbarConfigProps) => {
   return (
     <SnackbarProvider
+      preventDuplicate
       autoHideDuration={1000}
       maxSnack={2}
-      preventDuplicate
+      action={snackbarKey => <SnackbarCloseIcon snackbarKey={snackbarKey} />}
       anchorOrigin={{
         vertical: 'top',
         horizontal: 'center',
-      }}
-      style={{
-        minWidth: '300px',
-        pointerEvents: 'none',
       }}
     >
       {children}

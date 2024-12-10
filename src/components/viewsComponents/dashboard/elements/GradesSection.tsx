@@ -1,21 +1,19 @@
 import { useNavigate } from 'react-router-dom';
-import { Typography, Paper, Box, Button, useMediaQuery } from '@mui/material';
-import { calculateAverageGrade } from 'components/viewsComponents/grades/elements/gradesInformationBoxes/GradesInformationBoxes';
+import { Typography, Paper, Box, Button } from '@mui/material';
+import { calculateAverageGrade } from 'components/viewsComponents/grades/utils/Helpers';
 import _ from 'lodash';
 import GradesDonutChart from './GradesDonutChart';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 import type { IGetLoggedAccountBasicDataTransformedReponse } from 'contract/slices/loggedAccount/LoggedAccount';
 
 interface GradesSectionProps {
-  grades?: IGrade[];
+  grades: IGrade[];
   userData: IGetLoggedAccountBasicDataTransformedReponse;
 }
 
-const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData }) => {
+const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData: { name, surname } }) => {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery('(max-width:800px)');
-
-  const averageGrade = calculateAverageGrade(grades ?? []);
+  const averageGrade = calculateAverageGrade(grades);
   const gradeGroups = _.groupBy(grades, 'grade');
   const groupedData = [
     { grade: '2', count: gradeGroups[2]?.length ?? 0, fill: '#c40101' },
@@ -25,27 +23,10 @@ const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData }) => {
   ];
 
   return (
-    <Paper
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexBasis: isMobile ? '350px' : '550px',
-        flexGrow: isMobile ? 0 : 1,
-        gap: 2,
-        p: isMobile ? 2 : 4,
-        width: 'fit-content',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 3,
-          minWidth: '200px',
-        }}
-      >
+    <Paper className="GradesSectionContainer">
+      <Box className="InfoBox">
         <Typography variant="h5" color="#524e61" fontWeight="bold">
-          Hi, <span>{`${userData.name} ${userData.surname}!`}</span>
+          Hi, <span>{`${name} ${surname}!`}</span>
         </Typography>
         <Typography variant="body1" color="text.secondary">
           Check your performance stats <br /> to make sure you are on track <br /> with your academic goals!
@@ -53,9 +34,7 @@ const GradesSection: React.FC<GradesSectionProps> = ({ grades, userData }) => {
         <Button
           variant="text"
           sx={{ whiteSpace: 'nowrap', maxWidth: '100px' }}
-          onClick={() => {
-            navigate('/postAuth/academics/grades');
-          }}
+          onClick={() => navigate('/postAuth/academics/grades')}
         >
           See all Grades
         </Button>
