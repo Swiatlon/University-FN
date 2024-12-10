@@ -1,5 +1,5 @@
 import Api from 'redux/config/Api';
-import { extendedOnQueryStartedWithNotifications } from 'utils/slices/ExtendedOnQueryStarted';
+import { extendedOnQueryStartedWithNotifications } from 'redux/utils/ExtendedOnQueryStarted';
 import { logOut, setCredentials } from '../../stateSlices/auth/Auth.State.Slice';
 import type { ILoginRequest, ILoginResponse, ILogoutResponse, IRefreshResponse } from 'contract/slices/auth/Auth';
 

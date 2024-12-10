@@ -1,4 +1,4 @@
-import React, { useState, useCallback, type RefObject } from 'react';
+import { useState, useCallback, type RefObject, ChangeEvent } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, TextField } from '@mui/material';
 import { debounce } from 'lodash';
@@ -19,7 +19,7 @@ function FrontEndSearchBar({ gridRef, disabled }: ISearchBarProps) {
     []
   );
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
     setSearchText(value.trim());

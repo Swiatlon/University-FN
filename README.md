@@ -1,89 +1,56 @@
 # University Frontend
-
-This project serves as the frontend for a University management system, designed to provide an intuitive interface for managing student data, course registrations, and other functionalities. Built with React and TypeScript, it focuses on delivering a responsive and user-friendly experience with modern frontend technologies.
+This project offers frontend for a **University Management System**, offering an intuitive interface for managing student data, course registrations, and administrative functionalities. Built with **React** and **TypeScript**, it prioritizes responsiveness, scalability, and user experience with modern frontend technologies.
 
 ## Features
 
-- **React with TypeScript**: Utilizes React for building dynamic user interfaces and TypeScript for strong typing and improved developer experience.
-- **Component-Based Architecture**: Implements reusable and modular components for maintainability and scalability.
-- **State Management**: Manages application state effectively using [state management library, e.g., Redux, Context API].
-- **API Integration**: Connects seamlessly with the backend API to handle data fetching and state synchronization.
-- **Responsive Design**: Ensures a consistent user experience across different devices and screen sizes.
+- **React with TypeScript**: Combines React's dynamic UI capabilities with TypeScript's type safety for a robust developer experience.
+- **Modular Architecture**: Utilizes a component-based architecture for enhanced maintainability and scalability.
+- **State Management**: Effectively handles application state using [Redux/Context API/etc.].
+- **Seamless API Integration**: Connects effortlessly with the backend to manage data fetching and synchronization.
+- **Responsive Design**: Delivers a consistent and adaptive user experience across various devices and screen sizes.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (version >=18.0.0 or higher recommended)
-- npm (version >=8.0.0 or higher)
+- **Node.js**: Version 18.0.0 or higher
+- **npm**: Version 8.0.0 or higher
 
 ### Installation
 
-1. **Clone the repository:**
-
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/Swiatlon/University-FN
    ```
 
-2. **Navigate to the project directory:**
-
+2. **Navigate to the project directory**:
    ```bash
    cd University-FN
    ```
 
-3. **Install NPM packages:**
-
+3. **Install dependencies**:
    ```bash
    npm install
    ```
 
 ### Running the Application
 
-- **Development mode with live reloads:**
-
-  ```bash
-  npm run dev
-  ```
-
-- **Build the application for production:**
-
-  ```bash
-  npm run build
-  ```
-
-  The production build will be located in the `build` directory.
-
-## Contributing
-
-We welcome contributions to the University-FN frontend project! If you have suggestions, improvements, or bug fixes, please follow these steps:
-
-1. **Fork the repository**
-2. **Create a new branch:**
-
+- **Development Mode**:
    ```bash
-   git checkout -b feature/your-feature-name
+   npm run dev
    ```
+   This starts the application with live reloads for development.
 
-3. **Commit your changes:**
-
+- **Production Build**:
    ```bash
-   git commit -m 'Add new feature'
+   npm run build
    ```
-
-4. **Push to the branch:**
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-5. **Submit a pull request**
-
-For detailed guidelines, please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) file.
+   The optimized production build will be available in the `build` directory.
 
 ## License
 
-This project is open-source under the MIT license. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. For more information, refer to the [LICENSE](LICENSE) file.
 
 ## Contact
 
-For any questions or feedback, please reach out to [your email address] or create an issue on [GitHub Issues](https://github.com/Swiatlon/University-FN/issues).
+For inquiries or feedback, please contact [your email address] or open an issue on [GitHub Issues](https://github.com/Swiatlon/University-FN/issues).

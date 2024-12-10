@@ -3,14 +3,14 @@ import { Divider, type BoxProps } from '@mui/material';
 import { AgGridReact, type AgGridReactProps } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
-import './CustomAgGrid.scss';
+import './styles/CustomAgGrid.scss';
 import ColumnVisibilityDropdown from './elements/columnsVisibility/ColumnsVisibility';
-import { DataGridContainer, DataGridWrapper, ToolbarContainer } from './elements/containers/Containers';
 import DataGridLoader from './elements/loader/DataGridLoader';
 import Pagination from './elements/pagination/Pagination';
 import RowExport from './elements/rowExport/RowExport';
 import BackendSearchBar from './elements/searchBar/BackendSearchBar';
 import FrontEndSearchBar from './elements/searchBar/FrontEndSearchBar';
+import { DataGridContainer, DataGridWrapper, ToolbarContainer } from './styles/Containers';
 
 interface IColumnDefWithField {
   field: string;
@@ -38,7 +38,7 @@ interface IAgGridBoxProps extends Omit<AgGridReactProps, 'pagination'> {
   };
 }
 
-function DataGrid({
+const DataGrid = ({
   sx,
   isLoading = false,
   handleSearch,
@@ -48,7 +48,7 @@ function DataGrid({
   smallVersion,
   exportFileName,
   ...props
-}: IAgGridBoxProps) {
+}: IAgGridBoxProps) => {
   const gridRef = useRef<AgGridReact>(null);
   const columnsSettings =
     columnDefs
@@ -87,6 +87,6 @@ function DataGrid({
       {pagination ? <Pagination {...pagination} disabled={isLoading} /> : null}
     </DataGridContainer>
   );
-}
+};
 
 export default DataGrid;

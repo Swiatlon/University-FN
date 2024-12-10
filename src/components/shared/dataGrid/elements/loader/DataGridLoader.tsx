@@ -1,7 +1,6 @@
-import React from 'react';
 import { Box, CircularProgress } from '@mui/material';
 
-const DataGridLoader: React.FC = () => {
+const DataGridLoader = () => {
   return (
     <Box
       sx={{

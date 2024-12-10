@@ -1,4 +1,3 @@
-import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { TextField, type TextFieldProps } from '@mui/material';
 
@@ -7,7 +6,7 @@ interface RHFTextFieldProps extends Omit<TextFieldProps, 'name'> {
   shouldValidate?: boolean;
 }
 
-const RHFTextField: React.FC<RHFTextFieldProps> = ({ name, shouldValidate = true, ...otherProps }) => {
+const RHFTextField = ({ name, shouldValidate = true, ...otherProps }: RHFTextFieldProps) => {
   const { control } = useFormContext();
 
   return (

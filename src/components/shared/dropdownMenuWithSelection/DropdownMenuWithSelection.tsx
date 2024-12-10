@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import { Box, Button, Menu, MenuItem, Typography } from '@mui/material';
 
 interface IDropdownItem {
@@ -22,7 +22,7 @@ function DropdownMenuWithSelection({ label, items, startIcon }: IDropdownMenuPro
   });
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 

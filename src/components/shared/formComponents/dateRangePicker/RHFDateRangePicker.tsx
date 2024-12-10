@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, MouseEvent } from 'react';
 import DatePicker from 'react-datepicker';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,7 +8,7 @@ import DateRangePickerTimeChoosingFooter from './elements/DateRangePickerTimeCho
 import type { IRHFDateRangePickerProps, DateRange } from './types/RHFDateRangePicker.Types';
 import './styles/RHFDateRangePicker.scss';
 
-const RHFDateRangePicker: React.FC<IRHFDateRangePickerProps> = ({ name, label, withTime }) => {
+const RHFDateRangePicker = ({ name, label, withTime }: IRHFDateRangePickerProps) => {
   const {
     control,
     formState: { errors },
@@ -46,7 +46,7 @@ const RHFDateRangePicker: React.FC<IRHFDateRangePickerProps> = ({ name, label, w
 
         const errorMessages = [startDateError, endDateError].filter(Boolean) as string[];
 
-        const handleClear = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const handleClear = (event: MouseEvent<HTMLButtonElement>) => {
           event.stopPropagation();
           onChange({ startDate: null, endDate: null });
         };

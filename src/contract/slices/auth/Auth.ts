@@ -4,7 +4,6 @@ export interface ILoginRequest {
   identifier: string;
   password: string;
   rememberMe: boolean;
-  sessionID: string;
 }
 
 export interface ILoginResponse {

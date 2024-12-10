@@ -1,50 +1,25 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { ReactNode } from 'react';
+import { Box } from '@mui/material';
 import type { SxProps, Theme } from '@mui/system';
+import { CardContainer, CardIconRoundedContainer, CardSubTitle, CardTitle } from './styles/Styled';
 
 interface SummaryCardProps {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   text: string;
   color: string;
   sx?: SxProps<Theme>;
 }
 
-const SummaryCard: React.FC<SummaryCardProps> = ({ icon, title, text, color, sx }) => {
+const SummaryCard = ({ icon, title, text, color, sx }: SummaryCardProps) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 2,
-        padding: 2,
-        borderRadius: 2,
-        bgcolor: '#fff',
-        ...sx,
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '50%',
-          p: 1,
-          backgroundColor: color,
-        }}
-      >
-        {icon}
-      </Box>
-
+    <CardContainer sx={{ ...sx }}>
+      <CardIconRoundedContainer color={color}>{icon}</CardIconRoundedContainer>
       <Box>
-        <Typography variant="body1" component="h6" sx={{ fontWeight: 'bold', marginBottom: 0.5 }}>
-          {title}
-        </Typography>
-        <Typography variant="body2" color="textSecondary">
-          {text}
-        </Typography>
+        <CardTitle variant="body1">{title}</CardTitle>
+        <CardSubTitle variant="body2">{text}</CardSubTitle>
       </Box>
-    </Box>
+    </CardContainer>
   );
 };
 

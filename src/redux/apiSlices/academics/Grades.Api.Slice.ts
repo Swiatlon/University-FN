@@ -8,7 +8,7 @@ export const gradesSlice = Api.injectEndpoints({
       query: ({ studentId }) => ({
         url: `/grades/${studentId}`,
       }),
-      transformResponse: (response?: IGrade[]) => response ?? [],
+      transformResponse: (response?: IGrade[]) => (Array.isArray(response) ? response : []),
     }),
   }),
 });

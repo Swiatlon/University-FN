@@ -1,4 +1,4 @@
-import Login from 'routes/preAuth/login/Login';
+import Login from 'components/viewsComponents/login/Login';
 
 export const indexPreAuthConfig = {
   index: true,

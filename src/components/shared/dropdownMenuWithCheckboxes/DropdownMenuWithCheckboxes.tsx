@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState, ReactElement, Dispatch, MouseEvent, SetStateAction } from 'react';
 import { Checkbox, FormControlLabel, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
 
 export interface ICheckboxDropdownItem {
   identifier: string;
   checked: boolean;
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   label: string;
 }
 
@@ -12,14 +12,14 @@ interface IDropDownMenuWithCheckboxesProps {
   label?: string;
   tooltipLabel?: string;
   items: ICheckboxDropdownItem[];
-  startIcon?: React.ReactElement;
-  setItems: React.Dispatch<React.SetStateAction<ICheckboxDropdownItem[]>>;
+  startIcon?: ReactElement;
+  setItems: Dispatch<SetStateAction<ICheckboxDropdownItem[]>>;
   onCheckboxChange?: (identifier: string, checked: boolean) => void;
 }
 
 function DropDownMenuWithCheckboxes({
   label,
-  tooltipLabel,
+  tooltipLabel = '',
   items,
   startIcon,
   setItems,
@@ -28,7 +28,7 @@ function DropDownMenuWithCheckboxes({
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -53,7 +53,7 @@ function DropDownMenuWithCheckboxes({
 
   return (
     <>
-      <Tooltip title={tooltipLabel ?? ''}>
+      <Tooltip title={tooltipLabel}>
         <IconButton
           onClick={handleClick}
           sx={{ display: 'flex', alignItems: 'center', gap: 1 }}

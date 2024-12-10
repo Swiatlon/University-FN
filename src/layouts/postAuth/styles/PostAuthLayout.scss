@@ -1,0 +1,10 @@
+.ContentContainer {
+  height: calc(100% - 120px);
+  position: relative;
+  margin: 24px;
+
+  @media (max-width: 600px) {
+    margin: 24px 16px;
+    max-width: 100%;
+  }
+}

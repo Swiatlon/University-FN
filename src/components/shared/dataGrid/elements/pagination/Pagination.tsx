@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, ChangeEvent } from 'react';
 import { Pagination as MUIPagination, type SelectChangeEvent } from '@mui/material';
 import PaginationContainer from './PaginationContainer';
 import PaginationOptions from './PaginationOptions';
-import './Style.scss';
+import './styles/Style.scss';
 
 interface IPaginationProps {
   totalRows?: number;
@@ -12,7 +12,7 @@ interface IPaginationProps {
   disabled?: boolean;
 }
 
-const Pagination: React.FC<IPaginationProps> = ({ totalRows = 0, page, pageSize, setPagination, disabled }) => {
+const Pagination = ({ totalRows = 0, page, pageSize, setPagination, disabled }: IPaginationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const paginationRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<HTMLDivElement>(null);
@@ -22,7 +22,7 @@ const Pagination: React.FC<IPaginationProps> = ({ totalRows = 0, page, pageSize,
   const [isWrapped, setIsWrapped] = useState(false);
 
   const handlePageChange = useCallback(
-    (_event: React.ChangeEvent<unknown>, newPage: number) => {
+    (_event: ChangeEvent<unknown>, newPage: number) => {
       setPagination(newPage, pageSize);
     },
     [setPagination, pageSize]
@@ -49,6 +49,7 @@ const Pagination: React.FC<IPaginationProps> = ({ totalRows = 0, page, pageSize,
   useEffect(() => {
     checkWrapping();
     window.addEventListener('resize', checkWrapping);
+
     return () => {
       window.removeEventListener('resize', checkWrapping);
     };

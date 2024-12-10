@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
-import { staticEvents } from 'routes/postAuth/events/EventsData';
+import { staticEvents } from 'components/viewsComponents/events/constants/EventsData';
 
-const ClosestEvents: React.FC = () => {
+const ClosestEvents = () => {
   const now = new Date();
   const navigate = useNavigate();
 

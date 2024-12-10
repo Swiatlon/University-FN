@@ -1,5 +1,5 @@
 import Api from 'redux/config/Api';
-import { extendedOnQueryStartedWithNotifications } from 'utils/slices/ExtendedOnQueryStarted';
+import { extendedOnQueryStartedWithNotifications } from 'redux/utils/ExtendedOnQueryStarted';
 import type { IStudentTodo } from 'contract/interfaces/persons/Persons';
 import type {
   IGetAuthorizedStudentAllDataBackendResponse,

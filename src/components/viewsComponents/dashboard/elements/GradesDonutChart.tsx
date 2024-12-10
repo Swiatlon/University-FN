@@ -1,54 +1,16 @@
-import React from 'react';
-import { Box } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
+import CustomGradesDonutTooltip from './CustomGradesDonutTooltip';
 
 interface GradesDonutChartProps {
-  groupedData: { grade: string; count: number; fill: string }[];
+  groupedData: {
+    grade: number;
+    count: number;
+    fill: string;
+  }[];
   averageGrade: string;
 }
 
-interface CustomTooltipProps {
-  active?: boolean;
-  payload?: {
-    payload: {
-      grade: string;
-      count: number;
-      fill: string;
-    };
-  }[];
-}
-
-const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
-  if (active && payload?.length && payload[0]) {
-    const { grade, fill } = payload[0].payload;
-
-    return (
-      <Box
-        sx={{
-          backgroundColor: 'white',
-          border: `2px solid ${fill}`,
-          borderRadius: '50%',
-          px: 1,
-          textAlign: 'center',
-        }}
-      >
-        <span
-          style={{
-            fontSize: 20,
-            fontWeight: 'bold',
-            color: fill,
-          }}
-        >
-          {grade}
-        </span>
-      </Box>
-    );
-  }
-
-  return null;
-};
-
-const GradesDonutChart: React.FC<GradesDonutChartProps> = ({ groupedData, averageGrade }) => {
+const GradesDonutChart = ({ groupedData, averageGrade }: GradesDonutChartProps) => {
   return (
     <PieChart width={240} height={225}>
       <Pie
@@ -79,7 +41,7 @@ const GradesDonutChart: React.FC<GradesDonutChartProps> = ({ groupedData, averag
       <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize={14} fill="#888">
         Your Current GPA
       </text>
-      <Tooltip content={<CustomTooltip />} />
+      <Tooltip content={<CustomGradesDonutTooltip />} />
     </PieChart>
   );
 };

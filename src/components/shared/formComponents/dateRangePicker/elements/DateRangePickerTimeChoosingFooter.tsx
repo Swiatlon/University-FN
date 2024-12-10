@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box } from '@mui/material';
 import RHFTextField from '../../textField/RHFTextField';
 import type { IWithTimeProps } from '../types/RHFDateRangePicker.Types';
@@ -7,7 +6,7 @@ interface IProps {
   withTime: IWithTimeProps;
 }
 
-const DateRangePickerTimeChoosingFooter: React.FC<IProps> = ({ withTime }) => {
+const DateRangePickerTimeChoosingFooter = ({ withTime }: IProps) => {
   return (
     <Box className="DateRangePickerTimeChoosingFooter">
       <RHFTextField

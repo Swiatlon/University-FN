@@ -1,20 +1,26 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import _ from 'lodash';
 import { Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import GradesChartCustomTooltip from '../gradesChartCustomTooltip/GradesChartCustomTooltip';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface GradesSummarizeChartProps {
   grades: IGrade[];
 }
 
-const GradesSummarizeChart: React.FC<GradesSummarizeChartProps> = ({ grades }) => {
+const GradesSummarizeChart = ({ grades }: GradesSummarizeChartProps) => {
+  const {
+    palette: {
+      customColors: { deepRed, orange, blue, darkGreen },
+    },
+  } = useTheme();
+
   const gradeGroups = _.groupBy(grades, 'grade');
   const groupedData = [
-    { grade: 2, count: gradeGroups[2]?.length ?? 0, fill: '#c40101' },
-    { grade: 3, count: gradeGroups[3]?.length ?? 0, fill: '#ff9800' },
-    { grade: 4, count: gradeGroups[4]?.length ?? 0, fill: '#2196f3' },
-    { grade: 5, count: gradeGroups[5]?.length ?? 0, fill: '#09750d' },
+    { grade: 2, count: gradeGroups[2]?.length ?? 0, fill: deepRed },
+    { grade: 3, count: gradeGroups[3]?.length ?? 0, fill: orange },
+    { grade: 4, count: gradeGroups[4]?.length ?? 0, fill: blue },
+    { grade: 5, count: gradeGroups[5]?.length ?? 0, fill: darkGreen },
   ];
 
   if (groupedData.length === 0) {
@@ -51,39 +57,11 @@ const GradesSummarizeChart: React.FC<GradesSummarizeChartProps> = ({ grades }) =
               angle: -90,
             }}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
+          <Tooltip content={<GradesChartCustomTooltip />} cursor={{ fill: 'transparent' }} />
         </BarChart>
       </ResponsiveContainer>
     </Box>
   );
-};
-
-interface ICustomTooltipProps {
-  active?: boolean;
-  payload?: { payload: { grade: number; count: number } }[];
-}
-
-const CustomTooltip: React.FC<ICustomTooltipProps> = ({ active, payload }) => {
-  if (active && payload?.[0]) {
-    const { grade, count } = payload[0].payload;
-
-    return (
-      <Box
-        sx={{
-          backgroundColor: 'white',
-          padding: 2,
-          display: 'grid',
-          gap: 1,
-        }}
-      >
-        <Typography variant="subtitle1" fontWeight="bold">
-          Grade: {grade}
-        </Typography>
-        <Typography variant="subtitle2">Amount: {count}</Typography>
-      </Box>
-    );
-  }
-  return null;
 };
 
 export default GradesSummarizeChart;
