@@ -1,0 +1,30 @@
+.paper-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.title {
+  color: #524e61;
+  font-weight: bold;
+}
+
+.list-item {
+  border-bottom: 1px solid #ddd;
+  padding-left: 0;
+  align-items: flex-start;
+  flex-direction: column;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.item-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #888;
+}

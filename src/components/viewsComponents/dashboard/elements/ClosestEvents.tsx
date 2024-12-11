@@ -1,34 +1,17 @@
-import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
-import { staticEvents } from 'components/viewsComponents/events/constants/EventsData';
+import { IEvent } from 'components/viewsComponents/events/constants/EventsData';
+import { format, parseISO } from 'date-fns';
+import '../styles/ElementsStyles.scss';
 
-const ClosestEvents = () => {
-  const now = new Date();
+interface ClosestEventsProps {
+  closestEvents: IEvent[];
+}
+const ClosestEvents = ({ closestEvents }: ClosestEventsProps) => {
   const navigate = useNavigate();
 
-  const closestEvents = useMemo(() => {
-    return staticEvents
-      .filter(event => {
-        const startDate = new Date(event.start);
-        const endDate = new Date(event.end);
-
-        return startDate >= now || (startDate <= now && endDate >= now);
-      })
-      .sort((a, b) => {
-        const dateA = new Date(a.start).getTime();
-        const dateB = new Date(b.start).getTime();
-        return dateA - dateB;
-      })
-      .slice(0, 3);
-  }, [now]);
-
-  const formatStartDate = (start: string): string => {
-    const startDate = new Date(start);
-
-    return startDate.toLocaleDateString();
-  };
+  const formatStartDate = (start: string): string => format(parseISO(start), 'MM/dd/yyyy');
 
   const handleNavigate = () => {
     navigate(`community/events`);
@@ -36,50 +19,27 @@ const ClosestEvents = () => {
 
   return (
     <Paper
+      className="paper-container"
       sx={{
         flex: 1,
         flexGrow: 7,
         flexBasis: '300px',
         display: 'flex',
-        flexDirection: 'column',
-        gap: 1,
-        p: 2,
       }}
     >
-      <Typography variant="h5" color="#524e61" fontWeight="bold">
+      <Typography variant="h5" className="title">
         Closest Upcoming Events
       </Typography>
       <List>
-        {closestEvents.map(event => (
-          <ListItem
-            key={event.id}
-            onClick={handleNavigate}
-            sx={{
-              borderBottom: '1px solid #ddd',
-              paddingLeft: 0,
-              alignItems: 'flex-start',
-              cursor: 'pointer',
-
-              ':last-child': {
-                borderBottom: 'none',
-              },
-              flexDirection: 'column',
-            }}
-          >
-            <Typography variant="subtitle1" component="div" sx={{ fontWeight: 'bold' }}>
-              {event.title}
+        {closestEvents.map(({ id, title, start }) => (
+          <ListItem key={id} onClick={handleNavigate} className="list-item">
+            <Typography variant="subtitle1" component="div" className="title">
+              {title}
             </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0.5,
-                color: '#888',
-              }}
-            >
+            <Box className="item-box">
               <EventIcon fontSize="small" />
               <Typography variant="caption" component="span">
-                {formatStartDate(event.start)}
+                {formatStartDate(start)}
               </Typography>
             </Box>
           </ListItem>
