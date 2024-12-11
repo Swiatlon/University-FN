@@ -42,7 +42,8 @@ jobs:
           HEAD_SHA=${{ github.event.pull_request.head.sha }}
           echo "Base SHA: $BASE_SHA"
           echo "Head SHA: $HEAD_SHA"
-          MODIFIED_FILES=$(git diff --name-only $BASE_SHA $HEAD_SHA -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
+          # Exclude deleted files
+          MODIFIED_FILES=$(git diff --name-only --diff-filter=ACMRT $BASE_SHA $HEAD_SHA -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
           echo "Modified files: $MODIFIED_FILES"
           if [ -n "$MODIFIED_FILES" ]; then
             echo "Running ESLint..."
@@ -50,6 +51,7 @@ jobs:
           else
             echo "No modified files to lint"
           fi
+
 
   build:
     name: Build Application
