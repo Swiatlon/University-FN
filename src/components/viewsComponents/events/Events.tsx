@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { Box } from '@mui/material';
+import { useMemo, useState, useEffect } from 'react';
+import { Box, useMediaQuery } from '@mui/material';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
@@ -10,6 +10,7 @@ import EventShowDialog from 'components/viewsComponents/events/elements/EventSho
 import { useDialog } from 'contexts/dialogs/Dialogs.Context';
 import { staticEvents } from './constants/EventsData';
 import type { EventClickArg, EventContentArg } from '@fullcalendar/core/index.js';
+import './styles/styles.scss';
 
 const renderContent = (eventInfo: EventContentArg) => {
   return <EventContent eventInfo={eventInfo} />;
@@ -18,6 +19,9 @@ const renderContent = (eventInfo: EventContentArg) => {
 function Events() {
   const { enqueueDialog } = useDialog();
   const events = useMemo(() => staticEvents, []);
+  const isSmallScreen = useMediaQuery('(max-width:900px)');
+  const [view, setView] = useState(isSmallScreen ? 'dayGridDay' : 'dayGridMonth');
+  const [headerToolbar, setHeaderToolbar] = useState({ center: '', left: '', right: '' });
 
   const handleEventClick = (clickInfo: EventClickArg) => {
     const { event } = clickInfo;
@@ -38,9 +42,21 @@ function Events() {
     ));
   };
 
+  useEffect(() => {
+    if (isSmallScreen) {
+      setView('dayGridDay');
+      setHeaderToolbar({ center: 'title', left: 'prev', right: 'next' });
+      return;
+    }
+
+    setView('dayGridMonth');
+    setHeaderToolbar({ center: 'title', left: 'dayGridMonth dayGridYear', right: 'prev today next' });
+  }, [isSmallScreen]);
+
   return (
-    <Box sx={{ position: 'relative', height: 'calc(100vh - 180px)', minWidth: '800px' }}>
+    <Box sx={{ position: 'relative', height: 'calc(100vh - 180px)' }}>
       <FullCalendar
+        key={view}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         expandRows
         nowIndicator
@@ -56,8 +72,8 @@ function Events() {
         eventDisplay="auto"
         timeZone="local"
         moreLinkClick="popover"
-        initialView="dayGridMonth"
-        locale="pl"
+        initialView={view}
+        locale="eng"
         height="100%"
         scrollTime="08:00"
         slotMinTime="06:00"
@@ -73,11 +89,7 @@ function Events() {
           minute: '2-digit',
           meridiem: 'narrow',
         }}
-        headerToolbar={{
-          center: 'title',
-          left: 'dayGridMonth dayGridYear',
-          right: 'prev today next',
-        }}
+        headerToolbar={headerToolbar}
         buttonText={{
           today: 'Today',
           month: 'Month',

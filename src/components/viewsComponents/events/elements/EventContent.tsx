@@ -28,7 +28,7 @@ const EventContent = ({ eventInfo }: IEventContentProps) => {
         width: '100%',
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
         <Box
           sx={{
             width: 8,
