@@ -11,7 +11,7 @@ const Grades = () => {
   const studentId = useSelector(selectId);
 
   const initialQueryParams: IGetStudentGradesQueryParams = { studentId: studentId! };
-  const { data: grades, isFetching } = useGetStudentGradesQuery(initialQueryParams, { skip: !studentId });
+  const { data: grades = [], isFetching } = useGetStudentGradesQuery(initialQueryParams, { skip: !studentId });
 
   if (isFetching) {
     return <CenteredLoader />;
@@ -20,8 +20,8 @@ const Grades = () => {
   return (
     <>
       <GradesInformationBoxes grades={grades} />
-      <GradesSummarizeChart grades={grades!} />
-      <GradesDataGrid grades={grades!} />
+      <GradesSummarizeChart grades={grades} />
+      <GradesDataGrid grades={grades} />
     </>
   );
 };

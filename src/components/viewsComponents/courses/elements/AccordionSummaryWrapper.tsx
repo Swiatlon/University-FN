@@ -1,4 +1,3 @@
-import React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AccordionSummary, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -9,10 +8,9 @@ interface AccordionSummaryWrapperProps {
   title: string;
 }
 
-const AccordionSummaryWrapper: React.FC<AccordionSummaryWrapperProps> = ({ level, title }) => {
+const AccordionSummaryWrapper = ({ level, title }: AccordionSummaryWrapperProps) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
   const marginLeft = isSmallScreen ? level * 1.2 : level * 4;
 
   return (

@@ -29,13 +29,23 @@
     "noPropertyAccessFromIndexSignature": true,
     "baseUrl": "./src",
     "paths": {
+      "assets/*": ["assets/*"],
       "components/*": ["components/*"],
-      "features/*": ["features/*"],
-      "assets/*": ["assets/*"]
+      "configs/*": ["configs/*"],
+      "contexts/*": ["contexts/*"],
+      "contract/*": ["contract/*"],
+      "hooks/*": ["hooks/*"],
+      "i18n/*": ["i18n/*"],
+      "layouts/*": ["layouts/*"],
+      "middlewares/*": ["middlewares/*"],
+      "routes/*": ["routes/*"],
+      "theme/*": ["theme/*"],
+      "types/*": ["types/*"],
+      "utils/*": ["utils/*"]
     }
   },
-  "include": ["src/**/*", "./custom.d.ts"],
-  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*", "./custom.d.ts",],
+  "exclude": ["node_modules", "dist", "eslint.config.js"],
   "references": [
     {
       "path": "./tsconfig.node.json"

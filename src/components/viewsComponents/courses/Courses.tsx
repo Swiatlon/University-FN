@@ -25,46 +25,6 @@ function Courses() {
     return <CenteredLoader />;
   }
 
-  const renderModules = (modules: IStudentCoursesModule[], level = 0) =>
-    modules.map(module => (
-      <Accordion key={`module-${module.id}`}>
-        <AccordionSummaryWrapper level={level} title={module.name} />
-        <AccordionDetails>
-          <DataGridWrapper
-            rowData={module.subjects.map(subject => ({
-              id: subject.id,
-              name: subject.name,
-              grade: subject.grade,
-            }))}
-            columnDefs={gradesColumns}
-          />
-        </AccordionDetails>
-      </Accordion>
-    ));
-
-  const renderDegreePath = (degreePath: IStudentCoursesDegreePath, level = 0) => (
-    <Accordion key={`degreePath-${degreePath.id}`}>
-      <AccordionSummaryWrapper level={level} title={degreePath.name} />
-      <AccordionDetails>{renderModules(degreePath.modules, level + 1)}</AccordionDetails>
-    </Accordion>
-  );
-
-  const renderCourseSubjects = (subjects: IStudentCourseSubject[]) => (
-    <Accordion key="courseSubjects" defaultExpanded>
-      <AccordionSummaryWrapper level={0} title="Courses Subjects" />
-      <AccordionDetails>
-        <DataGridWrapper
-          rowData={subjects.map(subject => ({
-            id: subject.id,
-            name: subject.name,
-            grade: subject.grade,
-          }))}
-          columnDefs={gradesColumns}
-        />
-      </AccordionDetails>
-    </Accordion>
-  );
-
   return (
     <Root>
       {data ? (
@@ -81,3 +41,43 @@ function Courses() {
 }
 
 export default Courses;
+
+const renderModules = (modules: IStudentCoursesModule[], level = 0) =>
+  modules.map(module => (
+    <Accordion key={`module-${module.id}`}>
+      <AccordionSummaryWrapper level={level} title={module.name} />
+      <AccordionDetails>
+        <DataGridWrapper
+          rowData={module.subjects.map(subject => ({
+            id: subject.id,
+            name: subject.name,
+            grade: subject.grade,
+          }))}
+          columnDefs={gradesColumns}
+        />
+      </AccordionDetails>
+    </Accordion>
+  ));
+
+const renderDegreePath = (degreePath: IStudentCoursesDegreePath, level = 0) => (
+  <Accordion key={`degreePath-${degreePath.id}`}>
+    <AccordionSummaryWrapper level={level} title={degreePath.name} />
+    <AccordionDetails>{renderModules(degreePath.modules, level + 1)}</AccordionDetails>
+  </Accordion>
+);
+
+const renderCourseSubjects = (subjects: IStudentCourseSubject[]) => (
+  <Accordion key="courseSubjects" defaultExpanded>
+    <AccordionSummaryWrapper level={0} title="Courses Subjects" />
+    <AccordionDetails>
+      <DataGridWrapper
+        rowData={subjects.map(subject => ({
+          id: subject.id,
+          name: subject.name,
+          grade: subject.grade,
+        }))}
+        columnDefs={gradesColumns}
+      />
+    </AccordionDetails>
+  </Accordion>
+);

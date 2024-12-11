@@ -1,13 +1,5 @@
-import { useSelector } from 'react-redux';
+import StudentPersonalData from 'components/viewsComponents/personalData/StudentPersonalData';
 import { RolesEnum } from 'contract/enums/Enums';
-import { selectUserRoles } from 'redux/stateSlices/auth/Auth.State.Slice';
-import { getRoleBasedComponent } from 'routes/utils/RouterUtils';
-
-const RoleBasedPersonalData: React.FC = () => {
-  const roles = useSelector(selectUserRoles);
-
-  return getRoleBasedComponent(roles);
-};
 
 export const profileConfig = {
   path: 'profile',
@@ -22,7 +14,7 @@ export const profileConfig = {
   children: [
     {
       path: 'personal-data',
-      element: <RoleBasedPersonalData />,
+      element: <StudentPersonalData />,
       handle: {
         navigation: {
           text: 'Personal Data',

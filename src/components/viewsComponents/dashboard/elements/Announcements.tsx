@@ -1,4 +1,3 @@
-import React from 'react';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
 
@@ -30,7 +29,7 @@ const messages: IMessage[] = [
   },
 ];
 
-const Messages: React.FC = () => {
+const Messages = () => {
   return (
     <Paper
       sx={{

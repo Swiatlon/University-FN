@@ -1,6 +1,26 @@
 import { createTheme } from '@mui/material/styles';
 import shadows, { type Shadows } from '@mui/material/styles/shadows';
 
+declare module '@mui/material/styles/createPalette' {
+  interface Palette {
+    customColors: {
+      deepRed: string;
+      orange: string;
+      blue: string;
+      darkGreen: string;
+    };
+  }
+
+  interface PaletteOptions {
+    customColors?: {
+      deepRed: string;
+      orange: string;
+      blue: string;
+      darkGreen: string;
+    };
+  }
+}
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -11,6 +31,12 @@ const theme = createTheme({
     },
     text: {
       primary: '#070707;',
+    },
+    customColors: {
+      deepRed: '#c40101',
+      orange: '#ff9800',
+      blue: '#2196f3',
+      darkGreen: '#09750d',
     },
   },
   typography: {

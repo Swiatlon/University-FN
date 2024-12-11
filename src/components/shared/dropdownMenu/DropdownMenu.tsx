@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+import { useState, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Box, Button, Menu, MenuItem, Typography, useMediaQuery } from '@mui/material';
+import { Box, ButtonProps, Menu, MenuItem, Typography } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
+import DropdownButton from './elements/DropdownButton';
 
 interface IDropdownItem {
   label: string;
   onClick?: () => void;
-  icon: React.ReactElement;
+  icon: ReactElement;
   nonClickable?: boolean;
 }
 
 interface IDropdownMenuProps {
   label: string;
   items: IDropdownItem[];
-  startIcon?: React.ReactElement;
+  startIcon?: ReactElement;
   hideLabelOnMobile?: boolean;
-  buttonVariant?: 'outlined' | 'text' | 'contained';
-  customButton?: React.ReactElement;
+  buttonVariant?: ButtonProps['variant'];
+  customButton?: ReactElement;
 }
 
 function DropdownMenu({
@@ -27,9 +28,9 @@ function DropdownMenu({
   buttonVariant = 'outlined',
   customButton,
 }: IDropdownMenuProps) {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
-  const isMobile = useMediaQuery('(max-width:910px)');
+
   const [selection, setSelection] = useState({
     label,
     icon: startIcon,
@@ -48,15 +49,14 @@ function DropdownMenu({
 
   return (
     <Box sx={{ m: 1 }} key={currentLanguage}>
-      {customButton ? (
-        React.cloneElement(customButton, {
-          onClick: handleClick,
-        })
-      ) : (
-        <Button onClick={handleClick} startIcon={selection.icon} variant={buttonVariant}>
-          {hideLabelOnMobile && isMobile ? null : t(selection.label)}
-        </Button>
-      )}
+      <DropdownButton
+        customButton={customButton}
+        handleClick={handleClick}
+        selection={selection}
+        buttonVariant={buttonVariant}
+        hideLabelOnMobile={hideLabelOnMobile}
+      />
+
       <Menu id="dropdown-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
         {items.map(item => (
           <MenuItem

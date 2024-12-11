@@ -1,6 +1,5 @@
-import React from 'react';
 import { Select, MenuItem, type SelectChangeEvent } from '@mui/material';
-import { beautifyNumbers } from 'routes/utils/Decorators';
+import { beautifyNumbers } from 'utils/Decorators';
 
 interface IPageSizeSelectProps {
   value: number;
@@ -10,7 +9,7 @@ interface IPageSizeSelectProps {
 
 const pageSizeOptions = [100, 500, 1000, 10000, 100000];
 
-const PageSizeSelect: React.FC<IPageSizeSelectProps> = ({ value, onChange, disabled }) => {
+const PageSizeSelect = ({ value, onChange, disabled }: IPageSizeSelectProps) => {
   return (
     <Select value={value} onChange={onChange} variant="standard" disabled={disabled}>
       {pageSizeOptions.map(size => (

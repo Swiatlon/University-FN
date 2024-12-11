@@ -1,4 +1,4 @@
-import React, { useState, type RefObject } from 'react';
+import { useState, type RefObject } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DropDownMenuWithCheckboxes from 'components/shared/dropdownMenuWithCheckboxes/DropdownMenuWithCheckboxes';
 import type { AgGridReact } from 'ag-grid-react';
@@ -8,7 +8,7 @@ interface IColumnVisibilityDropdownProps {
   gridRef: RefObject<AgGridReact>;
 }
 
-const ColumnVisibilityDropdown: React.FC<IColumnVisibilityDropdownProps> = ({ columnsSettings, gridRef }) => {
+const ColumnVisibilityDropdown = ({ columnsSettings, gridRef }: IColumnVisibilityDropdownProps) => {
   const [visibilityItems, setVisibilityItems] = useState(
     columnsSettings.map(colSettings => ({
       identifier: colSettings.field,

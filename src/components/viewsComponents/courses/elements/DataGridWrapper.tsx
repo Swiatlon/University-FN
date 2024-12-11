@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import DataGrid from 'components/shared/dataGrid/DataGrid';
@@ -9,7 +8,7 @@ interface DataGridWrapperProps {
   columnDefs: { field: string; headerName: string; flex: number }[];
 }
 
-const DataGridWrapper: React.FC<DataGridWrapperProps> = ({ rowData, columnDefs }) => {
+const DataGridWrapper = ({ rowData, columnDefs }: DataGridWrapperProps) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 

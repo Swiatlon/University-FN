@@ -22,9 +22,7 @@ const viewSlice = createSlice({
     },
   },
   selectors: {
-    selectIsDrawerOpen: state => {
-      return state.isDrawerOpen;
-    },
+    selectIsDrawerOpen: state => state.isDrawerOpen,
   },
 });
 
