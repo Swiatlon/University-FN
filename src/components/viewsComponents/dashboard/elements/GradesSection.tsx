@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Typography, Paper, Box, Button, useTheme } from '@mui/material';
-import { calculateAverageGrade } from 'components/viewsComponents/grades/utils/Helpers';
+import { calculateAverageGrade } from 'components/viewsComponents/grades/utils/GradesHelpers';
 import _ from 'lodash';
 import GradesDonutChart from './GradesDonutChart';
 import type { IGrade } from 'contract/interfaces/academics/Academics';

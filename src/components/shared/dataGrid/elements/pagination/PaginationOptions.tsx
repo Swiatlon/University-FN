@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Box, Typography, type SelectChangeEvent } from '@mui/material';
-import { beautifyNumbers } from 'utils/Decorators';
+import { beautifyNumbers } from 'utils/decorators/Decorators';
 import PageSizeSelect from './PageSizeSelect';
 
 interface IPaginationOptionsProps {

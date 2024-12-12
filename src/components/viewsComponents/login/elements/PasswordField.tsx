@@ -1,7 +1,7 @@
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { InputAdornment, IconButton, type TextFieldProps } from '@mui/material';
 import RHFTextField from 'components/shared/formComponents/textField/RHFTextField';
-import { usePasswordToggle } from 'hooks/usePasswordVisibility';
+import { usePasswordToggle } from 'hooks/usePasswordVisibility/usePasswordVisibility';
 
 interface RHFTextFieldProps extends Omit<TextFieldProps, 'name'> {
   name: string;
