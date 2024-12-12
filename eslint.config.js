@@ -1,3 +1,6 @@
+// DUE SOME OLD PACKAGES WE DONT HAVE TYPES FOR IT
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import eslint from '@eslint/js';
 import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
@@ -77,6 +80,7 @@ export default tseslint.config(eslint.configs.recommended, tseslint.configs.stri
         },
       },
     ],
+    '@typescript-eslint/unbound-method': 'off',
     '@typescript-eslint/no-empty-object-type': 'off',
     'react/no-multi-comp': 'off',
     'no-multiple-empty-lines': ['error', { max: 1 }],
@@ -129,7 +133,6 @@ export default tseslint.config(eslint.configs.recommended, tseslint.configs.stri
     '@typescript-eslint/require-await': 'error',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
-    '@typescript-eslint/unbound-method': 'error',
     '@typescript-eslint/no-unnecessary-type-constraint': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
     '@typescript-eslint/prefer-reduce-type-parameter': 'error',

@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Box, Divider } from '@mui/material';
-import { formatFullDateTime } from 'utils/Date.Utils';
+import { formatFullDateTime } from 'utils/date/Date.Utils';
 
 interface IEventShowDialog {
   onClose: () => void;

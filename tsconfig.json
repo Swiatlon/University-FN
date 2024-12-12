@@ -5,6 +5,7 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "allowJs": true,
+    "checkJs": false,
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
@@ -44,8 +45,9 @@
       "utils/*": ["utils/*"]
     }
   },
-  "include": ["src/**/*", "./custom.d.ts",],
-  "exclude": ["node_modules", "dist", "eslint.config.js"],
+  "include": ["src/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js" ],
+  "exclude": ["node_modules", "dist"],
+
   "references": [
     {
       "path": "./tsconfig.node.json"

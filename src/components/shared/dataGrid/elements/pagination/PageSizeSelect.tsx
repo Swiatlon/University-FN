@@ -1,5 +1,5 @@
 import { Select, MenuItem, type SelectChangeEvent } from '@mui/material';
-import { beautifyNumbers } from 'utils/Decorators';
+import { beautifyNumbers } from 'utils/decorators/Decorators';
 
 interface IPageSizeSelectProps {
   value: number;

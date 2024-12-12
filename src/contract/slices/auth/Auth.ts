@@ -19,8 +19,7 @@ export interface IRefreshResponse {
 }
 
 export interface IDecodedJwt {
-  token: string;
-  accountId: string;
+  accountId: number;
   roles: RolesEnum[];
   exp?: number;
   iat?: number;

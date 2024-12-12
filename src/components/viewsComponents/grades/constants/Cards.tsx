@@ -2,7 +2,8 @@ import { EqualizerRounded, ErrorOutline, CheckCircleOutline, Warning, InfoOutlin
 import { useTheme } from '@mui/material';
 import { GradeValueEnum } from 'contract/enums/Enums';
 import _ from 'lodash';
-import { calculateAverageGrade, calculatePercentage } from '../utils/Helpers';
+import { calculatePercentage } from 'utils/decorators/Decorators';
+import { calculateAverageGrade } from '../utils/GradesHelpers';
 import type { IGrade } from 'contract/interfaces/academics/Academics';
 
 interface IGradeCard {

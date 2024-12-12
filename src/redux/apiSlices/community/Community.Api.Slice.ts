@@ -1,6 +1,6 @@
 import Api from 'redux/config/Api';
 import { extendedOnQueryStartedWithNotifications } from 'redux/utils/ExtendedOnQueryStarted';
-import { formatTime } from 'utils/Date.Utils';
+import { formatTime } from 'utils/date/Date.Utils';
 import type {
   IGetAllTeachersResponse,
   IGetAllTeachersQueryParams,
