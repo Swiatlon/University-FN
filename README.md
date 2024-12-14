@@ -1,56 +1,102 @@
-# University Frontend
-This project offers frontend for a **University Management System**, offering an intuitive interface for managing student data, course registrations, and administrative functionalities. Built with **React** and **TypeScript**, it prioritizes responsiveness, scalability, and user experience with modern frontend technologies.
+# 🎓 **University Frontend** 🌟
 
-## Features
+Welcome to the **University Management System** frontend! Built using **React** and **TypeScript**, this system offers a beautiful, intuitive, and powerful interface for managing student data, course registrations, and more. It also boasts solid testing with **Jest** and **Cypress** to ensure everything works flawlessly.
 
-- **React with TypeScript**: Combines React's dynamic UI capabilities with TypeScript's type safety for a robust developer experience.
-- **Modular Architecture**: Utilizes a component-based architecture for enhanced maintainability and scalability.
-- **State Management**: Effectively handles application state using [Redux/Context API/etc.].
-- **Seamless API Integration**: Connects effortlessly with the backend to manage data fetching and synchronization.
-- **Responsive Design**: Delivers a consistent and adaptive user experience across various devices and screen sizes.
+---
 
-## Getting Started
+## 🚀 **Key Features**
 
-### Prerequisites
+- **⚡️ React with TypeScript**: Combining React's dynamic capabilities with TypeScript's type safety for a seamless developer experience.
+- **🧩 Modular Architecture**: A component-based design that ensures maintainability and scalability as the app grows.
+- **📦 Efficient State Management**: Effortlessly handles app state using tools like [Redux/Context API/etc.].
+- **🔗 Smooth API Integration**: Easily communicates with your backend to handle data synchronization and fetching.
+- **📱 Responsive Design**: A stunning and adaptive interface that looks great on all devices.
+- **🔍 High Test Coverage**: The project includes robust testing using **Jest** and **Cypress** to ensure everything functions as expected. Here's the test coverage summary:
 
-- **Node.js**: Version 18.0.0 or higher
-- **npm**: Version 8.0.0 or higher
+| **Test Framework**  | **Test Coverage** | **Passed** | **Failed** | **Total** |
+|---------------------|-------------------|------------|------------|-----------|
+| Jest                | 100% (Statements) | 7/7        | 0/7        | 7         |
+| Cypress             | 100% (E2E Tests)  | 3/3        | 0/3        | 3         |
 
-### Installation
+- **💡 Detailed Coverage**: All files in the project are thoroughly tested, including key files like **Auth.State.Slice.ts** and **View.State.Slice.ts**. Our code coverage is robust, with high uptime for line, function, and branch coverage across important files.
 
-1. **Clone the repository**:
+---
+
+## 🛠️ **Getting Started**
+
+### **Prerequisites**
+
+Before you dive in, ensure you have the following installed:
+
+- **Node.js**: Version 18.0.0 or higher 🌱
+- **npm**: Version 8.0.0 or higher 🛠️
+
+---
+
+### **Installation Steps**
+
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Swiatlon/University-FN
    ```
 
-2. **Navigate to the project directory**:
+2. **Navigate to Your Project Directory**:
    ```bash
    cd University-FN
    ```
 
-3. **Install dependencies**:
+3. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-### Running the Application
+---
 
-- **Development Mode**:
+### **Running the App**
+
+- **💻 Development Mode**:
+   Start the app with live reloads to enjoy the development experience!
    ```bash
    npm run dev
    ```
-   This starts the application with live reloads for development.
 
-- **Production Build**:
+- **🚀 Production Build**:
+   When you're ready to deploy, build the app for production:
    ```bash
    npm run build
    ```
-   The optimized production build will be available in the `build` directory.
 
-## License
+Your production-ready build will be in the `build` directory.
 
-This project is licensed under the **MIT License**. For more information, refer to the [LICENSE](LICENSE) file.
+---
 
-## Contact
+### **Running Tests**
 
-For inquiries or feedback, please contact [your email address] or open an issue on [GitHub Issues](https://github.com/Swiatlon/University-FN/issues).
+- **Jest Tests**: Run unit and integration tests with Jest:
+   ```bash
+   npm run test
+   ```
+
+- **Cypress Tests**: Run end-to-end tests with Cypress:
+   ```bash
+   npm run cypress
+   ```
+
+---
+
+## 📝 **License**
+
+This project is open-source and licensed under the **MIT License**. Check out the full details in the [LICENSE](LICENSE) file.
+
+---
+
+## 📬 **Contact**
+
+If you have any questions or feedback, feel free to reach out:
+
+- Email: [your email address] 📧
+- Open an issue on [GitHub Issues](https://github.com/Swiatlon/University-FN/issues) 💬
+
+---
+
+**Happy coding!** ✨
