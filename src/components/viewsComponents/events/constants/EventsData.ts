@@ -1,4 +1,4 @@
-import { addDays, setHours, startOfDay } from 'date-fns';
+import { addDays, setHours, setMinutes } from 'date-fns';
 
 export interface Event {
   id: string;
@@ -12,42 +12,45 @@ export interface Event {
 export const staticEvents: Event[] = [
   {
     id: '1',
-    title: 'Group Study Session',
-    start: setHours(startOfDay(new Date()), 10).toISOString(),
-    end: setHours(startOfDay(new Date()), 18).toISOString(),
-    description: 'Review topics for the upcoming midterm exam.',
+    title: 'Midterm Study Group',
+    start: setMinutes(setHours(addDays(new Date(), 4), 12), 0).toISOString(),
+    end: setMinutes(setHours(addDays(new Date(), 4), 18), 0).toISOString(),
+    description:
+      'Join your peers for a collaborative study session to review key topics for the upcoming midterm exams.',
     allDay: false,
   },
   {
     id: '2',
-    title: 'Professor’s Office Hours',
-    start: startOfDay(addDays(new Date(), 1)).toISOString(),
-    end: startOfDay(addDays(new Date(), 2)).toISOString(),
-    description: 'Meet with the professor to discuss the project outline.',
-    allDay: true,
+    title: 'Professor Office Hours',
+    start: setMinutes(setHours(addDays(new Date(), 2), 11), 0).toISOString(),
+    end: setMinutes(setHours(addDays(new Date(), 2), 13), 0).toISOString(),
+    description: 'Stop by during office hours to discuss your project and receive feedback on your progress.',
+    allDay: false,
   },
   {
     id: '3',
-    title: 'Research Workshop',
-    start: startOfDay(addDays(new Date(), 3)).toISOString(),
-    end: startOfDay(addDays(new Date(), 4)).toISOString(),
-    description: 'A workshop on improving research methodology and citation practices.',
-    allDay: true,
+    title: 'Research Methodology Workshop',
+    start: setMinutes(setHours(addDays(new Date(), 3), 14), 0).toISOString(),
+    end: setMinutes(setHours(addDays(new Date(), 3), 16), 0).toISOString(),
+    description:
+      'Attend this workshop to improve your research skills and learn best practices for citations and methodology.',
+    allDay: false,
   },
   {
     id: '4',
-    title: 'Semester Break',
-    start: startOfDay(addDays(new Date(), -2)).toISOString(),
-    end: startOfDay(addDays(new Date(), 2)).toISOString(),
-    description: 'A short break before the final semester begins.',
+    title: 'Semester Break – Enjoy Your Time Off!',
+    start: setMinutes(setHours(addDays(new Date(), -2), 12), 0).toISOString(),
+    end: setMinutes(setHours(addDays(new Date(), 2), 12), 0).toISOString(),
+    description: 'The semester break has arrived! Take some well-deserved rest before the final semester begins.',
     allDay: true,
   },
   {
     id: '5',
     title: 'Thesis Submission Deadline',
-    start: startOfDay(addDays(new Date(), 14)).toISOString(),
-    end: startOfDay(addDays(new Date(), 16)).toISOString(),
-    description: 'Submit your thesis through the university portal before 11:59 PM.',
-    allDay: true,
+    start: setMinutes(setHours(addDays(new Date(), 14), 22), 0).toISOString(),
+    end: setMinutes(setHours(addDays(new Date(), 14), 23), 59).toISOString(),
+    description:
+      'Reminder: Your thesis is due for submission through the university portal before 11:59 PM on this date.',
+    allDay: false,
   },
 ];

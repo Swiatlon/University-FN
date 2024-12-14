@@ -10,7 +10,7 @@
   color: #070707;
 }
 
-// OVVERIDE MUI
+// OVVERIDE PACKAGES
 
 .MuiDivider-root {
   background: white;
@@ -22,4 +22,8 @@
 
 .MuiTreeItem-content {
   background: white !important;
+}
+
+.recharts-sector{
+  outline: none !important;
 }
