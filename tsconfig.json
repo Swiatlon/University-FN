@@ -45,7 +45,7 @@
       "utils/*": ["utils/*"]
     }
   },
-  "include": ["src/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js" ],
+  "include": ["src/**/*", "./custom.d.ts", "jest.config.js", "jest-setup.ts", "eslint.config.js"],
   "exclude": ["node_modules", "dist"],
 
   "references": [

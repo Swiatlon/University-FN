@@ -1,10 +1,12 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
+
 export default {
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   transform: {
     '^.+.tsx?$': ['ts-jest', {}],
   },
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
   moduleNameMapper: {
     '^contract/(.*)$': '<rootDir>/src/contract/$1',
     '^assets/(.*)$': '<rootDir>/src/assets/$1',

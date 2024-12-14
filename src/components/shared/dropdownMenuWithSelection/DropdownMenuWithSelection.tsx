@@ -32,7 +32,7 @@ function DropdownMenuWithSelection({ label, items, startIcon }: IDropdownMenuPro
 
   return (
     <Box>
-      <Button onClick={handleClick} startIcon={selection.icon}>
+      <Button onClick={handleClick} startIcon={selection.icon} data-testid="selection">
         {selection.label}
       </Button>
       <Menu id="dropdown-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
