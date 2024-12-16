@@ -1,17 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
-import { IEvent } from 'components/viewsComponents/events/constants/EventsData';
-import { format, parseISO } from 'date-fns';
+import { staticEvents } from 'components/viewsComponents/events/constants/EventsData';
 import '../styles/ElementsStyles.scss';
+import { format } from 'date-fns';
+import { getClosestEvents } from '../utils/EventsHelpers';
 
-interface ClosestEventsProps {
-  closestEvents: IEvent[];
-}
-const ClosestEvents = ({ closestEvents }: ClosestEventsProps) => {
+const ClosestEvents = () => {
+  const closestEvents = getClosestEvents(staticEvents);
   const navigate = useNavigate();
-
-  const formatStartDate = (start: string): string => format(parseISO(start), 'MM/dd/yyyy');
 
   const handleNavigate = () => {
     navigate(`community/events`);
@@ -19,7 +16,7 @@ const ClosestEvents = ({ closestEvents }: ClosestEventsProps) => {
 
   return (
     <Paper
-      className="paper-container"
+      className="PaperContainer"
       sx={{
         flex: 1,
         flexGrow: 7,
@@ -27,19 +24,19 @@ const ClosestEvents = ({ closestEvents }: ClosestEventsProps) => {
         display: 'flex',
       }}
     >
-      <Typography variant="h5" className="title">
+      <Typography variant="h5" className="Title">
         Closest Upcoming Events
       </Typography>
       <List>
         {closestEvents.map(({ id, title, start }) => (
-          <ListItem key={id} onClick={handleNavigate} className="list-item">
-            <Typography variant="subtitle1" component="div" className="title">
+          <ListItem key={id} onClick={handleNavigate} className="ListItem">
+            <Typography variant="subtitle1" component="div" className="Title">
               {title}
             </Typography>
-            <Box className="item-box">
+            <Box className="ItemBox">
               <EventIcon fontSize="small" />
               <Typography variant="caption" component="span">
-                {formatStartDate(start)}
+                {format(start, 'MM/dd/yyyy')}
               </Typography>
             </Box>
           </ListItem>

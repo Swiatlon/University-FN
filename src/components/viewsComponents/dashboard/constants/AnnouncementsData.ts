@@ -1,11 +1,4 @@
-export interface IAnnouncement {
-  id: number;
-  title: string;
-  body: string;
-  date: string;
-}
-
-export const announcementsData: IAnnouncement[] = [
+export const announcementsData = [
   {
     id: 1,
     title: 'Welcome to the Semester!',
