@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer, IconButton, Tooltip, Box, Typography, Button, useMediaQuery } from '@mui/material';
@@ -10,11 +10,15 @@ import TodoCreateDialog from './elements/TodoCreateDialog';
 const TodoListDrawer = () => {
   const studentId = useSelector(selectId)!;
   const isMobile = useMediaQuery('(max-width: 600px)');
-  const isEnoughSpaceForDrawer = useMediaQuery('(min-width: 1400px)');
+  const isDesktop = useMediaQuery('(min-width: 1400px)');
   const maxDrawerWidth = isMobile ? 280 : 450;
-  const [openDrawer, setOpenDrawer] = useState<boolean>(isEnoughSpaceForDrawer);
+  const [openDrawer, setOpenDrawer] = useState<boolean>(isDesktop);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { data: tasks } = useGetStudentTodosQuery({ studentId }, { skip: !studentId });
+
+  useEffect(() => {
+    setOpenDrawer(isDesktop);
+  }, [isDesktop]);
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);

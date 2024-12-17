@@ -1,5 +1,5 @@
 export const beautifyNumbers = (number: number): string => {
-  return new Intl.NumberFormat().format(number);
+  return new Intl.NumberFormat('fr-FR').format(number);
 };
 
 export const calculatePercentage = (count: number, amountOfAllElements: number): string => {
