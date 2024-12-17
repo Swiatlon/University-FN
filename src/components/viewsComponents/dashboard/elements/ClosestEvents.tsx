@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
@@ -7,8 +8,11 @@ import { format } from 'date-fns';
 import { getClosestEvents } from '../utils/EventsHelpers';
 
 const ClosestEvents = () => {
-  const closestEvents = getClosestEvents(staticEvents);
   const navigate = useNavigate();
+
+  const closestEvents = useMemo(() => {
+    return getClosestEvents(staticEvents);
+  }, [staticEvents]);
 
   const handleNavigate = () => {
     navigate(`community/events`);
@@ -30,7 +34,7 @@ const ClosestEvents = () => {
       <List>
         {closestEvents.map(({ id, title, start }) => (
           <ListItem key={id} onClick={handleNavigate} className="ListItem">
-            <Typography variant="subtitle1" component="div" className="Title">
+            <Typography variant="subtitle1" className="Title">
               {title}
             </Typography>
             <Box className="ItemBox">

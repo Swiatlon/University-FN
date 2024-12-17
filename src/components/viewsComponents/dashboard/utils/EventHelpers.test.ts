@@ -14,6 +14,7 @@ describe('getClosestEvents function', () => {
       { id: '1', title: 'Past Event 1', start: subDays(now, 5), end: subDays(now, 4), description: '', allDay: true },
       { id: '2', title: 'Past Event 2', start: subDays(now, 10), end: subDays(now, 8), description: '', allDay: true },
     ];
+
     expect(getClosestEvents(pastEvents)).toEqual([]);
   });
 
@@ -26,6 +27,7 @@ describe('getClosestEvents function', () => {
       description: '',
       allDay: true,
     };
+
     expect(getClosestEvents([ongoingEvent])).toEqual([ongoingEvent]);
   });
 
@@ -57,6 +59,7 @@ describe('getClosestEvents function', () => {
       },
     ];
     const result = getClosestEvents(futureEvents);
+
     expect(result).toHaveLength(3);
     expect(result.map(e => e.title)).toEqual(['Event in 1 day', 'Event in 2 days', 'Event in 3 days']);
   });
@@ -70,8 +73,8 @@ describe('getClosestEvents function', () => {
       description: '',
       allDay: false,
     }));
-
     const result = getClosestEvents(manyEvents);
+
     expect(result).toHaveLength(3);
     expect(result.map(e => e.title)).toEqual(['Event 1', 'Event 2', 'Event 3']);
   });
@@ -97,8 +100,8 @@ describe('getClosestEvents function', () => {
         allDay: false,
       },
     ];
-
     const result = getClosestEvents(mixedEvents);
+
     expect(result).toHaveLength(3);
     expect(result.map(e => e.title)).toEqual(['Ongoing Event', 'Future Event 1', 'Future Event 2']);
   });

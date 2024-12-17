@@ -1,10 +1,11 @@
+import { useMemo } from 'react';
 import EventIcon from '@mui/icons-material/Event';
 import { Typography, List, ListItem, Paper, Box } from '@mui/material';
 import { format, parseISO } from 'date-fns';
 import { announcementsData } from '../../constants/AnnouncementsData';
 
 const Announcements = () => {
-  const announcements = announcementsData;
+  const announcements = useMemo(() => announcementsData, []);
 
   return (
     <Paper className="PaperContainer">
@@ -13,8 +14,8 @@ const Announcements = () => {
       </Typography>
       <List>
         {announcements.map(({ id, title, body, date }) => (
-          <ListItem key={id} className="ListItem" sx={{ gap: 1 }}>
-            <Typography variant="subtitle1" component="div" className="Title">
+          <ListItem key={id} className="ListItem">
+            <Typography variant="subtitle1" className="Title">
               {title}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ color: '#555' }} component="div">

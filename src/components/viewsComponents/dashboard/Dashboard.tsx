@@ -7,7 +7,7 @@ import { selectId, useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/log
 import Announcements from './elements/announcements/Announcements';
 import ClosestEvents from './elements/ClosestEvents';
 import GradesSection from './elements/GradesSection';
-import NoDataFound from './elements/NoDataFound';
+import NoDataFound from '../../shared/noDataFound/NoDataFound';
 import type { IGetStudentGradesQueryParams } from 'contract/slices/academics/Grades.Interfaces';
 import './styles/Dashboard.scss';
 
