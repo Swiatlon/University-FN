@@ -4,7 +4,8 @@ import CenteredLoader from 'components/shared/centeredLoader/CenteredLoader';
 import TodoListDrawer from 'components/viewsComponents/dashboard/elements/todoListDrawer/TodoListDrawer';
 import { useGetStudentGradesQuery } from 'redux/apiSlices/academics/Grades.Api.Slice';
 import { selectId, useGetLoggedAccountBasicDataQuery } from 'redux/apiSlices/loggedAccount/LoggedAccount.Api.Slice';
-import Announcements from './elements/Announcements';
+import NoDataFound from '../../shared/noDataFound/NoDataFound';
+import Announcements from './elements/announcements/Announcements';
 import ClosestEvents from './elements/ClosestEvents';
 import GradesSection from './elements/GradesSection';
 import type { IGetStudentGradesQueryParams } from 'contract/slices/academics/Grades.Interfaces';
@@ -23,7 +24,7 @@ function Dashboard() {
   }
 
   if (!userData) {
-    return;
+    return <NoDataFound />;
   }
 
   return (
@@ -32,7 +33,6 @@ function Dashboard() {
         <GradesSection grades={grades} userData={userData} />
         <ClosestEvents />
       </Box>
-      {/* Need refactor */}
       <Announcements />
       <TodoListDrawer />
     </>
