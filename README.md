@@ -8,15 +8,15 @@ Welcome to the **University Management System** frontend! Built using **React** 
 
 - **⚡️ React with TypeScript**: Combining React's dynamic capabilities with TypeScript's type safety for a seamless developer experience.
 - **🧩 Modular Architecture**: A component-based design that ensures maintainability and scalability as the app grows.
-- **📦 Efficient State Management**: Effortlessly handles app state using tools like [Redux/Context API/etc.].
+- **📦 Efficient State Management**: Effortlessly handles app state using tools like **Redux**, **Context API**, or others.
 - **🔗 Smooth API Integration**: Easily communicates with your backend to handle data synchronization and fetching.
 - **📱 Responsive Design**: A stunning and adaptive interface that looks great on all devices.
 - **🔍 High Test Coverage**: The project includes robust testing using **Jest** and **Cypress** to ensure everything functions as expected. Here's the test coverage summary:
 
-| **Test Framework**  | **Test Coverage** | **Passed** | **Failed** | **Total** |
-|---------------------|-------------------|------------|------------|-----------|
-| Jest                | 100% (Statements) | 7/7        | 0/7        | 7         |
-| Cypress             | 100% (E2E Tests)  | 3/3        | 0/3        | 3         |
+| **Test Framework** | **Test Coverage**    | **Passed** | **Failed** | **Total** |
+|--------------------|----------------------|------------|------------|-----------|
+| Jest               | 100% (Statements)    | 7/7        | 0/7        | 7         |
+| Cypress            | 100% (E2E Tests)     | 3/3        | 0/3        | 3         |
 
 - **💡 Detailed Coverage**: All files in the project are thoroughly tested, including key files like **Auth.State.Slice.ts** and **View.State.Slice.ts**. Our code coverage is robust, with high uptime for line, function, and branch coverage across important files.
 
@@ -28,8 +28,8 @@ Welcome to the **University Management System** frontend! Built using **React** 
 
 Before you dive in, ensure you have the following installed:
 
-- **Node.js**: Version 18.0.0 or higher 🌱
-- **npm**: Version 8.0.0 or higher 🛠️
+- **Node.js**: Version **18.0.0** or higher 🌱
+- **npm**: Version **8.0.0** or higher 🛠️
 
 ---
 
@@ -65,8 +65,7 @@ Before you dive in, ensure you have the following installed:
    ```bash
    npm run build
    ```
-
-Your production-ready build will be in the `build` directory.
+   Your production-ready build will be in the `build` directory.
 
 ---
 
@@ -84,6 +83,68 @@ Your production-ready build will be in the `build` directory.
 
 ---
 
+## 🧩 **Docker Compose Setup**
+
+### How to Use the `docker-compose.yml`
+
+#### 1. Clone Repositories
+
+Clone both **frontend** and **backend** repositories into the same parent directory:
+
+```bash
+git clone https://github.com/Swiatlon/University-FN University-FN
+git clone https://github.com/Swiatlon/University-BN University-BN
+```
+
+#### 2. Organize Your Project
+
+Ensure the parent directory contains both repositories and the `docker-compose.yml` file:
+
+```
+Parent Directory/
+├── docker-compose.yml  # Unified orchestration file
+├── University-FN/      # Frontend repository
+└── University-BN/      # Backend repository
+```
+
+#### 3. Remove Individual Compose Files
+
+If `docker-compose.yml` files exist in the `University-FN` or `University-BN` repositories, remove them to avoid conflicts.
+
+#### 4. Generate Migrations (For Backend)
+
+Before running the containers, make sure to generate and apply migrations for your backend database. Navigate to the backend directory and run the following commands:
+
+- **Generate a migration (optional)**:
+  ```bash
+  cd University-BN
+  npm run migration:generate <migration-name>
+  ```
+
+#### 5. Start Services
+
+Run the following commands from the **parent directory**:
+
+- **Start all services in development mode**:
+  ```bash
+  docker-compose --profile dev up --build
+  ```
+
+- **Start all services in production mode**:
+  ```bash
+  docker-compose --profile prod up --build
+  ```
+
+#### 6. Stop Services
+
+Stop and clean up all services with:
+
+```bash
+docker-compose down
+```
+
+---
+
 ## 📝 **License**
 
 This project is open-source and licensed under the **MIT License**. Check out the full details in the [LICENSE](LICENSE) file.
@@ -96,7 +157,3 @@ If you have any questions or feedback, feel free to reach out:
 
 - Email: [your email address] 📧
 - Open an issue on [GitHub Issues](https://github.com/Swiatlon/University-FN/issues) 💬
-
----
-
-**Happy coding!** ✨

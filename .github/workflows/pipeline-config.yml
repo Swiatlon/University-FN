@@ -9,7 +9,7 @@ on:
       - '**/*.tsx'
       - '**/*.cjs'
       - '**/*.mjs'
-
+      
 jobs:
   lint:
     name: Lint Modified Files
@@ -51,7 +51,6 @@ jobs:
           else
             echo "No modified files to lint"
           fi
-
 
   build:
     name: Build Application
