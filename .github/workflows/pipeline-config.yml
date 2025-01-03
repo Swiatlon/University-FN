@@ -1,19 +1,41 @@
-name: Check ESLint and Build
+name: CI Workflows
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
     paths:
-      - '**/*.js'
-      - '**/*.jsx'
-      - '**/*.ts'
-      - '**/*.tsx'
-      - '**/*.cjs'
-      - '**/*.mjs'
-      
+      - '**/*'
+
 jobs:
+  common:
+    name: Cache node modules
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
+
   lint:
     name: Lint Modified Files
     runs-on: ubuntu-latest
+    needs: [common]
 
     steps:
       - name: Checkout code
@@ -32,17 +54,11 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Lint modified files
         run: |
           echo "Identifying modified files..."
           BASE_SHA=${{ github.event.pull_request.base.sha }}
           HEAD_SHA=${{ github.event.pull_request.head.sha }}
-          echo "Base SHA: $BASE_SHA"
-          echo "Head SHA: $HEAD_SHA"
-          # Exclude deleted files
           MODIFIED_FILES=$(git diff --name-only --diff-filter=ACMRT $BASE_SHA $HEAD_SHA -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
           echo "Modified files: $MODIFIED_FILES"
           if [ -n "$MODIFIED_FILES" ]; then
@@ -55,7 +71,7 @@ jobs:
   build:
     name: Build Application
     runs-on: ubuntu-latest
-    needs: lint
+    needs: [common]
 
     steps:
       - name: Checkout code
@@ -74,8 +90,14 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Build the app
         run: npm run build || (echo "Build failed. Check the logs above." && exit 1)
+
+  docker_build:
+    name: Build docker image
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker build . --file prod.Dockerfile --tag frontend-image:$(date +%s)
