@@ -157,3 +157,4 @@ If you have any questions or feedback, feel free to reach out:
 
 - Email: [your email address] 📧
 - Open an issue on [GitHub Issues](https://github.com/Swiatlon/University-FN/issues) 💬
+
