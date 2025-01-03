@@ -10,7 +10,8 @@
     "eslint": "eslint --fix",
     "prettier": "prettier --config .prettierrc.json src/* --write",
     "format": "eslint --fix . && prettier --config .prettierrc.json src/* --write",
-    "preview": "vite preview --port 5173"
+    "preview": "vite preview --port 5173",
+    "jest": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",

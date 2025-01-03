@@ -5,9 +5,6 @@ export default {
     '^.+.tsx?$': ['ts-jest', {}],
   },
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov'],
   moduleNameMapper: {
     '^contract/(.*)$': '<rootDir>/src/contract/$1',
     '^assets/(.*)$': '<rootDir>/src/assets/$1',
