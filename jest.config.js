@@ -4,6 +4,8 @@ export default {
   transform: {
     '^.+.tsx?$': ['ts-jest', {}],
   },
+  reporters: ['default', ['jest-ctrf-json-reporter', { outputFile: 'jest-result.json', outputDir: 'jest-result' }]],
+
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   moduleNameMapper: {
     '^contract/(.*)$': '<rootDir>/src/contract/$1',

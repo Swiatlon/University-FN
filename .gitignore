@@ -26,3 +26,4 @@ dist-ssr
 *.sw?
 .VSCodeCounter
 ./coverage/**
+jest-result
