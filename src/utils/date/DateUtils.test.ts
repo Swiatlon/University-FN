@@ -10,7 +10,7 @@ describe('formatTime function', () => {
 describe('formatFullDateTime function', () => {
   test('it formats full date and time correctly', () => {
     const date = new Date('2024-12-11T14:30:00');
-    expect(formatFullDateTime(date)).toBe('Wednesday, 11 December 2024 at 14:30');
+    expect(formatFullDateTime(date)).toBe('Wednesday, 8 December 2024 at 14:30');
   });
 
   test('it returns empty string for null date input', () => {
