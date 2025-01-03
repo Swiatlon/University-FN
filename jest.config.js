@@ -4,10 +4,9 @@ export default {
   transform: {
     '^.+.tsx?$': ['ts-jest', {}],
   },
+  reporters: ['default', ['jest-ctrf-json-reporter', { outputFile: 'jest-result.json', outputDir: 'jest-result' }]],
+
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov'],
   moduleNameMapper: {
     '^contract/(.*)$': '<rootDir>/src/contract/$1',
     '^assets/(.*)$': '<rootDir>/src/assets/$1',

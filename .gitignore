@@ -13,7 +13,6 @@ dist
 dist-ssr
 *.local
 .env
-coverage
 
 # Editor directories and files
 .vscode/*
@@ -27,3 +26,4 @@ coverage
 *.sw?
 .VSCodeCounter
 ./coverage/**
+jest-result

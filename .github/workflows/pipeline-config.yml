@@ -93,9 +93,39 @@ jobs:
       - name: Build the app
         run: npm run build || (echo "Build failed. Check the logs above." && exit 1)
 
+  jest:
+    name: Jest unit tests
+    runs-on: ubuntu-latest
+    needs: [common]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Run Jest tests with report
+        run: npm run jest
+
+      - name: Publish Test Summary Results
+        run: npm run jest-report
+
+
   docker_build:
     name: Build docker image
     runs-on: ubuntu-latest
+    needs: [common]
 
     steps:
       - uses: actions/checkout@v4
