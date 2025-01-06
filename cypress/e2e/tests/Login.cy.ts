@@ -1,4 +1,4 @@
-import { STATUS } from '../constants/Constants';
+import { HTTP_STATUS } from '../constants/Constants';
 
 describe('Login functionality', () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('Login functionality', () => {
     cy.intercept('POST', '/api/auth/login').as('loginRequest');
     cy.login('user', 'user');
 
-    validateLoginRequest(STATUS.SUCCESS);
+    validateLoginRequest(HTTP_STATUS.SUCCESS);
 
     cy.url().should('include', '/postAuth');
   });
@@ -22,7 +22,7 @@ describe('Login functionality', () => {
     cy.intercept('POST', '/api/auth/login').as('loginRequest');
     cy.login('user', 'badPassword');
 
-    validateLoginRequest(STATUS.UNAUTHORIZED);
+    validateLoginRequest(HTTP_STATUS.UNAUTHORIZED);
 
     cy.url().should('include', '/login');
     cy.contains('Password or identifier incorrect!').should('be.visible');
@@ -30,9 +30,9 @@ describe('Login functionality', () => {
 
   it('should navigate to the dashboard when logging in as a random user', () => {
     cy.intercept('POST', '/api/auth/random-login').as('loginRequest');
-    cy.contains('p', 'login as random').click();
+    cy.get('[data-cy="randomLogin"]').click();
 
-    validateLoginRequest(STATUS.SUCCESS);
+    validateLoginRequest(HTTP_STATUS.SUCCESS);
 
     cy.url().should('include', '/postAuth');
   });

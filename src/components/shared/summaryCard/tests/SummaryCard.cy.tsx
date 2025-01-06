@@ -8,13 +8,18 @@ describe('SummaryCard Component', () => {
     color: '#ff0000',
   };
 
+  const elements = {
+    title: () => cy.getDataCy('card-title'),
+    text: () => cy.getDataCy('card-text'),
+    icon: () => cy.getDataCy('icon'),
+  };
+
   it('renders correctly with default props', () => {
     cy.mount(<SummaryCard {...defaultProps} />);
 
-    cy.contains('Test title').should('exist');
-    cy.contains('This is a test summary card').should('exist');
-
-    cy.getDataCy('icon').should('exist').and('have.css', 'color', 'rgb(255, 0, 0)');
+    elements.title().should('exist').and('have.text', defaultProps.title);
+    elements.text().should('exist').and('have.text', defaultProps.text);
+    elements.icon().should('exist').and('have.css', 'color', 'rgb(255, 0, 0)');
   });
 
   it('applies custom styles from the sx prop', () => {
