@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { beautifyNumbers, calculatePercentage } from './Decorators';
 
 describe('beautifyNumbers function', () => {

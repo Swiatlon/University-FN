@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { TimerStatesEnum } from '../constants/constants';
 import { calculateTimeLeft, getTimerState } from './Timer.Utils';
 

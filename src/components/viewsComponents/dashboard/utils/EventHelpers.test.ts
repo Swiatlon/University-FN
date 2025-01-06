@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { IEvent } from 'components/viewsComponents/events/constants/EventsData';
 import { addDays, subDays } from 'date-fns';
 import { getClosestEvents } from './EventsHelpers';

@@ -2,7 +2,6 @@
 
 Welcome to the **University Management System** frontend! Built using **React** and **TypeScript**, this system offers a beautiful, intuitive, and powerful interface for managing student data, course registrations, and more. It also boasts solid testing with **Jest** and **Cypress** to ensure everything works flawlessly.
 
----
 
 ## 🚀 **Key Features**
 
@@ -13,14 +12,23 @@ Welcome to the **University Management System** frontend! Built using **React** 
 - **📱 Responsive Design**: A stunning and adaptive interface that looks great on all devices.
 - **🔍 High Test Coverage**: The project includes robust testing using **Jest** and **Cypress** to ensure everything functions as expected. Here's the test coverage summary:
 
-| **Test Framework** | **Test Coverage**    | **Passed** | **Failed** | **Total** |
-|--------------------|----------------------|------------|------------|-----------|
-| Jest               | 100% (Statements)    | 7/7        | 0/7        | 7         |
-| Cypress            | 100% (E2E Tests)     | 3/3        | 0/3        | 3         |
 
 - **💡 Detailed Coverage**: All files in the project are thoroughly tested, including key files like **Auth.State.Slice.ts** and **View.State.Slice.ts**. Our code coverage is robust, with high uptime for line, function, and branch coverage across important files.
 
----
+
+### ✅ **CI/CD Pipeline with GitHub Actions**
+
+Our project leverages **GitHub Actions** for Continuous Integration (CI), ensuring a robust and streamlined workflow for code quality checks and test automation. Every pull request undergoes multiple checks, including unit tests, linting, and builds. Below is an example of the CI checks in action:
+
+![GitHub Actions CI Workflow](./.github/screens/ci.png)
+
+### **Key Features:**
+- **Comprehensive Checks**: All pull requests must pass the CI checks before being eligible for merging.
+- **Review Requirement**: At least one approving review is mandatory, ensuring high code quality and collaboration.
+- **Merge Blocking**: Merging is blocked until all required checks are successful, as shown in the screenshot above.
+
+This ensures that only well-tested, high-quality code is merged into the main branch. For more details, you can view the CI workflow in the [example pull request](https://github.com/Swiatlon/University-FN/pulls).
+
 
 ## 🛠️ **Getting Started**
 
@@ -81,7 +89,6 @@ Before you dive in, ensure you have the following installed:
    npm run cypress
    ```
 
----
 
 ## 🧩 **Docker Compose Setup**
 
@@ -143,13 +150,11 @@ Stop and clean up all services with:
 docker-compose down
 ```
 
----
 
 ## 📝 **License**
 
 This project is open-source and licensed under the **MIT License**. Check out the full details in the [LICENSE](LICENSE) file.
 
----
 
 ## 📬 **Contact**
 

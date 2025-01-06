@@ -39,10 +39,10 @@ const Login = () => {
         <Typography variant="h4" color="primary">
           {t('Login Form')}
         </Typography>
-        <RHFTextField name="login" label={t('Username')} fullWidth />
-        <PasswordField name="password" label={t('Password')} />
+        <RHFTextField name="login" label={t('Username')} fullWidth data-cy="username" />
+        <PasswordField name="password" label={t('Password')} data-cy="password" />
         <LoginAdditionalActions />
-        <Button fullWidth size="large" type="submit" variant="contained">
+        <Button fullWidth size="large" type="submit" variant="contained" data-cy="submitLogin">
           {t('login')}
         </Button>
       </Paper>

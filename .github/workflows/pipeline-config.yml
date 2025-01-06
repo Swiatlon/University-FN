@@ -121,6 +121,26 @@ jobs:
       - name: Publish Test Summary Results
         run: npm run jest-report
 
+  cypress_component:
+    name: Cypress Component Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Publish Test Summary Results
+        run: npm run cypress-report
 
   docker_build:
     name: Build docker image

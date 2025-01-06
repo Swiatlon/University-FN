@@ -13,7 +13,13 @@ function LoginAdditionalActions() {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <RHFCheckbox name="rememberMe" label={t('Remember Me')} />
-      <Typography color="primary" variant="body2" sx={{ cursor: 'pointer' }} onClick={handleRandomLogin}>
+      <Typography
+        color="primary"
+        variant="body2"
+        sx={{ cursor: 'pointer' }}
+        onClick={handleRandomLogin}
+        data-cy="randomLogin"
+      >
         login as random
       </Typography>
     </Box>
