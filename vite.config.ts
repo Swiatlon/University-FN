@@ -4,6 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 
 export default defineConfig({
+  base: '',
   plugins: [react(), svgrPlugin({}), tsconfigPaths()],
   resolve: {
     alias: {
@@ -19,7 +20,8 @@ export default defineConfig({
       routes: '/src/routes',
       theme: '/src/theme',
       types: '/src/types',
-      utils: "/src/utils"
+      utils: "/src/utils",
+      cypress: 'cypress',
       // Redux ?!?!
     },
   },

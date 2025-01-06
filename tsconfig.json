@@ -42,10 +42,10 @@
       "routes/*": ["routes/*"],
       "theme/*": ["theme/*"],
       "types/*": ["types/*"],
-      "utils/*": ["utils/*"]
-    }
+      "utils/*": ["utils/*"],
+    },
   },
-  "include": ["src/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js" ],
+  "include": ["src/**/*", "cypress/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js", "cypress.config.ts", "cypress/cypress.d.ts"],
   "exclude": ["node_modules", "dist"],
 
   "references": [

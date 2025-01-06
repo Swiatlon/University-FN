@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { RolesEnum } from 'contract/enums/Enums';
 import { parseJwt } from './JWT.Utils';
 import type { IDecodedJwt } from 'contract/slices/auth/Auth';

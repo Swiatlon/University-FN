@@ -13,11 +13,15 @@ interface SummaryCardProps {
 
 const SummaryCard = ({ icon, title, text, color, sx }: SummaryCardProps) => {
   return (
-    <CardContainer sx={{ ...sx }}>
+    <CardContainer sx={{ ...sx }} data-cy="card-container">
       <CardIconRoundedContainer color={color}>{icon}</CardIconRoundedContainer>
       <Box>
-        <CardTitle variant="body1">{title}</CardTitle>
-        <CardSubTitle variant="body2">{text}</CardSubTitle>
+        <CardTitle variant="body1" data-cy="card-title">
+          {title}
+        </CardTitle>
+        <CardSubTitle variant="body2" data-cy="card-text">
+          {text}
+        </CardSubTitle>
       </Box>
     </CardContainer>
   );

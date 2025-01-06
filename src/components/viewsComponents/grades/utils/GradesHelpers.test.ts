@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { GradeValueEnum, PassDateAttemptEnum } from 'contract/enums/Enums';
 import { IGrade } from 'contract/interfaces/academics/Academics';
 import { calculateAverageGrade } from './GradesHelpers';
