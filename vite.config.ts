@@ -19,8 +19,10 @@ export default defineConfig({
       routes: '/src/routes',
       theme: '/src/theme',
       types: '/src/types',
-      utils: "/src/utils"
+      utils: "/src/utils",
+      cypress: 'cypress',
       // Redux ?!?!
     },
   },
+  base: '',
 });
