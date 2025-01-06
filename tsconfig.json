@@ -45,7 +45,7 @@
       "utils/*": ["utils/*"],
     },
   },
-  "include": ["src/**/*", "cypress/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js", "cypress.config.ts", "cypress/index.d.ts"],
+  "include": ["src/**/*", "cypress/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js", "cypress.config.ts", "cypress/cypress.d.ts"],
   "exclude": ["node_modules", "dist"],
 
   "references": [

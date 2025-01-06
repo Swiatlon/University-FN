@@ -9,5 +9,5 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add('getDataCy', (selector: string): Cypress.Chainable<JQuery<HTMLElement>> => {
-  return cy.get(`[data-test="${selector}"]`);
+  return cy.get(`[data-cy="${selector}"]`);
 });

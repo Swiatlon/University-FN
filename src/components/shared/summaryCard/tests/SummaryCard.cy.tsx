@@ -2,7 +2,7 @@ import SummaryCard from '../SummaryCard';
 
 describe('SummaryCard Component', () => {
   const defaultProps = {
-    icon: <div data-test="icon">ICON</div>,
+    icon: <div data-cy="icon">ICON</div>,
     title: 'Test title',
     text: 'This is a test summary card',
     color: '#ff0000',
@@ -14,14 +14,14 @@ describe('SummaryCard Component', () => {
     cy.contains('Test title').should('exist');
     cy.contains('This is a test summary card').should('exist');
 
-    cy.get('[data-test="icon"]').should('exist').and('have.css', 'color', 'rgb(255, 0, 0)');
+    cy.getDataCy('icon').should('exist').and('have.css', 'color', 'rgb(255, 0, 0)');
   });
 
   it('applies custom styles from the sx prop', () => {
     const customStyles = { margin: '20px', padding: '10px' };
     cy.mount(<SummaryCard {...defaultProps} sx={customStyles} />);
 
-    cy.get('[data-cy="card-container"]').should('have.css', 'margin', '20px');
-    cy.get('[data-cy="card-container"]').should('have.css', 'padding', '10px');
+    cy.getDataCy('card-container').should('have.css', 'margin', '20px');
+    cy.getDataCy('card-container').should('have.css', 'padding', '10px');
   });
 });
